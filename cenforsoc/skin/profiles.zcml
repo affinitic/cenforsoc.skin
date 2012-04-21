@@ -1,0 +1,22 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="cenforsoc.skin">
+
+  <genericsetup:registerProfile
+      name="default"
+      title="cenforsoc"
+      directory="profiles/default"
+      description='Extension profile for the "cenforsoc" Plone theme.'
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+  <genericsetup:importStep
+      name="cenforsoc.skin.various"
+      title="cenforsoc: miscellaneous import steps"
+      description="Various import steps that are not handled by GS import/export handlers."
+      handler="cenforsoc.skin.setuphandlers.setupVarious">
+    <depends name="skins"/>
+  </genericsetup:importStep>
+
+</configure>
