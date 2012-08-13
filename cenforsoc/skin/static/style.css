@@ -6,3 +6,23 @@ Affinitic, avril 2012
 html, body{
 height:100%;
 }
+
+body{
+background-image:url(images/bg_main.png);
+background-repeat:repeat-x;
+}
+
+#main-content{
+width:990px;
+min-height:720px;
+margin:auto;
+border:1px solid #000;
+}
+
+#header{
+height:560px;
+border:1px solid #00F;
+background-image:url(images/banner_sup.png);
+background-repeat:no-repeat;
+background-position:center 150px;
+}
