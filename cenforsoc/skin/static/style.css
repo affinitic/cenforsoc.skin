@@ -10,19 +10,156 @@ height:100%;
 body{
 background-image:url(images/bg_main.png);
 background-repeat:repeat-x;
+background-color:#d6d2d3;
 }
 
 #main-content{
 width:990px;
 min-height:720px;
 margin:auto;
-border:1px solid #000;
 }
 
+
+/*** HEADER ***/
 #header{
 height:560px;
-border:1px solid #00F;
 background-image:url(images/banner_sup.png);
 background-repeat:no-repeat;
 background-position:center 150px;
 }
+
+#logo{
+width:326px;
+height:105px;
+background-image:url(images/logo.png);
+background-repeat:no-repeat;
+float:left;
+margin-top:30px;
+}
+
+#logo a{
+display:block;
+width:326px;
+height:105px;
+}
+
+#tools{
+float:right;
+margin-top:20px;
+margin-right:5px;
+width:500px;
+}
+
+#site-action{
+margin-bottom:8px;
+text-align:right;
+}
+
+#site-action a{
+color:#aaa;
+font-size:0.8em;
+padding:0px 5px;
+}
+
+#site-action a:hover{
+color:#ab2722;
+}
+
+
+/*** MOTEUR RECHERCHE ***/
+#search-plone{
+float:right;
+margin-top:45px;
+text-align:center;
+color:#000;
+font-size:0.8em;
+z-index:3;
+border:3px solid #ddd;
+border-radius:5px;
+width:216px;
+height:18px;
+padding:0px 0px 0px 0px;
+}
+
+#search-plone .searchButton{
+margin-left:0px;
+background-color:#ab2722;
+color:#fff;
+padding:2px 5px;
+border:1px solid #000;
+border-radius:0px 4px 4px 0px;
+}
+
+#search-plone #searchGadget{
+border-width:1px 0px 1px 1px;
+border-style:solid;
+border-color:#000;
+border-radius:4px 0px 0px 4px;
+height:17px;
+}
+
+.searchSection{
+display:none;
+}
+
+#LSResult {
+background-color:transparent;
+position: relative;
+margin:3px 0px 0px 0px;
+z-index:10;
+}
+
+#LSResult fieldset {
+border:none;
+padding: 1em 0 0;
+}
+
+#LSResult a:link, a:visited {
+color:#5a1e00;
+}
+
+#LSResult a:hover {
+background-color:;
+color:#ffffff;
+border:1px solid #fff;
+border-radius:8px;
+}
+
+#livesearchLegend {
+background-color:transparent;
+padding: 0.3em;
+}
+
+.livesearchContainer{
+text-align:left;
+}
+
+.LSTable{
+width:250px;
+}
+
+.LSRow, .LSHighlight, #LSNothingFound {
+display: block;
+padding: 0.5em 1em;
+white-space: normal;
+width: 220px;
+}
+
+.LSHighlight{
+border:1px solid #fff;
+border-radius:8px;
+}
+
+
+#username{
+border-bottom:1px dotted #aaa;
+width:970px;
+float:right;
+padding-right:10px;
+text-align:right;
+font-size:0.6em;
+color:#bbb;
+min-height:10px;
+}
+
+

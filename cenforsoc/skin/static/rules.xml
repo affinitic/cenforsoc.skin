@@ -31,11 +31,11 @@
         <!-- Document content -->
         <replace css:content-children="#portal-column-content"
                  css:theme-children="#content-texte" />
-        
+
         <replace css:content-children="#user-name"
                  css:theme-children="#username" />
-        
-        <!--         
+
+        <!--
         <replace css:content-children="#portal-breadcrumbs"
                  css:theme-children="#breadcrumb" />
         -->
@@ -47,15 +47,6 @@
 
         <replace css:content="#portal-column-one"
                  css:theme-children="#left-column" />
-
-        <copy css:content=".portletNews"
-              css:theme-children="#portlet-news" />
-
-        <replace css:content-children=".portlet-experience-links"
-              css:theme-children="#portlet-last-experience-content" />
-
-         <copy css:content=".portletEvent"
-               css:theme-children="#portlet-event" />
 
     </rules>
 
