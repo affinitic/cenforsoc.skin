@@ -42,6 +42,9 @@
         <replace css:content-children="#portal-siteactions"
                  css:theme-children="#site-action" />
 
+        <replace css:content-children="#portal-personaltools-wrapper"
+                 css:theme-children="#personal-tools" />
+
         <replace css:content-children="#portal-searchbox"
                  css:theme-children="#search-plone" />
 

@@ -51,6 +51,8 @@ width:500px;
 }
 
 #site-action{
+float:right;
+margin-right:60px
 margin-bottom:8px;
 text-align:right;
 }
@@ -65,6 +67,29 @@ padding:0px 5px;
 color:#ab2722;
 }
 
+#personal-tools{
+float-right;
+}
+
+#portal-personaltools {
+background: none repeat scroll 0 0 transparent;
+border-bottom-left-radius: 0.5em;
+border-bottom-right-radius: 0.5em;
+float: right;
+font-size: 80%;
+padding: 0.25em 0.5em;
+position: relative;
+right: 0;
+top: 0;
+z-index: 3;
+}
+
+#portal-personaltools dd {
+background: none repeat scroll 0 0 rgba(200, 200, 200, 0.7);
+padding-bottom: 0.5em;
+}
+
+
 
 /*** MOTEUR RECHERCHE ***/
 #search-plone{
@@ -74,10 +99,11 @@ text-align:center;
 color:#000;
 font-size:0.8em;
 z-index:3;
+background-color:#ddd;
 border:3px solid #ddd;
 border-radius:5px;
-width:216px;
-height:18px;
+width:250px;
+height:24px;
 padding:0px 0px 0px 0px;
 }
 
@@ -162,4 +188,105 @@ color:#bbb;
 min-height:10px;
 }
 
+
+
+
+/*** FOOTER & COLOPHON ***/
+/*** SITE-FOOTER ***/
+#footer {
+position:relative;
+top:2px;
+z-index:12;
+border-radius:0px 0px 12px 12px;
+margin-top:10px;
+background-color:rgba(202,169,117,0.7);
+background-image:url(images/bg_footer.png);
+background-repeat:repeat-x;
+height:119px;
+text-align:left;
+font-size:0.!em;
+}
+
+#footer-logo{
+width:202px;
+height:55px;
+background-image:url(images/logo-footer.png);
+background-repeat:no-repeat;
+float:left;
+margin-top:60px;
+margin-left:20px;
+}
+
+#footer-coordonnee{
+width:202px;
+float:left;
+margin-top:12px;
+margin-left:30px;
+}
+
+#footer-coordonnee h5{
+font-size:0.7em;
+color:#eee;
+}
+
+#footer-coordonnee p{
+font-size:0.7em;
+color:#333;
+text-shadow:1px 1px 1px rgba(200, 200, 200, 0.8);
+margin-bottom:6px;
+}
+
+#footer-copyright{
+float:right;
+width:400px;
+margin-top: 90px;
+padding: 5px 0px 0px 0px;
+text-align: center;
+font-family: Tahoma, "Trebuchet MS", Arial, serif;
+font-size: 14px;
+color: #371b0c;
+text-shadow:1px 1px 1px rgba(255, 255, 255, 0.8);
+}
+
+
+/* COLOPHON */
+#colophon{
+margin-top:5px;
+border-top:1px solid #896555;
+}
+
+#plone,
+#affinitic{
+color:#371b0c;
+text-shadow:1px 1px 1px rgba(255, 255, 255, 0.8);
+font-size:0.6em;
+width:300px;
+padding-top:2px;
+text-align:center;
+}
+
+#plone{
+float:left;
+}
+
+#affinitic{
+float:right;
+}
+
+#plone a,
+#affinitic a{
+color:#371b0c;
+text-shadow:1px 1px 1px rgba(255, 255, 255, 0.8);
+transition:all 0.4s ease-in;
+transition:all 0.4s ease-in;
+-moz-transition:all 0.4s ease-in;
+-o-transition:all 0.4s ease-in;
+-webkit-transition:all 0.4s ease-in;
+-ms-transition:all 0.4s ease-in;
+}
+
+#plone a:hover,
+#affinitic a:hover{
+color:#8e211c;
+}
 
