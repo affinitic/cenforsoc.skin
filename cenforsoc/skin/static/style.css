@@ -17,12 +17,14 @@ background-color:#d6d2d3;
 width:990px;
 min-height:720px;
 margin:auto;
+border-left:2px solid #ddd;
+border-right:2px solid #ddd;
 }
 
 
 /*** HEADER ***/
 #header{
-height:560px;
+height:500px;
 background-image:url(images/banner_sup.png);
 background-repeat:no-repeat;
 background-position:center 150px;
@@ -189,6 +191,130 @@ min-height:10px;
 }
 
 
+/*** LEFT COLUMN ***/
+/* portlet navigation */
+.portletNavigationTree{
+background-color:rgba(232,231,230,1);
+border:1px solid #222;
+border-radius:12px;
+}
+
+.portletNavigationTree h3 {
+border-radius:12px 12px 0px 0px;
+background: rgb(246,248,249); /* Old browsers */
+background: -moz-linear-gradient(top,  rgba(246,248,249,1) 0%, rgba(229,235,238,1) 50%, rgba(215,222,227,1) 51%, rgba(245,247,249,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(246,248,249,1)), color-stop(50%,rgba(229,235,238,1)), color-stop(51%,rgba(215,222,227,1)), color-stop(100%,rgba(245,247,249,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgba(246,248,249,1) 0%,rgba(229,235,238,1) 50%,rgba(215,222,227,1) 51%,rgba(245,247,249,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgba(246,248,249,1) 0%,rgba(229,235,238,1) 50%,rgba(215,222,227,1) 51%,rgba(245,247,249,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgba(246,248,249,1) 0%,rgba(229,235,238,1) 50%,rgba(215,222,227,1) 51%,rgba(245,247,249,1) 100%); /* IE10+ */
+background: linear-gradient(to bottom,  rgba(246,248,249,1) 0%,rgba(229,235,238,1) 50%,rgba(215,222,227,1) 51%,rgba(245,247,249,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f6f8f9', endColorstr='#f5f7f9',GradientType=0 ); /* IE6-9 */
+font-family: Arial;
+font-size: 1.7em;
+color: #371b0c;
+text-shadow:1px 1px 1px rgba(255, 255, 255, 0.3);
+text-align:center;
+}
+
+
+dl.portlet dd.portletItem ul.navTree li.navTreeItem{
+border-bottom:1px dotted #ccc;
+}
+
+dl.portlet dd.portletItem ul.navTree li.navTreeItem a{
+font-family: 'Tangerine', sans-serif;
+text-shadow:1px 1px 1px rgba(255, 255, 255, 1);
+font-size:1.1em;
+color:#555 !important;
+background-image: none;
+transition:all 0.4s ease-in;
+transition:all 0.4s ease-in;
+-moz-transition:all 0.4s ease-in;
+-o-transition:all 0.4s ease-in;
+-webkit-transition:all 0.4s ease-in;
+-ms-transition:all 0.4s ease-in;
+}
+
+dl.portlet dd.portletItem ul.navTree li.navTreeItem a:hover{
+color:#8d010f !important;
+}
+
+
+dl.portlet ul.navTree .navTreeCurrentItem {
+background-color: rgba(199,74,72,0.7);
+border-left:none;
+margin-left:-18px;
+margin-right:-17px;
+border-top:1px solid #fff;
+border-bottom:1px solid #fff;
+}
+
+div#left-column dl.portlet dd.portletItem ul.navTree li.navTreeItem a.navTreeCurrentItem{
+color:#fff !important;
+transition:all 0.4s ease-in;
+transition:all 0.4s ease-in;
+-moz-transition:all 0.4s ease-in;
+-o-transition:all 0.4s ease-in;
+-webkit-transition:all 0.4s ease-in;
+-ms-transition:all 0.4s ease-in;
+}
+
+/*
+dl.portlet ul.navTree .navTreeCurrentItem .arrow-left {
+border-left:9px solid transparent;
+border-top:10px solid rgba(108,0,2,1);
+height:0;
+left:-20px;
+line-height:0;
+position:relative;
+top:33px;
+width:0;
+}
+
+dl.portlet ul.navTree .navTreeCurrentItem .arrow-right {
+position: relative;
+background: #bb1b09;
+border: 1px solid #fff;
+}
+dl.portlet ul.navTree .navTreeCurrentItem .arrow-right:after, 
+dl.portlet ul.navTree .navTreeCurrentItem .arrow-right:before {
+left: 100%;
+border: solid transparent;
+content: " ";
+height: 0;
+width: 0;
+position: absolute;
+pointer-events: none;
+}
+
+dl.portlet ul.navTree .navTreeCurrentItem .arrow-right:after {
+border-color:rgba(187, 27, 9, 0);
+border-left-color:rgba(199,74,72,0.7);
+border-width:15px;
+top:50%;
+left:139px;
+margin-top:-15px;
+}
+dl.portlet ul.navTree .navTreeCurrentItem .arrow-right:before {
+border-color: rgba(255, 255, 255, 0);
+border-left-color: #fff;
+border-width: 16px;
+top: 50%;
+margin-top: -31px;
+}
+*/
+
+
+
+
+
+ul.navTree li.navTreeItem img{
+visibility:hidden;
+}
+
+
+
+
 
 
 /*** FOOTER & COLOPHON ***/
@@ -288,5 +414,17 @@ transition:all 0.4s ease-in;
 #plone a:hover,
 #affinitic a:hover{
 color:#8e211c;
+}
+
+
+/*** PLONE ***/
+#visual-portal-wrapper{
+width:990px;
+margin:auto;
+background-color:rgba(210,210,210,0.7);
+min-height:1200px;
+border-radius:0px 0px 25px 25px;
+border-left:2px solid #000;
+border-right:2px solid #000;
 }
 

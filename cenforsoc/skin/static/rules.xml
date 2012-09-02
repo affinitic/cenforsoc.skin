@@ -28,10 +28,6 @@
         <!-- Logo link -->
         <copy attributes="href" css:content="#portal-logo" css:theme="#logo .logo-link" />
 
-        <!-- Document content -->
-        <replace css:content-children="#portal-column-content"
-                 css:theme-children="#content-texte" />
-
         <replace css:content-children="#user-name"
                  css:theme-children="#username" />
 
@@ -48,9 +44,13 @@
         <replace css:content-children="#portal-searchbox"
                  css:theme-children="#search-plone" />
 
+        <replace css:content-children="#portal-columns"
+                 css:theme-children="#content-texte" />
+
+        <!--
         <replace css:content="#portal-column-one"
                  css:theme-children="#left-column" />
-
+        -->
     </rules>
 
 </rules>
