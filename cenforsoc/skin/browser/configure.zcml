@@ -11,4 +11,30 @@
         name="cenforsoc skin"
         />
 
+<!-- js -->
+    <browser:resource
+        name="cenforsoc.js"
+        file="js/cenforsoc.js"
+        />
+
+
+
+<!-- PERIODIQUE -->
+    <browser:page
+        name="gestionPeriodique"
+        for="*"
+        permission="zope.Public"
+        class=".ManagePeriodique.ManagePeriodique"
+        allowed_interface=".interfaces.IManagePeriodiques"
+        attribute="gestionPeriodique"
+        />
+    <browser:page
+        name="listing-des-periodiques"
+        for="*"
+        template="templates/periodique_listing.pt"
+        permission="zope.Public"
+        class=".ManagePeriodique.ManagePeriodique"
+        allowed_interface=".interfaces.IManagePeriodiques"
+        />  
+
 </configure>

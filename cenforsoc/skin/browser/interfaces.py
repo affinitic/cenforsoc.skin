@@ -13,3 +13,21 @@ class ICenforsocTheme(IDefaultPloneLayer):
 class IManageCenforsoc(Interface):
     """
     """
+
+
+class IManagePeriodiques(Interface):
+    """
+    gestion de la table es periodiques
+    """
+    def gestionPeriodique():
+        """
+        insertion ou update d'un periodique
+        """
+    def getAllPeriodiques():
+        """
+        recupere tous les periodique
+        """
+    def getPeriodiqueByPk():
+        """
+        recuperation d'un periodique selon sa pk
+        """

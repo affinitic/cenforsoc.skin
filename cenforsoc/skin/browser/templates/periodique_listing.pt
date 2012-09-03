@@ -1,0 +1,22 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plone">
+
+<head>
+    <metal:noborder fill-slot="top_slot"
+                    tal:define="dummy python:request.set('disable_border',1)" />
+</head>
+
+<body>
+<div metal:fill-slot="main"
+     tal:define="periodiquess python: view.getAllPeriodiques()">
+    <h1>Gestion des périodiques</h1>
+    <tal:boucle tal:repeat="periodique periodiques">
+        <span tal:content="periodique/per_titre" />
+        <br />
+    </tal:boucle>
+</div><!-- div metal-->
+</body>
+</html>
+

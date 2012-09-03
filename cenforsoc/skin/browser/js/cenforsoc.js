@@ -2,10 +2,10 @@
 $(document).ready(function(){
 
   $(function() {
-    $("#titre_experience").autocomplete({
+    $("#titre_livre").autocomplete({
         source: function(request, response) {
             $.ajax({
-                url: "experience-searchJSON",
+                url: "livre-searchJSON",
                 dataType: "json",
                 data: {
                     featureClass: "P",
@@ -42,7 +42,7 @@ $(document).ready(function(){
     $("#nom_auteur").autocomplete({
         source: function(request, response) {
             $.ajax({
-                url: "institution-searchJSON",
+                url: "livre-searchJSON",
                 dataType: "json",
                 data: {
                     featureClass: "P",
