@@ -23,10 +23,6 @@ class IManagePeriodiques(Interface):
         """
         insertion ou update d'un periodique
         """
-    def getAllPeriodiques():
-        """
-        recupere tous les periodique
-        """
     def getPeriodiqueByPk():
         """
         recuperation d'un periodique selon sa pk
