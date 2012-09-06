@@ -31,10 +31,93 @@
     <browser:page
         name="lister-les-periodiques"
         for="*"
-        template="templates/periodique_listing.pt"
+        template="templates/periodique/lister_periodique.pt"
         permission="zope.Public"
         class=".ManagePeriodique.ManagePeriodique"
         allowed_interface=".interfaces.IManagePeriodiques"
         />  
+    <browser:page
+        name="chercher-un-periodique"
+        for="*"
+        template="templates/periodique/cherhcer_periodique.pt"
+        permission="zope.Public"
+        class=".ManagePeriodique.ManagePeriodique"
+        allowed_interface=".interfaces.IManagePeriodiques"
+        />  
+    <browser:page
+        name="ajouter-un-periodique"
+        for="*"
+        template="templates/periodique/ajouter_periodique.pt"
+        permission="zope.Public"
+        class=".ManagePeriodique.ManagePeriodique"
+        allowed_interface=".interfaces.IManagePeriodiques"
+        />  
+    <browser:page
+        name="modifier-un-periodique"
+        for="*"
+        template="templates/periodique/modifier_periodique.pt"
+        permission="zope.Public"
+        class=".ManagePeriodique.ManagePeriodique"
+        allowed_interface=".interfaces.IManagePeriodiques"
+        />  
+    <browser:page
+        name="supprimer-un-periodique"
+        for="*"
+        template="templates/periodique/supprimer_periodique.pt"
+        permission="zope.Public"
+        class=".ManagePeriodique.ManagePeriodique"
+        allowed_interface=".interfaces.IManagePeriodiques"
+        />  
+
+<!-- LIVRE -->
+    <browser:page
+        name="gestionLivre"
+        for="*"
+        permission="zope.Public"
+        class=".ManageLivre.ManageLivre"
+        allowed_interface=".interfaces.IManageLivres"
+        attribute="gestionLivre"
+        />
+    <browser:page
+        name="lister-les-livres"
+        for="*"
+        template="templates/livre/lister_livre.pt"
+        permission="zope.Public"
+        class=".ManageLivre.ManageLivre"
+        allowed_interface=".interfaces.IManageLivre"
+        />  
+    <browser:page
+        name="chercher-un-periodique"
+        for="*"
+        template="templates/periodique/cherhcer_periodique.pt"
+        permission="zope.Public"
+        class=".ManagePeriodique.ManagePeriodique"
+        allowed_interface=".interfaces.IManagePeriodiques"
+        />  
+    <browser:page
+        name="ajouter-un-periodique"
+        for="*"
+        template="templates/periodique/ajouter_periodique.pt"
+        permission="zope.Public"
+        class=".ManagePeriodique.ManagePeriodique"
+        allowed_interface=".interfaces.IManagePeriodiques"
+        />  
+    <browser:page
+        name="modifier-un-periodique"
+        for="*"
+        template="templates/periodique/modifier_periodique.pt"
+        permission="zope.Public"
+        class=".ManagePeriodique.ManagePeriodique"
+        allowed_interface=".interfaces.IManagePeriodiques"
+        />  
+    <browser:page
+        name="supprimer-un-periodique"
+        for="*"
+        template="templates/periodique/supprimer_periodique.pt"
+        permission="zope.Public"
+        class=".ManagePeriodique.ManagePeriodique"
+        allowed_interface=".interfaces.IManagePeriodiques"
+        />  
+
 
 </configure>

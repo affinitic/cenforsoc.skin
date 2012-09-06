@@ -11,7 +11,7 @@
 <body>
 <div metal:fill-slot="main"
      tal:define="periodiques python: view.getAllPeriodiques()">
-    <h1>Gestion des périodiques</h1>
+    <h1>Lister les périodiques</h1>
     <tal:boucle tal:repeat="periodique periodiques">
         <fieldset class="donnee-cadre">
             <ul id="donnee-liste">

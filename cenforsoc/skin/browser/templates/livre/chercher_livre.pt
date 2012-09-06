@@ -1,0 +1,46 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plone">
+
+<head>
+    <metal:noborder fill-slot="top_slot"
+                    tal:define="dummy python:request.set('disable_border',1)" />
+</head>
+
+<body>
+<div metal:fill-slot="main"
+     tal:define="periodiques python: view.getAllPeriodiques()">
+    <h1>Chercher un livre</h1>
+    <tal:boucle tal:repeat="periodique periodiques">
+        <fieldset class="donnee-cadre">
+            <ul id="donnee-liste">
+                <li>
+                    <span class="donnee-etiquette">Titre</span> : 
+                    <span tal:content="periodique/per_titre" 
+                          class="donnee-db" />
+                </li>
+                <li>
+                    <span class="donnee-etiquette">Description</span> : 
+                    <span tal:content="periodique/per_description" 
+                          class="donnee-db" />
+                </li>                  
+            </ul>
+            <ul id="menu-gestion-donnee">
+                <li>
+                    <a href=""
+                       tal:attributes="href string:modifier-un-periodique?per_pk=${periodique/per_pk}">
+                        Modifier ce périodique</a>
+                </li>
+                <li>
+                    <a href=""
+                       tal:attributes="href string:supprimer-un-periodique?per_pk=${periodique/per_pk}">
+                       Effacer ce périodique</a>
+                </li>
+            </ul>
+        </fieldset>
+    </tal:boucle>
+</div><!-- div metal-->
+</body>
+</html>
+
