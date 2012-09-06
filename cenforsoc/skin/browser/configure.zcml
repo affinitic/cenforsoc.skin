@@ -29,7 +29,7 @@
         attribute="gestionPeriodique"
         />
     <browser:page
-        name="listing-des-periodiques"
+        name="lister-les-periodiques"
         for="*"
         template="templates/periodique_listing.pt"
         permission="zope.Public"

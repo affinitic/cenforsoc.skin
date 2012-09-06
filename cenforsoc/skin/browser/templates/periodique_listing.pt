@@ -10,11 +10,35 @@
 
 <body>
 <div metal:fill-slot="main"
-     tal:define="periodiquess python: view.getAllPeriodiques()">
+     tal:define="periodiques python: view.getAllPeriodiques()">
     <h1>Gestion des périodiques</h1>
     <tal:boucle tal:repeat="periodique periodiques">
-        <span tal:content="periodique/per_titre" />
-        <br />
+        <fieldset class="donnee-cadre">
+            <ul id="donnee-liste">
+                <li>
+                    <span class="donnee-etiquette">Titre</span> : 
+                    <span tal:content="periodique/per_titre" 
+                          class="donnee-db" />
+                </li>
+                <li>
+                    <span class="donnee-etiquette">Description</span> : 
+                    <span tal:content="periodique/per_description" 
+                          class="donnee-db" />
+                </li>                  
+            </ul>
+            <ul id="menu-gestion-donnee">
+                <li>
+                    <a href=""
+                       tal:attributes="href string:modifier-un-periodique?per_pk=${periodique/per_pk}">
+                        Modifier ce périodique</a>
+                </li>
+                <li>
+                    <a href=""
+                       tal:attributes="href string:supprimer-un-periodique?per_pk=${periodique/per_pk}">
+                       Effacer ce périodique</a>
+                </li>
+            </ul>
+        </fieldset>
     </tal:boucle>
 </div><!-- div metal-->
 </body>
