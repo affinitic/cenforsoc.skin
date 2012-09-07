@@ -17,12 +17,12 @@ from z3c.sqlalchemy import getSAWrapper
 #from Products.Archetypes.atapi import LinesField
 #from Products.Archetypes.Renderer import renderer
 #from Products.Archetypes.atapi import BaseContent
-from interfaces import IManagePeriodiques
+from interfaces import IManagePeriodique
 #from collective.captcha.browser.captcha import Captcha
 
 
 class ManagePeriodique(BrowserView):
-    implements(IManagePeriodiques)
+    implements(IManagePeriodique)
 
     def getAllPeriodiques(self):
         """

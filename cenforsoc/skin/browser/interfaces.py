@@ -15,15 +15,32 @@ class IManageCenforsoc(Interface):
     """
 
 
-class IManagePeriodiques(Interface):
+class IManagePeriodique(Interface):
     """
-    gestion de la table es periodiques
+    gestion de la table des periodiques
     """
     def gestionPeriodique():
         """
         insertion ou update d'un periodique
+
         """
-    def getPeriodiqueByPk():
+
+
+class IManageLivre(Interface):
+    """
+    gestion de la table des livres
+    """
+    def gestionLivre():
         """
-        recuperation d'un periodique selon sa pk
+        insertion ou update d'un livre
+        """
+
+
+class IManageAffiche(Interface):
+    """
+    gestion de la table des affiches
+    """
+    def gestionAffiche():
+        """
+        insertion ou update d'une affiche
         """
