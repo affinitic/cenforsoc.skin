@@ -63,8 +63,8 @@ class ManagePeriodique(BrowserView):
                                     per_description=periodiqueDescription)
         session.save(newEntry)
         session.flush()
-        cible = "%s/creation-d-un-periodique" % (self.context.portal_url(), )
-        self.context.REQUEST.RESPONSE.redirect(cible)
+        #cible = "%s/ajouter-un-periodique" % (self.context.portal_url(), )
+        #self.context.REQUEST.RESPONSE.redirect(cible)
 
     def updatePeriodique(self):
         """

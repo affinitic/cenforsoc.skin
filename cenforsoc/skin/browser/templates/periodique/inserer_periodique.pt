@@ -8,66 +8,52 @@
 
 <div metal:fill-slot="main">
 
-    <h1></h1>
-    <div tal:define="result view/gestionPeriodique;
-                     status result/status">
+    <h1>
+       <img src="images/periodique.png" />
+       Gestion des périodiques
+    </h1>
+    <fieldset class="formCadre">
+        <legend class="legende">Ajouter un p&eacute;riodique</legend>
+        <div tal:define="periodiqueTitre request/periodiqueTitre;
+                         periodiqueDescription request/periodiqueDescription;
+                         result view/gestionPeriodique;
+                         status result/status"
+             class="donnee-resultat">
         
-        <!-->
-        <fieldset>
-            <legend class="legende">Liste des auteurs</legend>
-            <tal:requete tal:define="Auteurs python:view.getAllAuteur();">
-                <table class="plain">
-                    <tr>
-                        <th>Nom</th>
-                        <th>Prénom</th>
-                        <th>Login</th>
-                        <th>Pass</th>
-                        <th>Email</th>
-                        <th>Institution</th>
-                        <th>ID FileMaker</th>
-                        <th>Etat</th>
-                    </tr>
-                    <tal:boucle tal:repeat="auteur Auteurs">
-                        <tr>
-                            <td><span tal:content="auteur/auteur_nom" /></td>
-                            <td><span tal:content="auteur/auteur_prenom" /></td>
-                            <td><span tal:content="auteur/auteur_login" /></td>
-                            <td><span tal:content="auteur/auteur_pass" /></td>
-                            <td><span tal:content="auteur/auteur_email" /></td>
-                            <td><span tal:content="auteur/auteur_institution" /></td>
-                            <td><span tal:content="auteur/auteur_id_filemaker" /></td>
-                            <td><span tal:content="auteur/auteur_actif" /></td>
-                        </tr>
-                    </tal:boucle>
-                </table>
-            </tal:requete>
-        </fieldset>
-        -->
         
-        <div tal:condition="python: status == 1">
-            Ok.
+            <div tal:condition="python: status == 1">
+                Le périodique <span tal:content="periodiqueTitre" class="donnee-db"></span> est correctement enregistré.
+            </div>
+        
+            <div tal:condition="python: status == 2">
+                <img src="alerte.png" />
+                Un erreur s'est passée.
+            </div>
         </div>
-        
-        <div tal:condition="python: status == 2">
-            <img src="alerte.png" />
-            Un erreur s'est passée.
-        </div>
-    </div>
 
-    <hr />
-
-    <div class="btn-nouvelle-recherche">
-        <a href=""
-           tal:attributes="href string:${context/portal_url}/admin-auteur-creer">
-            Cr&eacute;er un nouvel auteur
-        </a>
-    </div>
-    <div class="btn-nouvelle-recherche">
-        <a href=""
-           tal:attributes="href string:${context/portal_url}/admin-auteur-chercher">
-            Modifier un auteur
-        </a>
-    </div>
+        <ul id="menu-gestion-donnee">
+            <li>
+                <a href=""
+                   tal:attributes="href string:${context/portal_url}/chercher-un-periodique">
+                   Rechercher un périodique</a>
+            </li>
+            <li>
+                <a href=""
+                   tal:attributes="href string:${context/portal_url}/ajouter-un-periodique">
+                   Cr&eacute;er un nouveau périodique</a>
+            </li>
+            <li>
+                <a href=""
+                   tal:attributes="href string:${context/portal_url}/modifier-un-periodique">
+                    Modifier un périodique</a>
+            </li>
+            <li>
+                <a href=""
+                   tal:attributes="href string:${context/portal_url}/supprimer-un-periodique">
+                   Effacer un périodique</a>
+            </li>
+        </ul>
+    </fieldset>
 </div>
 </body>
 </html>

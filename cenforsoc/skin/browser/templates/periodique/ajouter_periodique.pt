@@ -11,43 +11,37 @@
 <body>
 <div metal:fill-slot="main">
    <h1>
-       <a href="periodique">
-           <img src="images/periodique.png" />
-       </a> 
-       Gestion des p&eacute;riodiques
+       <img src="images/periodique.png" />
+       Gestion des périodiques
    </h1>
-   <fieldset>
-      <legend class="legende">Ajouter un p&eacute;riodique</legend>
-      <form action="inserer-un-periodique"
+   <fieldset class="formCadre">
+       <legend class="legende">Ajouter un p&eacute;riodique</legend>
+       <form action="inserer-un-periodique"
             methof="post">
-         <table width="95%" align="center" border="0" cellpadding="5" cellspacing="0">				
-            <tr>
-               <td class="etiquette">Titre</td>
-               <td>
-                  <input type="text" 
-                         name="periodiqueTitre" 
-                         size="50"/>
-               </td>
-            </tr>                      
-            <tr>
-               <td class="etiquette" valign="top">Description</td>
-               <td>
-                  <textarea name="periodiqueDescription"
-                            rows="5"
-                            cols="80"></textarea>
-               </td>
-            </tr>            
-         </table>
-         <div class="formControls" align="center">
-             <input type="hidden"
-                    name="operation"
-                    value="insert" />
-             <input class="context"
-                    type="submit"
-                    value="Enregister le périodique" />
+        <div class="formInput">
+            <label for="periodiqueTitre">Titre :</label>
+            <br />
+            <input type="text" 
+                   name="periodiqueTitre"
+                   id="periodiqueTitre" 
+                   size="50"/>
+        </div>
+        <div class="formInput">
+            <label for="periodiqueDescription">Description :</label>
+            <textarea name="periodiqueDescription"
+                      rows="5"
+                      cols="80"></textarea>
+        </div>
+        <div class="formControls">
+            <input type="hidden"
+                   name="operation"
+                   value="insert" />
+            <input class="context"
+                   type="submit"
+                   value="Enregister le périodique" />
          </div>
-      </form>
-
+        </form>
+    </fieldset>
 </div><!-- div metal-->
 </body>
 </html>

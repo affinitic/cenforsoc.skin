@@ -434,8 +434,40 @@ text-align: right;
 .donnee-db{
 font-weight: bold;
 font-size: 0,5em;
-color: #085aff;
+color: #af2320;
 text-align: left;
+}
+
+.donnee-resultat{
+width:80%;
+min-height:30px;
+margin:auto;
+background-color:#eee;
+border:1px solid #aaa;
+border-radius:30px 30px 30px 30px;
+padding:1em;
+margin-bottom:10px;
+text-align:center;
+}
+
+.formCadre{
+border:1px solid #ccc !important;
+border-radius:12px;
+}
+
+.formInput{
+margin-bottom:15px;
+}
+
+.formControls{
+border-top:1px solid #ccc;
+padding-top:4px;
+text-align:center;
+}
+
+.legende{
+font-variant:small-caps;
+color:#af2320;
 }
 
 #donnee-liste{
@@ -471,7 +503,7 @@ background: -o-linear-gradient(top,  rgba(245,246,246,1) 0%,rgba(219,220,226,1) 
 background: -ms-linear-gradient(top,  rgba(245,246,246,1) 0%,rgba(219,220,226,1) 21%,rgba(184,186,198,1) 49%,rgba(221,223,227,1) 80%,rgba(245,246,246,1) 100%);
 background: linear-gradient(to bottom,  rgba(245,246,246,1) 0%,rgba(219,220,226,1) 21%,rgba(184,186,198,1) 49%,rgba(221,223,227,1) 80%,rgba(245,246,246,1) 100%);
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f5f6f6', endColorstr='#f5f6f6',GradientType=0 );
-}
+ }
 
 #menu-gestion-donnee li a:hover{
 color:#000 !important;
@@ -486,6 +518,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d2dfed', end
 }
     
 /*** PLONE ***/
+#content h1{
+color:#7d7d7d;
+border-bottom:2px solid #e60000;
+}
+
 #visual-portal-wrapper{
 width:990px;
 margin:auto;
