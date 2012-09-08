@@ -68,6 +68,14 @@
         class=".ManagePeriodique.ManagePeriodique"
         allowed_interface=".interfaces.IManagePeriodique"
         />  
+    <browser:page
+        name="inserer-un-periodique"
+        for="*"
+        template="templates/periodique/inserer_periodique.pt"
+        permission="zope.Public"
+        class=".ManagePeriodique.ManagePeriodique"
+        allowed_interface=".interfaces.IManagePeriodique"
+        />  
 
 <!-- LIVRE -->
     <browser:page

@@ -98,6 +98,8 @@ class ManagePeriodique(BrowserView):
 
         if operation == "insert":
             self.addPeriodique()
+            return {'status': 1}
 
         if operation == "update":
             self.updatePeriodique()
+            return {'status': 1}

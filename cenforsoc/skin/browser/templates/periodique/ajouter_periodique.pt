@@ -9,37 +9,45 @@
 </head>
 
 <body>
-<div metal:fill-slot="main"
-     tal:define="periodiques python: view.getAllPeriodiques()">
-    <h1>Ajouter un périodique</h1>
-    <tal:boucle tal:repeat="periodique periodiques">
-        <fieldset class="donnee-cadre">
-            <ul id="donnee-liste">
-                <li>
-                    <span class="donnee-etiquette">Titre</span> : 
-                    <span tal:content="periodique/per_titre" 
-                          class="donnee-db" />
-                </li>
-                <li>
-                    <span class="donnee-etiquette">Description</span> : 
-                    <span tal:content="periodique/per_description" 
-                          class="donnee-db" />
-                </li>                  
-            </ul>
-            <ul id="menu-gestion-donnee">
-                <li>
-                    <a href=""
-                       tal:attributes="href string:modifier-un-periodique?per_pk=${periodique/per_pk}">
-                        Modifier ce périodique</a>
-                </li>
-                <li>
-                    <a href=""
-                       tal:attributes="href string:supprimer-un-periodique?per_pk=${periodique/per_pk}">
-                       Effacer ce périodique</a>
-                </li>
-            </ul>
-        </fieldset>
-    </tal:boucle>
+<div metal:fill-slot="main">
+   <h1>
+       <a href="periodique">
+           <img src="images/periodique.png" />
+       </a> 
+       Gestion des p&eacute;riodiques
+   </h1>
+   <fieldset>
+      <legend class="legende">Ajouter un p&eacute;riodique</legend>
+      <form action="inserer-un-periodique"
+            methof="post">
+         <table width="95%" align="center" border="0" cellpadding="5" cellspacing="0">				
+            <tr>
+               <td class="etiquette">Titre</td>
+               <td>
+                  <input type="text" 
+                         name="periodiqueTitre" 
+                         size="50"/>
+               </td>
+            </tr>                      
+            <tr>
+               <td class="etiquette" valign="top">Description</td>
+               <td>
+                  <textarea name="periodiqueDescription"
+                            rows="5"
+                            cols="80"></textarea>
+               </td>
+            </tr>            
+         </table>
+         <div class="formControls" align="center">
+             <input type="hidden"
+                    name="operation"
+                    value="insert" />
+             <input class="context"
+                    type="submit"
+                    value="Enregister le périodique" />
+         </div>
+      </form>
+
 </div><!-- div metal-->
 </body>
 </html>
