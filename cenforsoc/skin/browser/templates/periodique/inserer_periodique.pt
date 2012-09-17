@@ -44,12 +44,12 @@
             </li>
             <li>
                 <a href=""
-                   tal:attributes="href string:${context/portal_url}/modifier-un-periodique">
+                   tal:attributes="href string:${context/portal_url}/chercher-un-periodique">
                     Modifier un périodique</a>
             </li>
             <li>
                 <a href=""
-                   tal:attributes="href string:${context/portal_url}/supprimer-un-periodique">
+                   tal:attributes="href string:${context/portal_url}/chercher-un-periodique">
                    Effacer un périodique</a>
             </li>
         </ul>

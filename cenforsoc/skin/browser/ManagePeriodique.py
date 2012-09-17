@@ -48,6 +48,43 @@ class ManagePeriodique(BrowserView):
         periodique = query.one()
         return periodique
 
+    def getPeriodiqueByLeffeSearch(self, searchString):
+        """
+        table pg periodique
+        recuperation d'un periodique via le lightsearch
+        """
+        wrapper = getSAWrapper('cenforsoc')
+        session = wrapper.session
+        PeriodiqueTable = wrapper.getMapper('periodique')
+        query = session.query(PeriodiqueTable)
+        query = query.filter(PeriodiqueTable.per_titre.ilike("%%%s%%" % searchString))
+        periodique = ["%s" % (periodique.per_titre) for periodique in query.all()]
+        return periodique
+
+    def getSearchingPeriodique(self, periodiquePk=None):
+        """
+        table pg periodique
+        recuperation du periodique selon la pk
+        la pk peut arriver via le form en hidden ou via un lien construit,
+         (cas du listing de resultat de moteur de recherche)
+        je teste si la pk arrive par param, si pas je prends celle du form
+        """
+        fields = self.request.form
+        periodiqueTitre = fields.get('periodiqueTitre')
+        if not periodiquePk:
+            periodiquePk = fields.get('periodique_pk')
+
+        wrapper = getSAWrapper('cenforsoc')
+        session = wrapper.session
+        periodiqueTable = wrapper.getMapper('periodique')
+        query = session.query(periodiqueTable)
+        if periodiqueTitre:
+            query = query.filter(periodiqueTable.per_titre == periodiqueTitre)
+        if periodiquePk:
+            query = query.filter(periodiqueTable.per_pk == periodiquePk)
+        allPeriodiques = query.all()
+        return allPeriodiques
+
     def addPeriodique(self):
         """
         ajout d'un item periodique

@@ -17,6 +17,13 @@
         file="js/cenforsoc.js"
         />
 
+<!-- LEFFE SEARCH -->
+    <browser:page
+         for="*"
+         name="periodique-searchJSON"
+         class=".SearchPeriodique.SearchPeriodiqueAutoCompleteJSON"
+         permission="zope.Public"
+         />
 
 
 <!-- PERIODIQUE -->

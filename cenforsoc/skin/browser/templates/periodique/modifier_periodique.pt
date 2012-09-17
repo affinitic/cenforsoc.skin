@@ -10,36 +10,118 @@
 
 <body>
 <div metal:fill-slot="main"
-     tal:define="periodiques python: view.getAllPeriodiques()">
-    <h1>Modifier un périodique</h1>
-    <tal:boucle tal:repeat="periodique periodiques">
-        <fieldset class="donnee-cadre">
-            <ul id="donnee-liste">
-                <li>
-                    <span class="donnee-etiquette">Titre</span> : 
-                    <span tal:content="periodique/per_titre" 
-                          class="donnee-db" />
-                </li>
-                <li>
-                    <span class="donnee-etiquette">Description</span> : 
-                    <span tal:content="periodique/per_description" 
-                          class="donnee-db" />
-                </li>                  
-            </ul>
-            <ul id="menu-gestion-donnee">
-                <li>
-                    <a href=""
-                       tal:attributes="href string:modifier-un-periodique?per_pk=${periodique/per_pk}">
-                        Modifier ce périodique</a>
-                </li>
-                <li>
-                    <a href=""
-                       tal:attributes="href string:supprimer-un-periodique?per_pk=${periodique/per_pk}">
-                       Effacer ce périodique</a>
-                </li>
-            </ul>
-        </fieldset>
-    </tal:boucle>
+     tal:define="periodiquePk request/periodiquePk | nothing;
+                 periodiques python:view.getSearchingPeriodiques(experiencePk)">">
+   <h1>
+       <img src="images/periodique.png" />
+       Gestion des périodiques
+   </h1>
+   <fieldset>
+      <legend class="legende">Modifier un p&eacute;riodique</legend>
+      <tal:requete tal:define="Periodiques python:view.getPeriodiqueByPk(periodiquePk)">
+          <tal:boucle tal:repeat="elem Periodiques">
+              <form action="periodique_executer_modification"
+                    methof="post">
+                 <table width="95%" align="center" border="0" cellpadding="5" cellspacing="0">				
+                    <tr>
+                       <td class="etiquette">Titre</td>
+                       <td>
+                          <input type="text" 
+                                 name="per_titre" 
+                                 size="50"
+                                 value=""
+                                 tal:attributes="value elem/per_titre" />
+                       </td>
+                    </tr>          
+                    <tr>
+                       <td class="etiquette" valign="top">Description</td>
+                       <td>
+                          <textarea name="per_description"
+                                    rows="5"
+                                    cols="80"
+                                    value="" 
+                                    tal:attributes="value elem/per_description"
+                                    tal:content="elem/per_description"></textarea>
+                       </td>
+                    </tr>           
+                 </table>
+                 <input type="hidden"
+                        name="periodePk"
+                        value=""
+                        tal:attributes="value periodePk" />
+
+                 <div class="formControls" align="center">
+                        <input class="context"
+                               type="submit"
+                               value="Mettre &agrave; jour le p&eacute;riodique"
+                               />
+                 </div>
+              </form>
+          </tal:boucle>
+      </tal:requete>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   <fieldset class="formCadre">
+       <legend class="legende">Ajouter un p&eacute;riodique</legend>
+       <form action="inserer-un-periodique"
+            methof="post">
+        <div class="formInput">
+            <label for="periodiqueTitre">Titre :</label>
+            <br />
+            <input type="text" 
+                   name="periodiqueTitre"
+                   id="periodiqueTitre" 
+                   size="50"/>
+        </div>
+        <div class="formInput">
+            <label for="periodiqueDescription">Description :</label>
+            <textarea name="periodiqueDescription"
+                      rows="5"
+                      cols="80"></textarea>
+        </div>
+        <div class="formControls">
+            <input type="hidden"
+                   name="operation"
+                   value="insert" />
+            <input class="context"
+                   type="submit"
+                   value="Enregister le périodique" />
+         </div>
+        </form>
+    </fieldset>
 </div><!-- div metal-->
 </body>
 </html>

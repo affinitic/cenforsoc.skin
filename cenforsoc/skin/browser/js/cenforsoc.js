@@ -2,10 +2,10 @@
 $(document).ready(function(){
 
   $(function() {
-    $("#titre_livre").autocomplete({
+    $("#periodique-nom").autocomplete({
         source: function(request, response) {
             $.ajax({
-                url: "livre-searchJSON",
+                url: "periodique-searchJSON",
                 dataType: "json",
                 data: {
                     featureClass: "P",

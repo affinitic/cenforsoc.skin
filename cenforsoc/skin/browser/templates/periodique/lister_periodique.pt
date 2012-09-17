@@ -29,12 +29,12 @@
             <ul id="menu-gestion-donnee">
                 <li>
                     <a href=""
-                       tal:attributes="href string:modifier-un-periodique?per_pk=${periodique/per_pk}">
+                       tal:attributes="href string:modifier-un-periodique?periodiquePk=${periodique/per_pk}">
                         Modifier ce périodique</a>
                 </li>
                 <li>
                     <a href=""
-                       tal:attributes="href string:supprimer-un-periodique?per_pk=${periodique/per_pk}">
+                       tal:attributes="href string:supprimer-un-periodique?periodiquePk=${periodique/per_pk}">
                        Effacer ce périodique</a>
                 </li>
             </ul>
