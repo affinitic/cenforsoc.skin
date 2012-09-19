@@ -7,8 +7,8 @@ class SearchPeriodiqueAutoCompleteJSON(BrowserView):
 
     def __call__(self):
         searchString = self.request.form.get('name_startsWith')
-        periodiqueView = getMultiAdapter((self.context, self.request), name="managePeriodique")
-        terms = clpsView.getPeriodiqueByLeffeSearch(searchString)
+        periodiqueView = getMultiAdapter((self.context, self.request), name="gestionPeriodique")
+        terms = periodiqueView.getPeriodiqueByLeffeSearch(searchString)
         writer = getUtility(IJSONWriter)
         self.request.response.setHeader('content-type', 'application/json')
         return writer.write(terms)

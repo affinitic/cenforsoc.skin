@@ -58,7 +58,7 @@ class ManagePeriodique(BrowserView):
         PeriodiqueTable = wrapper.getMapper('periodique')
         query = session.query(PeriodiqueTable)
         query = query.filter(PeriodiqueTable.per_titre.ilike("%%%s%%" % searchString))
-        periodique = ["%s" % (periodique.per_titre) for periodique in query.all()]
+        periodique = ["%s" % (elem.per_titre) for elem in query.all()]
         return periodique
 
     def getSearchingPeriodique(self, periodiquePk=None):

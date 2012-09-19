@@ -10,45 +10,51 @@
 
 <body>
 <div metal:fill-slot="main"
-     tal:define="periodiquePk request/periodiquePk | nothing;
-                 periodiques python:view.getSearchingPeriodiques(experiencePk)">">
+     tal:define="periodiqueTitre request/periodiqueTitre | nothing;
+                 periodiquePk request/periodiquePk | nothing;
+                 periodiques python:view.getSearchingPeriodique(periodiquePk)">">
    <h1>
        <img src="images/periodique.png" />
        Gestion des périodiques
    </h1>
    <fieldset>
       <legend class="legende">Modifier un p&eacute;riodique</legend>
-      <tal:requete tal:define="Periodiques python:view.getPeriodiqueByPk(periodiquePk)">
+
+      <tal:requete tal:define="Periodiques python:view.getSearchingPeriodique(periodiquePk)">
           <tal:boucle tal:repeat="elem Periodiques">
               <form action="periodique_executer_modification"
                     methof="post">
-                 <table width="95%" align="center" border="0" cellpadding="5" cellspacing="0">				
+                 <table width="95%"
+                        align="center"
+                        border="0"
+                        cellpadding="5"
+                        cellspacing="0">
                     <tr>
                        <td class="etiquette">Titre</td>
                        <td>
-                          <input type="text" 
-                                 name="per_titre" 
+                          <input type="text"
+                                 name="per_titre"
                                  size="50"
                                  value=""
                                  tal:attributes="value elem/per_titre" />
                        </td>
-                    </tr>          
+                    </tr>
                     <tr>
                        <td class="etiquette" valign="top">Description</td>
                        <td>
                           <textarea name="per_description"
                                     rows="5"
                                     cols="80"
-                                    value="" 
+                                    value=""
                                     tal:attributes="value elem/per_description"
                                     tal:content="elem/per_description"></textarea>
                        </td>
-                    </tr>           
+                    </tr>
                  </table>
                  <input type="hidden"
-                        name="periodePk"
+                        name="periodiquePk"
                         value=""
-                        tal:attributes="value periodePk" />
+                        tal:attributes="value periodiquePk" />
 
                  <div class="formControls" align="center">
                         <input class="context"
@@ -69,31 +75,7 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<!--
    <fieldset class="formCadre">
        <legend class="legende">Ajouter un p&eacute;riodique</legend>
        <form action="inserer-un-periodique"
@@ -101,9 +83,9 @@
         <div class="formInput">
             <label for="periodiqueTitre">Titre :</label>
             <br />
-            <input type="text" 
+            <input type="text"
                    name="periodiqueTitre"
-                   id="periodiqueTitre" 
+                   id="periodiqueTitre"
                    size="50"/>
         </div>
         <div class="formInput">
@@ -122,6 +104,7 @@
          </div>
         </form>
     </fieldset>
+-->
 </div><!-- div metal-->
 </body>
 </html>

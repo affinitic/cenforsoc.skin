@@ -2,7 +2,7 @@
 $(document).ready(function(){
 
   $(function() {
-    $("#periodique-nom").autocomplete({
+    $("#periodique-titre").autocomplete({
         source: function(request, response) {
             $.ajax({
                 url: "periodique-searchJSON",

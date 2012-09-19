@@ -25,6 +25,12 @@ class IManagePeriodique(Interface):
 
         """
 
+    def getPeriodiqueByLeffeSearch(self, searchString):
+        """
+        table pg periodique
+        recuperation d'un periodique via le lightsearch
+        """
+
 
 class IManageLivre(Interface):
     """
