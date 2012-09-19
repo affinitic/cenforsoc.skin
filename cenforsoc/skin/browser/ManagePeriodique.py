@@ -123,7 +123,7 @@ class ManagePeriodique(BrowserView):
             periodique.per_description = unicode(periodiqueDescription, 'utf-8')
 
         session.flush()
-        cible = "%s/creation-d-un-periodique" % (self.context.portal_url(), )
+        cible = "%s/gestion-de-la-base/les-periodiques" % (self.context.portal_url(), )
         self.context.REQUEST.RESPONSE.redirect(cible)
 
     def gestionPeriodique(self):

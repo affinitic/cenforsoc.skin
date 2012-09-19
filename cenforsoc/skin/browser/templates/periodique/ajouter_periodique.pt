@@ -18,28 +18,28 @@
        <legend class="legende">Ajouter un p&eacute;riodique</legend>
        <form action="inserer-un-periodique"
             methof="post">
-        <div class="formInput">
-            <label for="periodiqueTitre">Titre :</label>
-            <br />
-            <input type="text" 
-                   name="periodiqueTitre"
-                   id="periodiqueTitre" 
-                   size="50"/>
-        </div>
-        <div class="formInput">
-            <label for="periodiqueDescription">Description :</label>
-            <textarea name="periodiqueDescription"
-                      rows="5"
-                      cols="80"></textarea>
-        </div>
-        <div class="formControls">
-            <input type="hidden"
-                   name="operation"
-                   value="insert" />
-            <input class="context"
-                   type="submit"
-                   value="Enregister le périodique" />
-         </div>
+          <div class="formInput">
+              <label for="periodiqueTitre">Titre :</label>
+              <br />
+              <input type="text"
+                     name="periodiqueTitre"
+                     id="periodiqueTitre"
+                     size="50"/>
+          </div>
+          <div class="formInput">
+              <label for="periodiqueDescription">Description :</label>
+              <textarea name="periodiqueDescription"
+                        rows="5"
+                        cols="80"></textarea>
+          </div>
+          <div class="formControls">
+              <input type="hidden"
+                     name="operation"
+                     value="insert" />
+              <input class="context"
+                     type="submit"
+                     value="Enregister le périodique" />
+          </div>
         </form>
     </fieldset>
 </div><!-- div metal-->

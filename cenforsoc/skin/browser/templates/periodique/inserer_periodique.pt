@@ -19,12 +19,11 @@
                          result view/gestionPeriodique;
                          status result/status"
              class="donnee-resultat">
-        
-        
+
             <div tal:condition="python: status == 1">
                 Le périodique <span tal:content="periodiqueTitre" class="donnee-db"></span> est correctement enregistré.
             </div>
-        
+
             <div tal:condition="python: status == 2">
                 <img src="alerte.png" />
                 Un erreur s'est passée.
