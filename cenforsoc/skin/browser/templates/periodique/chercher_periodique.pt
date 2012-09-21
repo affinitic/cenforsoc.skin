@@ -37,7 +37,7 @@
             <legend class="search-legend"> A partir du nom d'un périodique</legend>
             <div id="info-champs">
             </div>
-            <form action="modifier-un-periodique"
+            <form action="afficher-le-periodique"
                   method="post">
                 <div class="div_question">
                     <input type="text"

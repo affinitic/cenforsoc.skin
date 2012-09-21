@@ -126,6 +126,27 @@ class ManagePeriodique(BrowserView):
         cible = "%s/gestion-de-la-base/les-periodiques" % (self.context.portal_url(), )
         self.context.REQUEST.RESPONSE.redirect(cible)
 
+    def deleteLinkPeriodique(self):
+        """
+        table pg periodique
+        suppression des periodiques
+        """
+        fields = self.context.REQUEST
+        periodiquePk = getattr(fields, 'periodiquePk')
+
+        wrapper = getSAWrapper('cenforsoc')
+        session = wrapper.session
+        deletePeriodiqueTable = wrapper.getMapper('periodique')
+        query = session.query(deletePeriodiqueTable)
+        query = query.filter(deletePeriodiqueTable.per_pk == periodiquePk)
+        allPeriodiques = query.all()
+        for periodiquePk in allPeriodiques:
+            session.delete(periodiquePk)
+        session.flush()
+        cible = "%s/gestion-de-la-base/les-periodiques" % (self.context.portal_url(), )
+        self.context.REQUEST.RESPONSE.redirect(cible)
+
+
     def gestionPeriodique(self):
         """
         insertion ou update d'un periodique
@@ -139,4 +160,8 @@ class ManagePeriodique(BrowserView):
 
         if operation == "update":
             self.updatePeriodique()
-            return {'status': 1}
+            return {'status': 2}
+
+        if operation == "delete":
+            self.deletePeriodique()
+            return {'status': 3}
