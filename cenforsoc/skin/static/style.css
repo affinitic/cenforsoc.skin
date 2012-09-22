@@ -54,7 +54,7 @@ width:500px;
 
 #site-action{
 float:right;
-margin-right:60px
+margin-right:60px;
 margin-bottom:8px;
 text-align:right;
 }
@@ -304,17 +304,9 @@ margin-top: -31px;
 }
 */
 
-
-
-
-
 ul.navTree li.navTreeItem img{
 visibility:hidden;
 }
-
-
-
-
 
 
 /*** FOOTER & COLOPHON ***/
@@ -418,6 +410,11 @@ color:#8e211c;
 
 
 /*** DONNEE ***/
+.lettre{
+color:#af2320;
+font-variant:small-caps;
+text-weigth:bold;
+}
 #content-texte .donnee-cadre{
 background-color:#eee;
 border:1px solid #ccc;
@@ -483,8 +480,6 @@ display:inline;
 font-size:0.8em;
 margin:0px 2em;
 }
-
-
 
 #menu-gestion-donnee li a:link{
 text-decoration:none;

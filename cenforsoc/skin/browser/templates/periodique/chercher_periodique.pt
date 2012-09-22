@@ -52,6 +52,36 @@
                            class="search-button" />
                 </div>
             </form>
+
+            <div>
+                  <a href="lister-les-periodiques-par-lettre?lettre=a">A</a>
+                  <a href="lister-les-periodiques-par-lettre?lettre=b">B</a>
+                  <a href="lister-les-periodiques-par-lettre?lettre=c">C</a>
+                  <a href="lister-les-periodiques-par-lettre?lettre=d">D</a>
+                  <a href="lister-les-periodiques-par-lettre?lettre=e">E</a>
+                  <a href="lister-les-periodiques-par-lettre?lettre=f">F</a>
+                  <a href="lister-les-periodiques-par-lettre?lettre=g">G</a>
+                  <a href="lister-les-periodiques-par-lettre?lettre=h">H</a>
+                  <a href="lister-les-periodiques-par-lettre?lettre=i">I</a>
+                  <a href="lister-les-periodiques-par-lettre?lettre=j">J</a>
+                  <a href="lister-les-periodiques-par-lettre?lettre=k">K</a>
+                  <a href="lister-les-periodiques-par-lettre?lettre=l">L</a>
+
+                  <a href="lister-les-periodiques-par-lettre?lettre=m">M</a>
+                  <a href="lister-les-periodiques-par-lettre?lettre=n">N</a>
+                  <a href="lister-les-periodiques-par-lettre?lettre=o">O</a>
+                  <a href="lister-les-periodiques-par-lettre?lettre=p">P</a>
+                  <a href="lister-les-periodiques-par-lettre?lettre=q">Q</a>
+                  <a href="lister-les-periodiques-par-lettre?lettre=r">R</a>
+                  <a href="lister-les-periodiques-par-lettre?lettre=s">S</a>
+                  <a href="lister-les-periodiques-par-lettre?lettre=t">T</a>
+                  <a href="lister-les-periodiques-par-lettre?lettre=u">U</a>
+                  <a href="lister-les-periodiques-par-lettre?lettre=v">V</a>
+                  <a href="lister-les-periodiques-par-lettre?lettre=w">W</a>
+                  <a href="lister-les-periodiques-par-lettre?lettre=x">X</a>
+                  <a href="lister-les-periodiques-par-lettre?lettre=y">Y</a>
+                  <a href="lister-les-periodiques-par-lettre?lettre=z">Z</a>
+            </div>
         </fieldset>
     </div>
 </div><!-- div metal-->

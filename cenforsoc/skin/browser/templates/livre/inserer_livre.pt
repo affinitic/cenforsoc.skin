@@ -9,31 +9,31 @@
 <div metal:fill-slot="main">
 
     <h1>
-       <img src="images/periodique.png" />
-       Gestion des périodiques
+       <img src="images/livre.png" />
+       Gestion des livres
     </h1>
     <fieldset class="formCadre">
         <legend class="legende">Ajouter un p&eacute;riodique</legend>
-        <div tal:define="periodiqueTitre request/periodiqueTitre;
-                         result view/gestionPeriodique;
+        <div tal:define="livreTitre request/livreTitre;
+                         result view/gestionlivre;
                          status result/status"
              class="donnee-resultat">
 
             <div tal:condition="python: status == 1">
-                Le périodique
-                <span tal:content="periodiqueTitre"
+                Le livre
+                <span tal:content="livreTitre"
                       class="donnee-db" />
                 est correctement enregistré.
             </div>
             <div tal:condition="python: status == 2">
-                Le périodique
-                <span tal:content="periodiqueTitre"
+                Le livre
+                <span tal:content="livreTitre"
                       class="donnee-db" />
                 est correctement modifié.
             </div>
             <div tal:condition="python: status == 3">
-                Le périodique
-                <span tal:content="periodiqueTitre"
+                Le livre
+                <span tal:content="livreTitre"
                       class="donnee-db" />
                 est correctement supprimé.
             </div>
@@ -46,23 +46,23 @@
         <ul id="menu-gestion-donnee">
             <li>
                 <a href=""
-                   tal:attributes="href string:${context/portal_url}/chercher-un-periodique">
-                   Rechercher un périodique</a>
+                   tal:attributes="href string:${context/portal_url}/chercher-un-livre">
+                   Rechercher un livre</a>
             </li>
             <li>
                 <a href=""
-                   tal:attributes="href string:${context/portal_url}/ajouter-un-periodique">
-                   Cr&eacute;er un nouveau périodique</a>
+                   tal:attributes="href string:${context/portal_url}/ajouter-un-livre">
+                   Cr&eacute;er un nouveau livre</a>
             </li>
             <li>
                 <a href=""
-                   tal:attributes="href string:${context/portal_url}/chercher-un-periodique">
-                    Modifier un périodique</a>
+                   tal:attributes="href string:${context/portal_url}/chercher-un-livre">
+                    Modifier un livre</a>
             </li>
             <li>
                 <a href=""
-                   tal:attributes="href string:${context/portal_url}/chercher-un-periodique">
-                   Effacer un périodique</a>
+                   tal:attributes="href string:${context/portal_url}/chercher-un-livre">
+                   Effacer un livre</a>
             </li>
         </ul>
     </fieldset>

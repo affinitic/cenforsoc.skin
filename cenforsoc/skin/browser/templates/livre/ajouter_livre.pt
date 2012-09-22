@@ -9,37 +9,39 @@
 </head>
 
 <body>
-<div metal:fill-slot="main"
-     tal:define="periodiques python: view.getAllPeriodiques()">
-    <h1>Ajouter un livre</h1>
-    <tal:boucle tal:repeat="periodique periodiques">
-        <fieldset class="donnee-cadre">
-            <ul id="donnee-liste">
-                <li>
-                    <span class="donnee-etiquette">Titre</span> : 
-                    <span tal:content="periodique/per_titre" 
-                          class="donnee-db" />
-                </li>
-                <li>
-                    <span class="donnee-etiquette">Description</span> : 
-                    <span tal:content="periodique/per_description" 
-                          class="donnee-db" />
-                </li>                  
-            </ul>
-            <ul id="menu-gestion-donnee">
-                <li>
-                    <a href=""
-                       tal:attributes="href string:modifier-un-periodique?per_pk=${periodique/per_pk}">
-                        Modifier ce périodique</a>
-                </li>
-                <li>
-                    <a href=""
-                       tal:attributes="href string:supprimer-un-periodique?per_pk=${periodique/per_pk}">
-                       Effacer ce périodique</a>
-                </li>
-            </ul>
-        </fieldset>
-    </tal:boucle>
+<div metal:fill-slot="main">
+   <h1>
+       <img src="images/livre.png" />
+       Gestion des livres
+   </h1>
+   <fieldset class="formCadre">
+       <legend class="legende">Ajouter un p&eacute;riodique</legend>
+       <form action="inserer-un-livre"
+            methof="post">
+          <div class="formInput">
+              <label for="livreTitre">Titre :</label>
+              <br />
+              <input type="text"
+                     name="livreTitre"
+                     id="livreTitre"
+                     size="50"/>
+          </div>
+          <div class="formInput">
+              <label for="livreDescription">Description :</label>
+              <textarea name="livreDescription"
+                        rows="5"
+                        cols="80"></textarea>
+          </div>
+          <div class="formControls">
+              <input type="hidden"
+                     name="operation"
+                     value="insert" />
+              <input class="context"
+                     type="submit"
+                     value="Enregister le livre" />
+          </div>
+        </form>
+    </fieldset>
 </div><!-- div metal-->
 </body>
 </html>

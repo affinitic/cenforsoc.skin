@@ -48,6 +48,20 @@ class ManagePeriodique(BrowserView):
         periodique = query.one()
         return periodique
 
+    def getAllPeriodiquesByLettre(self, lettre):
+        """
+        recuperation de tous les périodiques commencant par la lettre
+        """
+        wrapper = getSAWrapper('cenforsoc')
+        session = wrapper.session
+        periodiqueTable = wrapper.getMapper('periodique')
+        query = session.query(periodiqueTable)
+        query = query.filter(periodiqueTable.per_titre.like("%s" % lettre))
+        query = query.order_by(periodiqueTable.per_titre)
+        allPeriodiques = query.all()
+        return allPeriodiques
+
+
     def getPeriodiqueByLeffeSearch(self, searchString):
         """
         table pg periodique
@@ -55,9 +69,9 @@ class ManagePeriodique(BrowserView):
         """
         wrapper = getSAWrapper('cenforsoc')
         session = wrapper.session
-        PeriodiqueTable = wrapper.getMapper('periodique')
-        query = session.query(PeriodiqueTable)
-        query = query.filter(PeriodiqueTable.per_titre.ilike("%%%s%%" % searchString))
+        periodiqueTable = wrapper.getMapper('periodique')
+        query = session.query(periodiqueTable)
+        query = query.filter(periodiqueTable.per_titre.ilike("%%%s%%" % searchString))
         periodique = ["%s" % (elem.per_titre) for elem in query.all()]
         return periodique
 

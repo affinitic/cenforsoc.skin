@@ -45,6 +45,14 @@
         allowed_interface=".interfaces.IManagePeriodique"
         />
      <browser:page
+        name="lister-les-periodiques-par-lettre"
+        for="*"
+        template="templates/periodique/lister_periodique_par_lettre.pt"
+        permission="zope.Public"
+        class=".ManagePeriodique.ManagePeriodique"
+        allowed_interface=".interfaces.IManagePeriodique"
+        />
+     <browser:page
         name="afficher-le-periodique"
         for="*"
         template="templates/periodique/afficher_periodique.pt"

@@ -10,36 +10,54 @@
 
 <body>
 <div metal:fill-slot="main"
-     tal:define="periodiques python: view.getAllPeriodiques()">
-    <h1>Modifier un livre</h1>
-    <tal:boucle tal:repeat="periodique periodiques">
-        <fieldset class="donnee-cadre">
-            <ul id="donnee-liste">
-                <li>
-                    <span class="donnee-etiquette">Titre</span> : 
-                    <span tal:content="periodique/per_titre" 
-                          class="donnee-db" />
-                </li>
-                <li>
-                    <span class="donnee-etiquette">Description</span> : 
-                    <span tal:content="periodique/per_description" 
-                          class="donnee-db" />
-                </li>                  
-            </ul>
-            <ul id="menu-gestion-donnee">
-                <li>
-                    <a href=""
-                       tal:attributes="href string:modifier-un-periodique?per_pk=${periodique/per_pk}">
-                        Modifier ce périodique</a>
-                </li>
-                <li>
-                    <a href=""
-                       tal:attributes="href string:supprimer-un-periodique?per_pk=${periodique/per_pk}">
-                       Effacer ce périodique</a>
-                </li>
-            </ul>
-        </fieldset>
-    </tal:boucle>
+     tal:define="livreTitre request/livreTitre | nothing;
+                 livrePk request/livrePk | nothing;
+                 livres python:view.getSearchinglivre(livrePk)">">
+   <h1>
+       <img src="images/livre.png" />
+       Gestion des livres
+   </h1>
+   <fieldset>
+      <legend class="legende">Modifier un p&eacute;riodique</legend>
+
+      <tal:requete tal:define="livres python:view.getSearchinglivre(livrePk)">
+          <tal:boucle tal:repeat="livre livres">
+              <form action="inserer-un-livre"
+                    methof="post">
+                  <div class="formInput">
+                      <label for="livreTitre">Titre :</label>
+                      <br />
+                      <input type="text"
+                             name="livreTitre"
+                             size="50"
+                             value=""
+                             tal:attributes="value livre/per_titre" />
+                  </div>
+                  <div class="formInput">
+                      <label for="livreDescription">Description :</label>
+                      <br />
+                      <textarea name="livreDescription"
+                                rows="5"
+                                cols="80"
+                                value=""
+                                tal:attributes="value livre/per_description"
+                                tal:content="livre/per_description"></textarea>
+                  </div>
+                  <div class="formControls" align="center">
+                      <input type="hidden"
+                             name="livrePk"
+                             value=""
+                             tal:attributes="value livre/per_pk" />
+                      <input type="hidden"
+                             name="operation"
+                             value="update" />
+                      <input class="context"
+                             type="submit"
+                             value="Mettre &agrave; jour le p&eacute;riodique" />
+                  </div>
+              </form>
+          </tal:boucle>
+      </tal:requete>
 </div><!-- div metal-->
 </body>
 </html>

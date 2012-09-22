@@ -4,42 +4,86 @@
       i18n:domain="plone">
 
 <head>
+    <metal:js fill-slot="javascript_head_slot">
+    <script src="++resource++collective.javascript.jqueryui/js/jquery-1.4.2.min.js"
+            type="text/javascript"></script>
+        <script src="++resource++collective.javascript.jqueryui/js/jquery-ui.min.js"
+                type="text/javascript"></script>
+
+        <script src="validate_forms.js"
+                type="text/javascript"></script>
+        <script src="++resource++cenforsoc.js"
+                type="text/javascript"></script>
+    </metal:js>
+    <metal:css fill-slot="style_slot">
+        <link href="++resource++collective.javascript.jqueryui/css/ui-lightness/jquery-ui.css"
+              type="text/css"
+              rel="stylesheet" />
+    </metal:css>
+
     <metal:noborder fill-slot="top_slot"
                     tal:define="dummy python:request.set('disable_border',1)" />
 </head>
 
 <body>
-<div metal:fill-slot="main"
-     tal:define="periodiques python: view.getAllPeriodiques()">
-    <h1>Chercher un livre</h1>
-    <tal:boucle tal:repeat="periodique periodiques">
-        <fieldset class="donnee-cadre">
-            <ul id="donnee-liste">
-                <li>
-                    <span class="donnee-etiquette">Titre</span> : 
-                    <span tal:content="periodique/per_titre" 
-                          class="donnee-db" />
-                </li>
-                <li>
-                    <span class="donnee-etiquette">Description</span> : 
-                    <span tal:content="periodique/per_description" 
-                          class="donnee-db" />
-                </li>                  
-            </ul>
-            <ul id="menu-gestion-donnee">
-                <li>
-                    <a href=""
-                       tal:attributes="href string:modifier-un-periodique?per_pk=${periodique/per_pk}">
-                        Modifier ce périodique</a>
-                </li>
-                <li>
-                    <a href=""
-                       tal:attributes="href string:supprimer-un-periodique?per_pk=${periodique/per_pk}">
-                       Effacer ce périodique</a>
-                </li>
-            </ul>
+<div metal:fill-slot="main">
+    <div id="zone-titre-moteur-recherche">
+        <h1>Rechercher un auteur</h1>
+        <div class="search-text-intro">Plusieurs types de recherche sont possibles.</div>
+    </div>
+
+    <div id="zone-moteur-recherche">
+        <fieldset class="search-zone-nom">
+            <legend class="search-legend"> A partir du nom d'un livre</legend>
+            <div id="info-champs">
+            </div>
+            <form action="afficher-le-livre"
+                  method="post">
+                <div class="div_question">
+                    <input type="text"
+                           id="livre-titre"
+                           name="livreTitre"
+                           value=""
+                           size="50">
+                </div>
+                <div class="formControls" align="center">
+                    <input type="submit"
+                           value="lancer la recherche"
+                           class="search-button" />
+                </div>
+            </form>
+
+            <div>
+                  <a href="lister-les-livres-par-lettre?lettre=a">A</a>
+                  <a href="lister-les-livres-par-lettre?lettre=b">B</a>
+                  <a href="lister-les-livres-par-lettre?lettre=c">C</a>
+                  <a href="lister-les-livres-par-lettre?lettre=d">D</a>
+                  <a href="lister-les-livres-par-lettre?lettre=e">E</a>
+                  <a href="lister-les-livres-par-lettre?lettre=f">F</a>
+                  <a href="lister-les-livres-par-lettre?lettre=g">G</a>
+                  <a href="lister-les-livres-par-lettre?lettre=h">H</a>
+                  <a href="lister-les-livres-par-lettre?lettre=i">I</a>
+                  <a href="lister-les-livres-par-lettre?lettre=j">J</a>
+                  <a href="lister-les-livres-par-lettre?lettre=k">K</a>
+                  <a href="lister-les-livres-par-lettre?lettre=l">L</a>
+
+                  <a href="lister-les-livres-par-lettre?lettre=m">M</a>
+                  <a href="lister-les-livres-par-lettre?lettre=n">N</a>
+                  <a href="lister-les-livres-par-lettre?lettre=o">O</a>
+                  <a href="lister-les-livres-par-lettre?lettre=p">P</a>
+                  <a href="lister-les-livres-par-lettre?lettre=q">Q</a>
+                  <a href="lister-les-livres-par-lettre?lettre=r">R</a>
+                  <a href="lister-les-livres-par-lettre?lettre=s">S</a>
+                  <a href="lister-les-livres-par-lettre?lettre=t">T</a>
+                  <a href="lister-les-livres-par-lettre?lettre=u">U</a>
+                  <a href="lister-les-livres-par-lettre?lettre=v">V</a>
+                  <a href="lister-les-livres-par-lettre?lettre=w">W</a>
+                  <a href="lister-les-livres-par-lettre?lettre=x">X</a>
+                  <a href="lister-les-livres-par-lettre?lettre=y">Y</a>
+                  <a href="lister-les-livres-par-lettre?lettre=z">Z</a>
+            </div>
         </fieldset>
-    </tal:boucle>
+    </div>
 </div><!-- div metal-->
 </body>
 </html>

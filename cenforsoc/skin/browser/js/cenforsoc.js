@@ -1,4 +1,4 @@
-/*recherche sur la table experience*/
+/*recherche sur la table periodique*/
 $(document).ready(function(){
 
   $(function() {
@@ -35,11 +35,11 @@ $(document).ready(function(){
 });
 
 
-/*recherche sur la table institution*/
+/*recherche sur la table livre*/
 $(document).ready(function(){
 
   $(function() {
-    $("#nom_auteur").autocomplete({
+    $("#titre_livre").autocomplete({
         source: function(request, response) {
             $.ajax({
                 url: "livre-searchJSON",

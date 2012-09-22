@@ -24,7 +24,6 @@ class IManagePeriodique(Interface):
         insertion ou update d'un periodique
 
         """
-
     def getPeriodiqueByLeffeSearch(self, searchString):
         """
         table pg periodique
@@ -39,6 +38,11 @@ class IManageLivre(Interface):
     def gestionLivre():
         """
         insertion ou update d'un livre
+        """
+    def getLivreByLeffeSearch(self, searchString):
+        """
+        table pg livre
+        recuperation d'un livre via le lightsearch
         """
 
 
