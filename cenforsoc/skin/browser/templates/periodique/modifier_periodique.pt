@@ -34,7 +34,7 @@
                              tal:attributes="value periodique/per_titre" />
                   </div>
                   <div class="formInput">
-                      <label for="periodiqueTitre">Description :</label>
+                      <label for="periodiqueDescription">Description :</label>
                       <br />
                       <textarea name="periodiqueDescription"
                                 rows="5"

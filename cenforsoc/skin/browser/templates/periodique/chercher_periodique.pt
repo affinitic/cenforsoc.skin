@@ -46,7 +46,7 @@
                            value=""
                            size="50">
                 </div>
-                <div class="div_question">
+                <div class="formControls" align="center">
                     <input type="submit"
                            value="lancer la recherche"
                            class="search-button" />

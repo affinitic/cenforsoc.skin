@@ -13,41 +13,51 @@
      tal:define="periodiquePk request/periodiquePk;
                  periodique python: view.getPeriodiqueByPk(periodiquePk)">
     <h1>Supprimer un périodique</h1>
-        <fieldset class="donnee-cadre">
-            <form action="inserer-un-periodique"
-                  method="post">
-                <ul id="donnee-liste">
-                    <li>
-                        <span class="donnee-etiquette">Titre</span> :
-                        <span tal:content="periodique/per_titre"
-                              class="donnee-db" />
-                    </li>
-                    <li>
-                        <span class="donnee-etiquette">Description</span> :
-                        <span tal:content="periodique/per_description"
-                              class="donnee-db" />
-                    </li>
-                </ul>
-                <div class="formControls" align="center">
-                    <input type="hidden"
-                           name="periodiquePk"
-                           value=""
-                           tal:attributes="value periodique/per_pk" />
-                    <input type="hidden"
-                           name="operation"
-                           value="delete" />
-                    <input class="context"
-                           type="submit"
-                           value="Effacer le p&eacute;riodique" />
-                </div>
-            <ul id="menu-gestion-donnee">
-                <li>
-                    <a href=""
-                       tal:attributes="href string:chercher-un-periodique?per_pk=${periodique/per_pk}">
-                        Chercher ce périodique</a>
-                </li>
-            </ul>
-        </fieldset>
+    <fieldset class="donnee-cadre">
+        <form action="inserer-un-periodique"
+              method="post">
+            <div class="formInput">
+                <label for="periodiqueTitre">Titre :</label>
+                <br />
+                <span tal:content="periodique/per_titre"
+                      class="donnee-db" />
+            </div>
+            <div class="formInput">
+                <label for="formInput">Description :</label>
+                <br />
+                <span tal:content="periodique/per_description"
+                      class="donnee-db" />
+            </div>
+            <div class="formControls" align="center">
+                <input type="hidden"
+                       name="periodiquePk"
+                       value=""
+                       tal:attributes="value periodique/per_pk" />
+                <input type="hidden"
+                       name="periodiqueTitre"
+                       tal:attributes="value periodique/per_titre" />
+                <input type="hidden"
+                       name="operation"
+                       value="delete" />
+                <img src="alerte.png"
+                     width="24"
+                     height="24"
+                     alt="alerte"
+                     title="alerte" />
+                &nbsp;&nbsp;
+                <input class="context"
+                       type="submit"
+                       value="Effacer le p&eacute;riodique" />
+            </div>
+        </form>
+        <ul id="menu-gestion-donnee">
+            <li>
+                <a href=""
+                   tal:attributes="href string:chercher-un-periodique?per_pk=${periodique/per_pk}">
+                    Chercher ce périodique</a>
+            </li>
+        </ul>
+    </fieldset>
 </div><!-- div metal-->
 </body>
 </html>
