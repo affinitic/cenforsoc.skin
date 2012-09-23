@@ -56,7 +56,7 @@ class ManagePeriodique(BrowserView):
         session = wrapper.session
         periodiqueTable = wrapper.getMapper('periodique')
         query = session.query(periodiqueTable)
-        query = query.filter(periodiqueTable.per_titre.like("%s" % lettre))
+        query = query.filter(periodiqueTable.per_titre.like("%%%s%%" % lettre))
         query = query.order_by(periodiqueTable.per_titre)
         allPeriodiques = query.all()
         return allPeriodiques
