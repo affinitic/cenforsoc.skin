@@ -10,32 +10,33 @@
 
 <body>
 <div metal:fill-slot="main"
-     tal:define="periodiques python: view.getAllPeriodiques()">
+     tal:define="affiches python: view.listAfficheInLocalFs()">
     <h1>Lister les affiches</h1>
-    <tal:boucle tal:repeat="periodique periodiques">
+    <tal:boucle tal:repeat="afficheId affiches">
         <fieldset class="donnee-cadre">
             <ul id="donnee-liste">
                 <li>
-                    <span class="donnee-etiquette">Titre</span> : 
-                    <span tal:content="periodique/per_titre" 
-                          class="donnee-db" />
-                </li>
-                <li>
-                    <span class="donnee-etiquette">Description</span> : 
-                    <span tal:content="periodique/per_description" 
-                          class="donnee-db" />
-                </li>                  
+                    <span tal:define="affiche string:affiche_cenforsoc/${afficheId}">
+                        <a href=""
+                           tal:attributes="href string:affiche_cenforsoc/${afficheId}">
+                        <img tal:attributes="src affiche;
+                                             title string:${afficheId};
+                                             alt string:${afficheId}" /></a>
+                        <br />
+                        <span tal:content="affiche"></span>
+                    </span>
+                </li>               
             </ul>
             <ul id="menu-gestion-donnee">
                 <li>
                     <a href=""
-                       tal:attributes="href string:modifier-un-periodique?per_pk=${periodique/per_pk}">
-                        Modifier ce périodique</a>
+                       tal:attributes="href string:modifier-une-affiche">
+                        Modifier une affiche</a>
                 </li>
                 <li>
                     <a href=""
-                       tal:attributes="href string:supprimer-un-periodique?per_pk=${periodique/per_pk}">
-                       Effacer ce périodique</a>
+                       tal:attributes="href string:supprimer-une-affiche">
+                       Effacer une affiche</a>
                 </li>
             </ul>
         </fieldset>

@@ -9,6 +9,7 @@
 from Products.Five import BrowserView
 from zope.interface import implements
 from z3c.sqlalchemy import getSAWrapper
+from Products.CMFPlone.utils import normalizeString
 #from plone.app.form.widgets.wysiwygwidget import WYSIWYGWidget
 #from Products.CMFPlone.utils import normalizeString
 #from Products.CMFCore.utils import getToolByName
@@ -26,6 +27,7 @@ class ManageAffiche(BrowserView):
 
     def getAllAffiches(self):
         """
+        table
         recuperation de toutes les affiches
         """
         wrapper = getSAWrapper('cenforsoc')
@@ -38,6 +40,7 @@ class ManageAffiche(BrowserView):
 
     def getAfficheByPk(self, affichePk):
         """
+        table
         recuperation d'une affiche selon sa pk
         """
         wrapper = getSAWrapper('cenforsoc')
@@ -50,6 +53,7 @@ class ManageAffiche(BrowserView):
 
     def addAffiche(self):
         """
+        table
         ajout d'un item affiche
         """
         fields = self.context.REQUEST
@@ -68,6 +72,7 @@ class ManageAffiche(BrowserView):
 
     def updateAffiche(self):
         """
+        table
         mise a jour d'un item affiche
         """
         fields = self.context.REQUEST
@@ -88,6 +93,71 @@ class ManageAffiche(BrowserView):
         session.flush()
         cible = "%s/creation-d-une-affiche" % (self.context.portal_url(), )
         self.context.REQUEST.RESPONSE.redirect(cible)
+
+    def listAfficheInLocalFs(self):
+        """
+        """
+        apef = getattr(self.context, 'plone')
+        lfs = getattr(apef, 'affiche_cenforsoc')
+        listeAffiches = lfs.fileValues()
+        affiches = []
+        for i in range(len(listeAffiches)):
+            affiches.append(listeAffiches[i].id)
+        return affiches
+
+    def addAfficheToLo(self, for_id, fileUpload):
+        """
+        ajout d'un fichier dans le localfs
+        comme  catalogue pdf de l'operateur
+        """
+        rof = getattr(self.context, 'rof-questionnaire')
+        lfs = getattr(rof, 'rof_pdf')
+        fileName = normalizeString(fileUpload.filename, encoding='utf-8')
+        lfs.manage_upload(fileUpload, id=fileName)
+
+        wrapper = getSAWrapper('apef')
+        session = wrapper.session
+        insertCatalogue = wrapper.getMapper('link_organisme_catalogue')
+        newEntry = insertCatalogue(for_id=for_id, \
+                                   for_catalogue=fileName)
+        session.save(newEntry)
+        session.flush()
+
+        #cible = "%s/accueil-rof" % self.context.portal_url()
+        cible = "%s/rof-questionnaire/operateur-gerer-catalogue-pdf" % self.context.portal_url()
+        self.context.REQUEST.RESPONSE.redirect(cible)
+        return ''
+
+    def delOperateurCataloguePDF(self, \
+                                 fileName, \
+                                 for_id=None):
+        """
+        suppression du fichier dans le localfs
+        comme  catalogue pdf de l'operateur
+        suppression dans la table link_organisme_formation
+        """
+        #suppression dans le localfs
+        rof = getattr(self.context, 'rof-questionnaire')
+        lfs = getattr(rof, 'rof_pdf')
+        lfs.manage_delObjects(ids=fileName)
+
+        #suppression dans la table link_organisme_catalogue
+        wrapper = getSAWrapper('apef')
+        session = wrapper.session
+        deleteCatalogue = wrapper.getMapper('link_organisme_catalogue')
+        query = session.query(deleteCatalogue)
+        query = query.filter(deleteCatalogue.c.for_catalogue == fileName)
+        newEntries = query.all()
+        for newEntry in newEntries:
+            session.delete(newEntry)
+        session.flush()
+
+        if for_id:
+            cible = "%s/rof-questionnaire/operateur-gerer-catalogue-pdf" % self.context.portal_url()
+        else:
+            cible = "%s/rof-questionnaire/accueil" % self.context.portal_url()
+        self.context.REQUEST.RESPONSE.redirect(cible)
+        return ''
 
     def gestionAffiche(self):
         """
