@@ -10,33 +10,85 @@
 
 <body>
 <div metal:fill-slot="main"
-     tal:define="affiches python: view.listAfficheInLocalFs()">
+     tal:define="affiches python: view.getAllAffiches()">
     <h1>Lister les affiches</h1>
-    <tal:boucle tal:repeat="afficheId affiches">
+    <tal:boucle tal:repeat="affiche affiches">
         <fieldset class="donnee-cadre">
             <ul id="donnee-liste">
-                <li>
-                    <span tal:define="affiche string:affiche_cenforsoc/${afficheId}">
-                        <a href=""
-                           tal:attributes="href string:affiche_cenforsoc/${afficheId}">
-                        <img tal:attributes="src affiche;
-                                             title string:${afficheId};
-                                             alt string:${afficheId}" /></a>
-                        <br />
-                        <span tal:content="affiche"></span>
-                    </span>
-                </li>               
-            </ul>
-            <ul id="menu-gestion-donnee">
-                <li>
-                    <a href=""
-                       tal:attributes="href string:modifier-une-affiche">
-                        Modifier une affiche</a>
+                <li class="donnee-etiquette">
+                    Numéro inventaire :<br />
+                    <span tal:content="affiche/affiche_inventaire"
+                          class="donnee-db" />
                 </li>
-                <li>
-                    <a href=""
-                       tal:attributes="href string:supprimer-une-affiche">
-                       Effacer une affiche</a>
+                <li class="donnee-etiquette">
+                    Titre :<br />
+                    <span tal:content="affiche/affiche_titre"
+                          class="donnee-db" />
+                </li>
+                 <li class="donnee-etiquette">
+                    Auteur :<br />
+                    <span tal:content="affiche/affiche_auteur"
+                          class="donnee-db" />
+                </li>
+                 <li class="donnee-etiquette">
+                    Illustrateur :<br />
+                    <span tal:content="affiche/affiche_illustrateur"
+                          class="donnee-db" />
+                </li>
+                 <li class="donnee-etiquette">
+                    Lieu d'édition :<br />
+                    <span tal:content="affiche/affiche_lieu_edition"
+                          class="donnee-db" />
+                </li>
+                 <li class="donnee-etiquette">
+                    Editeur :<br />
+                    <span tal:content="affiche/affiche_editeur"
+                          class="donnee-db" />
+                </li>
+                 <li class="donnee-etiquette">
+                    Date d'édition :<br />
+                    <span tal:content="affiche/affiche_date_edition"
+                          class="donnee-db" />
+                </li>
+                 <li class="donnee-etiquette">
+                    Coloration :<br />
+                    <span tal:content="affiche/affiche_coloration"
+                          class="donnee-db" />
+                </li>
+                <li class="donnee-etiquette">
+                    Format :<br />
+                    <span tal:content="affiche/affiche_format"
+                          class="donnee-db" />
+                </li>
+                <li class="donnee-etiquette">
+                    Nombre d'exemplaire :<br />
+                    <span tal:content="affiche/affiche_nbre_exemplaire"
+                          class="donnee-db" />
+                </li>
+                <li class="donnee-etiquette">
+                    Mot-clés :<br />
+                    <span tal:content="affiche/affiche_mot_cle"
+                          class="donnee-db" />
+                </li>
+                <li class="donnee-etiquette">
+                    Descriptif :<br />
+                    <span tal:content="affiche/affiche_descriptif"
+                          class="donnee-db" />
+                </li>
+                <li class="donnee-etiquette">
+                    Historique :<br />
+                    <span tal:content="affiche/affiche_historique"
+                          class="donnee-db" />
+                </li>
+                <li class="donnee-etiquette">
+                    Commanditaire :<br />
+                    <span tal:content="affiche/affiche_commanditaire"
+                          class="donnee-db" />
+                </li>
+                <li class="donnee-etiquette">
+                    Série :<br />
+                    <span tal:content="affiche/affiche_serie"
+                          class="donnee-db" />
                 </li>
             </ul>
         </fieldset>
