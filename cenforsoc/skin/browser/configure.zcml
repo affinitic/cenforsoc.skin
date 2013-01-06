@@ -37,6 +37,14 @@
         attribute="gestionPeriodique"
         />
     <browser:page
+        name="les-periodiques"
+        for="*"
+        template="templates/periodique/periodique.pt"
+        permission="zope.Public"
+        class=".ManagePeriodique.ManagePeriodique"
+        allowed_interface=".interfaces.IManagePeriodique"
+        />
+    <browser:page
         name="lister-les-periodiques"
         for="*"
         template="templates/periodique/lister_periodique.pt"

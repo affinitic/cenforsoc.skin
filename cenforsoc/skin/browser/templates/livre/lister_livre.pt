@@ -10,31 +10,94 @@
 
 <body>
 <div metal:fill-slot="main"
-     tal:define="livres python: view.getAlllivres()">
+     tal:define="livres python: view.getAllLivres()">
     <h1>Lister les livres</h1>
+    Il y a actuellement
+    <span tal:content="python: len(livres)" />
+    livres enregistrés dans notre base.
     <tal:boucle tal:repeat="livre livres">
         <fieldset class="donnee-cadre">
             <ul id="donnee-liste">
                 <li>
-                    <span class="donnee-etiquette">Titre</span> : 
-                    <span tal:content="livre/per_titre" 
+					<span class="donnee-etiquette">Titre : </span><br />
+					<span tal:content="livre/liv_titre"
+					      class="donnee-db"/>
+				</li>
+				<li>
+					<span class="donnee-etiquette">N Inventaire : </span><br />
+					<span tal:content="livre/liv_inventaire" 
                           class="donnee-db" />
-                </li>
-                <li>
-                    <span class="donnee-etiquette">Description</span> : 
-                    <span tal:content="livre/per_description" 
+				</li>
+				<li>
+					<span class="donnee-etiquette">Cote de rangement : </span><br />
+					<span tal:content="livre/liv_cote_rang" 
                           class="donnee-db" />
-                </li>                  
+				</li>
+				<li>
+					<span class="donnee-etiquette">Auteur(s) : </span><br />
+					<span tal:content="livre/liv_auteur_1" 
+                          class="donnee-db" />
+				</li>
+				<li>
+					<span class="donnee-etiquette">Edition : </span><br />
+					<span tal:content="livre/liv_edition" 
+                          class="donnee-db" />
+				</li>
+				<li>
+					<span class="donnee-etiquette">Lieu : </span><br />
+					<span tal:content="livre/liv_lieu" 
+                          class="donnee-db" />
+				</li>
+				<li>
+					<span class="donnee-etiquette">Editeur : </span><br />
+					<span tal:content="livre/liv_editeur" 
+                          class="donnee-db" />
+				</li>
+				<li>
+					<span class="donnee-etiquette">Date : </span><br />
+					<span tal:content="livre/liv_date" 
+                          class="donnee-db" />
+				</li>
+				<li>
+					<span class="donnee-etiquette">Pages : </span><br />
+					<span tal:content="livre/liv_pages" 
+                          class="donnee-db" />
+				</li>
+				<li>
+					<span class="donnee-etiquette">Collection : </span><br />
+					<span tal:content="livre/liv_collection" 
+                          class="donnee-db" />
+				</li>
+				<li>
+					<span class="donnee-etiquette">Notes : </span><br />
+					<span tal:content="livre/liv_notes" 
+                          class="donnee-db" />
+				</li>
+				<li>
+					<span class="donnee-etiquette">ISBN : </span><br />
+					<span tal:content="livre/liv_isbn" 
+                          class="donnee-db" />
+				</li>
+				<li>
+					<span class="donnee-etiquette">Mots-cl&eacute;s : </span><br />
+					<span tal:content="livre/liv_mots_cles" 
+                          class="donnee-db" />
+				</li>
+				<li>
+					<span class="donnee-etiquette">Livre pr&ecirc;t&eacute; : </span><br />
+					<span tal:content="livre/liv_pret" 
+                          class="donnee-db" />
+				</li>
             </ul>
             <ul id="menu-gestion-donnee">
                 <li>
                     <a href=""
-                       tal:attributes="href string:modifier-un-livre?livrePk=${livre/per_pk}">
+                       tal:attributes="href string:modifier-un-livre?livrePk=${livre/liv_pk}">
                         Modifier ce livre</a>
                 </li>
                 <li>
                     <a href=""
-                       tal:attributes="href string:supprimer-un-livre?livrePk=${livre/per_pk}">
+                       tal:attributes="href string:supprimer-un-livre?livrePk=${livre/liv_pk}">
                        Effacer ce livre</a>
                 </li>
             </ul>

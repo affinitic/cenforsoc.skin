@@ -34,7 +34,7 @@ class ManageAffiche(BrowserView):
         session = wrapper.session
         afficheTable = wrapper.getMapper('affiche')
         query = session.query(afficheTable)
-        query = query.order_by(afficheTable.affiche_titre)
+        query = query.order_by(afficheTable.affiche_inventaire)
         allAffiches = query.all()
         return allAffiches
 

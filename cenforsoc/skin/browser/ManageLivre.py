@@ -30,9 +30,9 @@ class ManageLivre(BrowserView):
         """
         wrapper = getSAWrapper('cenforsoc')
         session = wrapper.session
-        LivreTable = wrapper.getMapper('Livre')
+        LivreTable = wrapper.getMapper('livre')
         query = session.query(LivreTable)
-        query = query.order_by(LivreTable.per_titre)
+        query = query.order_by(LivreTable.liv_titre)
         allLivres = query.all()
         return allLivres
 
@@ -42,7 +42,7 @@ class ManageLivre(BrowserView):
         """
         wrapper = getSAWrapper('cenforsoc')
         session = wrapper.session
-        LivreTable = wrapper.getMapper('Livre')
+        LivreTable = wrapper.getMapper('livre')
         query = session.query(LivreTable)
         query = query.filter(LivreTable.per_pk == LivrePk)
         Livre = query.one()
@@ -54,13 +54,12 @@ class ManageLivre(BrowserView):
         """
         wrapper = getSAWrapper('cenforsoc')
         session = wrapper.session
-        LivreTable = wrapper.getMapper('Livre')
+        LivreTable = wrapper.getMapper('livre')
         query = session.query(LivreTable)
-        query = query.filter(LivreTable.per_titre.like("%s" % lettre))
-        query = query.order_by(LivreTable.per_titre)
+        query = query.filter(LivreTable.liv_titre.like("%s" % lettre))
+        query = query.order_by(LivreTable.liv_titre)
         allLivres = query.all()
         return allLivres
-
 
     def getLivreByLeffeSearch(self, searchString):
         """
@@ -69,7 +68,7 @@ class ManageLivre(BrowserView):
         """
         wrapper = getSAWrapper('cenforsoc')
         session = wrapper.session
-        LivreTable = wrapper.getMapper('Livre')
+        LivreTable = wrapper.getMapper('livre')
         query = session.query(LivreTable)
         query = query.filter(LivreTable.per_titre.ilike("%%%s%%" % searchString))
         Livre = ["%s" % (elem.per_titre) for elem in query.all()]
@@ -90,7 +89,7 @@ class ManageLivre(BrowserView):
 
         wrapper = getSAWrapper('cenforsoc')
         session = wrapper.session
-        LivreTable = wrapper.getMapper('Livre')
+        LivreTable = wrapper.getMapper('livre')
         query = session.query(LivreTable)
         if LivreTitre:
             query = query.filter(LivreTable.per_titre == LivreTitre)
@@ -109,7 +108,7 @@ class ManageLivre(BrowserView):
 
         wrapper = getSAWrapper('cenforsoc')
         session = wrapper.session
-        insertLivre = wrapper.getMapper('Livre')
+        insertLivre = wrapper.getMapper('livre')
         newEntry = insertLivre(per_titre=LivreTitre, \
                                     per_description=LivreDescription)
         session.save(newEntry)
@@ -128,7 +127,7 @@ class ManageLivre(BrowserView):
 
         wrapper = getSAWrapper('cenforsoc')
         session = wrapper.session
-        updateLivreTable = wrapper.getMapper('Livre')
+        updateLivreTable = wrapper.getMapper('livre')
         query = session.query(updateLivreTable)
         query = query.filter(updateLivreTable.per_pk == LivrePk)
         Livres = query.all()
@@ -150,7 +149,7 @@ class ManageLivre(BrowserView):
 
         wrapper = getSAWrapper('cenforsoc')
         session = wrapper.session
-        deleteLivreTable = wrapper.getMapper('Livre')
+        deleteLivreTable = wrapper.getMapper('livre')
         query = session.query(deleteLivreTable)
         query = query.filter(deleteLivreTable.per_pk == LivrePk)
         allLivres = query.all()
@@ -159,7 +158,6 @@ class ManageLivre(BrowserView):
         session.flush()
         #cible = "%s/gestion-de-la-base/les-Livres" % (self.context.portal_url(), )
         #self.context.REQUEST.RESPONSE.redirect(cible)
-
 
     def gestionLivre(self):
         """

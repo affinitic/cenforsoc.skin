@@ -12,6 +12,9 @@
 <div metal:fill-slot="main"
      tal:define="affiches python: view.getAllAffiches()">
     <h1>Lister les affiches</h1>
+    Il y a actuellement
+    <span tal:content="python: len(affiches)" />
+    affiches encodées dans notre base.
     <tal:boucle tal:repeat="affiche affiches">
         <fieldset class="donnee-cadre">
             <ul id="donnee-liste">
@@ -91,6 +94,10 @@
                           class="donnee-db" />
                 </li>
             </ul>
+            <div id="affiche-image">
+                <img src=""
+                     tal:attributes="src string:affiche_cenforsoc/${affiche/affiche_inventaire}.png" />
+            </div>
         </fieldset>
     </tal:boucle>
 </div><!-- div metal-->

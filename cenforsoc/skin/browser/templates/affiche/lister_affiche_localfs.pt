@@ -25,7 +25,7 @@
                         <br />
                         <span tal:content="affiche"></span>
                     </span>
-                </li>               
+                </li>
             </ul>
             <ul id="menu-gestion-donnee">
                 <li>
