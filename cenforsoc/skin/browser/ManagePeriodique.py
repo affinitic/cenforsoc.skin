@@ -61,7 +61,6 @@ class ManagePeriodique(BrowserView):
         allPeriodiques = query.all()
         return allPeriodiques
 
-
     def getPeriodiqueByLeffeSearch(self, searchString):
         """
         table pg periodique
@@ -75,7 +74,7 @@ class ManagePeriodique(BrowserView):
         periodique = ["%s" % (elem.per_titre) for elem in query.all()]
         return periodique
 
-    def getSearchingPeriodique(self, periodiquePk=None):
+    def getSearchingPeriodique(self, periodiquePk=None, searchingLetter=None):
         """
         table pg periodique
         recuperation du periodique selon la pk
@@ -96,8 +95,31 @@ class ManagePeriodique(BrowserView):
             query = query.filter(periodiqueTable.per_titre == periodiqueTitre)
         if periodiquePk:
             query = query.filter(periodiqueTable.per_pk == periodiquePk)
+        if searchingLetter:
+            query = query.filter(periodiqueTable.per_titre.ilike("%%%s" % searchingLetter))
         allPeriodiques = query.all()
         return allPeriodiques
+
+    def findPeriodique(self, periodiquePk=None):
+        """
+        Renvoie un periodique après une Leffe search ou une sélection par pk
+        """
+        if periodiquePk is None:
+            fields = self.request.form
+            periodiqueTitre = fields.get('periodiqueTitre', None)
+            if periodiqueTitre is not None:
+                # Leffe searched cahier de charge
+                wrapper = getSAWrapper('cenforsoc')
+                session = wrapper.session
+                periodiqueTable = wrapper.getMapper('periodique')
+                query = session.query(periodiqueTable)
+                query = query.filter(periodiqueTable.per_titre == periodiqueTitre)
+                periodique = query.one()
+                return periodique
+            else:
+                return None
+        else:
+            return self.getPeriodiqueByPk(periodiquePk)
 
     def addPeriodique(self):
         """
@@ -159,7 +181,6 @@ class ManagePeriodique(BrowserView):
         session.flush()
         #cible = "%s/gestion-de-la-base/les-periodiques" % (self.context.portal_url(), )
         #self.context.REQUEST.RESPONSE.redirect(cible)
-
 
     def gestionPeriodique(self):
         """

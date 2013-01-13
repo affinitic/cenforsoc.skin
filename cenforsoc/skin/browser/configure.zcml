@@ -77,6 +77,22 @@
         allowed_interface=".interfaces.IManagePeriodique"
         />
     <browser:page
+        name="resultat-recherche-periodique"
+        for="*"
+        template="templates/periodique/resultat_recherche_periodique.pt"
+        permission="zope.Public"
+        class=".ManagePeriodique.ManagePeriodique"
+        allowed_interface=".interfaces.IManagePeriodique"
+        />
+    <browser:page
+        name="resultat-recherche-periodique-par-lettre"
+        for="*"
+        template="templates/periodique/resultat_recherche_periodique_alpha.pt"
+        permission="zope.Public"
+        class=".ManagePeriodique.ManagePeriodique"
+        allowed_interface=".interfaces.IManagePeriodique"
+        />
+    <browser:page
         name="ajouter-un-periodique"
         for="*"
         template="templates/periodique/ajouter_periodique.pt"
@@ -117,6 +133,14 @@
         class=".ManageLivre.ManageLivre"
         allowed_interface=".interfaces.IManageLivre"
         attribute="gestionLivre"
+        />
+    <browser:page
+        name="les-livres"
+        for="*"
+        template="templates/livre/livre.pt"
+        permission="zope.Public"
+        class=".ManageLivre.ManageLivre"
+        allowed_interface=".interfaces.IManageLivre"
         />
     <browser:page
         name="lister-les-livres"
@@ -168,6 +192,15 @@
         allowed_interface=".interfaces.IManageAffiche"
         attribute="gestionAffiche"
         />
+    <browser:page
+        name="les-affiches"
+        for="*"
+        template="templates/affiche/affiche.pt"
+        permission="zope.Public"
+        class=".ManageAffiche.ManageAffiche"
+        allowed_interface=".interfaces.IManageAffiche"
+        />
+
     <browser:page
         name="lister-les-affiches"
         for="*"

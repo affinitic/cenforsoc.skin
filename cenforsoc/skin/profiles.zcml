@@ -15,7 +15,7 @@
       name="cenforsoc.skin.various"
       title="cenforsoc: miscellaneous import steps"
       description="Various import steps that are not handled by GS import/export handlers."
-      handler="cenforsoc.skin.setuphandlers.setupVarious">
+      handler="cenforsoc.skin.setuphandlers.setupCenforsoc">
     <depends name="skins"/>
   </genericsetup:importStep>
 

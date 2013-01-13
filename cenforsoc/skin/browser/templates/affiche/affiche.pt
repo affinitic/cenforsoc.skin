@@ -1,0 +1,48 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plone">
+
+<head>
+    <metal:js fill-slot="javascript_head_slot">
+        <script src="++resource++collective.javascript.jqueryui/js/jquery-1.4.2.min.js"
+                type="text/javascript"></script>
+        <script src="++resource++collective.javascript.jqueryui/js/jquery-ui.min.js"
+                type="text/javascript"></script>
+    </metal:js>
+    <metal:css fill-slot="style_slot">
+        <link href="++resource++collective.javascript.jqueryui/css/ui-lightness/jquery-ui.css"
+              type="text/css"
+              rel="stylesheet" />
+    </metal:css>
+    <metal:noborder fill-slot="top_slot"
+                    tal:define="dummy python:request.set('disable_border',1)" />
+</head>
+
+<body>
+<div metal:fill-slot="main">
+	<h1><a href="bibliotheque/"><img src="images/archive.png" /></a> Consultation de nos affiches</h1>
+
+	<fieldset>
+		<legend class="legende">Recherches</legend>
+		<p>Il vous est possible de consulter notre base de donn&eacute;es au travers d'internet.</p>
+		<p>Vous avez trois possibilit&eacute;s pour effectuer une recherche</p>
+		<ul>
+			<li><a href="rechercher_par_auteur">Recherche par auteur</a></li>
+			<li><a href="rechercher_par_titre">Recherche par titre</a></li>
+			<li><a href="rechercher_par_mots_cles">Recherche par most-cl&eacute;s</a></li>			
+		</ul>
+	</fieldset>
+
+	<fieldset>
+		<legend class="legende">Listing</legend>
+		Il vous est &eacute;galement possible de lister l'ensemble de nos ouvrages ou de nos auteurs.
+		<ul>
+			<li><a href="lister_tous_les_ouvrages">Lister tous les ouvrages</a></li>
+			<li><a href="lister_tous_les_auteurs">Lister tous les auteurs</a></li>
+			<li><a href="lister_tous_les_titres">Lister tous les titres</a></li>
+		</ul>
+	</fieldset>  
+</div>
+</body>
+</html>

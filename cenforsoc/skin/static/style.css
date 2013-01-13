@@ -425,36 +425,55 @@ margin:12px 0px;
 .donnee-etiquette{
 font-weight: bold;
 font-size: 0,5em;
-color: #888888;
-/*text-align: right;*/
+color: #111;
+text-shadow:1px 1px 1px rgba(255, 255, 255, 1);
 }
 .donnee-db{
-font-weight: bold;
-font-size: 0,5em;
-color: #af2320;
-text-align: left;
+font-weight:bold;
+font-size:0,5em;
+color:#af2320;
+text-shadow:1px 1px 1px rgba(255, 255, 255, 1);
+text-align:left;
 padding-left:1em;
 }
 
-.donnee-resultat{
-width:80%;
+.boite-resultat{
+width:550px;
 min-height:30px;
-margin:auto;
-background-color:#eee;
+margin:15px auto 0px auto;
+background: rgb(252,255,244);
+background: -moz-linear-gradient(top,  rgba(252,255,244,1) 0%, rgba(223,229,215,1) 40%, rgba(179,190,173,1) 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(252,255,244,1)), color-stop(40%,rgba(223,229,215,1)), color-stop(100%,rgba(179,190,173,1)));
+background: -webkit-linear-gradient(top,  rgba(252,255,244,1) 0%,rgba(223,229,215,1) 40%,rgba(179,190,173,1) 100%);
+background: -o-linear-gradient(top,  rgba(252,255,244,1) 0%,rgba(223,229,215,1) 40%,rgba(179,190,173,1) 100%);
+background: -ms-linear-gradient(top,  rgba(252,255,244,1) 0%,rgba(223,229,215,1) 40%,rgba(179,190,173,1) 100%);
+background: linear-gradient(to bottom,  rgba(252,255,244,1) 0%,rgba(223,229,215,1) 40%,rgba(179,190,173,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfff4', endColorstr='#b3bead',GradientType=0 );
+
+
 border:1px solid #aaa;
 border-radius:30px 30px 30px 30px;
-padding:1em;
-margin-bottom:10px;
-text-align:center;
+padding:1em 1em 1em 2em;
+text-align:left;
+/*box-shadow:5px 5px 5px rgba(0,0,0,0.3)*/
+box-shadow: 1px 1px 1px rgba(255, 255, 255, 1);
 }
 
 .formCadre{
 border:1px solid #ccc !important;
 border-radius:12px;
+margin:15px 0px;
+padding:1em;
 }
 
 .formInput{
-margin-bottom:15px;
+text-align:center;
+}
+
+.formInput input{
+border-radius:12px;
+border:1px solid #aaa;
+padding:0px 2em;
 }
 
 .formControls{
@@ -463,9 +482,19 @@ padding-top:4px;
 text-align:center;
 }
 
+.fieldset-border{
+border:1px solid #ffcece !important;
+border-radius:12px 0px 12px 0px;
+}
+
 .legende{
 font-variant:small-caps;
 color:#af2320;
+}
+
+.selecteur-lettre{
+text-align:center;
+font-weight:bold;
 }
 
 #donnee-liste{

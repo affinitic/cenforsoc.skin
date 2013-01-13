@@ -3,5 +3,12 @@
      -->
 
 <object name="portal_javascripts">
-
+    
+    <javascript cacheable="True"
+                compression="safe"
+                cookable="True"
+                enabled="True"
+                expression=""
+                id="++resource++cenforsoc.js"
+                inline="False"/>
 </object>

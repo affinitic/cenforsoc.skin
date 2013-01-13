@@ -4,87 +4,86 @@
       i18n:domain="plone">
 
 <head>
+    <metal:js fill-slot="javascript_head_slot">
+        <script src="++resource++collective.javascript.jqueryui/js/jquery-1.4.2.min.js"
+                type="text/javascript"></script>
+        <script src="++resource++collective.javascript.jqueryui/js/jquery-ui.min.js"
+                type="text/javascript"></script>
+    </metal:js>
+    <metal:css fill-slot="style_slot">
+        <link href="++resource++collective.javascript.jqueryui/css/ui-lightness/jquery-ui.css"
+              type="text/css"
+              rel="stylesheet" />
+    </metal:css>
     <metal:noborder fill-slot="top_slot"
                  tal:define="dummy python:request.set('disable_border',1)" />
 </head>
 
 <body>
 <div metal:fill-slot="main">
-  <h1><a href="periodiques/"><img src="images/periodique.png" /></a> Consulter nos périodiques</h1>
+  <h1> Consulter nos périodiques</h1>
   <br>
-	
-	
-   <fieldset>
+
+   <fieldset class="fieldset-border">
       <legend class="legende">Une recherche</legend>
-      <table width="95%" align="center">
-          <tr>
-               <td>
-                  Sélectionnez une lettre et obtenez tous les périodiques dont le nom débute par cette lettre
-               </td>
-            </tr>
-            <tr>
-               <td align="center">
-                  <b>
-                  <a href="resultat_recherche_periodique_alpha?lettre=a">A</a>
-                  <a href="resultat_recherche_periodique_alpha?lettre=b">B</a>
-                  <a href="resultat_recherche_periodique_alpha?lettre=c">C</a>
-                  <a href="resultat_recherche_periodique_alpha?lettre=d">D</a>
-                  <a href="resultat_recherche_periodique_alpha?lettre=e">E</a>
-                  <a href="resultat_recherche_periodique_alpha?lettre=f">F</a>
-                  <a href="resultat_recherche_periodique_alpha?lettre=g">G</a>
-                  <a href="resultat_recherche_periodique_alpha?lettre=h">H</a>
-                  <a href="resultat_recherche_periodique_alpha?lettre=i">I</a>
-                  <a href="resultat_recherche_periodique_alpha?lettre=j">J</a>
-                  <a href="resultat_recherche_periodique_alpha?lettre=k">K</a>
-                  <a href="resultat_recherche_periodique_alpha?lettre=l">L</a>
-                 
-                  <a href="resultat_recherche_periodique_alpha?lettre=m">M</a>
-                  <a href="resultat_recherche_periodique_alpha?lettre=n">N</a>
-                  <a href="resultat_recherche_periodique_alpha?lettre=o">O</a>
-                  <a href="resultat_recherche_periodique_alpha?lettre=p">P</a>
-                  <a href="resultat_recherche_periodique_alpha?lettre=q">Q</a>
-                  <a href="resultat_recherche_periodique_alpha?lettre=r">R</a>
-                  <a href="resultat_recherche_periodique_alpha?lettre=s">S</a>
-                  <a href="resultat_recherche_periodique_alpha?lettre=t">T</a>
-                  <a href="resultat_recherche_periodique_alpha?lettre=u">U</a>
-                  <a href="resultat_recherche_periodique_alpha?lettre=v">V</a>
-                  <a href="resultat_recherche_periodique_alpha?lettre=w">W</a>
-                  <a href="resultat_recherche_periodique_alpha?lettre=x">X</a>
-                  <a href="resultat_recherche_periodique_alpha?lettre=y">Y</a>
-                  <a href="resultat_recherche_periodique_alpha?lettre=z">Z</a>
-                  </b>                 
-               </td>
-            </tr>
-            <tr>
-               <td><hr /></td>
-            </tr>
+      <div class="formCadre">
+          <form action="resultat-recherche-periodique"
+                method="post">
+              <div>
+                  Entrez quelques lettres du nom du périodique que vous cherchez, 
+                  ensuite cliquez sur le bouton.
+              </div>
+              <div class="formInput">
+                  <input type="text"
+                         name="periodiqueTitre"
+                         id="periodique-titre"
+                         value=""
+                         size="50" />
+              </div>
+              <div class="formControls">
+                  <input type="submit"
+                         value="Effectuer ma recherche">
+               </div>
+          </form>
+      </div>
 
-           
-            
-
-            <form action="resultat_recherche_periodique_like" method="get">
-               <tr>               
-                  <td>
-                     Entrez quelques lettres du nom du périodique que vous cherchez, ensuite cliquez sur le bouton.
-                  </td>
-               </tr>
-               <tr>
-                  <td align="center">
-                     <input type="text" name="lettre" value="" />
-                  </td>
-               </tr>
-               <tr>
-                  <td align="center">
-                     <input type="submit" value="Effectuer ma recherche">
-                  </td>
-               </tr>
-            </form>          
-         </table>			
+      <div class="formCadre">
+          <div>
+              Sélectionnez une lettre et obtenez tous les périodiques dont le nom débute par cette lettre
+          </div>
+          <div class="selecteur-lettre">
+              <a href="resultat-recherche-periodique-par-lettre?lettre=a">A</a>
+              <a href="resultat-recherche-periodique-par-lettre?lettre=b">B</a>
+              <a href="resultat-recherche-periodique-par-lettre?lettre=c">C</a>
+              <a href="resultat-recherche-periodique-par-lettre?lettre=d">D</a>
+              <a href="resultat-recherche-periodique-par-lettre?lettre=e">E</a>
+              <a href="resultat-recherche-periodique-par-lettre?lettre=f">F</a>
+              <a href="resultat-recherche-periodique-par-lettre?lettre=g">G</a>
+              <a href="resultat-recherche-periodique-par-lettre?lettre=h">H</a>
+              <a href="resultat-recherche-periodique-par-lettre?lettre=i">I</a>
+              <a href="resultat-recherche-periodique-par-lettre?lettre=j">J</a>
+              <a href="resultat-recherche-periodique-par-lettre?lettre=k">K</a>
+              <a href="resultat-recherche-periodique-par-lettre?lettre=l">L</a>
+              <a href="resultat-recherche-periodique-par-lettre?lettre=m">M</a>
+              <a href="resultat-recherche-periodique-par-lettre?lettre=n">N</a>
+              <a href="resultat-recherche-periodique-par-lettre?lettre=o">O</a>
+              <a href="resultat-recherche-periodique-par-lettre?lettre=p">P</a>
+              <a href="resultat-recherche-periodique-par-lettre?lettre=q">Q</a>
+              <a href="resultat-recherche-periodique-par-lettre?lettre=r">R</a>
+              <a href="resultat-recherche-periodique-par-lettre?lettre=s">S</a>
+              <a href="resultat-recherche-periodique-par-lettre?lettre=t">T</a>
+              <a href="resultat-recherche-periodique-par-lettre?lettre=u">U</a>
+              <a href="resultat-recherche-periodique-par-lettre?lettre=v">V</a>
+              <a href="resultat-recherche-periodique-par-lettre?lettre=w">W</a>
+              <a href="resultat-recherche-periodique-par-lettre?lettre=x">X</a>
+              <a href="resultat-recherche-periodique-par-lettre?lettre=y">Y</a>
+              <a href="resultat-recherche-periodique-par-lettre?lettre=z">Z</a>
+          </div>
    </fieldset>
 
-   <fieldset>
+   <fieldset class="fieldset-border">
       <legend class="legende"> La liste </legend>
-      Il vous est possible de voir une liste de tous nos périodiques en cliquant <a href="periodique_lister">ici</a>
+      Il vous est possible de voir une liste de tous nos périodiques en cliquant <a href="lister-les-periodiques">ici</a>
    </fieldset>
 </div>
 </body>

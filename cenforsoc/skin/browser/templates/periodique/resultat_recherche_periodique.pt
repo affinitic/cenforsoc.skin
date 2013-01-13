@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr-FR"
+      lang="en-US"
+      metal:use-macro="here/portal_skins/custom/main_template/macros/master"
+      i18n:domain="plone">
+
+  <metal:block fill-slot="base">
+    <tal:block tal:define="dummy python:request.set('disable_border', 1)"
+               tal:replace="nothing">
+          Disable the tabs
+    </tal:block>
+  </metal:block>
+  
+<div metal:fill-slot="main">
+    <h1>Consulter nos périodiques</h1>
+    <div tal:define="periodiquePk request/pk | nothing;
+                     periodiques python: view.getSearchingPeriodique(periodiquePk);">
+
+        <div tal:repeat="periodique periodiques">
+            
+            <div class="boite-resultat">
+                <span class="donnee-etiquette">Titre</span><br />
+                &nbsp;&nbsp;&nbsp;
+                <span tal:content="python: periodique.per_titre.upper()" 
+                      class="donnee-db" />
+                <br/><br />
+                <span class="donnee-etiquette">Description</span><br />
+                &nbsp;&nbsp;&nbsp;
+                <span tal:content="python: periodique.per_description" 
+                      class="donnee-db" />
+            </div>
+        </div>
+
+        <br /><br />
+        <a href="periodique" 
+           border="0" 
+           alt="Retour au moteur de recherche"
+           title="Retour au moteur de recherche">retour à la recherche</a>
+    </div>  
+</div>
+</html>

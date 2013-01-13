@@ -17,7 +17,7 @@
         <div tal:define="periodiqueTitre request/periodiqueTitre;
                          result view/gestionPeriodique;
                          status result/status"
-             class="donnee-resultat">
+             class="boite-resultat">
 
             <div tal:condition="python: status == 1">
                 Le périodique

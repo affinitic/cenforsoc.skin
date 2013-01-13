@@ -17,7 +17,7 @@
         <div tal:define="livreTitre request/livreTitre;
                          result view/gestionlivre;
                          status result/status"
-             class="donnee-resultat">
+             class="boite-resultat">
 
             <div tal:condition="python: status == 1">
                 Le livre

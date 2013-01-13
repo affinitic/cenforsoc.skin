@@ -2,7 +2,7 @@
 <!-- This file holds the setup configuration for the portal_css tool. -->
 
 <object name="portal_css">
- <stylesheet title=""
+    <stylesheet title=""
              id="++theme++cenforsoc.skin/style.css"
              media="screen"
              rel="stylesheet"
@@ -13,5 +13,4 @@
              enabled="1"
              applyPrefix="True"
              expression="request/HTTP_X_THEME_ENABLED | nothing"/>
-
 </object>

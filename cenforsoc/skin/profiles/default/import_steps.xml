@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<import-steps>
+  <import-step id="cenforsoc.skin.setup"
+               version="20120924-01"
+               handler="cenforsoc.skin.setuphandlers.setupCenforsoc"
+               title="Cenforsoc : setup portal">
+    <dependency step="skins" />
+    <dependency step="workflows" />
+    Setup cenforsoc portal.
+  </import-step>
+</import-steps>
