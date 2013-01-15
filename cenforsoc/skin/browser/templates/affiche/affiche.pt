@@ -21,8 +21,8 @@
 
 <body>
 <div metal:fill-slot="main">
-	<h1><a href="bibliotheque/"><img src="images/archive.png" /></a> Consultation de nos affiches</h1>
-
+	<h1> Consultation de nos affiches</h1>
+    <!--
 	<fieldset>
 		<legend class="legende">Recherches</legend>
 		<p>Il vous est possible de consulter notre base de donn&eacute;es au travers d'internet.</p>
@@ -33,14 +33,12 @@
 			<li><a href="rechercher_par_mots_cles">Recherche par most-cl&eacute;s</a></li>			
 		</ul>
 	</fieldset>
-
+    -->
 	<fieldset>
 		<legend class="legende">Listing</legend>
-		Il vous est &eacute;galement possible de lister l'ensemble de nos ouvrages ou de nos auteurs.
+		Il vous est également possible de lister l'ensemble de affiches.
 		<ul>
-			<li><a href="lister_tous_les_ouvrages">Lister tous les ouvrages</a></li>
-			<li><a href="lister_tous_les_auteurs">Lister tous les auteurs</a></li>
-			<li><a href="lister_tous_les_titres">Lister tous les titres</a></li>
+			<li><a href="lister-les-affiches">Lister toutes les affiches</a></li>
 		</ul>
 	</fieldset>  
 </div>
