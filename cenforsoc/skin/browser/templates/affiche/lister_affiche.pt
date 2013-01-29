@@ -18,7 +18,7 @@
     <tal:boucle tal:repeat="affiche affiches">
         <div  class="boite-resultat">
             <h2 tal:content="affiche/affiche_titre"
-                          class="donnee-db titre-affiche" />
+                class="donnee-db titre-affiche" />
             
             <ul id="donnee-liste">
                 <li class="donnee-etiquette">
@@ -94,7 +94,7 @@
             </ul>
             <div id="affiche-image">
                 <img src=""
-                     tal:attributes="src string:affiche_cenforsoc/${affiche/affiche_inventaire}.png" />
+                     tal:attributes="src string:affiche_cenforsoc/${affiche/affiche_inventaire}.jpg" />
             </div>
         </div>
     </tal:boucle>
