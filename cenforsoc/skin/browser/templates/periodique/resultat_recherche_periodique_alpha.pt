@@ -41,11 +41,12 @@
             </div>
         </span>
 	 
-	    <br /><br />
-	    <a href="periodique" 
-           border="0" 
-           alt="Retour au moteur de recherche"
-           title="Retour au moteur de recherche">retour à la recherche</a>
+	    <div id="retour">
+            <a href=""
+               tal:attributes="href string:${context/portal_url}/documentation/periodique">
+               retour à la recherche</a>
+        </div>
+
   </div>  
 </div>
 </html>

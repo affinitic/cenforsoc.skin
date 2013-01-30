@@ -27,7 +27,7 @@ class IManagePeriodique(Interface):
     def getPeriodiqueByLeffeSearch(self, searchString):
         """
         table pg periodique
-        recuperation d'un periodique via le lightsearch
+        recuperation d'un periodique via le livesearch
         """
 
 
@@ -42,7 +42,7 @@ class IManageLivre(Interface):
     def getLivreByLeffeSearch(self, searchString):
         """
         table pg livre
-        recuperation d'un livre via le lightsearch
+        recuperation d'un livre via le livesearch
         """
 
 
@@ -53,4 +53,10 @@ class IManageAffiche(Interface):
     def gestionAffiche():
         """
         insertion ou update d'une affiche
+        """
+
+    def getAfficheByLeffeSearch(self, searchString):
+        """
+        table pg affiche
+        recuperation d'une affiche via le livesearch
         """

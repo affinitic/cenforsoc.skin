@@ -15,89 +15,36 @@
     Il y a actuellement
     <span tal:content="python: len(affiches)" />
     affiches encodées dans notre base.
-    <tal:boucle tal:repeat="affiche affiches">
-        <div  class="boite-resultat">
-            <h2 tal:content="affiche/affiche_titre"
-                class="donnee-db titre-affiche" />
-            
-            <ul id="donnee-liste">
-                <li class="donnee-etiquette">
-                    Numéro inventaire :<br />
-                    <span tal:content="affiche/affiche_inventaire"
-                          class="donnee-db" />
-                </li>
-                <li class="donnee-etiquette">
-                    Auteur :<br />
-                    <span tal:content="affiche/affiche_auteur"
-                          class="donnee-db" />
-                </li>
-                <li class="donnee-etiquette">
-                    Illustrateur :<br />
-                    <span tal:content="affiche/affiche_illustrateur"
-                          class="donnee-db" />
-                </li>
-                <li class="donnee-etiquette">
-                    Lieu d'édition :<br />
-                    <span tal:content="affiche/affiche_lieu_edition"
-                          class="donnee-db" />
-                </li>
-                <li class="donnee-etiquette">
-                    Editeur :<br />
-                    <span tal:content="affiche/affiche_editeur"
-                          class="donnee-db" />
-                </li>
-                <li class="donnee-etiquette">
-                    Date d'édition :<br />
-                    <span tal:content="affiche/affiche_date_edition"
-                          class="donnee-db" />
-                </li>
-                <li class="donnee-etiquette">
-                    Coloration :<br />
-                    <span tal:content="affiche/affiche_coloration"
-                          class="donnee-db" />
-                </li>
-                <li class="donnee-etiquette">
-                    Format :<br />
-                    <span tal:content="affiche/affiche_format"
-                          class="donnee-db" />
-                </li>
-                <li class="donnee-etiquette">
-                    Nombre d'exemplaire :<br />
-                    <span tal:content="affiche/affiche_nbre_exemplaire"
-                          class="donnee-db" />
-                </li>
-                <li class="donnee-etiquette">
-                    Mot-clés :<br />
-                    <span tal:content="affiche/affiche_mot_cle"
-                          class="donnee-db" />
-                </li>
-                <li class="donnee-etiquette">
-                    Descriptif :<br />
-                    <span tal:content="affiche/affiche_descriptif"
-                          class="donnee-db" />
-                </li>
-                <li class="donnee-etiquette">
-                    Historique :<br />
-                    <span tal:content="affiche/affiche_historique"
-                          class="donnee-db" />
-                </li>
-                <li class="donnee-etiquette">
-                    Commanditaire :<br />
-                    <span tal:content="affiche/affiche_commanditaire"
-                          class="donnee-db" />
-                </li>
-                <li class="donnee-etiquette">
-                    Série :<br />
-                    <span tal:content="affiche/affiche_serie"
-                          class="donnee-db" />
-                </li>
-            </ul>
-            <div id="affiche-image">
+    <div tal:repeat="affiche affiches">
+        <div class="boite-resultat">
+            <div class="info-affiche">
+                <span class="donnee-etiquette">Titre</span><br />
+                &nbsp;&nbsp;&nbsp;
+                <span tal:content="python: affiche.affiche_titre.upper()" 
+                      class="donnee-db" />
+                <br/><br />
+                <span class="donnee-etiquette">Numéro d'inventaire'</span><br />
+                &nbsp;&nbsp;&nbsp;
+                <span tal:content="affiche/affiche_inventaire" 
+                      class="donnee-db" />
+            </div>
+            <div class="vignette-affiche">
                 <img src=""
-                     tal:attributes="src string:affiche_cenforsoc/${affiche/affiche_inventaire}.jpg" />
+                     tal:attributes="src string:${context/portal_url}/affiche_cenforsoc/vignettes/${affiche/affiche_inventaire}.jpg" />
+            </div>
+            <div class="visualClear"></div>
+            <div class="plus-info">
+                <a href=""
+                   tal:attributes="href string:${context/portal_url}/documentation/decrire-une-affiche?affichePk=${affiche/affiche_pk}">
+                Voir le détail...</a>
             </div>
         </div>
-    </tal:boucle>
+    </div>
+    <div id="retour">
+        <a href=""
+           tal:attributes="href string:${context/portal_url}/documentation/affiche">
+           retour à la recherche</a>
+    </div>
 </div><!-- div metal-->
 </body>
 </html>

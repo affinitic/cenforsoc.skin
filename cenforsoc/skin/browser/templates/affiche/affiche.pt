@@ -34,13 +34,34 @@
 		</ul>
 	</fieldset>
     -->
-	<fieldset>
-		<legend class="legende">Listing</legend>
-		Il vous est également possible de lister l'ensemble de affiches.
-		<ul>
-			<li><a href="lister-les-affiches">Lister toutes les affiches</a></li>
-		</ul>
-	</fieldset>  
+    <fieldset class="fieldset-border">
+        <legend class="legende">Une recherche</legend>
+        <div class="formCadre">
+            <form action="resultat-recherche-affiche"
+                  method="post">
+                <div>
+                    Entrez quelques lettres du nom du périodique que vous cherchez, 
+                    ensuite cliquez sur le bouton.
+                </div>
+                <div class="formInput">
+                    <input type="text"
+                           name="afficheTitre"
+                           id="affiche-titre"
+                           value=""
+                           size="50" />
+                </div>
+                <div class="formControls">
+                    <input type="submit"
+                           value="Effectuer ma recherche">
+                </div>
+            </form>
+        </div>
+    </fieldset>  
+
+    <fieldset class="fieldset-border">
+        <legend class="legende"> La liste </legend>
+        Il vous est possible de voir une liste de tous nos périodiques en cliquant <a href="lister-les-affiches">ici</a>
+    </fieldset>
 </div>
 </body>
 </html>

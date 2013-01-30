@@ -51,6 +51,58 @@ class ManageAffiche(BrowserView):
         affiche = query.one()
         return affiche
 
+    def getAfficheByLeffeSearch(self, searchString):
+        """
+        table pg affiche
+        recuperation d'une affiche via le livesearch
+        """
+        wrapper = getSAWrapper('cenforsoc')
+        session = wrapper.session
+        afficheTable = wrapper.getMapper('affiche')
+        query = session.query(afficheTable)
+        query = query.filter(afficheTable.affiche_titre.ilike("%%%s%%" % searchString))
+        affiche = ["%s" % (elem.affiche_titre) for elem in query.all()]
+        return affiche
+
+    def getAllAffichesByLettre(self, lettre):
+        """
+        recuperation de tous les affiches commencant par la lettre
+        """
+        wrapper = getSAWrapper('cenforsoc')
+        session = wrapper.session
+        afficheTable = wrapper.getMapper('affiche')
+        query = session.query(afficheTable)
+        query = query.filter(afficheTable.affiche_titre.like("%%%s%%" % lettre))
+        query = query.order_by(afficheTable.affiche_titre)
+        allAffiches = query.all()
+        return allAffiches
+
+    def getSearchingAffiche(self, affichePk=None, searchingLetter=None):
+        """
+        table pg affiche
+        recuperation d'une affiche selon la pk
+        la pk peut arriver via le form en hidden ou via un lien construit,
+         (cas du listing de resultat de moteur de recherche)
+        je teste si la pk arrive par param, si pas je prends celle du form
+        """
+        fields = self.request.form
+        afficheTitre = fields.get('afficheTitre')
+        if not affichePk:
+            affichePk = fields.get('affiche_pk')
+
+        wrapper = getSAWrapper('cenforsoc')
+        session = wrapper.session
+        afficheTable = wrapper.getMapper('affiche')
+        query = session.query(afficheTable)
+        if afficheTitre:
+            query = query.filter(afficheTable.affiche_titre == afficheTitre)
+        if affichePk:
+            query = query.filter(afficheTable.affiche_pk == affichePk)
+        if searchingLetter:
+            query = query.filter(afficheTable.affiche_titre.ilike("%%%s" % searchingLetter))
+        allAffiches = query.all()
+        return allAffiches
+
     def addAffiche(self):
         """
         table

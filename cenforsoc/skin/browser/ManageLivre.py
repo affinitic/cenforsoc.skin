@@ -64,7 +64,7 @@ class ManageLivre(BrowserView):
     def getLivreByLeffeSearch(self, searchString):
         """
         table pg Livre
-        recuperation d'un Livre via le lightsearch
+        recuperation d'un Livre via le livesearch
         """
         wrapper = getSAWrapper('cenforsoc')
         session = wrapper.session

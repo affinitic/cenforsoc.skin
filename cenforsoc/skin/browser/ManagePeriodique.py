@@ -64,7 +64,7 @@ class ManagePeriodique(BrowserView):
     def getPeriodiqueByLeffeSearch(self, searchString):
         """
         table pg periodique
-        recuperation d'un periodique via le lightsearch
+        recuperation d'un periodique via le livesearch
         """
         wrapper = getSAWrapper('cenforsoc')
         session = wrapper.session

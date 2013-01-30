@@ -26,6 +26,20 @@
          permission="zope.Public"
          />
 
+    <browser:page
+         for="*"
+         name="livre-searchJSON"
+         class=".SearchLivre.SearchLivreAutoCompleteJSON"
+         permission="zope.Public"
+         />
+
+    <browser:page
+         for="*"
+         name="affiche-searchJSON"
+         class=".SearchAffiche.SearchAfficheAutoCompleteJSON"
+         permission="zope.Public"
+         />
+
 
 <!-- PERIODIQUE -->
     <browser:page
@@ -200,7 +214,6 @@
         class=".ManageAffiche.ManageAffiche"
         allowed_interface=".interfaces.IManageAffiche"
         />
-
     <browser:page
         name="lister-les-affiches"
         for="*"
@@ -210,9 +223,25 @@
         allowed_interface=".interfaces.IManageAffiche"
         />
     <browser:page
+        name="decrire-une-affiche"
+        for="*"
+        template="templates/affiche/descrire_affiche.pt"
+        permission="zope.Public"
+        class=".ManageAffiche.ManageAffiche"
+        allowed_interface=".interfaces.IManageAffiche"
+        />
+    <browser:page
         name="chercher-une-affiche"
         for="*"
         template="templates/affiche/chercher_affiche.pt"
+        permission="zope.Public"
+        class=".ManageAffiche.ManageAffiche"
+        allowed_interface=".interfaces.IManageAffiche"
+        />
+    <browser:page
+        name="resultat-recherche-affiche"
+        for="*"
+        template="templates/affiche/resultat_recherche_affiche.pt"
         permission="zope.Public"
         class=".ManageAffiche.ManageAffiche"
         allowed_interface=".interfaces.IManageAffiche"
