@@ -18,15 +18,22 @@
                      affiches python: view.getSearchingAffiche(affichePk);">
         <div tal:repeat="affiche affiches">
             <div class="boite-resultat">
-                <span class="donnee-etiquette">Titre</span><br />
-                &nbsp;&nbsp;&nbsp;
-                <span tal:content="python: affiche.affiche_titre.upper()" 
-                      class="donnee-db" />
-                <br/><br />
-                <span class="donnee-etiquette">Numéro d'inventaire'</span><br />
-                &nbsp;&nbsp;&nbsp;
-                <span tal:content="affiche/affiche_inventaire" 
-                      class="donnee-db" />
+                <div class="info-affiche">
+                    <span class="donnee-etiquette">Titre</span><br />
+                    &nbsp;&nbsp;&nbsp;
+                    <span tal:content="python: affiche.affiche_titre.upper()" 
+                          class="donnee-db" />
+                    <br/><br />
+                    <span class="donnee-etiquette">Numéro d'inventaire'</span><br />
+                    &nbsp;&nbsp;&nbsp;
+                    <span tal:content="affiche/affiche_inventaire" 
+                          class="donnee-db" />
+                </div>
+                <div class="vignette-affiche">
+                    <img src=""
+                         tal:attributes="src string:${context/portal_url}/affiche_cenforsoc/vignettes/${affiche/affiche_inventaire}.jpg" />
+                </div>
+                <div class="visualClear"></div>
                 <div class="plus-info">
                     <a href=""
                        tal:attributes="href string:${context/portal_url}/documentation/decrire-une-affiche?affichePk=${affiche/affiche_pk}">
