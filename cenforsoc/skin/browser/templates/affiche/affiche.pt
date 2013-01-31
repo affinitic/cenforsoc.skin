@@ -40,7 +40,7 @@
             <form action="resultat-recherche-affiche"
                   method="post">
                 <div>
-                    Entrez quelques lettres du nom du périodique que vous cherchez, 
+                    Entrez quelques lettres du nom de l'affiche que vous cherchez, 
                     ensuite cliquez sur le bouton.
                 </div>
                 <div class="formInput">
@@ -60,7 +60,10 @@
 
     <fieldset class="fieldset-border">
         <legend class="legende"> La liste </legend>
-        Il vous est possible de voir une liste de tous nos périodiques en cliquant <a href="lister-les-affiches">ici</a>
+        Il vous est possible de voir une liste de tous nos affiches en cliquant 
+        <a href=""
+           tal:attributes="href string:${context/portal_url}/documentation/lister-les-affiches">
+           ici</a>
     </fieldset>
 </div>
 </body>
