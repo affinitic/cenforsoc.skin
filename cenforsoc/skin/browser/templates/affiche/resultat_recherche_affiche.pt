@@ -24,7 +24,7 @@
                     <span tal:content="python: affiche.affiche_titre.upper()" 
                           class="donnee-db" />
                     <br/><br />
-                    <span class="donnee-etiquette">Numéro d'inventaire'</span><br />
+                    <span class="donnee-etiquette">Numéro d'inventaire</span><br />
                     &nbsp;&nbsp;&nbsp;
                     <span tal:content="affiche/affiche_inventaire" 
                           class="donnee-db" />

@@ -3,7 +3,7 @@
 #import datetime
 #import time
 #import random
-#from sqlalchemy import select, func
+from sqlalchemy import or_
 #from mailer import Mailer
 #from LocalFS import LocalFS
 from Products.Five import BrowserView
@@ -60,7 +60,10 @@ class ManageAffiche(BrowserView):
         session = wrapper.session
         afficheTable = wrapper.getMapper('affiche')
         query = session.query(afficheTable)
-        query = query.filter(afficheTable.affiche_titre.ilike("%%%s%%" % searchString))
+        query = query.filter(or_(afficheTable.affiche_titre.ilike("%%%s%%" % searchString),
+                                 or_(afficheTable.affiche_auteur.ilike("%%%s%%" % searchString),
+                                     afficheTable.affiche_descriptif.ilike("%%%s%%" % searchString),
+                                     afficheTable.affiche_mot_cle.ilike("%%%s%%" % searchString))))
         affiche = ["%s" % (elem.affiche_titre) for elem in query.all()]
         return affiche
 

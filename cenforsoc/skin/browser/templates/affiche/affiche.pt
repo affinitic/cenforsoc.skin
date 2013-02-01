@@ -40,7 +40,9 @@
             <form action="resultat-recherche-affiche"
                   method="post">
                 <div>
-                    Entrez quelques lettres du nom de l'affiche que vous cherchez, 
+                    Entrez quelques lettres du titre de l'affiche, 
+                    du nom de l'auteur ou du'un mot en rapport avec
+                    l'affiche que vous recherchez, 
                     ensuite cliquez sur le bouton.
                 </div>
                 <div class="formInput">
