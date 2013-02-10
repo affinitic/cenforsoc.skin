@@ -60,3 +60,23 @@ class IManageAffiche(Interface):
         table pg affiche
         recuperation d'une affiche via le livesearch
         """
+
+
+class IManageAuteur(Interface):
+    """
+    gestion de la table des auteurs
+    """
+    def gestionAuteur():
+        """
+        insertion ou update d'un auteur
+        """
+
+    def getAuteurByLeffeSearch(self, searchString):
+        """
+        table pg auteur
+        recuperation d'une auteur via le livesearch
+        """
+    def insertAuteur():
+        """
+        insert a new item in auteur
+        """

@@ -465,7 +465,8 @@ padding:1em;
 }
 
 .formInput{
-text-align:center;
+text-align:left;
+margin:10px 0px;
 }
 
 .formInput input{

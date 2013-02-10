@@ -1,0 +1,50 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plone">
+
+<head>
+    <metal:block fill-slot="top_slot"
+                 tal:define="dummy python:request.set('disable_border',1)" />
+</head>
+
+<body>
+<metal:main fill-slot="main">
+
+    <h1><a href="bibliotheque/"><img src="images/archive.png" /></a> Consultation de nos ouvrages</h1>
+
+	<table class="table_livre">
+		<tr class="titre_table">
+			<td>&nbsp;</td>
+			<td>Auteurs</td>
+		</tr>
+		<tal:boucle tal:define="auteurs python:view.getAllAuteurs()">
+			<span tal:repeat="auteur auteurs">
+				<tr tal:condition="repeat/auteur/even" class="listing_bg_even">
+					<td><span tal:content="repeat/auteur/number"/></td>
+					<td>
+						&nbsp;&nbsp;
+						<a href="" tal:attributes="href string:detail_auteur?fauteur=${auteur/liv_auteur_1}" >
+							<span tal:content="python:auteur.liv_auteur_1"/>
+							<span tal:content="python:auteur.liv_auteur_2"/>
+							<span tal:content="python:auteur.liv_auteur_3"/>
+						</a>
+					</td>
+				</tr>
+
+				<tr tal:condition="repeat/auteur/odd" class="listing_bg_odd">
+					<td><span tal:content="repeat/auteur/number"/></td>
+					<td>	
+						&nbsp;&nbsp;
+						<a href="" tal:attributes="href string:detail_auteur?fauteur=${auteur/liv_auteur_1}" >
+							<span tal:content="python:auteur.liv_auteur_1"/>
+							<span tal:content="python:auteur.liv_auteur_2"/>
+							<span tal:content="python:auteur.liv_auteur_3"/>
+						</a>
+					</td>
+				</tr>
+			</span>
+		</tal:boucle>
+</metal:main>
+</body>
+</html>

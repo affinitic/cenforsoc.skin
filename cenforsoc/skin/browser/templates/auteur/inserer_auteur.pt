@@ -1,0 +1,71 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="arsia">
+
+<body>
+
+<div metal:fill-slot="main">
+
+    <h1>
+       <img src="images/periodique.png" />
+       Gestion des auteurs
+    </h1>
+    <fieldset class="formCadre">
+        <legend class="legende">Ajouter un auteur</legend>
+        <div tal:define="auteurNom request/auteurNom;
+                         result view/gestionAuteur;
+                         status result/status"
+             class="boite-resultat">
+
+            <div tal:condition="python: status == 1">
+                L'auteur
+                <span tal:content="periodiqueTitre"
+                      class="donnee-db" />
+                est correctement enregistré.
+            </div>
+            <div tal:condition="python: status == 2">
+                L'auteur
+                <span tal:content="periodiqueTitre"
+                      class="donnee-db" />
+                est correctement modifié.
+            </div>
+            <div tal:condition="python: status == 3">
+                L'auteur
+                <span tal:content="periodiqueTitre"
+                      class="donnee-db" />
+                est correctement supprimé.
+            </div>
+            <div tal:condition="python: status == 0">
+                <img src="alerte.png" />
+                Un erreur s'est passée.
+            </div>
+        </div>
+
+        <ul id="menu-gestion-donnee">
+            <li>
+                <a href=""
+                   tal:attributes="href string:${context/portal_url}/chercher-un-periodique">
+                   Rechercher un auteur</a>
+            </li>
+            <li>
+                <a href=""
+                   tal:attributes="href string:${context/portal_url}/ajouter-un-periodique">
+                   Cr&eacute;er une nouvel auteur</a>
+            </li>
+            <li>
+                <a href=""
+                   tal:attributes="href string:${context/portal_url}/chercher-un-periodique">
+                    Modifier un auteur</a>
+            </li>
+            <li>
+                <a href=""
+                   tal:attributes="href string:${context/portal_url}/chercher-un-periodique">
+                   Effacer un auteur</a>
+            </li>
+        </ul>
+    </fieldset>
+</div>
+</body>
+</html>

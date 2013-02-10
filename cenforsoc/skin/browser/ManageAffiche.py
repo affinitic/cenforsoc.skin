@@ -175,13 +175,19 @@ class ManageAffiche(BrowserView):
         insertCatalogue = wrapper.getMapper('link_organisme_catalogue')
         newEntry = insertCatalogue(for_id=for_id, \
                                    for_catalogue=fileName)
-        session.save(newEntry)
+        session.add(newEntry)
         session.flush()
+        session.refresh(newEntry)
+        auteurPk = newEntry.auteur_pk
 
-        #cible = "%s/accueil-rof" % self.context.portal_url()
-        cible = "%s/rof-questionnaire/operateur-gerer-catalogue-pdf" % self.context.portal_url()
-        self.context.REQUEST.RESPONSE.redirect(cible)
+        portalUrl = getToolByName(self.context, 'portal_url')()
+        ploneUtils = getToolByName(self.context, 'plone_utils')
+        message = u"Le nouvel auteur a bien été enregistré !"
+        ploneUtils.addPortalMessage(message, 'info')
+        url = "%s/auteur/inserer-un-auteur" % (portalUrl)
+        self.request.response.redirect(url)
         return ''
+
 
     def delOperateurCataloguePDF(self, \
                                  fileName, \

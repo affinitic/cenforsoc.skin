@@ -3,7 +3,7 @@
 #import datetime
 #import time
 #import random
-#from sqlalchemy import select, func
+from sqlalchemy import select, func, distinct
 #from mailer import Mailer
 #from LocalFS import LocalFS
 from Products.Five import BrowserView
@@ -24,9 +24,20 @@ from interfaces import IManageLivre
 class ManageLivre(BrowserView):
     implements(IManageLivre)
 
+    def getAllAuteurs(self):
+        """
+        recuperation de tous les auteurs
+        """
+        wrapper = getSAWrapper('cenforsoc')
+        session = wrapper.session
+        LivreTable = wrapper.getMapper('auteur')
+        query = session.query(LivreTable)
+        allAuteurs = query
+        return allAuteurs
+
     def getAllLivres(self):
         """
-        recuperation de tous les périodiques
+        recuperation de tous les livres
         """
         wrapper = getSAWrapper('cenforsoc')
         session = wrapper.session

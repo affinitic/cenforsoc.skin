@@ -39,8 +39,8 @@
 		<legend class="legende">Listing</legend>
 		Il vous est &eacute;galement possible de lister l'ensemble de nos ouvrages ou de nos auteurs.
 		<ul>
-			<li><a href="lister_tous_les_ouvrages">Lister tous les ouvrages</a></li>
-			<li><a href="lister_tous_les_auteurs">Lister tous les auteurs</a></li>
+			<li><a href="lister-tous-les-livres">Lister tous les ouvrages</a></li>
+			<li><a href="lister-les-auteurs">Lister tous les auteurs</a></li>
 			<li><a href="lister_tous_les_titres">Lister tous les titres</a></li>
 		</ul>
 	</fieldset>  
