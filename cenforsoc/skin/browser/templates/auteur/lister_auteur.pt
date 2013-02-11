@@ -12,34 +12,47 @@
 <div metal:fill-slot="main"
      tal:define="auteurs python: view.getAllAuteurs()">
     <h1>Lister les auteurs</h1>
-    <tal:boucle tal:repeat="auteur auteurs">
-        <fieldset class="donnee-cadre">
-            <ul id="donnee-liste">
-                <li>
-                    <span class="donnee-etiquette">Titre</span> : 
-                    <span tal:content="auteur/auteur_nom" 
-                          class="donnee-db" />
-                </li>
-                <li>
-                    <span class="donnee-etiquette">Description</span> : 
-                    <span tal:content="auteur/auteur_prenom" 
-                          class="donnee-db" />
-                </li>                  
-            </ul>
-            <ul id="menu-gestion-donnee">
-                <li>
-                    <a href=""
-                       tal:attributes="href string:modifier-un-auteur?auteurPk=${auteur/auteur_pk}">
-                        Modifier ce périodique</a>
-                </li>
-                <li>
-                    <a href=""
-                       tal:attributes="href string:supprimer-un-auteur?auteurPk=${auteur/auteur_pk}">
-                       Effacer ce périodique</a>
-                </li>
-            </ul>
-        </fieldset>
-    </tal:boucle>
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Modifier</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th></th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Modifier</th>
+            </tr>
+        </tfoot>
+        <tal:boucle tal:repeat="auteur auteurs">
+            <span tal:define="odd repeat/auteur/odd">
+                <tbody>
+                    <tr tal:attributes="class python:odd and 'listing_bg_odd' or 'listing_bg_even'">
+                        <td>
+                            <span tal:content="auteur/auteur_pk"/>
+                        </td>
+                        <td>
+                            <span tal:content="auteur/auteur_nom" />
+                        </td>
+                        <td>
+                            <span tal:content="auteur/auteur_prenom" />
+                        </td>
+                        <td>
+                            &nbsp;
+                            <a href="" tal:attributes="href string:modifier-un-auteur?auteurPk=${auteur/auteur_pk}">
+                                <img src="icon_modifier.png" /></a>&nbsp;
+                        
+                        </td>
+    			    </tr>
+			    </tbody>
+			</span>
+		</tal:boucle>
+	</table>
 </div><!-- div metal-->
 </body>
 </html>

@@ -352,6 +352,14 @@
         allowed_interface=".interfaces.IManageAuteur"
         />    
     <browser:page
+        name="updateAuteur"
+        for="*"
+        class=".ManageAuteur.ManageAuteur"
+        permission="zope.Public"
+        attribute="updateAuteur"
+        allowed_interface=".interfaces.IManageAuteur"
+        />    
+    <browser:page
         name="modifier-un-auteur"
         for="*"
         template="templates/auteur/modifier_auteur.pt"

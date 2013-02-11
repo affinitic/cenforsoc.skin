@@ -52,6 +52,14 @@
       <legend class="legende"> La liste </legend>
       Il vous est possible de voir une liste de tous nos périodiques en cliquant <a href="lister-les-auteurs">ici</a>
    </fieldset>
+
+   <fieldset class="fieldset-border">
+      <legend class="legende"> Gestion de la table auteur </legend>
+      <a href="" tal:attributes="href string:${context/portal_url}/documentation/auteur/ajouter-un-auteur">
+      Ajouter un nouvel auteur</a>
+   </fieldset>
+
+
 </div>
 </body>
 </html>

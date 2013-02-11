@@ -38,7 +38,7 @@
                 est correctement supprimé.
             </div>
             <div tal:condition="python: status == 0">
-                <img src="alerte.png" />
+                <img src="icon_alerte.png" />
                 Un erreur s'est passée.
             </div>
         </div>
