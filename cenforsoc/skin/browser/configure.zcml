@@ -82,9 +82,9 @@
         allowed_interface=".interfaces.IManagePeriodique"
         />
      <browser:page
-        name="afficher-le-periodique"
+        name="decrire-le-periodique"
         for="*"
-        template="templates/periodique/afficher_periodique.pt"
+        template="templates/periodique/dercire_periodique.pt"
         permission="zope.Public"
         class=".ManagePeriodique.ManagePeriodique"
         allowed_interface=".interfaces.IManagePeriodique"
@@ -164,6 +164,14 @@
         allowed_interface=".interfaces.IManageLivre"
         />
     <browser:page
+        name="decrire-le-livre"
+        for="*"
+        template="templates/livre/decrire_livre.pt"
+        permission="zope.Public"
+        class=".ManageLivre.ManageLivre"
+        allowed_interface=".interfaces.IManageLivre"
+        />
+    <browser:page
         name="lister-les-livres"
         for="*"
         template="templates/livre/lister_livre.pt"
@@ -172,7 +180,7 @@
         allowed_interface=".interfaces.IManageLivre"
         />
     <browser:page
-        name="lister-les-titres"
+        name="lister-les-titres-des-livres"
         for="*"
         template="templates/livre/lister_titre.pt"
         permission="zope.Public"

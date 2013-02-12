@@ -85,7 +85,7 @@ class ManageLivre(BrowserView):
         Livre = ["%s" % (elem.per_titre) for elem in query.all()]
         return Livre
 
-    def getSearchingLivre(self, LivrePk=None):
+    def getSearchingLivre(self, livrePk=None):
         """
         table pg Livre
         recuperation du Livre selon la pk
@@ -94,18 +94,18 @@ class ManageLivre(BrowserView):
         je teste si la pk arrive par param, si pas je prends celle du form
         """
         fields = self.request.form
-        LivreTitre = fields.get('LivreTitre')
-        if not LivrePk:
-            LivrePk = fields.get('Livre_pk')
+        livreTitre = fields.get('livreTitre')
+        if not livrePk:
+            livrePk = fields.get('livre_pk')
 
         wrapper = getSAWrapper('cenforsoc')
         session = wrapper.session
         LivreTable = wrapper.getMapper('livre')
         query = session.query(LivreTable)
-        if LivreTitre:
-            query = query.filter(LivreTable.per_titre == LivreTitre)
-        if LivrePk:
-            query = query.filter(LivreTable.per_pk == LivrePk)
+        if livreTitre:
+            query = query.filter(LivreTable.liv_titre == livreTitre)
+        if livrePk:
+            query = query.filter(LivreTable.liv_pk == livrePk)
         allLivres = query.all()
         return allLivres
 

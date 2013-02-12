@@ -44,6 +44,11 @@ class IManageLivre(Interface):
         table pg livre
         recuperation d'un livre via le livesearch
         """
+    def getSearchingLivre(self, livrePk=None):
+        """
+        table pg livre
+        recuperation des infos d'un livre selon son titre ou sa pk
+        """
 
 
 class IManageAffiche(Interface):

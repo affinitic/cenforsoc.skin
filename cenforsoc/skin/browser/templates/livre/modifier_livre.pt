@@ -12,17 +12,16 @@
 <div metal:fill-slot="main"
      tal:define="livreTitre request/livreTitre | nothing;
                  livrePk request/livrePk | nothing;
-                 livres python:view.getSearchinglivre(livrePk)">">
+                 livres python:view.getSearchingLivre(livrePk)">
    <h1>
-       <img src="images/livre.png" />
        Gestion des livres
    </h1>
    <fieldset>
-      <legend class="legende">Modifier un p&eacute;riodique</legend>
+      <legend class="legende">Modifier les données d'un livre</legend>
 
-      <tal:requete tal:define="livres python:view.getSearchinglivre(livrePk)">
+      <tal:requete tal:define="livres python:view.getSearchingLivre(livrePk)">
           <tal:boucle tal:repeat="livre livres">
-              <form action="inserer-un-livre"
+              <form action="updateLivre"
                     methof="post">
                   <div class="formInput">
                       <label for="livreTitre">Titre :</label>
@@ -31,29 +30,19 @@
                              name="livreTitre"
                              size="50"
                              value=""
-                             tal:attributes="value livre/per_titre" />
-                  </div>
-                  <div class="formInput">
-                      <label for="livreDescription">Description :</label>
-                      <br />
-                      <textarea name="livreDescription"
-                                rows="5"
-                                cols="80"
-                                value=""
-                                tal:attributes="value livre/per_description"
-                                tal:content="livre/per_description"></textarea>
+                             tal:attributes="value livre/liv_titre" />
                   </div>
                   <div class="formControls" align="center">
                       <input type="hidden"
                              name="livrePk"
                              value=""
-                             tal:attributes="value livre/per_pk" />
+                             tal:attributes="value livre/liv_pk" />
                       <input type="hidden"
                              name="operation"
                              value="update" />
                       <input class="context"
                              type="submit"
-                             value="Mettre &agrave; jour le p&eacute;riodique" />
+                             value="Mettre à jour le livre" />
                   </div>
               </form>
           </tal:boucle>

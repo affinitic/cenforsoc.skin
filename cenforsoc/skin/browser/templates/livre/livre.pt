@@ -22,26 +22,100 @@
 
 <body>
 <div metal:fill-slot="main">
-	<h1><a href="bibliotheque/"><img src="images/archive.png" /></a> Consultation de nos ouvrages</h1>
+	<h1>Consultation de nos ouvrages</h1>
 
 	<fieldset>
 		<legend class="legende">Recherches</legend>
 		<p>Il vous est possible de consulter notre base de donn&eacute;es au travers d'internet.</p>
-		<p>Vous avez trois possibilit&eacute;s pour effectuer une recherche</p>
-		<ul>
-			<li><a href="rechercher_par_auteur">Recherche par auteur</a></li>
-			<li><a href="rechercher_par_titre">Recherche par titre</a></li>
-			<li><a href="rechercher_par_mots_cles">Recherche par most-cl&eacute;s</a></li>			
-		</ul>
+		<p>Vous avez  possibilit&eacute;s pour effectuer une recherche</p>
+		
+		<div class="formCadre">
+          <form action="resultat-recherche-livre"
+                method="post">
+              <h2>
+                  Recherche par titre
+              </h2>
+              <p>
+                  Entrez quelques lettres du nom de l'ouvrage que vous cherchez, 
+                  ensuite cliquez sur le bouton.
+              </p>
+              <div class="formInput">
+                  <input type="text"
+                         name="livreTitre"
+                         id="livre-titre"
+                         value=""
+                         size="50" />
+              </div>
+              <div class="formControls">
+                  <input type="submit"
+                         value="Effectuer ma recherche">
+               </div>
+          </form>
+        </div>
+        
+        <div class="formCadre">
+          <form action="resultat-recherche-auteur"
+                method="post">
+              <h2>
+                  Recherche par auteur
+              </h2>
+              <p>
+                  Entrez quelques lettres du nom de l'auteur que vous cherchez, 
+                  ensuite cliquez sur le bouton.
+              </p>
+              <div class="formInput">
+                  <input type="text"
+                         name="auteurNom"
+                         id="auteur-nom"
+                         value=""
+                         size="50" />
+              </div>
+              <div class="formControls">
+                  <input type="submit"
+                         value="Effectuer ma recherche">
+               </div>
+          </form>
+        </div>
+        
+        <div class="formCadre">
+          <form action="resultat-recherche-livre"
+                method="post">
+              <h2>
+                  Recherche par mot-clé
+              </h2>
+              <p>
+                  Entrez quelques lettres d'un mot-clé, 
+                  ensuite cliquez sur le bouton.
+              </p>
+              <div class="formInput">
+                  <input type="text"
+                         name="motCle"
+                         id="mot-cle"
+                         value=""
+                         size="50" />
+              </div>
+              <div class="formControls">
+                  <input type="submit"
+                         value="Effectuer ma recherche">
+               </div>
+          </form>
+        </div>
 	</fieldset>
 
 	<fieldset>
 		<legend class="legende">Listing</legend>
 		Il vous est &eacute;galement possible de lister l'ensemble de nos ouvrages ou de nos auteurs.
 		<ul>
-			<li><a href="lister-tous-les-livres">Lister tous les ouvrages</a></li>
-			<li><a href="lister-les-auteurs">Lister tous les auteurs</a></li>
-			<li><a href="lister_tous_les_titres">Lister tous les titres</a></li>
+			<li>
+			    <a href=""
+			       tal:attributes="href string:${context/portal_url}/documentation/bibliotheque/lister-les-titres-des-livres">
+			        Lister tous les titres</a>
+			</li>
+			<li>
+			    <a href=""
+			       tal:attributes="href string:${context/portal_url}/documentation/auteur/lister-les-auteurs">
+			       Lister tous les auteurs</a>
+			</li>
 		</ul>
 	</fieldset>  
 </div>

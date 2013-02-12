@@ -410,11 +410,20 @@ color:#8e211c;
 
 
 /*** DONNEE ***/
+.gras{
+font-weight:bold;
+}
+
+.rouge{
+color:#ac2723;
+}
+
 .lettre{
 color:#af2320;
 font-variant:small-caps;
-text-weigth:bold;
+font-weight:bold;
 }
+
 #content-texte .donnee-cadre{
 background-color:#eee;
 border:1px solid #ccc;
@@ -505,7 +514,28 @@ background-color:#fff0f0;
 }
 
 .listing_bg_even {
-background-color: #eee;
+background-color: #fff;
+}
+
+.table_livre {
+border-left:1px solid #2a2929;
+border-right:1px solid #2a2929;
+border-spacing: 0;
+}
+
+.table_livre td {
+padding:0.8em;
+}
+
+.titre_table {
+background-color:#61313b;
+font-family: Arial;
+font-size: 1.7em;
+color: #371b0c;
+text-shadow:1px 1px 1px rgba(255, 255, 255, 1);
+font-weight:bold;
+text-align:center;
+line-height:2em;
 }
 
 
