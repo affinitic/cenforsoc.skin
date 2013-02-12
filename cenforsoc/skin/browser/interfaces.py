@@ -49,6 +49,10 @@ class IManageLivre(Interface):
         table pg livre
         recuperation des infos d'un livre selon son titre ou sa pk
         """
+    def insertLivre():
+        """
+        insert a new item in livre
+        """
 
 
 class IManageAffiche(Interface):

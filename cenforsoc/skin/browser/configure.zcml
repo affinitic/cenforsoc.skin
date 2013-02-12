@@ -48,6 +48,8 @@
          />
 
 
+
+
 <!-- PERIODIQUE -->
     <browser:page
         name="gestionPeriodique"
@@ -146,6 +148,9 @@
         allowed_interface=".interfaces.IManagePeriodique"
         />
 
+
+
+
 <!-- LIVRE -->
     <browser:page
         name="gestionLivre"
@@ -219,6 +224,23 @@
         class=".ManageLivre.ManageLivre"
         allowed_interface=".interfaces.IManageLivre"
         />
+    <browser:page
+        name="insertLivre"
+        for="*"
+        class=".ManageLivre.ManageLivre"
+        permission="zope.Public"
+        attribute="insertLivre"
+        allowed_interface=".interfaces.IManageLivre"
+        />    
+    <browser:page
+        name="updateLivre"
+        for="*"
+        class=".ManageLivre.ManageLivre"
+        permission="zope.Public"
+        attribute="updateLivre"
+        allowed_interface=".interfaces.IManageLivre"
+        />    
+
 
 <!-- AFFICHE -->
     <browser:page
@@ -352,22 +374,6 @@
         allowed_interface=".interfaces.IManageAuteur"
         />
     <browser:page
-        name="insertAuteur"
-        for="*"
-        class=".ManageAuteur.ManageAuteur"
-        permission="zope.Public"
-        attribute="insertAuteur"
-        allowed_interface=".interfaces.IManageAuteur"
-        />    
-    <browser:page
-        name="updateAuteur"
-        for="*"
-        class=".ManageAuteur.ManageAuteur"
-        permission="zope.Public"
-        attribute="updateAuteur"
-        allowed_interface=".interfaces.IManageAuteur"
-        />    
-    <browser:page
         name="modifier-un-auteur"
         for="*"
         template="templates/auteur/modifier_auteur.pt"
@@ -383,5 +389,20 @@
         class=".ManageAuteur.ManageAuteur"
         allowed_interface=".interfaces.IManageAuteur"
         />
-
+    <browser:page
+        name="insertAuteur"
+        for="*"
+        class=".ManageAuteur.ManageAuteur"
+        permission="zope.Public"
+        attribute="insertAuteur"
+        allowed_interface=".interfaces.IManageAuteur"
+        />    
+    <browser:page
+        name="updateAuteur"
+        for="*"
+        class=".ManageAuteur.ManageAuteur"
+        permission="zope.Public"
+        attribute="updateAuteur"
+        allowed_interface=".interfaces.IManageAuteur"
+        />    
 </configure>

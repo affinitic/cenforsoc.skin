@@ -11,7 +11,8 @@
 <body>
 <div metal:fill-slot="main"
      tal:define="livrePk request/livrePk | nothing;
-                 livres python: view.getSearchingLivre(livrePk)">
+                 livres python: view.getSearchingLivre(livrePk);
+                 auteurs python: view.getAuteurByLivrePk(livrePk)">
     <h1>Afficher un livre</h1>
     <tal:boucle tal:repeat="livre livres">
         <div  class="boite-resultat">
@@ -30,8 +31,13 @@
 				</li>
 				<li>
 					<span class="donnee-etiquette">Auteur(s) : </span><br />
-					<span tal:content="livre/liv_auteur_1" 
-                          class="donnee-db" />
+					<tal:boucle tal:repeat="auteur auteurs">
+					    <span class="donnee-db">
+                            <span tal:content="python: auteur.auteurs.auteur_nom.upper()" />,
+                            <span tal:content="auteur/auteurs/auteur_prenom" />
+                        </span>
+                        <br />    
+                    </tal:boucle>
 				</li>
 				<li>
 					<span class="donnee-etiquette">Edition : </span><br />

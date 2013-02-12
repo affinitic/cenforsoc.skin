@@ -28,6 +28,7 @@
     				          class="discreet" />
     				</td>
     				<td>
+    					:: <span tal:content="livre/liv_pk" class="discreet" /> ::
     					&nbsp;&nbsp; 
     					<a href="" 
     					   tal:attributes="href string:decrire-le-livre?livrePk=${livre/liv_pk}"  

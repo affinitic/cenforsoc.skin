@@ -62,7 +62,7 @@ class ManageAuteur(BrowserView):
         query = session.query(AuteurTable)
         query = query.filter(or_(AuteurTable.auteur_nom.ilike("%%%s%%" % searchString),
                                  or_(AuteurTable.auteur_prenom.ilike("%%%s%%" % searchString))))
-        auteur = ["%s, %s" % ((elem.auteur_nom).upper(), elem.auteur_prenom) for elem in query.all()]
+        auteur = ["%s, %s - %s" % ((elem.auteur_nom).upper(), elem.auteur_prenom, (elem.auteur_pk)) for elem in query.all()]
         return auteur
 
     def getSearchingAuteur(self, auteurPk=None):
@@ -101,6 +101,9 @@ class ManageAuteur(BrowserView):
 
         auteurNom = fields.get('auteurNom', None)
         auteurPrenom = fields.get('auteurPrenom', None)
+        
+        auteurNom = unicode(auteurNom, 'utf-8')
+        auteurPrenom = unicode(auteurPrenom, 'utf-8')
 
         wrapper = getSAWrapper('cenforsoc')
         session = wrapper.session
@@ -125,10 +128,11 @@ class ManageAuteur(BrowserView):
         table pg auteur
         mise a jour d'un item auteur
         """
-        fields = self.context.REQUEST
-        auteurPk = getattr(fields, 'auteurPk')
-        auteurNom = getattr(fields, 'auteurNom', None)
-        auteurPrenom = getattr(fields, 'auteurPrenom', None)
+        fields = self.request.form
+        
+        auteurPk = fields.get('auteurPk', None)
+        auteurNom = fields.get('auteurNom', None)
+        auteurPrenom = fields.get('auteurPrenom', None)
 
         wrapper = getSAWrapper('cenforsoc')
         session = wrapper.session

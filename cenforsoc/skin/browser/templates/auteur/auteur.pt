@@ -36,7 +36,7 @@
               <div class="formInput">
                   <input type="text"
                          name="auteurNom"
-                         id="auteur-nom"
+                         class="auteur-nom"
                          value=""
                          size="50" />
               </div>

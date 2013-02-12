@@ -11,7 +11,7 @@ from zope.interface import implements
 from z3c.sqlalchemy import getSAWrapper
 #from plone.app.form.widgets.wysiwygwidget import WYSIWYGWidget
 #from Products.CMFPlone.utils import normalizeString
-#from Products.CMFCore.utils import getToolByName
+from Products.CMFCore.utils import getToolByName
 #from Products.CMFPlone import PloneMessageFactory as _
 #from Products.AddRemoveWidget.AddRemoveWidget import AddRemoveWidget
 #from Products.Archetypes.atapi import LinesField
@@ -35,6 +35,19 @@ class ManageLivre(BrowserView):
         allAuteurs = query
         return allAuteurs
 
+    def getAuteurByLivrePk(self, LivrePk):
+        """
+        table pg link_livre_auteur
+        recuperation des auteur selon la pk d'un livre
+        """
+        wrapper = getSAWrapper('cenforsoc')
+        session = wrapper.session
+        LinkLivreAuteurTable = wrapper.getMapper('link_livre_auteur')
+        query = session.query(LinkLivreAuteurTable)
+        query = query.filter(LinkLivreAuteurTable.livre_fk == LivrePk)
+        livre = query.all()
+        return livre
+
     def getAllLivres(self):
         """
         recuperation de tous les livres
@@ -43,7 +56,7 @@ class ManageLivre(BrowserView):
         session = wrapper.session
         LivreTable = wrapper.getMapper('livre')
         query = session.query(LivreTable)
-        query = query.order_by(LivreTable.liv_titre)
+        query = query.order_by(LivreTable.liv_pk)
         allLivres = query.all()
         return allLivres
 
@@ -56,8 +69,8 @@ class ManageLivre(BrowserView):
         LivreTable = wrapper.getMapper('livre')
         query = session.query(LivreTable)
         query = query.filter(LivreTable.per_pk == LivrePk)
-        Livre = query.one()
-        return Livre
+        livre = query.one()
+        return livre
 
     def getAllLivresByLettre(self, lettre):
         """
@@ -82,8 +95,8 @@ class ManageLivre(BrowserView):
         LivreTable = wrapper.getMapper('livre')
         query = session.query(LivreTable)
         query = query.filter(LivreTable.per_titre.ilike("%%%s%%" % searchString))
-        Livre = ["%s" % (elem.per_titre) for elem in query.all()]
-        return Livre
+        livre = ["%s" % (elem.per_titre) for elem in query.all()]
+        return livre
 
     def getSearchingLivre(self, livrePk=None):
         """
@@ -109,7 +122,7 @@ class ManageLivre(BrowserView):
         allLivres = query.all()
         return allLivres
 
-    def addLivre(self):
+    def insertLivre(self):
         """
         ajout d'un item Livre
         """
@@ -131,24 +144,60 @@ class ManageLivre(BrowserView):
         """
         mise a jour d'un item Livre
         """
-        fields = self.context.REQUEST
-        LivrePk = getattr(fields, 'LivrePk')
-        LivreTitre = getattr(fields, 'LivreTitre', None)
-        LivreDescription = getattr(fields, 'LivreDescription', None)
+        fields = self.request.form
+
+        livrePk = fields.get('livrePk', None)
+        livreTitre = fields.get('livreTitre', None)
+        livreInventaire = fields.get('livreInventaire', None)
+        livreCoteRang = fields.get('livreCoteRang', None)
+        livreIsbn = fields.get('livreIsbn', None)
+        livreEdition = fields.get('livreEdition', None)
+        livreEditeur = fields.get('livreEditeur', None)
+        livreLieuEdition = fields.get('livreLieuEdition', None)
+        livreDateEdition = fields.get('livreDateEdition', None)
+        livreNbrePages = fields.get('livreNbrePages', None)
+        livreCollection = fields.get('livreCollection', None)
+        livreNotes = fields.get('livreNotes', None)
+        livreIsbn = fields.get('livreIsbn', None)
+        livreMotsCles = fields.get('livreMotsCles', None)
+        livrePret = fields.get('livrePret', None)
 
         wrapper = getSAWrapper('cenforsoc')
         session = wrapper.session
         updateLivreTable = wrapper.getMapper('livre')
         query = session.query(updateLivreTable)
-        query = query.filter(updateLivreTable.per_pk == LivrePk)
-        Livres = query.all()
-        for Livre in Livres:
-            Livre.per_titre = unicode(LivreTitre, 'utf-8')
-            Livre.per_description = unicode(LivreDescription, 'utf-8')
+        query = query.filter(updateLivreTable.liv_pk == livrePk)
+        livre = query.one()
+        livre.liv_titre = unicode(livreTitre, 'utf-8')
+        livre.liv_inventaire = unicode(livreInventaire, 'utf-8')
+        livre.liv_cote_rang = unicode(livreCoteRang, 'utf-8')
+        livre.liv_titre = unicode(livreIsbn, 'utf-8')
+        livre.liv_edition = unicode(livreEdition, 'utf-8')
+        livre.liv_lieu = unicode(livreEditeur, 'utf-8')
+        livre.liv_editeur = unicode(livreLieuEdition, 'utf-8')
+        livre.liv_date = unicode(livreDateEdition, 'utf-8')
+        livre.liv_pages = unicode(livreNbrePages, 'utf-8')
+        livre.liv_collection = unicode(livreCollection, 'utf-8')
+        livre.liv_notes = unicode(livreNotes, 'utf-8')
+        livre.liv_isbn = unicode(livreIsbn, 'utf-8')
+        livre.liv_mots_cles = unicode(livreMotsCles, 'utf-8')
+        livre.liv_pret = unicode(livrePret, 'utf-8')
 
         session.flush()
-        #cible = "%s/gestion-de-la-base/les-Livres" % (self.context.portal_url(), )
-        #self.context.REQUEST.RESPONSE.redirect(cible)
+
+        auteurNom = fields.get('auteurNom', None)
+        auteurPk = []
+        for nom in auteurNom:
+            b = nom.split('- ')
+            auteurPk.append(int(b[1]))
+        
+        portalUrl = getToolByName(self.context, 'portal_url')()
+        ploneUtils = getToolByName(self.context, 'plone_utils')
+        message = u"Les données du livre '%s' ont bien été modifiées !" % (livreTitre)
+        ploneUtils.addPortalMessage(message, 'info')
+        url = "%s/documentation/bibliotheque/decrire-le-livre?livrePk=%s" % (portalUrl, livrePk)
+        self.request.response.redirect(url)
+        return ''
 
     def deleteLivre(self):
         """
@@ -167,8 +216,6 @@ class ManageLivre(BrowserView):
         for LivrePk in allLivres:
             session.delete(LivrePk)
         session.flush()
-        #cible = "%s/gestion-de-la-base/les-Livres" % (self.context.portal_url(), )
-        #self.context.REQUEST.RESPONSE.redirect(cible)
 
     def gestionLivre(self):
         """
@@ -178,7 +225,7 @@ class ManageLivre(BrowserView):
         operation = getattr(fields, 'operation')
 
         if operation == "insert":
-            self.addLivre()
+            self.insertLivre()
             return {'status': 1}
 
         if operation == "update":

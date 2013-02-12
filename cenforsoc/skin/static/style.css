@@ -13,6 +13,13 @@ background-repeat:repeat-x;
 background-color:#d6d2d3;
 }
 
+label{
+color:#333;
+text-shadow:1px 1px 1px rgba(255, 255, 255, 0.8);
+font-size:0.9em;
+padding-left:2em;
+}
+
 #main-content{
 width:990px;
 min-height:720px;

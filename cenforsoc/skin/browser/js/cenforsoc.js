@@ -112,7 +112,7 @@ $(document).ready(function(){
 $(document).ready(function(){
 
   $(function() {
-    $("#auteur-nom").autocomplete({
+    $(".auteur-nom").autocomplete({
         source: function(request, response) {
             $.ajax({
                 url: "auteur-searchJSON",
