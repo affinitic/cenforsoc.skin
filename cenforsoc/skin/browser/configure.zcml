@@ -201,6 +201,14 @@
         allowed_interface=".interfaces.IManageLivre"
         />
     <browser:page
+        name="recherche-livre-selon-auteur"
+        for="*"
+        template="templates/livre/lister_livre_par_auteur.pt"
+        permission="zope.Public"
+        class=".ManageLivre.ManageLivre"
+        allowed_interface=".interfaces.IManageLivre"
+        />
+    <browser:page
         name="ajouter-un-livre"
         for="*"
         template="templates/livre/ajouter_livre.pt"

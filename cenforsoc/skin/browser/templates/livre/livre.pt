@@ -54,7 +54,7 @@
         </div>
         
         <div class="formCadre">
-          <form action="resultat-recherche-auteur"
+          <form action="recherche-livre-selon-auteur"
                 method="post">
               <h2>
                   Recherche par auteur

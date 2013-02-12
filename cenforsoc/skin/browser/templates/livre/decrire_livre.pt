@@ -93,13 +93,13 @@
             <ul id="menu-gestion-donnee">
                 <li>
                     <a href=""
-                       tal:attributes="href string:modifier-un-livre?livrePk=${livre/liv_pk}">
+                       tal:attributes="href string:${context/portal_url}/documentation/bibliotheque/modifier-un-livre?livrePk=${livre/liv_pk}">
                         Modifier ce livre</a>
                 </li>
                 <li>
                     <a href=""
-                       tal:attributes="href string:supprimer-un-livre?livrePk=${livre/liv_pk}">
-                       Effacer ce livre</a>
+                       tal:attributes="href string:${context/portal_url}/documentation/bibliotheque/lister-les-titres-des-livres">
+                       Listing des titres</a>
                 </li>
             </ul>
         </div>
