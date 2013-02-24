@@ -39,7 +39,7 @@
                 <tal:boucle tal:repeat="elem Formations">
                     <li>
                         <a href=""
-                           tal:attributes="href string: formation_detail?form_pk=${elem/form_pk}">
+                           tal:attributes="href string: decrire-une-formation?formationPk=${elem/form_pk}">
                         <img src="icon_loupe.png" 
                              title="Plus d'infos ..." 
                              alt="Plus d'infos..." /> 

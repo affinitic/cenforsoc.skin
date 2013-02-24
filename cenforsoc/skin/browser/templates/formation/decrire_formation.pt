@@ -1,0 +1,55 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plone">
+
+<head>
+    <metal:noborder fill-slot="top_slot"
+                 tal:define="dummy python:request.set('disable_border',1)" />
+</head>
+
+<body>
+<div metal:fill-slot="main"
+     tal:define="formationPk request/formationPk">
+    <h1>Formation syndicale interprofessionelle</h1>
+    <tal:requete tal:define="formations python: view.getFormationByPk(formationPk)">
+        <tal:boucle tal:repeat="formation formations">
+            <fieldset>
+                <legend class="legende"><span tal:content="formation/form_titre" /></legend>
+                <ul>
+                    <li>
+                        <span class="etiquette_formation">Dur&eacute;e</span> : 
+                        <span tal:content="formation/form_duree" 
+                              class="donnee_formation" />
+                    </li>
+                    <li>
+                        <span class="etiquette_formation">Date de d&eacute;but</span> : 
+                        <span tal:content="python: DateTime(str(formation.form_date_deb)).strftime('%d-%m-%Y')"
+                              class="donnee_formation" />
+                    </li>
+                    <li>
+                        <span class="etiquette_formation">Description</span> : 
+                        <span tal:content="formation/form_description" 
+                              class="donnee_formation" />
+                    </li>
+                    <li>
+                        <span class="etiquette_formation">Niveau requis</span> : 
+                        <span tal:content="formation/form_niveau_requis" 
+                              class="donnee_formation" />
+                    </li>
+                    <li>
+                        <span class="etiquette_formation">Etat</span> : 
+                        <span tal:content="formation/form_etat" 
+                              class="donnee_formation" />
+                    </li>
+                </ul>
+                <hr />
+                <div align="center">
+                    <a href="formulaire"> S'inscrire </a>
+                </div>
+            </fieldset>   
+        </tal:boucle>
+    </tal:requete>
+ </div>
+</body>
+</html>

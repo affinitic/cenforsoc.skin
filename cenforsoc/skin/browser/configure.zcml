@@ -433,5 +433,14 @@
         allowed_interface=".interfaces.IManageFormation"
         />
 
+    <browser:page
+        name="decrire-une-formation"
+        for="*"
+        template="templates/formation/decrire_formation.pt"
+        permission="zope.Public"
+        class=".ManageFormation.ManageFormation"
+        allowed_interface=".interfaces.IManageFormation"
+        />
+
   
 </configure>

@@ -12,28 +12,32 @@
             Gestion de la DB
         </dt>
         <div class="portletItemDB">
-            <dt class="menu-titre">&#10023; Les formations</dt>
+            <dt class="menu-titre">
+                <a href=""
+                   tal:attributes="href string:${context/portal_url}/formations/les-formations">
+                &#10023; Les formations</a>
+            </dt>
                 <dd>
                     <a href=""
-                       tal:attributes="href string:${context/portal_url}/admin-experience-creer">
+                       tal:attributes="href string:${context/portal_url}/formations/cherhcher-une-formation">
                        &#10147; Chercher les formations
                     </a>
                 </dd>
                 <dd>
                     <a href=""
-                       tal:attributes="href string:${context/portal_url}/admin-experience-creer">
+                       tal:attributes="href string:${context/portal_url}/formation/ajouter-une-formation">
                        &#10147; Ajouter une formation
                     </a>
                 </dd>
                 <dd>
                     <a href=""
-                       tal:attributes="href string:${context/portal_url}/admin-experience-creer">
+                       tal:attributes="href string:${context/portal_url}/formation/modifier-une-formation">
                        &#10147; Modifier une formation
                     </a>
                 </dd>
                 <dd>
                     <a href=""
-                       tal:attributes="href string:${context/portal_url}/admin-experience-creer">
+                       tal:attributes="href string:${context/portal_url}/formation/lister-les-formations">
                        &#10147; Lister les formations
                     </a>
                 </dd>
@@ -41,7 +45,11 @@
 
             <div class="separation"></div>
             
-            <dt class="menu-titre">&#10023; Les inscriptions</dt>
+            <dt class="menu-titre">
+                <a href=""
+                   tal:attributes="href string:${context/portal_url}/formations/les-inscriptions">
+                &#10023; Les inscriptions</a>
+            </dt>
                 <dd>
                     <a href=""
                        tal:attributes="href string:${context/portal_url}/admin-experience-creer">
@@ -58,11 +66,11 @@
 
             <div class="separation"></div>
             
-                <dt class="menu-titre">
-                    <a href=""
-                       tal:attributes="href string:${context/portal_url}/documentation/bibliotheque/les-livres">
-                    &#10023; Les ouvrages</a>
-                </dt>
+            <dt class="menu-titre">
+                <a href=""
+                   tal:attributes="href string:${context/portal_url}/documentation/bibliotheque/les-livres">
+                &#10023; Les ouvrages</a>
+            </dt>
                 <dd>
                     <a href="" tal:attributes="href string:${context/portal_url}/documentation/bibliotheque/chercher-un-livre">
                         &#10147; Chercher un ouvrage
@@ -86,7 +94,11 @@
 
             <div class="separation"></div>
             
-            <dt class="menu-titre">&#10023; Les périodiques</dt>
+            <dt class="menu-titre">
+                <a href=""
+                   tal:attributes="href string:${context/portal_url}/documentation/les-periodiques">
+                &#10023; Les périodiques</a>
+            </dt>
                 <dd>
                     <a href="" tal:attributes="href string:${context/portal_url}/documentation/periodique/les-periodiques">
                         &#10147; Chercher un périodique
