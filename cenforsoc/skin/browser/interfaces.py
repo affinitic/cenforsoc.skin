@@ -89,3 +89,8 @@ class IManageAuteur(Interface):
         """
         insert a new item in auteur
         """
+
+class IManageFormation(Interface):
+    """
+    gestion des demandes de formations
+    """

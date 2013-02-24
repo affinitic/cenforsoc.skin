@@ -17,7 +17,7 @@
    <fieldset class="formCadre">
        <legend class="legende">Ajouter un p&eacute;riodique</legend>
        <form action="inserer-un-periodique"
-            methof="post">
+            method="post">
           <div class="formInput">
               <label for="periodiqueTitre">Titre :</label>
               <br />

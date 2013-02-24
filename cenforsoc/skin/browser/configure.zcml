@@ -412,5 +412,26 @@
         permission="zope.Public"
         attribute="updateAuteur"
         allowed_interface=".interfaces.IManageAuteur"
-        />    
+        />  
+
+<!-- FORMATION -->
+    <browser:page
+        name="gestionFormation"
+        for="*"
+        permission="zope.Public"
+        class=".ManageFormation.ManageFormation"
+        allowed_interface=".interfaces.IManageFormation"
+        attribute="gestionFormation"
+        />
+
+    <browser:page
+        name="s-inscrire-a-une-formation"
+        for="*"
+        template="templates/formation/formation_inscription_form.pt"
+        permission="zope.Public"
+        class=".ManageFormation.ManageFormation"
+        allowed_interface=".interfaces.IManageFormation"
+        />
+
+  
 </configure>
