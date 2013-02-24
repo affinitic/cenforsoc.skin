@@ -416,6 +416,85 @@ color:#8e211c;
 }
 
 
+/*** PORLET GESTION DB ***/
+#portlet-gestion-db{
+background-color:rgba(239,197,202,0.3);  /*rgba(232,231,230,1);*/
+border:1px solid #222;
+border-radius:12px;
+margin-bottom:10px;
+}
+
+.portletHeaderDB{
+border-radius:12px 12px 0px 0px;
+background: -moz-linear-gradient(top,  rgba(239,197,202,0.5) 0%, rgba(210,75,90,0.48) 50%, rgba(186,39,55,0.48) 51%, rgba(241,142,153,0.45) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(239,197,202,0.5)), color-stop(50%,rgba(210,75,90,0.48)), color-stop(51%,rgba(186,39,55,0.48)), color-stop(100%,rgba(241,142,153,0.45))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgba(239,197,202,0.5) 0%,rgba(210,75,90,0.48) 50%,rgba(186,39,55,0.48) 51%,rgba(241,142,153,0.45) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgba(239,197,202,0.5) 0%,rgba(210,75,90,0.48) 50%,rgba(186,39,55,0.48) 51%,rgba(241,142,153,0.45) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgba(239,197,202,0.5) 0%,rgba(210,75,90,0.48) 50%,rgba(186,39,55,0.48) 51%,rgba(241,142,153,0.45) 100%); /* IE10+ */
+background: linear-gradient(to bottom,  rgba(239,197,202,0.5) 0%,rgba(210,75,90,0.48) 50%,rgba(186,39,55,0.48) 51%,rgba(241,142,153,0.45) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#80efc5ca', endColorstr='#73f18e99',GradientType=0 ); /* IE6-9 */
+line-height:25px;
+font-family: Arial;
+font-size: 0.8em;
+color: #371b0c;
+text-shadow:1px 1px 1px rgba(255, 255, 255, 0.3);
+text-align:center;
+}
+}
+
+.portletItemDB{
+border-left:1px solid #ccc;
+border-right:1px solid #ccc;
+background-color:#ffefdd;
+}
+
+.portletPresentationDB ul{
+margin:0px;
+}
+
+.portletPresentationDB li{
+display:block;
+margin-left:20px;
+}
+
+#portlet-gestion-db div.portletItemDB dd{
+line-height:23px;
+}
+
+.portletFooterDB{
+border-radius:0px 0px 0px 10px;
+border-left:1px solid #ccc;
+border-right:1px solid #ccc;
+border-bottom:1px solid #ccc;
+/*background-color:rgba(239,197,202,0.6);*/
+height:15px;
+}
+
+.portletItemDB a{
+padding-left:20px;
+font-size:0.8em;
+}
+
+.portletItemDB a:hover{
+color:#ff8c00;
+}
+
+.menu-titre{
+text-transform:capitalize;
+margin-top:10px;
+font-size:0.9em;
+padding-left:12px;
+}
+
+.separation{
+margin:auto;
+width:90%;
+border-bottom:1px dotted #777;
+}
+
+
+
+
 /*** DONNEE ***/
 .gras{
 font-weight:bold;

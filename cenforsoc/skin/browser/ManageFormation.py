@@ -94,7 +94,7 @@ class ManageFormation(BrowserView):
         formationTitre = unicode(formationTitre, 'utf-8')
         formationDescription = unicode(formationDescription, 'utf-8')
         formationNiveauRequis = unicode(formationNiveauRequis, 'utf-8')
-        
+
         wrapper = getSAWrapper('cenforsoc')
         session = wrapper.session
         insertAuteur = wrapper.getMapper('formation')
@@ -107,7 +107,7 @@ class ManageFormation(BrowserView):
         session.add(newEntry)
         session.flush()
         session.refresh(newEntry)
-        auteurPk = newEntry.auteur_pk
+        formationPk = newEntry.for_pk
 
         portalUrl = getToolByName(self.context, 'portal_url')()
         ploneUtils = getToolByName(self.context, 'plone_utils')
@@ -124,27 +124,35 @@ class ManageFormation(BrowserView):
         """
         fields = self.request.form
         
-        auteurPk = fields.get('auteurPk', None)
-        auteurNom = fields.get('auteurNom', None)
-        auteurPrenom = fields.get('auteurPrenom', None)
+        formationPk = fields.get('formationPk', None)
+        formationTitre = fields.get('formationTitre', None)
+        formationDuree = fields.get('formationDuree', None)
+        formationDateDebut = fields.get('formationDateDebut', None)
+        formationDescription = fields.get('formationDescription', None)
+        formationNiveauRequis = fields.get('formationNiveauRequis', None)
+        formationEtat = fields.get('formationEtat', None)
 
         wrapper = getSAWrapper('cenforsoc')
         session = wrapper.session
-        updateAuteurTable = wrapper.getMapper('auteur')
-        query = session.query(updateAuteurTable)
-        query = query.filter(updateAuteurTable.auteur_pk == auteurPk)
-        auteurs = query.all()
-        for auteur in auteurs:
-            auteur.auteur_nom = unicode(auteurNom, 'utf-8')
-            auteur.auteur_prenom = unicode(auteurPrenom, 'utf-8')
+        updateFormationTable = wrapper.getMapper('formation')
+        query = session.query(updateFormationTable)
+        query = query.filter(updateFormationTable.form_pk == formationPk)
+        formations = query.all()
+        for formation in formations:
+            formation.form_titre = unicode(formationTitre, 'utf-8')
+            formation.form_duree = unicode(formationDuree, 'utf-8')
+            formation.form_date_deb = unicode(formationDateDebut, 'utf-8')
+            formation.form_description = unicode(formationDescription, 'utf-8')
+            formation.form_niveau_requis = unicode(formationNiveauRequis, 'utf-8')
+            formation.form_etat = unicode(formationEtat, 'utf-8')
 
         session.flush()
 
         portalUrl = getToolByName(self.context, 'portal_url')()
         ploneUtils = getToolByName(self.context, 'plone_utils')
-        message = u"L'auteur %s %s a bien été modifié !" % (auteurNom, auteurPrenom)
+        message = u"La formation %s a bien été modifiée !" % (formationTitre)
         ploneUtils.addPortalMessage(message, 'info')
-        url = "%s/documentation/auteur/auteur" % (portalUrl)
+        url = "%s/formations/" % (portalUrl)
         self.request.response.redirect(url)
         return ''
         

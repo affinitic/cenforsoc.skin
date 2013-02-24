@@ -1,0 +1,174 @@
+<html xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      i18n:domain="plone">
+
+<body>
+<div metal:define-macro="portlet"
+     tal:condition="python:user.has_role(['Manager', 'Site Administrator'], here)">
+    <dl id="portlet-gestion-db">
+        <dt class="portletHeaderDB">
+            <span class="portletTopLeft"></span>
+            <span class="portletTopRight"></span>
+            Gestion de la DB
+        </dt>
+        <div class="portletItemDB">
+            <dt class="menu-titre">&#10023; Les formations</dt>
+                <dd>
+                    <a href=""
+                       tal:attributes="href string:${context/portal_url}/admin-experience-creer">
+                       &#10147; Chercher les formations
+                    </a>
+                </dd>
+                <dd>
+                    <a href=""
+                       tal:attributes="href string:${context/portal_url}/admin-experience-creer">
+                       &#10147; Ajouter une formation
+                    </a>
+                </dd>
+                <dd>
+                    <a href=""
+                       tal:attributes="href string:${context/portal_url}/admin-experience-creer">
+                       &#10147; Modifier une formation
+                    </a>
+                </dd>
+                <dd>
+                    <a href=""
+                       tal:attributes="href string:${context/portal_url}/admin-experience-creer">
+                       &#10147; Lister les formations
+                    </a>
+                </dd>
+                
+
+            <div class="separation"></div>
+            
+            <dt class="menu-titre">&#10023; Les inscriptions</dt>
+                <dd>
+                    <a href=""
+                       tal:attributes="href string:${context/portal_url}/admin-experience-creer">
+                       &#10147; Chercher une inscription
+                    </a>
+                </dd>
+                <dd>
+                    <a href=""
+                       tal:attributes="href string:${context/portal_url}/admin-experience-creer">
+                       &#10147; Lister les formations
+                    </a>
+                </dd>
+                
+
+            <div class="separation"></div>
+            
+            <dt class="menu-titre">&#10023; Les ouvrages</dt>
+                <dd>
+                    <a href="" tal:attributes="href string:${context/portal_url}/admin-auteur-creer">
+                        &#10147; Chercher un ouvrage
+                    </a>
+                </dd>
+                <dd>
+                    <a href="" tal:attributes="href string:${context/portal_url}/admin-auteur-creer">
+                        &#10147; Ajouter un ouvrage
+                    </a>
+                </dd>
+                <dd>
+                    <a href="" tal:attributes="href string:${context/portal_url}/admin-auteur-chercher">
+                        &#10147; Modifier un ouvrage
+                    </a>
+                    <span class="portlet-gestion-db-separation"></span>
+                </dd>
+                <dd>
+                    <a href="" tal:attributes="href string:${context/portal_url}/admin-auteur-creer">
+                        &#10147; Lister les ouvrages
+                    </a>
+                </dd>
+
+            <div class="separation"></div>
+            
+            <dt class="menu-titre">&#10023; Les périodiques</dt>
+                <dd>
+                    <a href="" tal:attributes="href string:${context/portal_url}/institution-creer">
+                        &#10147; Chercher un périodique
+                    </a>
+                </dd>
+                <dd>
+                    <a href="" tal:attributes="href string:${context/portal_url}/admin-institution-lister">
+                        &#10147; Ajouter un périodique
+                    </a>
+                </dd>
+                <dd>
+                    <a href="" tal:attributes="href string:${context/portal_url}/institution-chercher">
+                        &#10147; Modifier un périodique
+                    </a>
+                </dd>
+                <dd>
+                    <a href="" tal:attributes="href string:${context/portal_url}/institution-chercher">
+                        &#10147; Lister les périodiques
+                    </a>
+                </dd>
+                
+            <div class="separation"></div>
+            
+            <dt class="menu-titre">&#10023; Les affiches</dt>
+                <dd>
+                    <a href="" tal:attributes="href string:${context/portal_url}/institution-type-creer">
+                        &#10147; Chercher une affiche
+                    </a>
+                </dd>
+                <dd>
+                    <a href="" tal:attributes="href string:${context/portal_url}/institution-type-creer">
+                        &#10147; Ajouter une affiche
+                    </a>
+                </dd>
+                <dd>
+                    <a href="" tal:attributes="href string:${context/portal_url}/institution-type-creer">
+                        &#10147; Modifier une affiche
+                    </a>
+                </dd>
+                <dd>
+                    <a href="" tal:attributes="href string:${context/portal_url}/institution-type-creer">
+                        &#10147; Lister une affiche
+                    </a>
+                </dd>
+
+            <div class="separation"></div>
+            
+                <dt class="menu-titre">
+                    <a href=""
+                       tal:attributes="href string:${context/portal_url}/documentation/auteur/">
+                       &#10023; Les auteurs</a>
+                </dt>
+                <dd>
+                    <a href=""
+                       tal:attributes="href string:${context/portal_url}/documentation/auteur/chercher-un-auteur">
+                        &#10147; Chercher un auteur
+                    </a>
+                </dd>
+                <dd>
+                    <a href=""
+                       tal:attributes="href string:${context/portal_url}/documentation/auteur/ajouter-un-auteur">
+                        &#10147; Ajouter un auteur
+                    </a>
+                </dd>
+                <dd>
+                    <a href=""
+                       tal:attributes="href string:${context/portal_url}/documentation/auteur/modifier-un-auteur">
+                        &#10147; Modifier un auteur
+                    </a>
+                </dd>
+                <dd>
+                    <a href=""
+                       tal:attributes="href string:${context/portal_url}/documentation/auteur/lister-les-auteurs">
+                        &#10147; Lister les auteurs
+                    </a>
+                    <span class="portlet-gestion-db-separation"></span>
+                </dd>
+
+            <div class="separation"></div>
+
+        <dt class="portletFooterDB">
+            <span class="portletBottomLeft"></span>
+            <span class="portletBottomRight"></span>
+        </dt>
+     </dl>
+</div>
+</body>
+</html>
