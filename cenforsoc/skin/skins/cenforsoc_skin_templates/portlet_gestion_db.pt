@@ -58,25 +58,28 @@
 
             <div class="separation"></div>
             
-            <dt class="menu-titre">&#10023; Les ouvrages</dt>
+                <dt class="menu-titre">
+                    <a href=""
+                       tal:attributes="href string:${context/portal_url}/documentation/bibliotheque/les-livres">
+                    &#10023; Les ouvrages</a>
+                </dt>
                 <dd>
-                    <a href="" tal:attributes="href string:${context/portal_url}/admin-auteur-creer">
+                    <a href="" tal:attributes="href string:${context/portal_url}/documentation/bibliotheque/chercher-un-livre">
                         &#10147; Chercher un ouvrage
                     </a>
                 </dd>
                 <dd>
-                    <a href="" tal:attributes="href string:${context/portal_url}/admin-auteur-creer">
+                    <a href="" tal:attributes="href string:${context/portal_url}/documentation/bibliotheque/ajouter-un-livre">
                         &#10147; Ajouter un ouvrage
                     </a>
                 </dd>
                 <dd>
-                    <a href="" tal:attributes="href string:${context/portal_url}/admin-auteur-chercher">
+                    <a href="" tal:attributes="href string:${context/portal_url}/documentation/bibliotheque/modifier-un-livre">
                         &#10147; Modifier un ouvrage
                     </a>
-                    <span class="portlet-gestion-db-separation"></span>
                 </dd>
                 <dd>
-                    <a href="" tal:attributes="href string:${context/portal_url}/admin-auteur-creer">
+                    <a href="" tal:attributes="href string:${context/portal_url}/documentation/bibliotheque/lister-les-livres">
                         &#10147; Lister les ouvrages
                     </a>
                 </dd>
@@ -85,46 +88,52 @@
             
             <dt class="menu-titre">&#10023; Les périodiques</dt>
                 <dd>
-                    <a href="" tal:attributes="href string:${context/portal_url}/institution-creer">
+                    <a href="" tal:attributes="href string:${context/portal_url}/documentation/periodique/les-periodiques">
                         &#10147; Chercher un périodique
                     </a>
                 </dd>
                 <dd>
-                    <a href="" tal:attributes="href string:${context/portal_url}/admin-institution-lister">
+                    <a href="" tal:attributes="href string:${context/portal_url}/documentation/periodique/ajouter-un-periodique">
                         &#10147; Ajouter un périodique
                     </a>
                 </dd>
                 <dd>
-                    <a href="" tal:attributes="href string:${context/portal_url}/institution-chercher">
+                    <a href=""
+                       tal:attributes="href string:${context/portal_url}/documentation/periodique/modifier-un-periodique">
                         &#10147; Modifier un périodique
                     </a>
                 </dd>
                 <dd>
-                    <a href="" tal:attributes="href string:${context/portal_url}/institution-chercher">
+                    <a href=""
+                       tal:attributes="href string:${context/portal_url}/documentation/periodique/lister-les-periodiques">
                         &#10147; Lister les périodiques
                     </a>
                 </dd>
                 
             <div class="separation"></div>
             
-            <dt class="menu-titre">&#10023; Les affiches</dt>
+                <dt class="menu-titre">
+                    <a href=""
+                       tal:attributes="href string:${context/portal_url}/documentation/affiche/">
+                       &#10023; Les affiches</a>
+                </dt>
                 <dd>
-                    <a href="" tal:attributes="href string:${context/portal_url}/institution-type-creer">
+                    <a href="" tal:attributes="href string:${context/portal_url}/documentation/affiche/chercher-une-affiche">
                         &#10147; Chercher une affiche
                     </a>
                 </dd>
                 <dd>
-                    <a href="" tal:attributes="href string:${context/portal_url}/institution-type-creer">
+                    <a href="" tal:attributes="href string:${context/portal_url}/documentation/affiche/">
                         &#10147; Ajouter une affiche
                     </a>
                 </dd>
                 <dd>
-                    <a href="" tal:attributes="href string:${context/portal_url}/institution-type-creer">
+                    <a href="" tal:attributes="href string:${context/portal_url}/documentation/affiche/">
                         &#10147; Modifier une affiche
                     </a>
                 </dd>
                 <dd>
-                    <a href="" tal:attributes="href string:${context/portal_url}/institution-type-creer">
+                    <a href="" tal:attributes="href string:${context/portal_url}/documentation/affiche/">
                         &#10147; Lister une affiche
                     </a>
                 </dd>
