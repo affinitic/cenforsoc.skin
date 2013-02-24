@@ -77,24 +77,33 @@ class ManageFormation(BrowserView):
         formation = ["%s" % (elem.for_titre) for elem in query.all()]
         return formation
 
-    def insertAuteur(self):
+    def insertFormation(self):
         """
-        table pg auteur
-        ajout d'un item Auteur
+        table pg formation
+        ajout d'un item formation
         """
         fields = self.request.form
 
-        auteurNom = fields.get('auteurNom', None)
-        auteurPrenom = fields.get('auteurPrenom', None)
-        
-        auteurNom = unicode(auteurNom, 'utf-8')
-        auteurPrenom = unicode(auteurPrenom, 'utf-8')
+        formationTitre = fields.get('formationTitre', None)
+        formationDuree = fields.get('formationDuree', None)
+        formationDateDebut = fields.get('formationDateDebut', None)
+        formationDescription = fields.get('formationDescription', None)
+        formationNiveauRequis = fields.get('formationNiveauRequis', None)
+        formationEtat = fields.get('formationEtat', None)
 
+        formationTitre = unicode(formationTitre, 'utf-8')
+        formationDescription = unicode(formationDescription, 'utf-8')
+        formationNiveauRequis = unicode(formationNiveauRequis, 'utf-8')
+        
         wrapper = getSAWrapper('cenforsoc')
         session = wrapper.session
-        insertAuteur = wrapper.getMapper('auteur')
-        newEntry = insertAuteur(auteur_nom=auteurNom, \
-                                auteur_prenom=auteurPrenom)
+        insertAuteur = wrapper.getMapper('formation')
+        newEntry = insertAuteur(form_titre=formationTitre, \
+                                form_duree=formationDuree, \
+                                form_date_deb=formationDateDebut, \
+                                form_description=formationDescription, \
+                                form_niveau_requis=formationNiveauRequis, \
+                                form_etat=formationEtat)
         session.add(newEntry)
         session.flush()
         session.refresh(newEntry)
@@ -102,13 +111,13 @@ class ManageFormation(BrowserView):
 
         portalUrl = getToolByName(self.context, 'portal_url')()
         ploneUtils = getToolByName(self.context, 'plone_utils')
-        message = u"Le nouvel auteur %s %s a bien été enregistré !" % (auteurNom, auteurPrenom)
+        message = u"La nouvelle formation %s  a bien été enregistrée !" % (formationTitre)
         ploneUtils.addPortalMessage(message, 'info')
-        url = "%s/documentation/auteur/ajouter-un-auteur" % (portalUrl)
+        url = "%s/formation/ajouter-une-formation" % (portalUrl)
         self.request.response.redirect(url)
         return ''
 
-    def updateAuteur(self):
+    def updateFormation(self):
         """
         table pg auteur
         mise a jour d'un item auteur
