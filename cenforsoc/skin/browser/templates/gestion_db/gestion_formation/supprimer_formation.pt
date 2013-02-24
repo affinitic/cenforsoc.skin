@@ -1,0 +1,77 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plone">
+
+<head>
+    <metal:noborder fill-slot="top_slot"
+                 tal:define="dummy python:request.set('disable_border',1)" />
+</head>
+
+<body>
+<div metal:fill-slot="main"
+     tal:define="form_pk request/form_pk">
+
+   <h1><a href="formation"><img src="images/formation.png" /></a> Gestion de la base de donn&eacute;es des formations</h1>
+   <fieldset>
+      <legend class="legende">Supprimer une formation</legend>
+      <img src="images/alerte.png" />
+      <tal:requete tal:define="Formations python:here.admin_base.formation.zsql_formation_select_by_pk(form_pk=form_pk)">
+      <tal:boucle tal:repeat="form Formations">
+      <form action="formation_executer_suppression" methof="get">
+         <table width="95%" align="center" border="0" cellpadding="5" cellspacing="0">				
+            <tr>
+               <td class="etiquette">Titre</td>
+               <td>
+                  <span tal:content="form/form_titre" />
+               </td>
+            </tr>
+            <tr>
+               <td class="etiquette">Dur&eacute;e</td>
+               <td>
+                  <span tal:content="form/form_duree" /> heures
+               </td>
+            </tr>
+            <tr>
+               <td class="etiquette">Date de d&eacute;but</td>
+               <td>
+                  <span tal:content="form/form_date_deb" />
+               </td>
+            </tr>
+            <tr>
+               <td class="etiquette" valign="top">Description</td>
+               <td>
+                  <span tal:content="form/form_description" />
+               </td>
+            </tr>
+            <tr>
+               <td class="etiquette">Niveau requis</td>
+               <td>
+                  <span tal:content="form/form_niveau_requis" />
+               </td>
+            </tr>
+            <tr>
+               <td class="etiquette">Etat</td>
+               <td>
+                  <span tal:content="form/form_etat" />
+               </td>
+            </tr>
+         </table>
+         <input type="hidden"
+                name="form_pk"
+                value=""
+                tal:attributes="value form_pk" />
+
+         <div class="formControls" align="center">
+                <input class="context"
+                       type="submit"
+                       name="submit"
+                       value="Supprimer cette formartion"
+                       />
+         </div>
+      </form>
+      </tal:boucle>
+      </tal:requete>
+ </div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plone">
+
+<head>
+    <metal:noborder fill-slot="top_slot"
+                 tal:define="dummy python:request.set('disable_border',1)" />
+</head>
+
+<body>
+<div metal:fill-slot="main">   
+   <h1><a href="formation"><img src="images/formation.png" /></a> Gestion de la base de donn&eacute;es des formations</h1>
+   <fieldset>
+      <legend class="legende">Listing</legend>
+      <ul>
+         <li><a href="formation_lister">Lister les formations</a></li>
+         <li><a href="formation_ajouter">Ajouter une formation</a></li>
+         <li><a href="formation_lister">Modifier une formation</a></li>
+         <li><a href="formation_lister">Supprimer une formation</a></li>
+         <br /><br/> 
+         <li><a href="">Lister les inscriptions</a></li>
+      </ul>
+   </fieldset>
+
+ 
+
+ </div>
+</body>
+</html>

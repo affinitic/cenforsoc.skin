@@ -1,0 +1,62 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plone">
+
+<head>
+    <metal:noborder fill-slot="top_slot"
+                 tal:define="dummy python:request.set('disable_border',1)" />
+</head>
+
+<body>
+<div metal:fill-slot="main">
+   <h1><a href="formation"><img src="images/formation.png" /></a> Gestion de la base de donn&eacute;es des formations</h1>
+   <fieldset>
+      <legend class="legende">Ajouter une formation</legend>
+      <form action="formation_executer_insertion" methof="get">
+         <table width="95%" align="center" border="0" cellpadding="5" cellspacing="0">				
+            <tr>
+               <td class="etiquette">Titre</td>
+               <td><input type="text" name="form_titre" size="50"/></td>
+            </tr>
+            <tr>
+               <td class="etiquette">Dur&eacute;e</td>
+               <td><input type="text" name="form_duree" size="5"/> heures</td>
+            </tr>
+            <tr>
+               <td class="etiquette">Date de d&eacute;but</td>
+               <td><input type="text" name="form_date_deb" size="50"/></td>
+            </tr>
+            <tr>
+               <td class="etiquette" valign="top">Description</td>
+               <td>
+                  <textarea name="form_description"
+                            rows="5"
+                            cols="80"></textarea>
+               </td>
+            </tr>
+            <tr>
+               <td class="etiquette">Niveau requis</td>
+               <td><input type="text" name="form_niveau_requis" size="50"/></td>
+            </tr>
+            <tr>
+               <td class="etiquette">Etat</td>
+               <td>
+                  <select name="form_etat">
+                     <option value="ouvert"> Formation ouverte </option>
+                     <option value="complete"> Formation complète </option>
+                  </select>
+               </td>
+            </tr>
+         </table>
+         <div class="formControls" align="center">
+                <input class="context"
+                       type="submit"
+                       name="submit"
+                       value="Enregister la formation"
+                       />
+         </div>
+      </form>
+ </div>
+</body>
+</html>
