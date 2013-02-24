@@ -47,7 +47,7 @@ class ManageFormation(BrowserView):
         session = wrapper.session
         FormationTable = wrapper.getMapper('formation')
         query = session.query(FormationTable)
-        query = query.filter(FormationTable.for_pk == formationPk)
+        query = query.filter(FormationTable.form_pk == formationPk)
         formation = query.one()
         return formation
 
