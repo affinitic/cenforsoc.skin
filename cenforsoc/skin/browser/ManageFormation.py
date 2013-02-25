@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-#import datetime
+import datetime
 #import time
 #import random
-from sqlalchemy import or_
+#from sqlalchemy import or_
 #from mailer import Mailer
 #from LocalFS import LocalFS
 from Products.Five import BrowserView
@@ -106,8 +106,8 @@ class ManageFormation(BrowserView):
                                 form_etat=formationEtat)
         session.add(newEntry)
         session.flush()
-        session.refresh(newEntry)
-        formationPk = newEntry.for_pk
+        #session.refresh(newEntry)
+        #formationPk = newEntry.for_pk
 
         portalUrl = getToolByName(self.context, 'portal_url')()
         ploneUtils = getToolByName(self.context, 'plone_utils')
@@ -155,7 +155,75 @@ class ManageFormation(BrowserView):
         url = "%s/formations/" % (portalUrl)
         self.request.response.redirect(url)
         return ''
+
+    def insertInscriptionFormation(self):
+        """
+        table pg inscription
+        ajout d'un item inscription pour une formation
+        """
+        fields = self.request.form
         
+        inscriptionFormationNom = fields.get('inscriptionFormationNom', None)
+        inscriptionFormationPrenom = fields.get('inscriptionFormationPrenom', None)
+        inscriptionFormationDateNaissance = fields.get('inscriptionFormationDateNaissance', None)
+        inscriptionFormationAdresse = fields.get('inscriptionFormationAdresse', None)
+        inscriptionFormationCP = fields.get('inscriptionFormationCP', None)
+        inscriptionFormationLocalite = fields.get('inscriptionFormationLocalite', None)
+        inscriptionFormationEmail = fields.get('inscriptionFormationEmail', None)
+        inscriptionFormationPhone = fields.get('inscriptionFormationPhone', None)
+        inscriptionFormationGsm = fields.get('inscriptionFormationGsm', None)
+        inscriptionFormationCentralProFgtb = fields.get('inscriptionFormationCentralProFgtb', None)
+        inscriptionFormationRegional = fields.get('inscriptionFormationRegional', None)
+        inscriptionFormationProfession = fields.get('inscriptionFormationProfession', None)
+        inscriptionFormationEntreprise = fields.get('inscriptionFormationEntreprise', None)
+        inscriptionFormationPhoneEntreprise = fields.get('inscriptionFormationPhoneEntreprise', None)
+        inscriptionFormationHoraireTravail = fields.get('inscriptionFormationHoraireTravail', None)
+        inscriptionFormationCongeEducation = fields.get('inscriptionFormationCongeEducation', None)
+        inscriptionFormationCongeSyndical = fields.get('inscriptionFormationCongeSyndical', None)
+        inscriptionFormationDelegationSyndicale = fields.get('inscriptionFormationDelegationSyndicale', None)
+        inscriptionFormationDelegationCE = fields.get('inscriptionFormationDelegationCE', None)
+        inscriptionFormationDelegationCPPT = fields.get('inscriptionFormationDelegationCPPT', None)
+        inscriptionFormationFormationSuivie = fields.get('inscriptionFormationFormationSuivie', None)
+
+        inscriptionFormationInscriptionDate = datetime.datetime.now()
+
+        wrapper = getSAWrapper('cenforsoc')
+        session = wrapper.session
+        insertAuteur = wrapper.getMapper('formation_inscription')
+        newEntry = insertAuteur(form_ins_date=inscriptionFormationInscriptionDate,
+                                form_ins_nom=unicode(inscriptionFormationNom, 'utf-8'),
+                                form_ins_prenom=unicode(inscriptionFormationPrenom, 'utf-8'),
+                                form_ins_date_naissance=inscriptionFormationDateNaissance,
+                                form_ins_adresse=unicode(inscriptionFormationAdresse, 'utf-8'),
+                                form_ins_cp=inscriptionFormationCP,
+                                form_ins_localite=unicode(inscriptionFormationLocalite, 'utf-8'),
+                                form_ins_email=inscriptionFormationEmail,
+                                form_ins_tel=inscriptionFormationPhone,
+                                form_ins_gsm=inscriptionFormationGsm,
+                                form_ins_central_pro_fgtb=inscriptionFormationCentralProFgtb,
+                                form_ins_regional=inscriptionFormationRegional,
+                                form_ins_profession=inscriptionFormationProfession,
+                                form_ins_entreprise=inscriptionFormationEntreprise,
+                                form_ins_tel_entreprise=inscriptionFormationPhoneEntreprise,
+                                form_ins_horaire_travail=inscriptionFormationHoraireTravail,
+                                form_ins_conge_educ=inscriptionFormationCongeEducation,
+                                form_ins_conge_synd=inscriptionFormationCongeSyndical,
+                                form_ins_del_synd=inscriptionFormationDelegationSyndicale,
+                                form_ins_del_ce=inscriptionFormationDelegationCE,
+                                form_ins_del_cppt=inscriptionFormationDelegationCPPT,
+                                form_ins_formation_suivie=inscriptionFormationFormationSuivie)
+        session.add(newEntry)
+        session.flush()
+        
+        portalUrl = getToolByName(self.context, 'portal_url')()
+        ploneUtils = getToolByName(self.context, 'plone_utils')
+        message = u"Votre demande d'inscription a bien été enregistrée !"
+        ploneUtils.addPortalMessage(message, 'info')
+        url = "%s/formations/merci-inscription" % (portalUrl)
+        self.request.response.redirect(url)
+        return ''
+
+
     def gestionFormation(self):
         """
         insertion ou update d'une formation
@@ -168,3 +236,24 @@ class ManageFormation(BrowserView):
 
         if operation == "update":
             self.updateFormation()
+
+
+
+        
+# 
+# # SI la durée des formations sélectionnes dépassent 80 heures, 
+# ALORS la demande n'est pas valide
+# SINON 
+#    insertion dans la DB
+#    envoi des mails.
+#duree=0
+#for elem in form_ins_formation_fk:
+#   data=context.admin_base.formation.zsql_formation_select_by_pk(form_pk=elem)
+#   for elem in data:
+#      duree=duree+int(elem.form_duree)
+
+#if duree>80:
+#   return context.REQUEST.RESPONSE.redirect('probleme')
+#else:
+#            self.insertFormation()
+

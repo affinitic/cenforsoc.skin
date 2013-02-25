@@ -58,7 +58,7 @@
    
     <fieldset class="formCadre">
         <legend class="legende">Bulletin d'inscription</legend>
-        <form action="insertionFormation"
+        <form action="insertInscriptionFormation"
               method="post"
               onsubmit="return validate(this);">
             <div class="formInput">

@@ -423,7 +423,6 @@
         allowed_interface=".interfaces.IManageFormation"
         attribute="gestionFormation"
         />
-
     <browser:page
         name="s-inscrire-a-une-formation"
         for="*"
@@ -432,7 +431,6 @@
         class=".ManageFormation.ManageFormation"
         allowed_interface=".interfaces.IManageFormation"
         />
-
     <browser:page
         name="decrire-une-formation"
         for="*"
@@ -441,6 +439,40 @@
         class=".ManageFormation.ManageFormation"
         allowed_interface=".interfaces.IManageFormation"
         />
+    <browser:page
+        name="insertFormation"
+        for="*"
+        class=".ManageFormation.ManageFormation"
+        permission="zope.Public"
+        attribute="insertFormation"
+        allowed_interface=".interfaces.IManageFormation"
+        />    
+    <browser:page
+        name="updateFormation"
+        for="*"
+        class=".ManageFormation.ManageFormation"
+        permission="zope.Public"
+        attribute="updateFormation"
+        allowed_interface=".interfaces.IManageFormation"
+        />  
+
+<!-- INSCRIPTION -->
+    <browser:page
+        name="insertInscriptionFormation"
+        for="*"
+        class=".ManageFormation.ManageFormation"
+        permission="zope.Public"
+        attribute="insertInscriptionFormation"
+        allowed_interface=".interfaces.IManageFormation"
+        />    
+    <browser:page
+        name="merci-inscription"
+        for="*"
+        template="templates/formation/merci_inscription.pt"
+        permission="zope.Public"
+        class=".ManageFormation.ManageFormation"
+        allowed_interface=".interfaces.IManageFormation"
+        />    
 
   
 </configure>

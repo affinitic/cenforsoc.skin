@@ -624,6 +624,18 @@ text-align:center;
 line-height:2em;
 }
 
+#mail-gone-image{
+width:90px;
+float:left;
+}
+
+#mail-gone-message{
+padding-top:25px;
+width:400px;
+float:left;
+font-size:1.2em;
+}
+
 
 /*** AFFICHE ***/
 #affiche-image{

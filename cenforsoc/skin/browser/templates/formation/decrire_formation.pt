@@ -44,7 +44,8 @@
             </ul>
             <hr />
             <div align="center">
-                <a href="formulaire"> S'inscrire </a>
+                <a href=""
+                   tal:attributes="href string:${context/portal_url}/formation/s-inscrire-a-une-formation"> S'inscrire </a>
             </div>
         </fieldset>
     </tal:requete>
