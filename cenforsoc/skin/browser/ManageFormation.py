@@ -19,6 +19,7 @@ from Products.CMFCore.utils import getToolByName
 #from Products.Archetypes.Renderer import renderer
 #from Products.Archetypes.atapi import BaseContent
 from interfaces import IManageFormation
+from ManageGlobals import ManageCenforsoc
 #from collective.captcha.browser.captcha import Captcha
 
 
@@ -123,7 +124,7 @@ class ManageFormation(BrowserView):
         mise a jour d'un item auteur
         """
         fields = self.request.form
-        
+
         formationPk = fields.get('formationPk', None)
         formationTitre = fields.get('formationTitre', None)
         formationDuree = fields.get('formationDuree', None)
@@ -162,7 +163,7 @@ class ManageFormation(BrowserView):
         ajout d'un item inscription pour une formation
         """
         fields = self.request.form
-        
+
         inscriptionFormationNom = fields.get('inscriptionFormationNom', None)
         inscriptionFormationPrenom = fields.get('inscriptionFormationPrenom', None)
         inscriptionFormationDateNaissance = fields.get('inscriptionFormationDateNaissance', None)
@@ -186,6 +187,9 @@ class ManageFormation(BrowserView):
         inscriptionFormationFormationSuivie = fields.get('inscriptionFormationFormationSuivie', None)
 
         inscriptionFormationInscriptionDate = datetime.datetime.now()
+
+        formation = 'TEST BY ALAIN'
+        duree = '135h'
 
         wrapper = getSAWrapper('cenforsoc')
         session = wrapper.session
@@ -214,7 +218,46 @@ class ManageFormation(BrowserView):
                                 form_ins_formation_suivie=inscriptionFormationFormationSuivie)
         session.add(newEntry)
         session.flush()
+
+        sujet = "CENFORSOC : demande d'inscription via le site"
+        message = """
+                  <font color='#FF0000'><b>:: INSCRIPTION FORMATION CENFORSOC ::</b></font><br /><br />
+                  Formation(s) choisie(s) : <font color='#ff9c1b'><b>%s</b></font><br />
+                  Nbre d'heures total : <font color='#ff9c1b'><b>%s</b></font><br />
+                  <br />
+                  Nom : <font color='#ff9c1b'><b>%s</b></font><br />
+                  Prénom : <font color='#ff9c1b'><b>%s</b></font><br />
+                  Date de Naissance : <font color='#ff9c1b'><b>%s</b></font><br />
+                  Adresse : <font color='#ff9c1b'><b>%s</b></font><br />
+                  Code Postal : <font color='#ff9c1b'><b>%s</b></font><br />
+                  Localité : <font color='#ff9c1b'><b>%s</b></font><br />
+                  E-mail : <font color='#ff9c1b'><b>%s</b></font><br />
+                  Téléphone : <font color='#ff9c1b'><b>%s</b></font><br />
+                  GSM : <font color='#ff9c1b'><b>%s</b></font><br />
+                  <br />
+                  Centrale professionnelle FGTB : <font color='#ff9c1b'><b>%s</b></font><br />
+                  Régionale de : <font color='#ff9c1b'><b>%s</b></font><br />
+                  Profession : <font color='#ff9c1b'><b>%s</b></font><br />
+                  Entreprise : <font color='#ff9c1b'><b>%s</b></font><br />
+                  Téléphone de l'entreprise : <font color='#ff9c1b'><b>%s</b></font><br />
+                  <br />
+                  Horaire de travail : <font color='#ff9c1b'><b>%s</b></font><br />
+                  Congé éducation : <font color='#ff9c1b'><b>%s</b></font><br />
+                  Congé syndical : <font color='#ff9c1b'><b>%s</b></font><br />
+                  Mandat FGTB :<br />
+                  &nbsp;&nbsp;. <font color='#ff9c1b'><b>%s</b></font><br />
+                  &nbsp;&nbsp;. <font color='#ff9c1b'><b>%s</b></font><br />
+                  &nbsp;&nbsp;. <font color='#ff9c1b'><b>%s</b></font><br />
+                  <br />
+                  Formations déjà suivies : <font color='#ff9c1b'><b>%s</b></font><br />
+                  """ % (formation, duree, inscriptionFormationNom.upper(), inscriptionFormationPrenom.capitalize(), inscriptionFormationDateNaissance, \
+                       inscriptionFormationAdresse, inscriptionFormationCP, inscriptionFormationLocalite, inscriptionFormationEmail, inscriptionFormationPhone, \
+                       inscriptionFormationGsm, inscriptionFormationCentralProFgtb, inscriptionFormationRegional, inscriptionFormationProfession, \
+                       inscriptionFormationEntreprise, inscriptionFormationPhoneEntreprise, inscriptionFormationHoraireTravail, \
+                       inscriptionFormationCongeEducation, inscriptionFormationCongeSyndical, \
+                       inscriptionFormationDelegationSyndicale, inscriptionFormationDelegationCE, inscriptionFormationDelegationCPPT, inscriptionFormationFormationSuivie)
         
+
         portalUrl = getToolByName(self.context, 'portal_url')()
         ploneUtils = getToolByName(self.context, 'plone_utils')
         message = u"Votre demande d'inscription a bien été enregistrée !"
@@ -222,7 +265,6 @@ class ManageFormation(BrowserView):
         url = "%s/formations/merci-inscription" % (portalUrl)
         self.request.response.redirect(url)
         return ''
-
 
     def gestionFormation(self):
         """
@@ -238,12 +280,9 @@ class ManageFormation(BrowserView):
             self.updateFormation()
 
 
-
-        
-# 
-# # SI la durée des formations sélectionnes dépassent 80 heures, 
+# # SI la durée des formations sélectionnes dépassent 80 heures,
 # ALORS la demande n'est pas valide
-# SINON 
+# SINON
 #    insertion dans la DB
 #    envoi des mails.
 #duree=0
@@ -251,9 +290,7 @@ class ManageFormation(BrowserView):
 #   data=context.admin_base.formation.zsql_formation_select_by_pk(form_pk=elem)
 #   for elem in data:
 #      duree=duree+int(elem.form_duree)
-
 #if duree>80:
 #   return context.REQUEST.RESPONSE.redirect('probleme')
 #else:
 #            self.insertFormation()
-
