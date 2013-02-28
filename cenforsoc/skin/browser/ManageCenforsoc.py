@@ -39,27 +39,26 @@ class ManageCenforsoc(BrowserView):
         """
         envoi de mail à l'operateur dont les donnees change d'état
         """
-        #mailer = Mailer("localhost", 'cenforsoc@brutele.be')
-        mailer = Mailer("relay.skynet.be", 'alain.meurant@affinitic.be')
-        mailer.setSubject(sujetOperateur)
-        recipients = "%s, %s" % ('alain.meurant@skynet.be',)
-        mailer.setRecipients(recipients)
-        mail = messageOperateur
-        mailer.sendAllMail(mail)
-
-    def sendMailForInscription(self, sujet, message, adresseInscrit):
-        """
-        envoi de mail à la personne qui a fait une demande d'inscription
-        """
-        mailer = Mailer("localhost", adresseInscrit)
-        #mailer = Mailer("relay.skynet.be", adresseOperateur)
-        #mailer = Mailer("smtp.scarlet.be", adresse)
-        mailer.setSubject(sujetOperateur)
-        recipients = "%s, %s" % ('alain.meurant@skynet.be', adresseInscrit)
+        mailer = Mailer("localhost", 'cenforsoc@brutele.be')
+        #mailer = Mailer("relay.skynet.be", 'alain.meurant@affinitic.be')
+        mailer.setSubject(sujet)
+        recipients = "%s, %s" % ('alain.meurant@skynet.be', 'cenforsoc@brutele.be')
         mailer.setRecipients(recipients)
         mail = message
         mailer.sendAllMail(mail)
-    
+
+    def sendMailForInscription(self, sujetInscrit, messageInscrit, emailInscrit):
+        """
+        envoi de mail à la personne qui a fait une demande d'inscription
+        """
+        mailer = Mailer("localhost", emailInscrit)
+        #mailer = Mailer("relay.skynet.be", 'alain.meurant@skynet.be')
+        mailer.setSubject(sujetInscrit)
+        recipients = "%s, %s, %s" % ('alain.meurant@affinitic.be', 'cenforsoc@brutele.be', emailInscrit)
+        mailer.setRecipients(recipients)
+        mail = messageInscrit
+        mailer.sendAllMail(mail)
+
     def getTimeStamp(self):
         timeStamp = datetime.datetime.now()
         return timeStamp

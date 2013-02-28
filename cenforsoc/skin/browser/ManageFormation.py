@@ -6,6 +6,7 @@ import datetime
 #from sqlalchemy import or_
 #from mailer import Mailer
 #from LocalFS import LocalFS
+from zope.component import getMultiAdapter
 from Products.Five import BrowserView
 from zope.interface import implements
 from z3c.sqlalchemy import getSAWrapper
@@ -19,7 +20,6 @@ from Products.CMFCore.utils import getToolByName
 #from Products.Archetypes.Renderer import renderer
 #from Products.Archetypes.atapi import BaseContent
 from interfaces import IManageFormation
-from ManageGlobals import ManageCenforsoc
 #from collective.captcha.browser.captcha import Captcha
 
 
@@ -256,7 +256,22 @@ class ManageFormation(BrowserView):
                        inscriptionFormationEntreprise, inscriptionFormationPhoneEntreprise, inscriptionFormationHoraireTravail, \
                        inscriptionFormationCongeEducation, inscriptionFormationCongeSyndical, \
                        inscriptionFormationDelegationSyndicale, inscriptionFormationDelegationCE, inscriptionFormationDelegationCPPT, inscriptionFormationFormationSuivie)
-        
+
+        sujetInscrit = "CENFOSOC : confirmation de votre demande d'inscription"
+        messageInscrit = """
+                         Bonjour %s %s,
+                         <br /><br />
+                         Votre demande d'inscription pour la formation %s à bien été envoyée.
+                         Vous recevrez une réponse sous peu.
+                         <br /><br />
+                         Bien à vous,
+                         <br /><br />
+                         L'équipe Cenforsoc.
+                         """ % (inscriptionFormationPrenom, inscriptionFormationNom, formation)
+
+        cenforsocTools = getMultiAdapter((self.context, self.request), name="manageCenforsoc")
+        cenforsocTools.sendMailToCenforsoc(sujet, message)
+        cenforsocTools.sendMailForInscription(sujetInscrit, messageInscrit, inscriptionFormationEmail)
 
         portalUrl = getToolByName(self.context, 'portal_url')()
         ploneUtils = getToolByName(self.context, 'plone_utils')

@@ -17,6 +17,16 @@
         file="js/cenforsoc.js"
         />
 
+<!-- manage cenforsoc -->
+    <browser:page
+        for="*"
+        name="manageCenforsoc"
+        class=".ManageCenforsoc.ManageCenforsoc"
+        allowed_interface=".interfaces.IManageCenforsoc"
+        permission="zope.Public"
+        />
+
+
 
 <!-- LEFFE SEARCH -->
     <browser:page
