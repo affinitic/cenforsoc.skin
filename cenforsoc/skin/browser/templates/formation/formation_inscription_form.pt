@@ -28,7 +28,7 @@
 
     <fieldset class="formCadre">
         <legend class="legende">Nombres d'heures</legend>
-        Nos formations générales sont agréées par le Ministère de l’Emploi et du Travail et 
+        Nos formations générales sont agréées par le Ministère de l’Emploi et du Travail et
         ouvrent le droit au Congé Éducation Payé dans la limite de 80H00 par année académique.<br />
         De ce fait vous pouvez opter soit pour un module de 80H00 soit pour 2 de 40H00.
     </fieldset>
@@ -40,22 +40,23 @@
                     <li>
                         <a href=""
                            tal:attributes="href string: decrire-une-formation?formationPk=${elem/form_pk}">
-                        <img src="icon_loupe.png" 
-                             title="Plus d'infos ..." 
-                             alt="Plus d'infos..." /> 
+                            <img src="icon_loupe.png"
+                                 title="Plus d'infos ..."
+                                 alt="Plus d'infos..."
+                                 width="32"/>
+                            &nbsp;&nbsp;
+                            <span tal:content="elem/form_titre" />
                         </a>
-                        &nbsp;&nbsp;
-                        <span tal:content="elem/form_titre" /> 
                         <span tal:condition="python: elem.form_duree != ''"
-                              class="heure">                    
+                              class="heure">
                             (<span tal:content="elem/form_duree" /> heures.)
                         </span>
                     </li>
                 </tal:boucle>
             </tal:requete>
-        </ul>   
+        </ul>
     </fieldset>
-   
+
     <fieldset class="formCadre">
         <legend class="legende">Bulletin d'inscription</legend>
         <form action="insertInscriptionFormation"
@@ -64,114 +65,114 @@
             <div class="formInput">
                 <label for="inscriptionFormationFk">Choisissez votre formation :</label>
                 <br />
-                <tal:requete tal:define="Formations python: view.getFormationOpen()"> 
+                <tal:requete tal:define="Formations python: view.getFormationOpen()">
                     <tal:boucle tal:repeat="elem Formations">
-                        <input type="checkbox"  
+                        <input type="checkbox"
                                name="inscriptionFormationFk:list"
                                id="inscriptionFormationFk"
-                               value="" 
+                               value=""
                                tal:attributes="value elem/form_pk" />
                         &nbsp;
-                        <span tal:content=" elem/form_titre" /> 
-                        <span tal:condition="python: elem.form_duree != ''" class="heure">                    
+                        <span tal:content=" elem/form_titre" />
+                        <span tal:condition="python: elem.form_duree != ''" class="heure">
                             (<span tal:content="elem/form_duree" /> heures.)
-                        </span>               
+                        </span>
                         <br />
                     </tal:boucle>
-                </tal:requete>  
-            </div> 
-         
+                </tal:requete>
+            </div>
+
             <div class="formInput">
                 <label for="inscriptionFormationNom">Nom :</label>
                 <br />
                 <input type="text"
                        name="inscriptionFormationNom"
-                       id="inscriptionFormationNom" 
-                       value="" 
+                       id="inscriptionFormationNom"
+                       value=""
                        class="string required"
-                       size="50" />        
+                       size="50" />
             </div>
-         
+
             <div class="formInput">
                 <label for="inscriptionFormationPrenom">Prénom :</label>
-                <br />            
-                <input type="text" 
+                <br />
+                <input type="text"
                        name="inscriptionFormationPrenom"
-                       id="inscriptionFormationPrenom" 
-                       value="" 
+                       id="inscriptionFormationPrenom"
+                       value=""
                        class="string required"
-                       size="50" />        
-            </div> 
-         
+                       size="50" />
+            </div>
+
             <div class="formInput">
                 <label for="formulaireInscriptionDateNaissance">Date de naissance :</label>
                 <br />
-                <span tal:replace="structure here/calendrier" />        
-            </div> 
+                <span tal:replace="structure here/calendrier" />
+            </div>
 
             <div class="formInput">
                 <label for="inscriptionFormationAdresse">Adresse, n° :</label>
                 <br />
-                <input type="text" 
+                <input type="text"
                        name="inscriptionFormationAdresse"
-                       id="inscriptionFormationAdresse" 
-                       value="" 
+                       id="inscriptionFormationAdresse"
+                       value=""
                        class="required"
-                       size="50" />        
-            </div> 
-         
+                       size="50" />
+            </div>
+
             <div class="formInput">
                 <label for="inscriptionFormationCP">Code Postal :</label>
                 <br />
-                <input type="text" 
+                <input type="text"
                        name="inscriptionFormationCP"
-                       id="inscriptionFormationCP" 
-                       value="" 
+                       id="inscriptionFormationCP"
+                       value=""
                        class="required"
-                       size="5" />        
-            </div> 
+                       size="5" />
+            </div>
 
             <div class="formInput">
                 <label for="inscriptionFormationLocalite">Localité :</label>
                 <br />
-                <input type="text" 
+                <input type="text"
                        name="inscriptionFormationLocalite"
-                       id="inscriptionFormationLocalite" 
-                       value="" 
+                       id="inscriptionFormationLocalite"
+                       value=""
                        class="string required"
-                       size="50" />        
-            </div> 
+                       size="50" />
+            </div>
 
             <div class="formInput">
                 <label for="inscriptionFormationEmail">E-mail :</label>
                 <br />
-                <input type="text" 
+                <input type="text"
                        name="inscriptionFormationEmail"
-                       id="inscriptionFormationEmail" 
-                       value="" 
+                       id="inscriptionFormationEmail"
+                       value=""
                        class="email required"
-                       size="50" />        
+                       size="50" />
             </div>
 
             <div class="formInput">
                 <label for="inscriptionFormationPhone">Téléphone :</label>
                 <br />
-                <input type="text" 
+                <input type="text"
                        name="inscriptionFormationPhone"
-                       id="inscriptionFormationPhone" 
+                       id="inscriptionFormationPhone"
                        value=""
                        class="required"
-                       size="12" />        
-            </div> 
+                       size="12" />
+            </div>
 
             <div class="formInput">
                 <label for="inscriptionFormationGSM">GSM :</label>
                 <br />
-                <input type="text" 
+                <input type="text"
                        name="inscriptionFormationGSM"
-                       id="inscriptionFormationGSM" 
+                       id="inscriptionFormationGSM"
                        value=""
-                       size="12" />        
+                       size="12" />
             </div>
 
             <div class="formInput">
@@ -188,8 +189,8 @@
                       <option value="Alimentation"> Alimentation </option>
                       <option value="Vêtement"> Vêtement </option>
                       <option value="UBOT"> UBOT </option>
-                </select>       
-            </div> 
+                </select>
+            </div>
 
             <div class="formInput">
                 <label for="inscriptionFormationRegional">Régionale de :</label>
@@ -207,121 +208,121 @@
                       <option value="Namur"> Namur </option>
                       <option value="Nivelles"> Nivelles </option>
                       <option value="Tournai"> Tournai - Ath - Lessines </option>
-                      <option value="Verviers"> Verviers </option>               
-                </select>        
-            </div> 
+                      <option value="Verviers"> Verviers </option>
+                </select>
+            </div>
 
             <div class="formInput">
                 <label for="inscriptionFormationProfession">Profession :</label>
                 <br />
-                <input type="text" 
+                <input type="text"
                        name="inscriptionFormationProfession"
-                       id="inscriptionFormationProfession" 
-                       value="" 
-                       size="50" />        
-            </div> 
+                       id="inscriptionFormationProfession"
+                       value=""
+                       size="50" />
+            </div>
 
             <div class="formInput">
                 <label for="inscriptionFormationEntreprise">Entreprise :</label>
                 <br />
-                <input type="text" 
+                <input type="text"
                        name="inscriptionFormationEntreprise"
-                       id="inscriptionFormationEntreprise" 
-                       value="" 
-                       size="50" />        
-            </div> 
+                       id="inscriptionFormationEntreprise"
+                       value=""
+                       size="50" />
+            </div>
 
             <div class="formInput">
                 <label for="inscriptionFormationPhoneEntreprise">Téléphone de l'entreprise :</label>
                 <br />
-                <input type="text" 
+                <input type="text"
                        name="inscriptionFormationPhoneEntreprise"
-                       id="inscriptionFormationPhoneEntreprise" 
+                       id="inscriptionFormationPhoneEntreprise"
                        value=""
-                       size="12" />        
-            </div> 
+                       size="12" />
+            </div>
 
             <div class="formInput">
                 <label for="inscriptionFormationHoraireTravail">Horaire de travail :</label>
                 <br />
-                <textarea rows="5" 
+                <textarea rows="5"
                           cols="40"
                           name="inscriptionFormationHoraireTravail"
-                          id="inscriptionFormationHoraireTravail"></textarea>        
-            </div> 
+                          id="inscriptionFormationHoraireTravail"></textarea>
+            </div>
 
             <div class="formInput">
-                <label for="inscriptionFormationCongeEducation">Souhaite bénéficier du congé éducation payé :</label>        
+                <label for="inscriptionFormationCongeEducation">Souhaite bénéficier du congé éducation payé :</label>
                 <br />
-                OUI <input type="radio" 
+                OUI <input type="radio"
                            name="inscriptionFormationCongeEducation"
-                           id="inscriptionFormationCongeEducation" 
+                           id="inscriptionFormationCongeEducation"
                            value="oui">
 
                 &nbsp;&nbsp; - &nbsp;&nbsp;
 
-                NON <input type="radio" 
+                NON <input type="radio"
                            name="inscriptionFormationCongeEducation"
-                           id="inscriptionFormationCongeEducation" 
+                           id="inscriptionFormationCongeEducation"
                            value="non"
-                           checked="checked">                 
-            </div>  
+                           checked="checked">
+            </div>
 
             <div class="formInput">
                 <label for="inscriptionFormationCongeSyndical">Souhaite bénéficier du congé syndical :</label>
                 <br />
-                OUI <input type="radio" 
+                OUI <input type="radio"
                            name="inscriptionFormationCongeSyndical"
-                           id="inscriptionFormationCongeSyndical" 
+                           id="inscriptionFormationCongeSyndical"
                            value="oui">
                 &nbsp;&nbsp; - &nbsp;&nbsp;
-                NON <input type="radio" 
+                NON <input type="radio"
                            name="inscriptionFormationCongeSyndical"
                            id="inscriptionFormationCongeSyndical"
                            value="non"
-                           checked="checked">                 
-            </div> 
+                           checked="checked">
+            </div>
 
             <div class="formInput">
                 <label for="inscriptionFormationDelegationSyndicale">Mandat syndicale FGTB :</label>
-                
+
                 <br />
-                <input type="radio" 
+                <input type="radio"
                        name="inscriptionFormationDelegationSyndicale"
-                       id="inscriptionFormationDelegationSyndicale" 
+                       id="inscriptionFormationDelegationSyndicale"
                        value="Délégué(e) syndicale effectif"> Délégué(e) syndicale effectif<br />
-                <input type="radio" 
+                <input type="radio"
                        name="inscriptionFormationDelegationSyndicale"
-                       id="inscriptionFormationDelegationSyndicale" 
+                       id="inscriptionFormationDelegationSyndicale"
                        value="Délégué(e) syndicale suppléant(e)"> Délégué(e) syndicale suppléant(e)<br />
                 <br />
-                <input type="radio" 
+                <input type="radio"
                        name="inscriptionFormationDelegationCE"
-                       id="inscriptionFormationDelegationCE" 
+                       id="inscriptionFormationDelegationCE"
                        value="Délégué(e) CE effectif"> Délégué(e) CE effectif<br />
-                <input type="radio" 
-                       name="inscriptionFormationDelegationCE" 
+                <input type="radio"
+                       name="inscriptionFormationDelegationCE"
                        value="Délégué(e) CE suppléant(e)"> Délégué(e) CE suppléant(e)<br />
-                <br /> 
-                <input type="radio" 
+                <br />
+                <input type="radio"
                        name="inscriptionFormationDelegationCPPT"
-                       id="inscriptionFormationDelegationCPPT" 
+                       id="inscriptionFormationDelegationCPPT"
                        value="Délégué(e) CPPT effectif"> Délégué(e) CPPT effectif<br />
-                <input type="radio" 
+                <input type="radio"
                        name="inscriptionFormationDelegationCPPT"
-                       id="inscriptionFormationDelegationCPPT" 
-                       value="Délégué(e) CPPT suppléant(e)"> Délégué(e) CPPT suppléant(e)<br />                                                
-            </div> 
+                       id="inscriptionFormationDelegationCPPT"
+                       value="Délégué(e) CPPT suppléant(e)"> Délégué(e) CPPT suppléant(e)<br />
+            </div>
 
             <div class="formInput">
                 <label for="inscriptionFormationFormationSuivie">
                     Formations déjà suivies à CENFORSOC et dans vos centrales professionnelles :
                 </label>
                 <br />
-                <textarea rows="5" 
+                <textarea rows="5"
                           cols="40"
                           name="inscriptionFormationFormationSuivie"
-                          id="inscriptionFormationFormationSuivie"></textarea>        
+                          id="inscriptionFormationFormationSuivie"></textarea>
             </div>
 
             <div class="formControls">
@@ -330,9 +331,9 @@
                        value="insert" />
                 <input class="context"
                        type="submit"
-                       value="S'inscrire à la formation" />       
-            </div>         
-        </form>   
+                       value="S'inscrire à la formation" />
+            </div>
+        </form>
    </fieldset>
 </div>
 </body>

@@ -65,6 +65,24 @@ class ManageFormation(BrowserView):
         formationsOpen = query.all()
         return formationsOpen
 
+    def getTotalHeuresFormationSelected(self, formationPk):
+        """
+        table pg formation
+        recuperation des forma  tions selectionneせs par la personne qui s'inscrit
+        totalisation des heures de formation selectionnee
+        si plus de 80, refus
+        """
+        nbreHeureFormation=0
+        wrapper = getSAWrapper('cenforsoc')
+        session = wrapper.session
+        FormationTable = wrapper.getMapper('formation')
+        query = session.query(FormationTable)
+        query = query.filter(FormationTable.form_pk.in_(formationPk))
+        formationSelected = query.all()
+        for formation in formationSelected:
+            nbreHeureFormation = nbreHeureFormation + int(formation.form_duree)
+        return nbreHeureFormation
+
     def getFormationByLeffeSearch(self, searchString):
         """
         table pg formation
@@ -164,63 +182,83 @@ class ManageFormation(BrowserView):
         """
         fields = self.request.form
 
-        inscriptionFormationNom = fields.get('inscriptionFormationNom', None)
-        inscriptionFormationPrenom = fields.get('inscriptionFormationPrenom', None)
-        inscriptionFormationDateNaissance = fields.get('inscriptionFormationDateNaissance', None)
-        inscriptionFormationAdresse = fields.get('inscriptionFormationAdresse', None)
-        inscriptionFormationCP = fields.get('inscriptionFormationCP', None)
-        inscriptionFormationLocalite = fields.get('inscriptionFormationLocalite', None)
-        inscriptionFormationEmail = fields.get('inscriptionFormationEmail', None)
-        inscriptionFormationPhone = fields.get('inscriptionFormationPhone', None)
-        inscriptionFormationGsm = fields.get('inscriptionFormationGsm', None)
-        inscriptionFormationCentralProFgtb = fields.get('inscriptionFormationCentralProFgtb', None)
-        inscriptionFormationRegional = fields.get('inscriptionFormationRegional', None)
-        inscriptionFormationProfession = fields.get('inscriptionFormationProfession', None)
-        inscriptionFormationEntreprise = fields.get('inscriptionFormationEntreprise', None)
-        inscriptionFormationPhoneEntreprise = fields.get('inscriptionFormationPhoneEntreprise', None)
-        inscriptionFormationHoraireTravail = fields.get('inscriptionFormationHoraireTravail', None)
-        inscriptionFormationCongeEducation = fields.get('inscriptionFormationCongeEducation', None)
-        inscriptionFormationCongeSyndical = fields.get('inscriptionFormationCongeSyndical', None)
-        inscriptionFormationDelegationSyndicale = fields.get('inscriptionFormationDelegationSyndicale', None)
-        inscriptionFormationDelegationCE = fields.get('inscriptionFormationDelegationCE', None)
-        inscriptionFormationDelegationCPPT = fields.get('inscriptionFormationDelegationCPPT', None)
-        inscriptionFormationFormationSuivie = fields.get('inscriptionFormationFormationSuivie', None)
+        inscriptionFormationFk = fields.get('inscriptionFormationFk', None)
+        nbrHeureFormationSelected = self.getTotalHeuresFormationSelected(inscriptionFormationFk)
 
-        inscriptionFormationInscriptionDate = datetime.datetime.now()
+        if nbrHeureFormationSelected <= 40:
+            inscriptionFormationInscriptionDate = datetime.datetime.now()
+            inscriptionFormationNom = fields.get('inscriptionFormationNom', None)
+            inscriptionFormationPrenom = fields.get('inscriptionFormationPrenom', None)
+            inscriptionFormationDateNaissance = fields.get('inscriptionFormationDateNaissance', None)
+            inscriptionFormationAdresse = fields.get('inscriptionFormationAdresse', None)
+            inscriptionFormationCP = fields.get('inscriptionFormationCP', None)
+            inscriptionFormationLocalite = fields.get('inscriptionFormationLocalite', None)
+            inscriptionFormationEmail = fields.get('inscriptionFormationEmail', None)
+            inscriptionFormationPhone = fields.get('inscriptionFormationPhone', None)
+            inscriptionFormationGsm = fields.get('inscriptionFormationGsm', None)
+            inscriptionFormationCentralProFgtb = fields.get('inscriptionFormationCentralProFgtb', None)
+            inscriptionFormationRegional = fields.get('inscriptionFormationRegional', None)
+            inscriptionFormationProfession = fields.get('inscriptionFormationProfession', None)
+            inscriptionFormationEntreprise = fields.get('inscriptionFormationEntreprise', None)
+            inscriptionFormationPhoneEntreprise = fields.get('inscriptionFormationPhoneEntreprise', None)
+            inscriptionFormationHoraireTravail = fields.get('inscriptionFormationHoraireTravail', None)
+            inscriptionFormationCongeEducation = fields.get('inscriptionFormationCongeEducation', None)
+            inscriptionFormationCongeSyndical = fields.get('inscriptionFormationCongeSyndical', None)
+            inscriptionFormationDelegationSyndicale = fields.get('inscriptionFormationDelegationSyndicale', None)
+            inscriptionFormationDelegationCE = fields.get('inscriptionFormationDelegationCE', None)
+            inscriptionFormationDelegationCPPT = fields.get('inscriptionFormationDelegationCPPT', None)
+            inscriptionFormationFormationSuivie = fields.get('inscriptionFormationFormationSuivie', None)
 
-        formation = 'TEST BY ALAIN'
-        duree = '135h'
+            inscriptionFormationInscriptionDate = datetime.datetime.now()
 
-        wrapper = getSAWrapper('cenforsoc')
-        session = wrapper.session
-        insertAuteur = wrapper.getMapper('formation_inscription')
-        newEntry = insertAuteur(form_ins_date=inscriptionFormationInscriptionDate,
-                                form_ins_nom=unicode(inscriptionFormationNom, 'utf-8'),
-                                form_ins_prenom=unicode(inscriptionFormationPrenom, 'utf-8'),
-                                form_ins_date_naissance=inscriptionFormationDateNaissance,
-                                form_ins_adresse=unicode(inscriptionFormationAdresse, 'utf-8'),
-                                form_ins_cp=inscriptionFormationCP,
-                                form_ins_localite=unicode(inscriptionFormationLocalite, 'utf-8'),
-                                form_ins_email=inscriptionFormationEmail,
-                                form_ins_tel=inscriptionFormationPhone,
-                                form_ins_gsm=inscriptionFormationGsm,
-                                form_ins_central_pro_fgtb=inscriptionFormationCentralProFgtb,
-                                form_ins_regional=inscriptionFormationRegional,
-                                form_ins_profession=inscriptionFormationProfession,
-                                form_ins_entreprise=inscriptionFormationEntreprise,
-                                form_ins_tel_entreprise=inscriptionFormationPhoneEntreprise,
-                                form_ins_horaire_travail=inscriptionFormationHoraireTravail,
-                                form_ins_conge_educ=inscriptionFormationCongeEducation,
-                                form_ins_conge_synd=inscriptionFormationCongeSyndical,
-                                form_ins_del_synd=inscriptionFormationDelegationSyndicale,
-                                form_ins_del_ce=inscriptionFormationDelegationCE,
-                                form_ins_del_cppt=inscriptionFormationDelegationCPPT,
-                                form_ins_formation_suivie=inscriptionFormationFormationSuivie)
-        session.add(newEntry)
-        session.flush()
 
-        sujet = "CENFORSOC : demande d'inscription via le site"
-        message = """
+            # # SI la durée des formations sélectionnes dépassent 80 heures,
+            # ALORS la demande n'est pas valide
+            # SINON
+            #    insertion dans la DB
+            #    envoi des mails.
+            #duree=0
+            #for elem in form_ins_formation_fk:
+            #   data=context.admin_base.formation.zsql_formation_select_by_pk(form_pk=elem)
+            #   for elem in data:
+            #      duree=duree+int(elem.form_duree)
+            #if duree>80:
+            #   return context.REQUEST.RESPONSE.redirect('probleme')
+            #else:
+            #            self.insertFormation()
+
+            formation = 'TEST BY ALAIN'
+
+            wrapper = getSAWrapper('cenforsoc')
+            session = wrapper.session
+            insertAuteur = wrapper.getMapper('formation_inscription')
+            newEntry = insertAuteur(form_ins_date=inscriptionFormationInscriptionDate,
+                                    form_ins_nom=unicode(inscriptionFormationNom, 'utf-8'),
+                                    form_ins_prenom=unicode(inscriptionFormationPrenom, 'utf-8'),
+                                    form_ins_date_naissance=inscriptionFormationDateNaissance,
+                                    form_ins_adresse=unicode(inscriptionFormationAdresse, 'utf-8'),
+                                    form_ins_cp=inscriptionFormationCP,
+                                    form_ins_localite=unicode(inscriptionFormationLocalite, 'utf-8'),
+                                    form_ins_email=inscriptionFormationEmail,
+                                    form_ins_tel=inscriptionFormationPhone,
+                                    form_ins_gsm=inscriptionFormationGsm,
+                                    form_ins_central_pro_fgtb=inscriptionFormationCentralProFgtb,
+                                    form_ins_regional=inscriptionFormationRegional,
+                                    form_ins_profession=inscriptionFormationProfession,
+                                    form_ins_entreprise=inscriptionFormationEntreprise,
+                                    form_ins_tel_entreprise=inscriptionFormationPhoneEntreprise,
+                                    form_ins_horaire_travail=inscriptionFormationHoraireTravail,
+                                    form_ins_conge_educ=inscriptionFormationCongeEducation,
+                                    form_ins_conge_synd=inscriptionFormationCongeSyndical,
+                                    form_ins_del_synd=inscriptionFormationDelegationSyndicale,
+                                    form_ins_del_ce=inscriptionFormationDelegationCE,
+                                    form_ins_del_cppt=inscriptionFormationDelegationCPPT,
+                                    form_ins_formation_suivie=inscriptionFormationFormationSuivie)
+            session.add(newEntry)
+            session.flush()
+
+            sujet = "CENFORSOC : demande d'inscription via le site"
+            message = """
                   <font color='#FF0000'><b>:: INSCRIPTION FORMATION CENFORSOC ::</b></font><br /><br />
                   Formation(s) choisie(s) : <font color='#ff9c1b'><b>%s</b></font><br />
                   Nbre d'heures total : <font color='#ff9c1b'><b>%s</b></font><br />
@@ -250,15 +288,20 @@ class ManageFormation(BrowserView):
                   &nbsp;&nbsp;. <font color='#ff9c1b'><b>%s</b></font><br />
                   <br />
                   Formations déjà suivies : <font color='#ff9c1b'><b>%s</b></font><br />
-                  """ % (formation, duree, inscriptionFormationNom.upper(), inscriptionFormationPrenom.capitalize(), inscriptionFormationDateNaissance, \
-                       inscriptionFormationAdresse, inscriptionFormationCP, inscriptionFormationLocalite, inscriptionFormationEmail, inscriptionFormationPhone, \
-                       inscriptionFormationGsm, inscriptionFormationCentralProFgtb, inscriptionFormationRegional, inscriptionFormationProfession, \
-                       inscriptionFormationEntreprise, inscriptionFormationPhoneEntreprise, inscriptionFormationHoraireTravail, \
-                       inscriptionFormationCongeEducation, inscriptionFormationCongeSyndical, \
-                       inscriptionFormationDelegationSyndicale, inscriptionFormationDelegationCE, inscriptionFormationDelegationCPPT, inscriptionFormationFormationSuivie)
+                  """ % (formation, nbrHeureFormationSelected, inscriptionFormationNom.upper(), \
+                         inscriptionFormationPrenom.capitalize(), inscriptionFormationDateNaissance, \
+                         inscriptionFormationAdresse, inscriptionFormationCP, \
+                         inscriptionFormationLocalite, inscriptionFormationEmail, inscriptionFormationPhone, \
+                         inscriptionFormationGsm, inscriptionFormationCentralProFgtb, \
+                         inscriptionFormationRegional, inscriptionFormationProfession, \
+                         inscriptionFormationEntreprise, inscriptionFormationPhoneEntreprise, \
+                         inscriptionFormationHoraireTravail, \
+                         inscriptionFormationCongeEducation, inscriptionFormationCongeSyndical, \
+                         inscriptionFormationDelegationSyndicale, inscriptionFormationDelegationCE,\
+                         inscriptionFormationDelegationCPPT, inscriptionFormationFormationSuivie)
 
-        sujetInscrit = "CENFOSOC : confirmation de votre demande d'inscription"
-        messageInscrit = """
+            sujetInscrit = "CENFOSOC : confirmation de votre demande d'inscription"
+            messageInscrit = """
                          Bonjour %s %s,
                          <br /><br />
                          Votre demande d'inscription pour la formation %s à bien été envoyée.
@@ -269,15 +312,25 @@ class ManageFormation(BrowserView):
                          L'équipe Cenforsoc.
                          """ % (inscriptionFormationPrenom, inscriptionFormationNom, formation)
 
-        cenforsocTools = getMultiAdapter((self.context, self.request), name="manageCenforsoc")
-        cenforsocTools.sendMailToCenforsoc(sujet, message)
-        cenforsocTools.sendMailForInscription(sujetInscrit, messageInscrit, inscriptionFormationEmail)
+            cenforsocTools = getMultiAdapter((self.context, self.request), name="manageCenforsoc")
+            cenforsocTools.sendMailToCenforsoc(sujet, message)
+            cenforsocTools.sendMailForInscription(sujetInscrit, messageInscrit, inscriptionFormationEmail)
 
-        portalUrl = getToolByName(self.context, 'portal_url')()
-        ploneUtils = getToolByName(self.context, 'plone_utils')
-        message = u"Votre demande d'inscription a bien été enregistrée !"
-        ploneUtils.addPortalMessage(message, 'info')
-        url = "%s/formations/merci-inscription" % (portalUrl)
+            portalUrl = getToolByName(self.context, 'portal_url')()
+            ploneUtils = getToolByName(self.context, 'plone_utils')
+            message = u"Votre demande d'inscription a bien été enregistrée !"
+            ploneUtils.addPortalMessage(message, 'info')
+            url = "%s/formations/merci-inscription" % (portalUrl)
+
+        else :
+            portalUrl = getToolByName(self.context, 'portal_url')()
+            ploneUtils = getToolByName(self.context, 'plone_utils')
+            message = u"""
+                        Votre demande d'inscription a échoué, vous avez sélectionné %s heures
+                        alors que 40 heuressont permises !""" % (nbrHeureFormationSelected, )
+            ploneUtils.addPortalMessage(message, 'info')
+            url = "%s/formations/probleme-lors-de-l-inscription" % (portalUrl)
+
         self.request.response.redirect(url)
         return ''
 
@@ -295,17 +348,4 @@ class ManageFormation(BrowserView):
             self.updateFormation()
 
 
-# # SI la durée des formations sélectionnes dépassent 80 heures,
-# ALORS la demande n'est pas valide
-# SINON
-#    insertion dans la DB
-#    envoi des mails.
-#duree=0
-#for elem in form_ins_formation_fk:
-#   data=context.admin_base.formation.zsql_formation_select_by_pk(form_pk=elem)
-#   for elem in data:
-#      duree=duree+int(elem.form_duree)
-#if duree>80:
-#   return context.REQUEST.RESPONSE.redirect('probleme')
-#else:
-#            self.insertFormation()
+

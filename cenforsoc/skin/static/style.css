@@ -520,7 +520,7 @@ margin:12px 0px;
 .donnee-etiquette{
 font-weight: bold;
 font-size: 0,5em;
-color: #111;
+color: #666;
 text-shadow:1px 1px 1px rgba(255, 255, 255, 1);
 }
 .donnee-db{
@@ -531,6 +531,22 @@ text-shadow:1px 1px 1px rgba(255, 255, 255, 1);
 text-align:left;
 padding-left:1em;
 }
+
+
+.description-formation li{
+margin:20px 0px;
+}
+
+.donnee-formation{
+font-weight:bold;
+font-size:0,5em;
+color:#af2320;
+text-shadow:1px 1px 1px rgba(255, 255, 255, 1);
+text-align:left;
+}
+
+
+
 
 .boite-resultat{
 width:550px;
@@ -635,6 +651,7 @@ width:400px;
 float:left;
 font-size:1.2em;
 }
+
 
 
 /*** AFFICHE ***/

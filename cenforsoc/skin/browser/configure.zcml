@@ -201,7 +201,7 @@
         permission="zope.Public"
         class=".ManageLivre.ManageLivre"
         allowed_interface=".interfaces.IManageLivre"
-        />        
+        />
     <browser:page
         name="chercher-un-livre"
         for="*"
@@ -249,7 +249,7 @@
         permission="zope.Public"
         attribute="insertLivre"
         allowed_interface=".interfaces.IManageLivre"
-        />    
+        />
     <browser:page
         name="updateLivre"
         for="*"
@@ -257,7 +257,7 @@
         permission="zope.Public"
         attribute="updateLivre"
         allowed_interface=".interfaces.IManageLivre"
-        />    
+        />
 
 
 <!-- AFFICHE -->
@@ -333,6 +333,7 @@
         class=".ManageAffiche.ManageAffiche"
         allowed_interface=".interfaces.IManageAffiche"
         />
+
 
 <!-- AUTEUR -->
     <browser:page
@@ -414,7 +415,7 @@
         permission="zope.Public"
         attribute="insertAuteur"
         allowed_interface=".interfaces.IManageAuteur"
-        />    
+        />
     <browser:page
         name="updateAuteur"
         for="*"
@@ -422,7 +423,8 @@
         permission="zope.Public"
         attribute="updateAuteur"
         allowed_interface=".interfaces.IManageAuteur"
-        />  
+        />
+
 
 <!-- FORMATION -->
     <browser:page
@@ -450,13 +452,21 @@
         allowed_interface=".interfaces.IManageFormation"
         />
     <browser:page
+        name="probleme-lors-de-l-inscription"
+        for="*"
+        template="templates/formation/probleme_inscription.pt"
+        permission="zope.Public"
+        class=".ManageFormation.ManageFormation"
+        allowed_interface=".interfaces.IManageFormation"
+        />
+   <browser:page
         name="insertFormation"
         for="*"
         class=".ManageFormation.ManageFormation"
         permission="zope.Public"
         attribute="insertFormation"
         allowed_interface=".interfaces.IManageFormation"
-        />    
+        />
     <browser:page
         name="updateFormation"
         for="*"
@@ -464,7 +474,8 @@
         permission="zope.Public"
         attribute="updateFormation"
         allowed_interface=".interfaces.IManageFormation"
-        />  
+        />
+
 
 <!-- INSCRIPTION -->
     <browser:page
@@ -474,7 +485,7 @@
         permission="zope.Public"
         attribute="insertInscriptionFormation"
         allowed_interface=".interfaces.IManageFormation"
-        />    
+        />
     <browser:page
         name="merci-inscription"
         for="*"
@@ -482,7 +493,6 @@
         permission="zope.Public"
         class=".ManageFormation.ManageFormation"
         allowed_interface=".interfaces.IManageFormation"
-        />    
+        />
 
-  
 </configure>
