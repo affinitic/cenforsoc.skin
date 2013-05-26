@@ -150,7 +150,7 @@ class ManageLivre(BrowserView):
         if len(auteurNom) > 0:
             b = auteurNom.split('- ')
             auteurPk.append(int(b[1]))
-        
+
         wrapper = getSAWrapper('cenforsoc')
         session = wrapper.session
         LinkLivreAuteurTable = wrapper.getMapper('link_livre_auteur')
@@ -162,7 +162,6 @@ class ManageLivre(BrowserView):
         allLivresPk = query.all()
         return allLivresPk
 
-
     def getLivreByLeffeSearch(self, searchString):
         """
         table pg Livre
@@ -172,8 +171,8 @@ class ManageLivre(BrowserView):
         session = wrapper.session
         LivreTable = wrapper.getMapper('livre')
         query = session.query(LivreTable)
-        query = query.filter(LivreTable.per_titre.ilike("%%%s%%" % searchString))
-        livre = ["%s" % (elem.per_titre) for elem in query.all()]
+        query = query.filter(LivreTable.liv_titre.ilike("%%%s%%" % searchString))
+        livre = ["%s" % (elem.liv_titre) for elem in query.all()]
         return livre
 
     def getSearchingLivre(self, livrePk=None):

@@ -39,7 +39,7 @@ $(document).ready(function(){
 $(document).ready(function(){
 
   $(function() {
-    $("#titre_livre").autocomplete({
+    $("#livre-titre").autocomplete({
         source: function(request, response) {
             $.ajax({
                 url: "livre-searchJSON",

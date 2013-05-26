@@ -25,19 +25,19 @@
                 </dd>
                 <dd>
                     <a href=""
-                       tal:attributes="href string:${context/portal_url}/formation/ajouter-une-formation">
+                       tal:attributes="href string:${context/portal_url}/formations/ajouter-une-formation">
                        &#10147; Ajouter une formation
                     </a>
                 </dd>
                 <dd>
                     <a href=""
-                       tal:attributes="href string:${context/portal_url}/formation/modifier-une-formation">
+                       tal:attributes="href string:${context/portal_url}/formations/modifier-une-formation">
                        &#10147; Modifier une formation
                     </a>
                 </dd>
                 <dd>
                     <a href=""
-                       tal:attributes="href string:${context/portal_url}/formation/lister-les-formations">
+                       tal:attributes="href string:${context/portal_url}/formations/lister-les-formations">
                        &#10147; Lister les formations
                     </a>
                 </dd>

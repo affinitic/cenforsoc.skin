@@ -41,8 +41,8 @@
                   method="post">
                 <div class="div_question">
                     <input type="text"
-                           id="livre-titre"
-                           name="livreTitre"
+                           id="titre-livre"
+                           name="titreLivre"
                            value=""
                            size="50">
                 </div>

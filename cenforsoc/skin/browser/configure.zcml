@@ -495,4 +495,26 @@
         allowed_interface=".interfaces.IManageFormation"
         />
 
+
+<!-- GESTION DB -->
+<!-- gestion db :: formation -->
+    <browser:page
+        name="lister-les-formations"
+        for="*"
+        template="templates/gestion_db/gestion_formation/lister_formation.pt"
+        permission="zope.Public"
+        class=".ManageFormation.ManageFormation"
+        allowed_interface=".interfaces.IManageFormation"
+        />
+    <browser:page
+        name="modifier-une-formation"
+        for="*"
+        template="templates/gestion_db/gestion_formation/modifier_formation.pt"
+        permission="zope.Public"
+        class=".ManageFormation.ManageFormation"
+        allowed_interface=".interfaces.IManageFormation"
+        />
+
+
+
 </configure>

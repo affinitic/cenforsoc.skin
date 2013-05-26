@@ -171,7 +171,7 @@ class ManageFormation(BrowserView):
         ploneUtils = getToolByName(self.context, 'plone_utils')
         message = u"La formation %s a bien été modifiée !" % (formationTitre)
         ploneUtils.addPortalMessage(message, 'info')
-        url = "%s/formations/" % (portalUrl)
+        url = "%s/formations/decrire-une-formation?formationPk=%s" % (portalUrl, formationPk)
         self.request.response.redirect(url)
         return ''
 
