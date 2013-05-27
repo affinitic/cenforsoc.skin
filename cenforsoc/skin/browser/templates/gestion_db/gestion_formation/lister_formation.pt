@@ -13,39 +13,39 @@
    <h1><a href="formation"><img src="images/formation.png" /></a> Gestion de la base de donn&eacute;es des formations</h1>
    <a href="formation_ajouter"> Ajouter une formation </a>
    <fieldset>
-      <legend class="legende">Lister une formation</legend>      
+      <legend class="legende">Lister une formation</legend>
       <tal:requete tal:define="Formations python:view.getAllFormations()">
          <tal:boucle tal:repeat="formation Formations">
             <fieldset>
                <ul>
                   <li>
-                     <span class="etiquette_formation">Titre</span> : 
-                     <span tal:content="formation/form_titre" 
+                     <span class="etiquette_formation">Titre</span> :
+                     <span tal:content="formation/form_titre"
                            class="donnee_formation" />
                   </li>
                   <li>
-                     <span class="etiquette_formation">Dur&eacute;e</span> : 
-                     <span tal:content="formation/form_duree" 
+                     <span class="etiquette_formation">Dur&eacute;e</span> :
+                     <span tal:content="formation/form_duree"
                            class="donnee_formation" />
                   </li>
                   <li>
-                     <span class="etiquette_formation">Date de d&eacute;but</span> : 
+                     <span class="etiquette_formation">Date de d&eacute;but</span> :
                      <span tal:content="python:formation.form_date_deb.strftime('%d-%m-%Y')"
                            class="donnee_formation" />
                   </li>
                   <li>
-                     <span class="etiquette_formation">Description</span> : 
-                     <span tal:content="formation/form_description" 
+                     <span class="etiquette_formation">Description</span> :
+                     <span tal:content="formation/form_description"
                            class="donnee_formation" />
                   </li>
                   <li>
-                     <span class="etiquette_formation">Niveau requis</span> : 
-                     <span tal:content="formation/form_niveau_requis" 
+                     <span class="etiquette_formation">Niveau requis</span> :
+                     <span tal:content="formation/form_niveau_requis"
                            class="donnee_formation" />
                   </li>
                   <li>
-                     <span class="etiquette_formation">Etat</span> : 
-                     <span tal:content="formation/form_etat" 
+                     <span class="etiquette_formation">Etat</span> :
+                     <span tal:content="formation/form_etat"
                            class="donnee_formation" />
                   </li>
                </ul>
@@ -56,12 +56,12 @@
                      <tr>
                         <td align="left">
                            <a href=""
-                              tal:attributes="href string:modifier-une-formation?form_pk=${formation/form_pk}">
+                              tal:attributes="href string:modifier-une-formation?formationPk=${formation/form_pk}">
                               Modifier cette formation</a>
                         </td>
                         <td align="right">
                            <a href=""
-                              tal:attributes="href string:supprimer_formation?form_pk=${formation/form_pk}">
+                              tal:attributes="href string:supprimer_formation?formationPk=${formation/form_pk}">
                               Effacer cette formation</a>
                         </td>
                      </tr>
