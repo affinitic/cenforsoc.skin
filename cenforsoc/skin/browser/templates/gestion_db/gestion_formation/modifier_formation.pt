@@ -10,7 +10,7 @@
 
 <body>
 <div metal:fill-slot="main"
-     tal:define="formationPk request/form_pk">
+     tal:define="formationPk request/formationPk">
 
    <h1><a href="formation"><img src="images/formation.png" /></a> Gestion de la base de donn&eacute;es des formations</h1>
    <fieldset>
@@ -22,12 +22,12 @@
                     align="center"
                     border="0"
                     cellpadding="5"
-                    cellspacing="0">				
+                    cellspacing="0">
                 <tr>
                    <td class="etiquette">Titre</td>
                    <td>
-                      <input type="text" 
-                             name="formationTitre" 
+                      <input type="text"
+                             name="formationTitre"
                              size="50"
                              value=""
                              tal:attributes="value formation/form_titre" />
@@ -36,20 +36,20 @@
                 <tr>
                    <td class="etiquette">Dur&eacute;e</td>
                    <td>
-                      <input type="text" 
-                             name="formationDuree" 
-                             size="5" 
-                             value="" 
+                      <input type="text"
+                             name="formationDuree"
+                             size="5"
+                             value=""
                              tal:attributes="value formation/form_duree" /> heures
                    </td>
                 </tr>
                 <tr>
                    <td class="etiquette">Date de d&eacute;but</td>
                    <td>
-                      <input type="text" 
-                             name="formationDateDebut" 
-                             size="50" 
-                             value="" 
+                      <input type="text"
+                             name="formationDateDebut"
+                             size="50"
+                             value=""
                              tal:attributes="value formation/form_date_deb" />
                    </td>
                 </tr>
@@ -59,7 +59,7 @@
                       <textarea name="formationDescription"
                                 rows="5"
                                 cols="80"
-                                value="" 
+                                value=""
                                 tal:attributes="value formation/form_description"
                                 tal:content="formation/form_description"></textarea>
                    </td>
@@ -67,10 +67,10 @@
                 <tr>
                    <td class="etiquette">Niveau requis</td>
                    <td>
-                      <input type="text" 
-                             name="formationNiveauRequis" 
-                             size="50" 
-                             value="" 
+                      <input type="text"
+                             name="formationNiveauRequis"
+                             size="50"
+                             value=""
                              tal:attributes="value formation/form_niveau_requis" />
                    </td>
                 </tr>

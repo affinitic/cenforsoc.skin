@@ -16,7 +16,7 @@
     <div  class="boite-resultat">
         <h2 tal:content="affiche/affiche_titre"
             class="donnee-db titre-affiche" />
-        
+
         <ul id="donnee-liste">
             <li class="donnee-etiquette">
                 Numéro inventaire :<br />

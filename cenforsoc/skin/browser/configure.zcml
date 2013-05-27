@@ -452,6 +452,14 @@
         allowed_interface=".interfaces.IManageFormation"
         />
     <browser:page
+        name="chercher-une-formation"
+        for="*"
+        template="templates/gestion_db/gestion_formation/chercher_formation.pt"
+        permission="zope.Public"
+        class=".ManageFormation.ManageFormation"
+          allowed_interface=".interfaces.IManageFormation"
+        />
+    <browser:page
         name="probleme-lors-de-l-inscription"
         for="*"
         template="templates/formation/probleme_inscription.pt"
