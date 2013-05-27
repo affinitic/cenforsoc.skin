@@ -19,7 +19,7 @@
             </dt>
                 <dd>
                     <a href=""
-                       tal:attributes="href string:${context/portal_url}/formations/cherhcher-une-formation">
+                       tal:attributes="href string:${context/portal_url}/formations/chercher-une-formation">
                        &#10147; Chercher les formations
                     </a>
                 </dd>

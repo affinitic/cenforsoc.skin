@@ -150,14 +150,14 @@ class ManageFormation(BrowserView):
                                 form_etat=formationEtat)
         session.add(newEntry)
         session.flush()
-        #session.refresh(newEntry)
-        #formationPk = newEntry.for_pk
+        session.refresh(newEntry)
+        formationPk = newEntry.form_pk
 
         portalUrl = getToolByName(self.context, 'portal_url')()
         ploneUtils = getToolByName(self.context, 'plone_utils')
         message = u"La nouvelle formation %s  a bien été enregistrée !" % (formationTitre)
         ploneUtils.addPortalMessage(message, 'info')
-        url = "%s/formation/ajouter-une-formation" % (portalUrl)
+        url = "%s/formations/decrire-une-formation?formationPk=%s" % (portalUrl, formationPk)
         self.request.response.redirect(url)
         return ''
 

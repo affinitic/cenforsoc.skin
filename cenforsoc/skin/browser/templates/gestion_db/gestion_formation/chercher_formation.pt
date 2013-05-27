@@ -49,7 +49,7 @@
             </form>
         </fieldset>
          <fieldset class="search-zone-nom">
-            <legend class="search-legend"> A partir du nom de la liste de toutes les formation</legend>
+            <legend class="search-legend"> A partir de la liste de toutes les formations</legend>
             <div id="info-champs">
             </div>
             <form action="modifier-une-formation"
