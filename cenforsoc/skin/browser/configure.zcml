@@ -57,6 +57,12 @@
          permission="zope.Public"
          />
 
+    <browser:page
+         for="*"
+         name="formation-searchJSON"
+         class=".SearchFormation.SearchFormationAutoCompleteJSON"
+         permission="zope.Public"
+         />
 
 
 

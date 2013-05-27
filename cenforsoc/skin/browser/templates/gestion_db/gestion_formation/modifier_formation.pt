@@ -10,12 +10,13 @@
 
 <body>
 <div metal:fill-slot="main"
-     tal:define="formationPk request/formationPk">
+     tal:define="formationPk request/formationPk | nothing;
+                 formationTitre request/formationTitre | nothing">
 
    <h1><a href="formation"><img src="images/formation.png" /></a> Gestion de la base de donn&eacute;es des formations</h1>
    <fieldset>
       <legend class="legende">Modifier une formation</legend>
-      <tal:requete tal:define="formation python:view.getFormationByPk(formationPk)">
+      <tal:requete tal:define="formation python:view.getSearchingFormation(formationPk, formationTitre)">
           <form action="updateFormation"
                 method="post">
              <table width="95%"
@@ -95,7 +96,7 @@
              <input type="hidden"
                     name="formationPk"
                     value=""
-                    tal:attributes="value formationPk" />
+                    tal:attributes="value formation/form_pk" />
 
              <div class="formControls" align="center">
                     <input class="context"

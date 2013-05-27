@@ -53,6 +53,10 @@ class IManageLivre(Interface):
         """
         insert a new item in livre
         """
+    def updateLivre():
+        """
+        update items in livre
+        """
 
 
 class IManageAffiche(Interface):
@@ -89,8 +93,31 @@ class IManageAuteur(Interface):
         """
         insert a new item in auteur
         """
+    def updateAuteur():
+        """
+        update items in auteur
+        """
+
 
 class IManageFormation(Interface):
     """
     gestion des demandes de formations
     """
+    def gestionFormation():
+        """
+        insertion ou update d'un auteur
+        """
+
+    def getFormationByLeffeSearch(self, searchString):
+        """
+        table pg auteur
+        recuperation d'une auteur via le livesearch
+        """
+    def insertFormation():
+        """
+        insert a new item in formation
+        """
+    def updateFormation():
+        """
+        update items in formation
+        """

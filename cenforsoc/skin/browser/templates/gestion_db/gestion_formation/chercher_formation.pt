@@ -32,7 +32,7 @@
             <legend class="search-legend"> A partir du nom d'une formation</legend>
             <div id="info-champs">
             </div>
-            <form action="afficher-la-formation"
+            <form action="modifier-une-formation"
                   method="post">
                 <div class="div_question">
                     <input type="text"

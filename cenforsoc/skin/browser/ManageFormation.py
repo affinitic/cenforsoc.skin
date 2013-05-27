@@ -92,9 +92,34 @@ class ManageFormation(BrowserView):
         session = wrapper.session
         FormationTable = wrapper.getMapper('formation')
         query = session.query(FormationTable)
-        query = query.filter(FormationTable.for_titre.ilike("%%%s%%" % searchString))
-        formation = ["%s" % (elem.for_titre) for elem in query.all()]
+        query = query.filter(FormationTable.form_titre.ilike("%%%s%%" % searchString))
+        formation = ["%s" % (elem.form_titre) for elem in query.all()]
         return formation
+
+    def getSearchingFormation(self, formationPk=None, formationTitre=None):
+        """
+        table pg periodique
+        recuperation du periodique selon la pk
+        la pk peut arriver via le form en hidden ou via un lien construit,
+         (cas du listing de resultat de moteur de recherche)
+        je teste si la pk arrive par param, si pas je prends celle du form
+        """
+        fields = self.request.form
+        if not formationTitre:
+            formationTitre = fields.get('formationTitre')
+        if not formationPk:
+            formationPk = fields.get('formation_pk')
+
+        wrapper = getSAWrapper('cenforsoc')
+        session = wrapper.session
+        formationTable = wrapper.getMapper('formation')
+        query = session.query(formationTable)
+        if formationTitre:
+            query = query.filter(formationTable.form_titre == formationTitre)
+        if formationPk:
+            query = query.filter(formationTable.form_pk == formationPk)
+        searchingFormation = query.one()
+        return searchingFormation
 
     def insertFormation(self):
         """
