@@ -395,7 +395,6 @@ class ManageFormation(BrowserView):
         query = session.query(InscriptionFormationTable)
         #allInscriptions = select([distinct(InscriptionFormationTable.form_ins_nom)], order_by=InscriptionFormationTable.form_ins_nom).execute().fetchall()
         allInscriptions = session.execute('select distinct form_ins_nom from formation_inscription order by form_ins_nom;').fetchall()
-        import pdb; pdb.set_trace()
         #query = query.order_by(InscriptionFormationTable.form_ins_nom)
         #allInscriptions = query.all()
         return allInscriptions
