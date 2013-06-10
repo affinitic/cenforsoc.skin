@@ -30,7 +30,7 @@
 		<p>Vous avez  possibilit&eacute;s pour effectuer une recherche</p>
 		
 		<div class="formCadre">
-          <form action="resultat-recherche-livre"
+          <form action="decrire-le-livre"
                 method="post">
               <h2>
                   Recherche par titre
@@ -78,7 +78,7 @@
         </div>
         
         <div class="formCadre">
-          <form action="resultat-recherche-livre"
+          <form action="decrire-le-livre"
                 method="post">
               <h2>
                   Recherche par mot-clé

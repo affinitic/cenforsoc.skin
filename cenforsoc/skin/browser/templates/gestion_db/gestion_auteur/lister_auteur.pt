@@ -46,7 +46,6 @@
                             &nbsp;
                             <a href="" tal:attributes="href string:modifier-un-auteur?auteurPk=${auteur/auteur_pk}">
                                 <img src="icon_modifier.png" /></a>&nbsp;
-                        
                         </td>
     			    </tr>
 			    </tbody>

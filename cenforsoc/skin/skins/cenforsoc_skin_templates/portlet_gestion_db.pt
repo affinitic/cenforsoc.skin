@@ -50,14 +50,14 @@
             </dt>
                 <dd>
                     <a href=""
-                       tal:attributes="href string:${context/portal_url}/admin-experience-creer">
+                       tal:attributes="href string:${context/portal_url}/formations/chercher-une-inscription">
                        &#10147; Chercher une inscription
                     </a>
                 </dd>
                 <dd>
                     <a href=""
-                       tal:attributes="href string:${context/portal_url}/admin-experience-creer">
-                       &#10147; Lister les formations
+                       tal:attributes="href string:${context/portal_url}/formations/lister-les-inscriptions">
+                       &#10147; Lister les inscriptions
                     </a>
                 </dd>
 
@@ -66,26 +66,26 @@
 
             <dt class="menu-titre">
                 <a href=""
-                   tal:attributes="href string:${context/portal_url}/documentation/bibliotheque/les-livres">
+                   tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-livres">
                 &#10023; Les ouvrages</a>
             </dt>
                 <dd>
-                    <a href="" tal:attributes="href string:${context/portal_url}/documentation/bibliotheque/chercher-un-livre">
+                    <a href="" tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-livres/admin-chercher-un-livre">
                         &#10147; Chercher un ouvrage
                     </a>
                 </dd>
                 <dd>
-                    <a href="" tal:attributes="href string:${context/portal_url}/documentation/bibliotheque/ajouter-un-livre">
+                    <a href="" tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-livres/admin-ajouter-un-livre">
                         &#10147; Ajouter un ouvrage
                     </a>
                 </dd>
                 <dd>
-                    <a href="" tal:attributes="href string:${context/portal_url}/documentation/bibliotheque/modifier-un-livre">
+                    <a href="" tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-livres/admin-modifier-un-livre">
                         &#10147; Modifier un ouvrage
                     </a>
                 </dd>
                 <dd>
-                    <a href="" tal:attributes="href string:${context/portal_url}/documentation/bibliotheque/lister-les-livres">
+                    <a href="" tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-livres/admin-lister-les-livres">
                         &#10147; Lister les ouvrages
                     </a>
                 </dd>
@@ -152,30 +152,30 @@
 
                 <dt class="menu-titre">
                     <a href=""
-                       tal:attributes="href string:${context/portal_url}/documentation/auteur/">
+                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-auteurs/">
                        &#10023; Les auteurs</a>
                 </dt>
                 <dd>
                     <a href=""
-                       tal:attributes="href string:${context/portal_url}/documentation/auteur/chercher-un-auteur">
+                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-auteurs/chercher-un-auteur">
                         &#10147; Chercher un auteur
                     </a>
                 </dd>
                 <dd>
                     <a href=""
-                       tal:attributes="href string:${context/portal_url}/documentation/auteur/ajouter-un-auteur">
+                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-auteurs/ajouter-un-auteur">
                         &#10147; Ajouter un auteur
                     </a>
                 </dd>
                 <dd>
                     <a href=""
-                       tal:attributes="href string:${context/portal_url}/documentation/auteur/modifier-un-auteur">
+                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-auteurs/chercher-un-auteur">
                         &#10147; Modifier un auteur
                     </a>
                 </dd>
                 <dd>
                     <a href=""
-                       tal:attributes="href string:${context/portal_url}/documentation/auteur/lister-les-auteurs">
+                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-auteurs/lister-les-auteurs">
                         &#10147; Lister les auteurs
                     </a>
                     <span class="portlet-gestion-db-separation"></span>

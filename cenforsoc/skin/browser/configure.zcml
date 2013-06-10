@@ -64,6 +64,13 @@
          permission="zope.Public"
          />
 
+    <browser:page
+         for="*"
+         name="inscription-searchJSON"
+         class=".SearchInscriptionFormation.SearchInscriptionFormationAutoCompleteJSON"
+         permission="zope.Public"
+         />
+
 
 
 <!-- PERIODIQUE -->
@@ -224,46 +231,6 @@
         class=".ManageLivre.ManageLivre"
         allowed_interface=".interfaces.IManageLivre"
         />
-    <browser:page
-        name="ajouter-un-livre"
-        for="*"
-        template="templates/livre/ajouter_livre.pt"
-        permission="zope.Public"
-        class=".ManageLivre.ManageLivre"
-        allowed_interface=".interfaces.IManageLivre"
-        />
-    <browser:page
-        name="modifier-un-livre"
-        for="*"
-        template="templates/livre/modifier_livre.pt"
-        permission="zope.Public"
-        class=".ManageLivre.ManageLivre"
-        allowed_interface=".interfaces.IManageLivre"
-        />
-    <browser:page
-        name="supprimer-un-livre"
-        for="*"
-        template="templates/livre/supprimer_livre.pt"
-        permission="zope.Public"
-        class=".ManageLivre.ManageLivre"
-        allowed_interface=".interfaces.IManageLivre"
-        />
-    <browser:page
-        name="insertLivre"
-        for="*"
-        class=".ManageLivre.ManageLivre"
-        permission="zope.Public"
-        attribute="insertLivre"
-        allowed_interface=".interfaces.IManageLivre"
-        />
-    <browser:page
-        name="updateLivre"
-        for="*"
-        class=".ManageLivre.ManageLivre"
-        permission="zope.Public"
-        attribute="updateLivre"
-        allowed_interface=".interfaces.IManageLivre"
-        />
 
 
 <!-- AFFICHE -->
@@ -338,97 +305,6 @@
         permission="zope.Public"
         class=".ManageAffiche.ManageAffiche"
         allowed_interface=".interfaces.IManageAffiche"
-        />
-
-
-<!-- AUTEUR -->
-    <browser:page
-        name="gestionAuteur"
-        for="*"
-        permission="zope.Public"
-        class=".ManageAuteur.ManageAuteur"
-        allowed_interface=".interfaces.IManageAuteur"
-        attribute="gestionAuteur"
-        />
-    <browser:page
-        name="les-auteurs"
-        for="*"
-        template="templates/auteur/auteur.pt"
-        permission="zope.Public"
-        class=".ManageAuteur.ManageAuteur"
-        allowed_interface=".interfaces.IManageAuteur"
-        />
-    <browser:page
-        name="lister-les-auteurs"
-        for="*"
-        template="templates/auteur/lister_auteur.pt"
-        permission="zope.Public"
-        class=".ManageAuteur.ManageAuteur"
-        allowed_interface=".interfaces.IManageAuteur"
-        />
-    <browser:page
-        name="decrire-un-auteur"
-        for="*"
-        template="templates/auteur/decrire_auteur.pt"
-        permission="zope.Public"
-        class=".ManageAuteur.ManageAuteur"
-        allowed_interface=".interfaces.IManageAuteur"
-        />
-    <browser:page
-        name="chercher-un-auteur"
-        for="*"
-        template="templates/auteur/chercher_auteur.pt"
-        permission="zope.Public"
-        class=".ManageAuteur.ManageAuteur"
-        allowed_interface=".interfaces.IManageAuteur"
-        />
-    <browser:page
-        name="resultat-recherche-auteur"
-        for="*"
-        template="templates/auteur/resultat_recherche_auteur.pt"
-        permission="zope.Public"
-        class=".ManageAuteur.ManageAuteur"
-        allowed_interface=".interfaces.IManageAuteur"
-        />
-    <browser:page
-        name="ajouter-un-auteur"
-        for="*"
-        template="templates/auteur/ajouter_auteur.pt"
-        permission="zope.Public"
-        class=".ManageAuteur.ManageAuteur"
-        allowed_interface=".interfaces.IManageAuteur"
-        />
-    <browser:page
-        name="modifier-un-auteur"
-        for="*"
-        template="templates/auteur/modifier_auteur.pt"
-        permission="zope.Public"
-        class=".ManageAuteur.ManageAuteur"
-        allowed_interface=".interfaces.IManageAuteur"
-        />
-    <browser:page
-        name="supprimer-un-auteur"
-        for="*"
-        template="templates/auteur/supprimer_auteur.pt"
-        permission="zope.Public"
-        class=".ManageAuteur.ManageAuteur"
-        allowed_interface=".interfaces.IManageAuteur"
-        />
-    <browser:page
-        name="insertAuteur"
-        for="*"
-        class=".ManageAuteur.ManageAuteur"
-        permission="zope.Public"
-        attribute="insertAuteur"
-        allowed_interface=".interfaces.IManageAuteur"
-        />
-    <browser:page
-        name="updateAuteur"
-        for="*"
-        class=".ManageAuteur.ManageAuteur"
-        permission="zope.Public"
-        attribute="updateAuteur"
-        allowed_interface=".interfaces.IManageAuteur"
         />
 
 
@@ -538,6 +414,170 @@
         allowed_interface=".interfaces.IManageFormation"
         />
 
+<!-- gestion db :: inscription -->
+    <browser:page
+        name="lister-les-inscriptions"
+        for="*"
+        template="templates/gestion_db/gestion_formation/lister_inscription.pt"
+        permission="zope.Public"
+        class=".ManageFormation.ManageFormation"
+        allowed_interface=".interfaces.IManageFormation"
+        />
+    <browser:page
+        name="chercher-une-inscription"
+        for="*"
+        template="templates/gestion_db/gestion_formation/chercher_inscription.pt"
+        permission="zope.Public"
+        class=".ManageFormation.ManageFormation"
+        allowed_interface=".interfaces.IManageFormation"
+        />
+    <browser:page
+        name="decrire-une-inscription"
+        for="*"
+        template="templates/gestion_db/gestion_formation/decrire_inscription.pt"
+        permission="zope.Public"
+        class=".ManageFormation.ManageFormation"
+        allowed_interface=".interfaces.IManageFormation"
+        />
 
+<!-- gestion db :: auteur -->
+    <browser:page
+        name="gestionAuteur"
+        for="*"
+        permission="zope.Public"
+        class=".ManageAuteur.ManageAuteur"
+        allowed_interface=".interfaces.IManageAuteur"
+        attribute="gestionAuteur"
+        />
+    <browser:page
+        name="les-auteurs"
+        for="*"
+        template="templates/gestion_db/gestion_auteur/auteur.pt"
+        permission="zope.Public"
+        class=".ManageAuteur.ManageAuteur"
+        allowed_interface=".interfaces.IManageAuteur"
+        />
+    <browser:page
+        name="lister-les-auteurs"
+        for="*"
+        template="templates/gestion_db/gestion_auteur/lister_auteur.pt"
+        permission="zope.Public"
+        class=".ManageAuteur.ManageAuteur"
+        allowed_interface=".interfaces.IManageAuteur"
+        />
+    <browser:page
+        name="decrire-un-auteur"
+        for="*"
+        template="templates/gestion_db/gestion_auteur/decrire_auteur.pt"
+        permission="zope.Public"
+        class=".ManageAuteur.ManageAuteur"
+        allowed_interface=".interfaces.IManageAuteur"
+        />
+    <browser:page
+        name="chercher-un-auteur"
+        for="*"
+        template="templates/gestion_db/gestion_auteur/chercher_auteur.pt"
+        permission="zope.Public"
+        class=".ManageAuteur.ManageAuteur"
+        allowed_interface=".interfaces.IManageAuteur"
+        />
+    <browser:page
+        name="resultat-recherche-auteur"
+        for="*"
+        template="templates/gestion_db/gestion_auteur/resultat_recherche_auteur.pt"
+        permission="zope.Public"
+        class=".ManageAuteur.ManageAuteur"
+        allowed_interface=".interfaces.IManageAuteur"
+        />
+    <browser:page
+        name="ajouter-un-auteur"
+        for="*"
+        template="templates/gestion_db/gestion_auteur/ajouter_auteur.pt"
+        permission="zope.Public"
+        class=".ManageAuteur.ManageAuteur"
+        allowed_interface=".interfaces.IManageAuteur"
+        />
+    <browser:page
+        name="modifier-un-auteur"
+        for="*"
+        template="templates/gestion_db/gestion_auteur/modifier_auteur.pt"
+        permission="zope.Public"
+        class=".ManageAuteur.ManageAuteur"
+        allowed_interface=".interfaces.IManageAuteur"
+        />
+    <browser:page
+        name="supprimer-un-auteur"
+        for="*"
+        template="templates/gestion_db/gestion_auteur/supprimer_auteur.pt"
+        permission="zope.Public"
+        class=".ManageAuteur.ManageAuteur"
+        allowed_interface=".interfaces.IManageAuteur"
+        />
+    <browser:page
+        name="insertAuteur"
+        for="*"
+        class=".ManageAuteur.ManageAuteur"
+        permission="zope.Public"
+        attribute="insertAuteur"
+        allowed_interface=".interfaces.IManageAuteur"
+        />
+    <browser:page
+        name="updateAuteur"
+        for="*"
+        class=".ManageAuteur.ManageAuteur"
+        permission="zope.Public"
+        attribute="updateAuteur"
+        allowed_interface=".interfaces.IManageAuteur"
+        /> 
+
+<!-- gestion_db :: livres -->
+    <browser:page
+        name="admin-chercher-un-livre"
+        for="*"
+        template="templates/gestion_db/gestion_livre/admin_chercher_livre.pt"
+        permission="zope.Public"
+        class=".ManageLivre.ManageLivre"
+        allowed_interface=".interfaces.IManageLivre"
+        />
+    <browser:page
+        name="admin-ajouter-un-livre"
+        for="*"
+        template="templates/gestion_db/gestion_livre/admin_ajouter_livre.pt"
+        permission="zope.Public"
+        class=".ManageLivre.ManageLivre"
+        allowed_interface=".interfaces.IManageLivre"
+        />
+    <browser:page
+        name="admin-modifier-un-livre"
+        for="*"
+        template="templates/gestion_db/gestion_livre/admin_modifier_livre.pt"
+        permission="zope.Public"
+        class=".ManageLivre.ManageLivre"
+        allowed_interface=".interfaces.IManageLivre"
+        />
+    <browser:page
+        name="admin-supprimer-un-livre"
+        for="*"
+        template="templates/gestion_db/gestion_livre/admin_supprimer_livre.pt"
+        permission="zope.Public"
+        class=".ManageLivre.ManageLivre"
+        allowed_interface=".interfaces.IManageLivre"
+        />
+    <browser:page
+        name="insertLivre"
+        for="*"
+        class=".ManageLivre.ManageLivre"
+        permission="zope.Public"
+        attribute="insertLivre"
+        allowed_interface=".interfaces.IManageLivre"
+        />
+    <browser:page
+        name="updateLivre"
+        for="*"
+        class=".ManageLivre.ManageLivre"
+        permission="zope.Public"
+        attribute="updateLivre"
+        allowed_interface=".interfaces.IManageLivre"
+        />
 
 </configure>

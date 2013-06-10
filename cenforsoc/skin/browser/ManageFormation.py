@@ -3,7 +3,7 @@
 import datetime
 #import time
 #import random
-#from sqlalchemy import or_
+from sqlalchemy import select, distinct
 #from mailer import Mailer
 #from LocalFS import LocalFS
 from zope.component import getMultiAdapter
@@ -72,7 +72,7 @@ class ManageFormation(BrowserView):
         totalisation des heures de formation selectionnee
         si plus de 80, refus
         """
-        nbreHeureFormation=0
+        nbreHeureFormation = 0
         wrapper = getSAWrapper('cenforsoc')
         session = wrapper.session
         FormationTable = wrapper.getMapper('formation')
@@ -236,7 +236,6 @@ class ManageFormation(BrowserView):
 
             inscriptionFormationInscriptionDate = datetime.datetime.now()
 
-
             # # SI la durée des formations sélectionnes dépassent 80 heures,
             # ALORS la demande n'est pas valide
             # SINON
@@ -346,8 +345,7 @@ class ManageFormation(BrowserView):
             message = u"Votre demande d'inscription a bien été enregistrée !"
             ploneUtils.addPortalMessage(message, 'info')
             url = "%s/formations/merci-inscription" % (portalUrl)
-
-        else :
+        else:
             portalUrl = getToolByName(self.context, 'portal_url')()
             ploneUtils = getToolByName(self.context, 'plone_utils')
             message = u"""
@@ -372,5 +370,83 @@ class ManageFormation(BrowserView):
         if operation == "update":
             self.updateFormation()
 
+### INSCRIPTION  AUX FORMATIONS ####
+    def getAllInscriptions(self):
+        """
+        table pg inscription
+        recuperation de toutes les inscriptionss
+        """
+        wrapper = getSAWrapper('cenforsoc')
+        session = wrapper.session
+        InscriptionFormationTable = wrapper.getMapper('formation_inscription')
+        query = session.query(InscriptionFormationTable)
+        query = query.order_by(InscriptionFormationTable.form_ins_nom)
+        allInscriptions = query.all()
+        return allInscriptions
 
+    def getAllDistinctInscriptions(self):
+        """
+        table pg inscription
+        recuperation de toutes les inscriptionss
+        """
+        wrapper = getSAWrapper('cenforsoc')
+        session = wrapper.session
+        InscriptionFormationTable = wrapper.getMapper('formation_inscription')
+        query = session.query(InscriptionFormationTable)
+        #allInscriptions = select([distinct(InscriptionFormationTable.form_ins_nom)], order_by=InscriptionFormationTable.form_ins_nom).execute().fetchall()
+        allInscriptions = session.execute('select distinct form_ins_nom from formation_inscription order by form_ins_nom;').fetchall()
+        import pdb; pdb.set_trace()
+        #query = query.order_by(InscriptionFormationTable.form_ins_nom)
+        #allInscriptions = query.all()
+        return allInscriptions
 
+    def getInscriptionByPk(self, inscriptionPk):
+        """
+        table pg inscription
+        recuperation d'une inscription selon sa pk
+        """
+        wrapper = getSAWrapper('cenforsoc')
+        session = wrapper.session
+        InscriptionFormationTable = wrapper.getMapper('formation_inscription')
+        query = session.query(InscriptionFormationTable)
+        query = query.filter(InscriptionFormationTable.form_ins_pk == inscriptionPk)
+        inscription = query.one()
+        return inscription
+
+    def getInscriptionFormationByLeffeSearch(self, searchString):
+        """
+        table pg formation-inscription
+        recuperation d'une inscription a une formation par le nom via le livesearch
+        """
+        wrapper = getSAWrapper('cenforsoc')
+        session = wrapper.session
+        InscriptionFormationTable = wrapper.getMapper('formation_inscription')
+        query = session.query(InscriptionFormationTable)
+        query = query.filter(InscriptionFormationTable.form_ins_nom.ilike("%%%s%%" % searchString))
+        inscription = ["%s" % (elem.form_ins_nom) for elem in query.all()]
+        return inscription
+
+    def getSearchingInscriptionFormation(self, isncriptionFormationPk=None, inscriptionNom=None):
+        """
+        table pg periodique
+        recuperation du periodique selon la pk
+        la pk peut arriver via le form en hidden ou via un lien construit,
+         (cas du listing de resultat de moteur de recherche)
+        je teste si la pk arrive par param, si pas je prends celle du form
+        """
+        fields = self.request.form
+        if not inscriptionNom:
+            inscriptionNom = fields.get('inscriptionNom')
+        if not isncriptionFormationPk:
+            isncriptionFormationPk = fields.get('inscriptionPk')
+
+        wrapper = getSAWrapper('cenforsoc')
+        session = wrapper.session
+        inscriptionFormationTable = wrapper.getMapper('formation_inscription')
+        query = session.query(inscriptionFormationTable)
+        if inscriptionNom:
+            query = query.filter(inscriptionFormationTable.form_ins_nom == inscriptionNom).distinct()
+        if isncriptionFormationPk:
+            query = query.filter(inscriptionFormationTable.form_ins_pk == isncriptionFormationPk)
+        searchingInscriptionFormation = query.one()
+        return searchingInscriptionFormation
