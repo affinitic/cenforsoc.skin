@@ -30,7 +30,7 @@
 		<p>Vous avez  possibilit&eacute;s pour effectuer une recherche</p>
 		
 		<div class="formCadre">
-          <form action="decrire-le-livre"
+          <form action="admin-decrire-le-livre"
                 method="post">
               <h2>
                   Recherche par titre
@@ -108,12 +108,12 @@
 		<ul>
 			<li>
 			    <a href=""
-			       tal:attributes="href string:${context/portal_url}/documentation/bibliotheque/lister-les-titres-des-livres">
+			       tal:attributes="href string:${context/portal_url}/string:${context/portal_url}/gestion-de-la-base/les-livres/admin-lister-les-titres-des-livres">
 			        Lister tous les titres</a>
 			</li>
 			<li>
 			    <a href=""
-			       tal:attributes="href string:${context/portal_url}/documentation/auteur/lister-les-auteurs">
+			       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-auteurs/lister-les-auteurs">
 			       Lister tous les auteurs</a>
 			</li>
 		</ul>

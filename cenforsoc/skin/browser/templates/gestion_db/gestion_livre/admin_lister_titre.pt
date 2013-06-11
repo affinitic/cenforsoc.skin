@@ -1,0 +1,68 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plone">
+
+<head>
+    <metal:noborder fill-slot="top_slot"
+                    tal:define="dummy python:request.set('disable_border',1)" />
+</head>
+
+<body>
+<div metal:fill-slot="main"
+     tal:define="livres python: view.getAllLivres()">
+    <h1>Lister les ouvrages</h1>
+    <p>
+    Il y a actuellement
+    <span tal:content="python: len(livres)"
+          class="gras rouge" />
+    livres enregistrés dans notre base.
+    </p>
+    
+    <table class="listing table_livre">
+        <thead>
+            <tr>
+                <th> Pk-DB </th>
+                <th> N° Inv </th>
+                <th> Titre </th>
+                <th> Auteur </th>
+                <th class="nosort"> Modifier </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tal:boucle tal:repeat="livre livres">
+                <tal:block tal:define="odd repeat/livre/odd">
+        			<tr tal:attributes="class python:odd and 'listing_bg_odd' or 'listing_bg_even'">
+        				<td>
+        				    <span tal:content="livre/liv_pk"
+        				          class="discreet" />
+        				</td>
+        				<td>
+        				    <span tal:content="livre/liv_inventaire"
+        				          class="discreet" />
+        				</td>
+        				<td>
+        					<a href="" 
+        					   tal:attributes="href string:gestion_db/gestion_livre/admin-decrire-le-livre?livrePk=${livre/liv_pk}"  
+        					   tal:content="python:livre.liv_titre"></a>
+        				</td>
+        				<td>
+        				    <span tal:content="livre/liv_auteur_1" /><br />
+        				    <span tal:content="livre/liv_auteur_2" /><br />
+        				    <span tal:content="livre/liv_auteur_3" />
+        				</td>
+        				<td>
+        				    <a href="" 
+        					   tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-livres/admin-modifier-un-livre?livrePk=${livre/liv_pk}"
+        					   alt="Modifier le livre"
+        					   class="btn-modifier"></a>
+        				</td>
+        			</tr>
+    			</tal:block>
+            </tal:boucle>
+        </tbody>
+    </table>
+</div><!-- div metal-->
+</body>
+</html>
+

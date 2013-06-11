@@ -90,8 +90,25 @@
                           class="donnee-db" />
                 </li>
             </ul>
+            <ul id="menu-gestion-donnee">
+                <li>
+                    <a href=""
+                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-livres/admin-modifier-un-livre?livrePk=${livre/liv_pk}">
+                        Modifier ce livre</a>
+                </li>
+                <li>
+                    <a href=""
+                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-livres/admin-lister-les-titres-des-livres">
+                       Listing des titres</a>
+                </li>
+            </ul>
         </div>
     </tal:boucle>
+    <div id="retour">
+        <a href=""
+           tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-livres/admin-chercher-un-livre">
+           retour à la recherche</a>
+    </div>
 </div><!-- div metal-->
 </body>
 </html>

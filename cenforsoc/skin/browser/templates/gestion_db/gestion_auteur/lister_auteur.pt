@@ -12,26 +12,26 @@
 <div metal:fill-slot="main"
      tal:define="auteurs python: view.getAllAuteurs()">
     <h1>Lister les auteurs</h1>
-    <table>
+    <table class="listing table_livre">
         <thead>
             <tr>
                 <th></th>
                 <th>Nom</th>
                 <th>Prénom</th>
-                <th>Modifier</th>
+                <th class="nosort">Modifier</th>
             </tr>
         </thead>
         <tfoot>
             <tr>
-                <th></th>
+                <th>IdDb</th>
                 <th>Nom</th>
                 <th>Prénom</th>
                 <th>Modifier</th>
             </tr>
         </tfoot>
-        <tal:boucle tal:repeat="auteur auteurs">
-            <span tal:define="odd repeat/auteur/odd">
-                <tbody>
+        <tbody>
+            <tal:boucle tal:repeat="auteur auteurs">
+                <span tal:define="odd repeat/auteur/odd">
                     <tr tal:attributes="class python:odd and 'listing_bg_odd' or 'listing_bg_even'">
                         <td>
                             <span tal:content="auteur/auteur_pk"/>
@@ -44,13 +44,15 @@
                         </td>
                         <td>
                             &nbsp;
-                            <a href="" tal:attributes="href string:modifier-un-auteur?auteurPk=${auteur/auteur_pk}">
-                                <img src="icon_modifier.png" /></a>&nbsp;
+                            <a href=""
+                               tal:attributes="href string:modifier-un-auteur?auteurPk=${auteur/auteur_pk}"
+                               alt="Modifier l'auteur"
+        					   class="btn-modifier"></a>
                         </td>
     			    </tr>
-			    </tbody>
-			</span>
-		</tal:boucle>
+    			</span>
+    		</tal:boucle>
+		</tbody>
 	</table>
 </div><!-- div metal-->
 </body>

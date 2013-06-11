@@ -80,12 +80,12 @@
                     </a>
                 </dd>
                 <dd>
-                    <a href="" tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-livres/admin-modifier-un-livre">
+                    <a href="" tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-livres/admin-chercher-un-livre">
                         &#10147; Modifier un ouvrage
                     </a>
                 </dd>
                 <dd>
-                    <a href="" tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-livres/admin-lister-les-livres">
+                    <a href="" tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-livres/admin-lister-les-titres-des-livres">
                         &#10147; Lister les ouvrages
                     </a>
                 </dd>

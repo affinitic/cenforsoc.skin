@@ -540,6 +540,22 @@
         allowed_interface=".interfaces.IManageLivre"
         />
     <browser:page
+        name="admin-lister-les-titres-des-livres"
+        for="*"
+        template="templates/gestion_db/gestion_livre/admin_lister_titre.pt"
+        permission="zope.Public"
+        class=".ManageLivre.ManageLivre"
+        allowed_interface=".interfaces.IManageLivre"
+        />
+    <browser:page
+        name="admin-decrire-le-livre"
+        for="*"
+        template="templates/gestion_db/gestion_livre/admin_decrire_livre.pt"
+        permission="zope.Public"
+        class=".ManageLivre.ManageLivre"
+        allowed_interface=".interfaces.IManageLivre"
+        />
+    <browser:page
         name="admin-ajouter-un-livre"
         for="*"
         template="templates/gestion_db/gestion_livre/admin_ajouter_livre.pt"
