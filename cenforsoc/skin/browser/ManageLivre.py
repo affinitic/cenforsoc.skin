@@ -204,18 +204,48 @@ class ManageLivre(BrowserView):
         ajout d'un item Livre
         """
         fields = self.context.REQUEST
-        LivreTitre = getattr(fields, 'LivreTitre')
-        livreInventaire = getattr(fields, 'livreInventaire', None)
+        livreTitre = fields.get('livreTitre', None)
+        livreInventaire = fields.get('livreInventaire', None)
+        livreCoteRang = fields.get('livreCoteRang', None)
+        livreEdition = fields.get('livreEdition', None)
+        livreEditeur = fields.get('livreEditeur', None)
+        livreLieuEdition = fields.get('livreLieuEdition', None)
+        livreDateEdition = fields.get('livreDateEdition', None)
+        livreNbrePages = fields.get('livreNbrePages', None)
+        livreCollection = fields.get('livreCollection', None)
+        livreNotes = fields.get('livreNotes', None)
+        livreIsbn = fields.get('livreIsbn', None)
+        livreMotsCles = fields.get('livreMotsCles', None)
+        livrePret = fields.get('livrePret', None)
+
 
         wrapper = getSAWrapper('cenforsoc')
         session = wrapper.session
         insertLivre = wrapper.getMapper('livre')
-        newEntry = insertLivre(liv_titre=LivreTitre, \
-                               liv_inventaire=livreInventaire)
-        session.save(newEntry)
+        newEntry = insertLivre(liv_titre=livreTitre, \
+                               liv_inventaire=livreInventaire, \
+                               liv_cote_rang=livreCoteRang, \
+                               liv_edition=livreEdition, \
+                               liv_lieu=livreLieuEdition, \
+                               liv_editeur=livreEditeur, \
+                               liv_date=livreDateEdition, \
+                               liv_pages=livreNbrePages, \
+                               liv_collection=livreCollection, \
+                               liv_notes=livreNotes, \
+                               liv_isbn=livreIsbn, \
+                               liv_mots_cles=livreMotsCles, \
+                               liv_pret=livrePret)
+        session.add(newEntry)
         session.flush()
-        #cible = "%s/ajouter-un-Livre" % (self.context.portal_url(), )
-        #self.context.REQUEST.RESPONSE.redirect(cible)
+        session.refresh(newEntry)
+        livrePk = newEntry.liv_pk
+
+        portalUrl = getToolByName(self.context, 'portal_url')()
+        ploneUtils = getToolByName(self.context, 'plone_utils')
+        message = u"Le nouveau livre '%s' a bien été ajouté !" % (unicode(livreTitre, 'utf-8'), )
+        ploneUtils.addPortalMessage(message, 'info')
+        url = "%s/gestion-de-la-base/les-livres/admin-decrire-le-livre?livrePk=%s" % (portalUrl, livrePk)
+        self.request.response.redirect(url)
 
     def updateLivre(self):
         """
@@ -267,7 +297,7 @@ class ManageLivre(BrowserView):
         ploneUtils = getToolByName(self.context, 'plone_utils')
         message = u"Les données du livre '%s' ont bien été modifiées !" % (unicode(livreTitre, 'utf-8'), )
         ploneUtils.addPortalMessage(message, 'info')
-        url = "%s/documentation/bibliotheque/decrire-le-livre?livrePk=%s" % (portalUrl, livrePk)
+        url = "%s/gestion-de-la-base/les-livres/admin-decrire-le-livre?livrePk=%s" % (portalUrl, livrePk)
         self.request.response.redirect(url)
         return ''
 
