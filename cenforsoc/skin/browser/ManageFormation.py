@@ -52,6 +52,25 @@ class ManageFormation(BrowserView):
         formation = query.one()
         return formation
 
+    def getFormationForInscription(self, inscriptionPk):
+        """
+        table pg formation, link_formation_inscription
+        retourne les formaたions suivies par une personne inscrite
+        """
+        wrapper = getSAWrapper('cenforsoc')
+        session = wrapper.session
+        LinkFormationInscriptionTable = wrapper.getMapper('link_formation_inscription')
+        query = session.query(LinkFormationInscriptionTable)
+        #for pk in inscriptionPk:
+        query = query.filter(LinkFormationInscriptionTable.lnk_inscription_pk == inscriptionPk)
+        formationsPk = query.all()
+
+        formations = []
+        for pk in formationsPk:
+            formation = self.getFormationByPk(pk.lnk_formation_pk)
+            formations.append(formation)
+        return formations
+
     def getFormationOpen(self):
         """
         table pg formation
@@ -393,8 +412,7 @@ class ManageFormation(BrowserView):
         session = wrapper.session
         InscriptionFormationTable = wrapper.getMapper('formation_inscription')
         query = session.query(InscriptionFormationTable)
-        #allInscriptions = select([distinct(InscriptionFormationTable.form_ins_nom)], order_by=InscriptionFormationTable.form_ins_nom).execute().fetchall()
-        allInscriptions = session.execute('select distinct form_ins_nom from formation_inscription order by form_ins_nom;').fetchall()
+        allInscriptions = select([distinct(InscriptionFormationTable.form_ins_nom)], order_by=InscriptionFormationTable.form_ins_nom).execute().fetchall()
         #query = query.order_by(InscriptionFormationTable.form_ins_nom)
         #allInscriptions = query.all()
         return allInscriptions
@@ -427,8 +445,8 @@ class ManageFormation(BrowserView):
 
     def getSearchingInscriptionFormation(self, isncriptionFormationPk=None, inscriptionNom=None):
         """
-        table pg periodique
-        recuperation du periodique selon la pk
+        table pg formation_inscription
+        recuperation de l'inscription selon la pk
         la pk peut arriver via le form en hidden ou via un lien construit,
          (cas du listing de resultat de moteur de recherche)
         je teste si la pk arrive par param, si pas je prends celle du form
@@ -441,11 +459,12 @@ class ManageFormation(BrowserView):
 
         wrapper = getSAWrapper('cenforsoc')
         session = wrapper.session
-        inscriptionFormationTable = wrapper.getMapper('formation_inscription')
-        query = session.query(inscriptionFormationTable)
+        InscriptionFormationTable = wrapper.getMapper('formation_inscription')
+        query = session.query(InscriptionFormationTable)
         if inscriptionNom:
-            query = query.filter(inscriptionFormationTable.form_ins_nom == inscriptionNom).distinct()
+            searchingInscriptionFormation = query.filter(InscriptionFormationTable.form_ins_nom == inscriptionNom).distinct()
+            #searchingInscriptionFormation = select([distinct(InscriptionFormationTable.form_ins_nom)], order_by=InscriptionFormationTable.form_ins_nom).execute().fetchall()
         if isncriptionFormationPk:
-            query = query.filter(inscriptionFormationTable.form_ins_pk == isncriptionFormationPk)
-        searchingInscriptionFormation = query.one()
+            query = query.filter(InscriptionFormationTable.form_ins_pk == isncriptionFormationPk)
+            searchingInscriptionFormation = query.all()
         return searchingInscriptionFormation

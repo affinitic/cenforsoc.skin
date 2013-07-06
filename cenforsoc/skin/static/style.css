@@ -20,6 +20,10 @@ font-size:0.9em;
 padding-left:2em;
 }
 
+#content a:hover{
+color:#c11b1b !important;
+}
+
 #main-content{
 width:990px;
 min-height:720px;
@@ -519,8 +523,8 @@ margin:12px 0px;
 
 .donnee-etiquette{
 display:block;
-font-weight: bold;
-font-size: 0,5em;
+font-weight:bold;
+font-size:0,5em;
 color: #666;
 text-shadow:1px 1px 1px rgba(255, 255, 255, 1);
 }
@@ -533,7 +537,6 @@ text-align:left;
 padding-left:1em;
 }
 
-
 .description-formation li{
 margin:20px 0px;
 }
@@ -545,9 +548,6 @@ color:#af2320;
 text-shadow:1px 1px 1px rgba(255, 255, 255, 1);
 text-align:left;
 }
-
-
-
 
 .boite-resultat{
 width:550px;
@@ -618,6 +618,10 @@ background-color:#fff0f0;
 
 .listing_bg_even {
 background-color: #fff;
+}
+
+#donnee-liste li{
+margin-bottom:15px;
 }
 
 .table_livre {

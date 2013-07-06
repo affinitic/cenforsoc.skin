@@ -108,7 +108,7 @@
 		<ul>
 			<li>
 			    <a href=""
-			       tal:attributes="href string:${context/portal_url}/string:${context/portal_url}/gestion-de-la-base/les-livres/admin-lister-les-titres-des-livres">
+			       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-livres/admin-lister-les-titres-des-livres">
 			        Lister tous les titres</a>
 			</li>
 			<li>

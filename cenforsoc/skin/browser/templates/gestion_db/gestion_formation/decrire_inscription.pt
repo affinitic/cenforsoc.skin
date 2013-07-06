@@ -10,8 +10,9 @@
 
 <body>
 <div metal:fill-slot="main"
-     tal:define="inscription python: view.getSearchingInscriptionFormation()">
+     tal:define="inscriptions python: view.getSearchingInscriptionFormation()">
     <h1>Afficher une inscription</h1>
+    <tal:boucle tal:repeat="inscription inscriptions">
     <fieldset class="boite-resultat">
         <ul id="donnee-liste">
             <li>
@@ -115,13 +116,21 @@
                       class="donnee-db" />
             </li>
             <li>
-                <span class="donnee-etiquette">Formations déjà suivies à CENFORSOC et dans vos centrales professionnelles : "" :</span>
-                <span tal:content="inscription/form_ins_formation_suivie"
-                      class="donnee-db" />
+                <span class="donnee-etiquette">
+                    Formations déjà suivies à CENFORSOC et en centrales professionnelles
+                </span>
+                <tal:block tal:define="formations python:view.getFormationForInscription(inscription.form_ins_pk)">
+                    <tal:boucle tal:repeat="formation formations">
+                        <span tal:content="formation/form_titre"
+                              class="donnee-db" />
+                        <br />
+                    </tal:boucle>
+                </tal:block>
             </li>
 
         </ul>
     </fieldset>
+    </tal:boucle>
     <div id="retour">
         <a href=""
            tal:attributes="href string:${context/portal_url}/formations/chercher-une-inscription">

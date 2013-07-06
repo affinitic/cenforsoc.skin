@@ -56,13 +56,12 @@
                   method="post">
                 <div class="div_question">
                     <select tal:define="inscriptions python:view.getAllDistinctInscriptions()"
-                            name="inscriptionPk">
+                            name="inscriptionNom">
                         <option>...</option>
-                        <tal:boucle tal:repeat="inscription inscriptions">
+                        <tal:boucle tal:repeat="nom inscriptions">
                             <option value=""
-                                    tal:attributes="value inscription/form_ins_pk">
-                                <span tal:content="inscription/form_ins_nom" />
-                                <span tal:content="inscription/form_ins_prenom" />
+                                    tal:attributes="value nom">
+                                <span tal:content="nom" />
                             </option>
                         </tal:boucle>
                     </select>

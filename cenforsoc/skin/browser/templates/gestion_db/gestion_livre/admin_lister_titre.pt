@@ -43,7 +43,7 @@
         				</td>
         				<td>
         					<a href="" 
-        					   tal:attributes="href string:gestion_db/gestion_livre/admin-decrire-le-livre?livrePk=${livre/liv_pk}"  
+        					   tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-livres/admin-decrire-le-livre?livrePk=${livre/liv_pk}"  
         					   tal:content="python:livre.liv_titre"></a>
         				</td>
         				<td>

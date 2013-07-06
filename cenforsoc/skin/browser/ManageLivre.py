@@ -111,7 +111,7 @@ class ManageLivre(BrowserView):
         session = wrapper.session
         LivreTable = wrapper.getMapper('livre')
         query = session.query(LivreTable)
-        query = query.order_by(LivreTable.liv_pk)
+        query = query.order_by(LivreTable.liv_titre)
         allLivres = query.all()
         return allLivres
 
