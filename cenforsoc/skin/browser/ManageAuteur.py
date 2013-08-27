@@ -85,7 +85,9 @@ class ManageAuteur(BrowserView):
         query = session.query(AuteurTable)
         if auteurNom:
             auteurNom = auteurNom.split(',')
-            auteurNom = auteurNom[0].capitalize()
+            auteurNom = auteurNom[0]
+            auteurNom = auteurNom.decode('utf-8')
+            auteurNom = auteurNom.capitalize()
             query = query.filter(AuteurTable.auteur_nom == auteurNom)
         if auteurPk:
             query = query.filter(AuteurTable.auteur_pk == auteurPk)
@@ -101,7 +103,7 @@ class ManageAuteur(BrowserView):
 
         auteurNom = fields.get('auteurNom', None)
         auteurPrenom = fields.get('auteurPrenom', None)
-        
+
         auteurNom = unicode(auteurNom, 'utf-8')
         auteurPrenom = unicode(auteurPrenom, 'utf-8')
 
@@ -119,7 +121,7 @@ class ManageAuteur(BrowserView):
         ploneUtils = getToolByName(self.context, 'plone_utils')
         message = u"Le nouvel auteur %s %s a bien été enregistré !" % (auteurNom, auteurPrenom)
         ploneUtils.addPortalMessage(message, 'info')
-        url = "%s/documentation/auteur/ajouter-un-auteur" % (portalUrl)
+        url = "%s/documentation/auteur/decrire-un-auteur?auteurPk=%s" % (portalUrl, auteurPk)
         self.request.response.redirect(url)
         return ''
 
@@ -129,7 +131,7 @@ class ManageAuteur(BrowserView):
         mise a jour d'un item auteur
         """
         fields = self.request.form
-        
+
         auteurPk = fields.get('auteurPk', None)
         auteurNom = fields.get('auteurNom', None)
         auteurPrenom = fields.get('auteurPrenom', None)
@@ -150,10 +152,10 @@ class ManageAuteur(BrowserView):
         ploneUtils = getToolByName(self.context, 'plone_utils')
         message = u"L'auteur %s %s a bien été modifié !" % (auteurNom, auteurPrenom)
         ploneUtils.addPortalMessage(message, 'info')
-        url = "%s/documentation/auteur/auteur" % (portalUrl)
+        url = "%s/documentation/auteur/decrire-un-auteur?auteurPk=%s" % (portalUrl, auteurPk)
         self.request.response.redirect(url)
         return ''
-        
+
     def gestionAuteur(self):
         """
         insertion ou update d'un auteur

@@ -22,7 +22,6 @@
             methof="post">
           <div class="formInput">
               <label for="auteurNom">Nom :</label>
-              <br />
               <input type="text"
                      name="auteurNom"
                      id="auteurNom"
@@ -30,12 +29,10 @@
           </div>
           <div class="formInput">
               <label for="auteurPrenom">Prenom :</label>
-              <br />
               <input type="text"
                      name="auteurPrenom"
                      id="auteurPrenom"
                      size="50"/>
-              
           </div>
           <div class="formControls">
               <input type="hidden"

@@ -22,14 +22,11 @@
 
 <body>
 <div metal:fill-slot="main">
-    <div id="zone-titre-moteur-recherche">
-        <h1>Rechercher un auteur</h1>
-        <div class="search-text-intro">Plusieurs types de recherche sont possibles.</div>
-    </div>
-
+    <h1>Gestion des auteurs</h1>    
+    
     <div id="zone-moteur-recherche">
-        <fieldset class="search-zone-nom">
-            <legend class="search-legend"> A partir du nom d'un auteur</legend>
+        <fieldset class="formCadre">
+            <legend class="legende"> Chercher un auteur</legend>
             <div id="info-champs"></div>
             <form action="resultat-recherche-auteur"
                   method="post">

@@ -12,18 +12,16 @@
 <div metal:fill-slot="main"
      tal:define="auteurNom request/auteurNom | nothing;
                  auteurPk request/auteurPk | nothing;
-                 auteurs python:view.getSearchingAuteur(auteurPk)">">
-   <h1>
-       Gestion des auteurs
-   </h1>
-   <fieldset>
+                 auteurs python:view.getSearchingAuteur(auteurPk)">
+   <h1>Gestion des auteurs</h1>
+   
+   <fieldset class="formCadre">
       <legend class="legende">Modifier un auteur</legend>
           <tal:boucle tal:repeat="auteur auteurs">
               <form action="updateAuteur"
                     methof="post">
                   <div class="formInput">
                       <label for="auteurNom">Nom :</label>
-                      <br />
                       <input type="text"
                              name="auteurNom"
                              id="auteurNom"
@@ -33,7 +31,6 @@
                   </div>
                   <div class="formInput">
                       <label for="auteurPrenom">Prénom :</label>
-                      <br />
                       <input type="text"
                              name="auteurPrenom"
                              id="auteurPrenom"

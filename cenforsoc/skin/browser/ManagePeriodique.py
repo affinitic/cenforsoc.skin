@@ -134,7 +134,7 @@ class ManagePeriodique(BrowserView):
         insertPeriodique = wrapper.getMapper('periodique')
         newEntry = insertPeriodique(per_titre=periodiqueTitre, \
                                     per_description=periodiqueDescription)
-        session.save(newEntry)
+        session.add(newEntry)
         session.flush()
         #cible = "%s/ajouter-un-periodique" % (self.context.portal_url(), )
         #self.context.REQUEST.RESPONSE.redirect(cible)
