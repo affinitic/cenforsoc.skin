@@ -12,100 +12,100 @@
 <div metal:fill-slot="main"
      tal:define="formationPk request/formationPk | nothing;
                  formationTitre request/formationTitre | nothing">
+    <h1>Gestion des formations</h1>
+    <fieldset>
+        <legend class="legende">Modifier une formation</legend>
+        <tal:requete tal:define="formation python:view.getSearchingFormation(formationPk, formationTitre)">
+            <form action="updateFormation"
+                  method="post">
+                <table width="95%"
+                       align="center"
+                       border="0"
+                       cellpadding="5"
+                       cellspacing="0">
+                    <tr>
+                        <td class="etiquette">Titre</td>
+                        <td>
+                            <input type="text"
+                                   name="formationTitre"
+                                   size="50"
+                                   value=""
+                                   tal:attributes="value formation/form_titre" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="etiquette">Dur&eacute;e</td>
+                        <td>
+                            <input type="text"
+                                   name="formationDuree"
+                                   size="5"
+                                   value=""
+                                   tal:attributes="value formation/form_duree" /> heures
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="etiquette">Date de d&eacute;but</td>
+                        <td>
+                            <input type="text"
+                                   name="formationDateDebut"
+                                   size="50"
+                                   value=""
+                                   tal:attributes="value formation/form_date_deb" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="etiquette" valign="top">Description</td>
+                        <td>
+                            <textarea name="formationDescription"
+                                      rows="5"
+                                      cols="80"
+                                      value=""
+                                      tal:attributes="value formation/form_description"
+                                      tal:content="formation/form_description"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="etiquette">Niveau requis</td>
+                        <td>
+                            <input type="text"
+                                   name="formationNiveauRequis"
+                                   size="50"
+                                   value=""
+                                   tal:attributes="value formation/form_niveau_requis" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="etiquette">Etat</td>
+                        <td>
+                            <select name="formationEtat">
+                                <option> ... </option>
+                                <span tal:condition="python: formation.form_etat=='ouvert'">
+                                    <option value="ouvert" selected> Formation ouverte </option>
+                                    <option value="complete"> Formation complète </option>
+                                </span>
+                                <span tal:condition="python: formation.form_etat=='complete'">
+                                    <option value="ouvert"> Formation ouverte </option>
+                                    <option value="complete" selected> Formation complète </option>
+                                </span>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+                <span tal:content="formationPk" />
+                <input type="hidden"
+                       name="formationPk"
+                       value=""
+                       tal:attributes="value formation/form_pk" />
 
-   <h1><a href="formation"><img src="images/formation.png" /></a> Gestion de la base de donn&eacute;es des formations</h1>
-   <fieldset>
-      <legend class="legende">Modifier une formation</legend>
-      <tal:requete tal:define="formation python:view.getSearchingFormation(formationPk, formationTitre)">
-          <form action="updateFormation"
-                method="post">
-             <table width="95%"
-                    align="center"
-                    border="0"
-                    cellpadding="5"
-                    cellspacing="0">
-                <tr>
-                   <td class="etiquette">Titre</td>
-                   <td>
-                      <input type="text"
-                             name="formationTitre"
-                             size="50"
-                             value=""
-                             tal:attributes="value formation/form_titre" />
-                   </td>
-                </tr>
-                <tr>
-                   <td class="etiquette">Dur&eacute;e</td>
-                   <td>
-                      <input type="text"
-                             name="formationDuree"
-                             size="5"
-                             value=""
-                             tal:attributes="value formation/form_duree" /> heures
-                   </td>
-                </tr>
-                <tr>
-                   <td class="etiquette">Date de d&eacute;but</td>
-                   <td>
-                      <input type="text"
-                             name="formationDateDebut"
-                             size="50"
-                             value=""
-                             tal:attributes="value formation/form_date_deb" />
-                   </td>
-                </tr>
-                <tr>
-                   <td class="etiquette" valign="top">Description</td>
-                   <td>
-                      <textarea name="formationDescription"
-                                rows="5"
-                                cols="80"
-                                value=""
-                                tal:attributes="value formation/form_description"
-                                tal:content="formation/form_description"></textarea>
-                   </td>
-                </tr>
-                <tr>
-                   <td class="etiquette">Niveau requis</td>
-                   <td>
-                      <input type="text"
-                             name="formationNiveauRequis"
-                             size="50"
-                             value=""
-                             tal:attributes="value formation/form_niveau_requis" />
-                   </td>
-                </tr>
-                <tr>
-                   <td class="etiquette">Etat</td>
-                   <td>
-                       <select name="formationEtat">
-                           <option> ... </option>
-                           <span tal:condition="python: formation.form_etat=='ouvert'">
-                               <option value="ouvert" selected> Formation ouverte </option>
-                               <option value="complete"> Formation complète </option>
-                           </span>
-                           <span tal:condition="python: formation.form_etat=='complete'">
-                               <option value="ouvert"> Formation ouverte </option>
-                               <option value="complete" selected> Formation complète </option>
-                           </span>
-                        </select>
-                   </td>
-                </tr>
-             </table>
-             <span tal:content="formationPk" />
-             <input type="hidden"
-                    name="formationPk"
-                    value=""
-                    tal:attributes="value formation/form_pk" />
-
-             <div class="formControls" align="center">
+                <div class="formControls" align="center">
                     <input class="context"
                            type="submit"
                            name="submit"
                            value="Enregister la formation" />
-             </div>
-          </form>
-      </tal:requete>
- </div>
+                </div>
+            </form>
+        </tal:requete>
+    </fieldset>
+</div>
 </body>
 </html>

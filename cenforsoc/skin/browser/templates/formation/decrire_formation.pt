@@ -13,9 +13,13 @@
      tal:define="formationPk request/formationPk">
     <h1>Formation syndicale interprofessionelle</h1>
     <tal:requete tal:define="formation python: view.getFormationByPk(formationPk)">
-        <fieldset class="formCadre">
-            <legend class="legende"><span tal:content="formation/form_titre" /></legend>
+        <div class="boite-resultat">
             <ul class="description-formation">
+                <li>
+                    <span class="donnee-etiquette">Titre</span>
+                    <span tal:content="formation/form_titre"
+                           class="donnee-formation" />
+                </li>
                 <li>
                     <span class="donnee-etiquette">Dur&eacute;e</span>
                     <br />
@@ -24,25 +28,21 @@
                 </li>
                 <li>
                     <span class="donnee-etiquette">Date de d&eacute;but</span>
-                    <br />
                     <span tal:content="python: formation.form_date_deb.strftime('%d-%m-%Y')"
                           class="donnee-formation" />
                 </li>
                 <li>
                     <span class="donnee-etiquette">Description</span>
-                    <br />
                     <span tal:content="formation/form_description"
                           class="donnee-formation" />
                 </li>
                 <li tal:condition="python: formation.form_niveau_requis">
                     <span class="donnee-etiquette">Niveau requis</span>
-                    <br />
                     <span tal:content="formation/form_niveau_requis"
                           class="donnee-formation" />
                 </li>
                 <li>
                     <span class="donnee-etiquette">Etat</span>
-                    <br />
                     <span tal:content="formation/form_etat"
                           class="donnee-formation" />
                 </li>
@@ -52,13 +52,12 @@
                 <a href=""
                    tal:attributes="href string:${context/portal_url}/formations/s-inscrire-a-une-formation"> S'inscrire </a>
             </div>
-            <div align="left">
-                <a href=""
-                   tal:attributes="href string:${context/portal_url}/formations/s-inscrire-a-une-formation">Retour</a>
-            </div>
-
-        </fieldset>
+        </div>
+        <div id="retour">
+            <a href=""
+               tal:attributes="href string:${context/portal_url}/formations/s-inscrire-a-une-formation">Retour</a>
+        </div>
     </tal:requete>
- </div>
+</div>
 </body>
 </html>

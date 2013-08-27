@@ -22,39 +22,30 @@
 
 <body>
 <div metal:fill-slot="main">
-    <div id="zone-titre-moteur-recherche">
-        <h1>Rechercher une formation</h1>
-        <div class="search-text-intro">Plusieurs types de recherche sont possibles.</div>
-    </div>
-
-    <div id="zone-moteur-recherche">
-        <fieldset class="search-zone-nom">
-            <legend class="search-legend"> A partir du nom d'une formation</legend>
-            <div id="info-champs">
+    <h1>Gestion des formations</h1>
+    <fieldset class="formCadre">
+        <legend class="legende">Chercher une formation</legend>
+        <div id="info-champs">A partir de quelques lettres</div>
+        <form action="modifier-une-formation"
+              method="post">
+            <div class="div_question">
+                <input type="text"
+                       id="formation-titre"
+                       name="formationTitre"
+                       value=""
+                       size="50">
             </div>
-            <form action="modifier-une-formation"
-                  method="post">
-                <div class="div_question">
-                    <input type="text"
-                           id="formation-titre"
-                           name="formationTitre"
-                           value=""
-                           size="50">
-                </div>
-                <div class="formControls" align="center">
-                    <input type="submit"
-                           value="lancer la recherche"
-                           class="search-button" />
-                </div>
-            </form>
-        </fieldset>
-         <fieldset class="search-zone-nom">
-            <legend class="search-legend"> A partir de la liste de toutes les formations</legend>
-            <div id="info-champs">
+            <div class="formControls" align="center">
+                <input type="submit"
+                       value="lancer la recherche"
+                       class="search-button" />
             </div>
-            <form action="modifier-une-formation"
-                  method="post">
-                <div class="div_question">
+        </form>
+        
+        <div id="info-champs">A partir de la liste de toutes les formations</div>
+        <form action="modifier-une-formation"
+              method="post">
+            <div class="div_question">
                 <select tal:define="formations python:view.getAllFormations()"
                         name="formationPk">
                     <option>...</option>
@@ -67,15 +58,14 @@
                         </option>i
                     </tal:boucle>
                 </select>
-                </div>
-                <div class="formControls" align="center">
-                    <input type="submit"
-                           value="lancer la recherche"
-                           class="search-button" />
-                </div>
-            </form>
-        </fieldset>
-    </div>
+            </div>
+            <div class="formControls" align="center">
+                <input type="submit"
+                       value="lancer la recherche"
+                       class="search-button" />
+            </div>
+        </form>
+    </fieldset>
 </div><!-- div metal-->
 </body>
 </html>

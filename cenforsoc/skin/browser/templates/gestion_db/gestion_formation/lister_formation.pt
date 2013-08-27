@@ -10,7 +10,8 @@
 
 <body>
 <div metal:fill-slot="main">
-   <h1><a href="formation"><img src="images/formation.png" /></a> Gestion de la base de donn&eacute;es des formations</h1>
+    <h1>Gestion des formations</h1>
+   Gestion de la base de données des formations
    <a href="formation_ajouter"> Ajouter une formation </a>
    <fieldset>
       <legend class="legende">Lister une formation</legend>

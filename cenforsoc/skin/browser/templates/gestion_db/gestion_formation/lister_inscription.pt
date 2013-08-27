@@ -10,10 +10,9 @@
 
 <body>
 <div metal:fill-slot="main">
-    <h1>
-        <a href="formation"><img src="images/formation.png" /></a>
+    <h1>Gestion des formations</h1>
+
         Gestion de la base de donn&eacute;es des formations
-    </h1>
     <fieldset>
         <legend class="legende">Lister les inscriptions</legend>
           <tal:requete tal:define="Formations python:view.getAllInscriptions()">
