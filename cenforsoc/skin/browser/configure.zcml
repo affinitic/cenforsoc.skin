@@ -98,15 +98,7 @@
         class=".ManagePeriodique.ManagePeriodique"
         allowed_interface=".interfaces.IManagePeriodique"
         />
-     <browser:page
-        name="lister-les-periodiques-par-lettre"
-        for="*"
-        template="templates/periodique/lister_periodique_par_lettre.pt"
-        permission="zope.Public"
-        class=".ManagePeriodique.ManagePeriodique"
-        allowed_interface=".interfaces.IManagePeriodique"
-        />
-     <browser:page
+    <browser:page
         name="decrire-le-periodique"
         for="*"
         template="templates/periodique/dercire_periodique.pt"
@@ -131,17 +123,9 @@
         allowed_interface=".interfaces.IManagePeriodique"
         />
     <browser:page
-        name="resultat-recherche-periodique-par-lettre"
-        for="*"
-        template="templates/periodique/resultat_recherche_periodique_alpha.pt"
-        permission="zope.Public"
-        class=".ManagePeriodique.ManagePeriodique"
-        allowed_interface=".interfaces.IManagePeriodique"
-        />
-    <browser:page
         name="ajouter-un-periodique"
         for="*"
-        template="templates/periodique/ajouter_periodique.pt"
+        template="templates/gestion_db/gestion_periodique/ajouter_periodique.pt"
         permission="zope.Public"
         class=".ManagePeriodique.ManagePeriodique"
         allowed_interface=".interfaces.IManagePeriodique"
@@ -149,7 +133,7 @@
     <browser:page
         name="modifier-un-periodique"
         for="*"
-        template="templates/periodique/modifier_periodique.pt"
+        template="templates/gestion_db/gestion_periodique/modifier_periodique.pt"
         permission="zope.Public"
         class=".ManagePeriodique.ManagePeriodique"
         allowed_interface=".interfaces.IManagePeriodique"
@@ -157,20 +141,27 @@
     <browser:page
         name="supprimer-un-periodique"
         for="*"
-        template="templates/periodique/supprimer_periodique.pt"
+        template="templates/gestion_db/gestion_periodique/supprimer_periodique.pt"
         permission="zope.Public"
         class=".ManagePeriodique.ManagePeriodique"
         allowed_interface=".interfaces.IManagePeriodique"
         />
     <browser:page
-        name="inserer-un-periodique"
+        name="insertPeriodique"
         for="*"
-        template="templates/periodique/inserer_periodique.pt"
-        permission="zope.Public"
         class=".ManagePeriodique.ManagePeriodique"
+        permission="zope.Public"
+        attribute="insertPeriodique"
         allowed_interface=".interfaces.IManagePeriodique"
         />
-
+    <browser:page
+        name="updatePeriodique"
+        for="*"
+        class=".ManagePeriodique.ManagePeriodique"
+        permission="zope.Public"
+        attribute="updatePeriodique"
+        allowed_interface=".interfaces.IManagePeriodique"
+        /> 
 
 
 

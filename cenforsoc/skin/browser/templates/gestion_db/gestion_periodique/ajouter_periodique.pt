@@ -10,13 +10,10 @@
 
 <body>
 <div metal:fill-slot="main">
-   <h1>
-       <img src="images/periodique.png" />
-       Gestion des périodiques
-   </h1>
+   <h1>Gestion des périodiques</h1>
    <fieldset class="formCadre">
        <legend class="legende">Ajouter un p&eacute;riodique</legend>
-       <form action="inserer-un-periodique"
+       <form action="insertPeriodique"
             method="post">
           <div class="formInput">
               <label for="periodiqueTitre">Titre :</label>

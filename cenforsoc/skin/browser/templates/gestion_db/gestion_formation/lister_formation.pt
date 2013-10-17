@@ -17,37 +17,37 @@
       <legend class="legende">Lister une formation</legend>
       <tal:requete tal:define="Formations python:view.getAllFormations()">
          <tal:boucle tal:repeat="formation Formations">
-            <fieldset>
+            <div class="boite-resultat">
                <ul>
                   <li>
                      <span class="etiquette_formation">Titre</span> :
                      <span tal:content="formation/form_titre"
-                           class="donnee_formation" />
+                           class="donnee-formation" />
                   </li>
                   <li>
-                     <span class="etiquette_formation">Dur&eacute;e</span> :
+                     <span class="etiquette_formation">Durée</span> :
                      <span tal:content="formation/form_duree"
-                           class="donnee_formation" />
+                           class="donnee-formation" />
                   </li>
                   <li>
-                     <span class="etiquette_formation">Date de d&eacute;but</span> :
+                     <span class="etiquette_formation">Date de début</span> :
                      <span tal:content="python:formation.form_date_deb.strftime('%d-%m-%Y')"
-                           class="donnee_formation" />
+                           class="donnee-formation" />
                   </li>
                   <li>
                      <span class="etiquette_formation">Description</span> :
                      <span tal:content="formation/form_description"
-                           class="donnee_formation" />
+                           class="donnee-formation" />
                   </li>
                   <li>
                      <span class="etiquette_formation">Niveau requis</span> :
                      <span tal:content="formation/form_niveau_requis"
-                           class="donnee_formation" />
+                           class="donnee-formation" />
                   </li>
                   <li>
                      <span class="etiquette_formation">Etat</span> :
                      <span tal:content="formation/form_etat"
-                           class="donnee_formation" />
+                           class="donnee-formation" />
                   </li>
                </ul>
                <hr />
@@ -67,7 +67,7 @@
                         </td>
                      </tr>
                   </table>
-            </fieldset>
+            </div>
          </tal:boucle>
       </tal:requete>
    </fieldset>

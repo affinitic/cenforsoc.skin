@@ -46,39 +46,6 @@
                </div>
           </form>
       </div>
-
-      <div class="formCadre">
-          <div>
-              Sélectionnez une lettre et obtenez tous les périodiques dont le nom débute par cette lettre
-          </div>
-          <div class="selecteur-lettre">
-              <a href="resultat-recherche-periodique-par-lettre?lettre=a">A</a>
-              <a href="resultat-recherche-periodique-par-lettre?lettre=b">B</a>
-              <a href="resultat-recherche-periodique-par-lettre?lettre=c">C</a>
-              <a href="resultat-recherche-periodique-par-lettre?lettre=d">D</a>
-              <a href="resultat-recherche-periodique-par-lettre?lettre=e">E</a>
-              <a href="resultat-recherche-periodique-par-lettre?lettre=f">F</a>
-              <a href="resultat-recherche-periodique-par-lettre?lettre=g">G</a>
-              <a href="resultat-recherche-periodique-par-lettre?lettre=h">H</a>
-              <a href="resultat-recherche-periodique-par-lettre?lettre=i">I</a>
-              <a href="resultat-recherche-periodique-par-lettre?lettre=j">J</a>
-              <a href="resultat-recherche-periodique-par-lettre?lettre=k">K</a>
-              <a href="resultat-recherche-periodique-par-lettre?lettre=l">L</a>
-              <a href="resultat-recherche-periodique-par-lettre?lettre=m">M</a>
-              <a href="resultat-recherche-periodique-par-lettre?lettre=n">N</a>
-              <a href="resultat-recherche-periodique-par-lettre?lettre=o">O</a>
-              <a href="resultat-recherche-periodique-par-lettre?lettre=p">P</a>
-              <a href="resultat-recherche-periodique-par-lettre?lettre=q">Q</a>
-              <a href="resultat-recherche-periodique-par-lettre?lettre=r">R</a>
-              <a href="resultat-recherche-periodique-par-lettre?lettre=s">S</a>
-              <a href="resultat-recherche-periodique-par-lettre?lettre=t">T</a>
-              <a href="resultat-recherche-periodique-par-lettre?lettre=u">U</a>
-              <a href="resultat-recherche-periodique-par-lettre?lettre=v">V</a>
-              <a href="resultat-recherche-periodique-par-lettre?lettre=w">W</a>
-              <a href="resultat-recherche-periodique-par-lettre?lettre=x">X</a>
-              <a href="resultat-recherche-periodique-par-lettre?lettre=y">Y</a>
-              <a href="resultat-recherche-periodique-par-lettre?lettre=z">Z</a>
-          </div>
    </fieldset>
 
    <fieldset class="fieldset-border">

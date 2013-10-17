@@ -121,7 +121,7 @@ class ManagePeriodique(BrowserView):
         else:
             return self.getPeriodiqueByPk(periodiquePk)
 
-    def addPeriodique(self):
+    def insertPeriodique(self):
         """
         ajout d'un item periodique
         """

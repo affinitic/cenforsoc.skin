@@ -13,10 +13,10 @@
 
 <body>
 <div metal:fill-slot="main">
-   <h1>
+    <h1>
        Gestion des auteurs
-   </h1>
-   <fieldset class="formCadre">
+    </h1>
+    <fieldset class="formCadre">
        <legend class="legende">Ajouter un auteur</legend>
        <form action="insertAuteur"
             methof="post">

@@ -22,9 +22,10 @@
                 </li>
                 <li>
                     <span class="donnee-etiquette">Dur&eacute;e</span>
-                    <br />
-                    <span tal:content="formation/form_duree"
-                          class="donnee-formation" /> heures
+                    <span class="donnee-formation">
+                        <span tal:content="formation/form_duree" />
+                        heures
+                    </span>
                 </li>
                 <li>
                     <span class="donnee-etiquette">Date de d&eacute;but</span>
