@@ -24,8 +24,6 @@
 <body>
 <div metal:fill-slot="main">
     <h1>Formations interprofessionelles</h1>
-
-
     <fieldset class="formCadre">
         <legend class="legende">Nombres d'heures</legend>
         Nos formations générales sont agréées par le Ministère de l’Emploi et du Travail et
