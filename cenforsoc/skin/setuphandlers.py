@@ -21,7 +21,7 @@ def setupCenforsoc(context):
     newFolder = setupNewFolder(portal, existFolder, 'bibliotheque', 'Bibliothèque', 'Gestion des livres', 'les-livres')
     newFolder = setupNewFolder(portal, existFolder, 'periodique', 'Périodiques', 'Gestion des périodiques', 'les-periodiques')
     newFolder = setupNewFolder(portal, existFolder, 'affiche', 'Affiches', 'Gestion des affiches', 'les-affiches')
-    newFolder = setupNewFolder(portal, existFolder, 'auteur', 'Auteurs', 'Gestion des auteurs', 'les-auteurs')
+    newFolder = setupNewFolder(portal, existFolder, 'auteur', 'Auteurs', 'Gestion des auteurs', 'auteur')
     #clearPortlets(newFolder)
     setupNavigationPortlet(portal)
     updateSecurity(portal)

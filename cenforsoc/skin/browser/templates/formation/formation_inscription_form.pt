@@ -55,14 +55,13 @@
         </ul>
     </fieldset>
 
-    <fieldset class="formCadre">
-        <legend class="legende">Bulletin d'inscription</legend>
+    <div class="formulaire">
+        <h2>Bulletin d'inscription</h2>
         <form action="insertInscriptionFormation"
               method="post"
               onsubmit="return validate(this);">
             <div class="formInput">
                 <label for="inscriptionFormationFk">Choisissez votre formation :</label>
-                <br />
                 <tal:requete tal:define="Formations python: view.getFormationOpen()">
                     <tal:boucle tal:repeat="elem Formations">
                         <input type="checkbox"
@@ -82,7 +81,6 @@
 
             <div class="formInput">
                 <label for="inscriptionFormationNom">Nom :</label>
-                <br />
                 <input type="text"
                        name="inscriptionFormationNom"
                        id="inscriptionFormationNom"
@@ -93,7 +91,6 @@
 
             <div class="formInput">
                 <label for="inscriptionFormationPrenom">Prénom :</label>
-                <br />
                 <input type="text"
                        name="inscriptionFormationPrenom"
                        id="inscriptionFormationPrenom"
@@ -104,13 +101,11 @@
 
             <div class="formInput">
                 <label for="formulaireInscriptionDateNaissance">Date de naissance :</label>
-                <br />
                 <span tal:replace="structure here/calendrier" />
             </div>
 
             <div class="formInput">
                 <label for="inscriptionFormationAdresse">Adresse, n° :</label>
-                <br />
                 <input type="text"
                        name="inscriptionFormationAdresse"
                        id="inscriptionFormationAdresse"
@@ -121,7 +116,6 @@
 
             <div class="formInput">
                 <label for="inscriptionFormationCP">Code Postal :</label>
-                <br />
                 <input type="text"
                        name="inscriptionFormationCP"
                        id="inscriptionFormationCP"
@@ -132,7 +126,6 @@
 
             <div class="formInput">
                 <label for="inscriptionFormationLocalite">Localité :</label>
-                <br />
                 <input type="text"
                        name="inscriptionFormationLocalite"
                        id="inscriptionFormationLocalite"
@@ -143,7 +136,6 @@
 
             <div class="formInput">
                 <label for="inscriptionFormationEmail">E-mail :</label>
-                <br />
                 <input type="text"
                        name="inscriptionFormationEmail"
                        id="inscriptionFormationEmail"
@@ -154,7 +146,6 @@
 
             <div class="formInput">
                 <label for="inscriptionFormationPhone">Téléphone :</label>
-                <br />
                 <input type="text"
                        name="inscriptionFormationPhone"
                        id="inscriptionFormationPhone"
@@ -165,7 +156,6 @@
 
             <div class="formInput">
                 <label for="inscriptionFormationGSM">GSM :</label>
-                <br />
                 <input type="text"
                        name="inscriptionFormationGSM"
                        id="inscriptionFormationGSM"
@@ -175,7 +165,6 @@
 
             <div class="formInput">
                 <label for="inscriptionFormationCentralProFgtb">Centrale professionnelle FGTB :</label>
-                <br />
                 <select name="inscriptionFormationCentralProFgtb"
                         id="inscriptionFormationCentralProFgtb">
                       <option> ... </option>
@@ -192,7 +181,6 @@
 
             <div class="formInput">
                 <label for="inscriptionFormationRegional">Régionale de :</label>
-                <br />
                 <select name="inscriptionFormationRegional"
                         id="inscriptionFormationRegional">
                       <option> ... </option>
@@ -212,7 +200,6 @@
 
             <div class="formInput">
                 <label for="inscriptionFormationProfession">Profession :</label>
-                <br />
                 <input type="text"
                        name="inscriptionFormationProfession"
                        id="inscriptionFormationProfession"
@@ -222,7 +209,6 @@
 
             <div class="formInput">
                 <label for="inscriptionFormationEntreprise">Entreprise :</label>
-                <br />
                 <input type="text"
                        name="inscriptionFormationEntreprise"
                        id="inscriptionFormationEntreprise"
@@ -232,7 +218,6 @@
 
             <div class="formInput">
                 <label for="inscriptionFormationPhoneEntreprise">Téléphone de l'entreprise :</label>
-                <br />
                 <input type="text"
                        name="inscriptionFormationPhoneEntreprise"
                        id="inscriptionFormationPhoneEntreprise"
@@ -242,7 +227,6 @@
 
             <div class="formInput">
                 <label for="inscriptionFormationHoraireTravail">Horaire de travail :</label>
-                <br />
                 <textarea rows="5"
                           cols="40"
                           name="inscriptionFormationHoraireTravail"
@@ -251,7 +235,6 @@
 
             <div class="formInput">
                 <label for="inscriptionFormationCongeEducation">Souhaite bénéficier du congé éducation payé :</label>
-                <br />
                 OUI <input type="radio"
                            name="inscriptionFormationCongeEducation"
                            id="inscriptionFormationCongeEducation"
@@ -268,7 +251,6 @@
 
             <div class="formInput">
                 <label for="inscriptionFormationCongeSyndical">Souhaite bénéficier du congé syndical :</label>
-                <br />
                 OUI <input type="radio"
                            name="inscriptionFormationCongeSyndical"
                            id="inscriptionFormationCongeSyndical"
@@ -283,8 +265,6 @@
 
             <div class="formInput">
                 <label for="inscriptionFormationDelegationSyndicale">Mandat syndicale FGTB :</label>
-
-                <br />
                 <input type="radio"
                        name="inscriptionFormationDelegationSyndicale"
                        id="inscriptionFormationDelegationSyndicale"
@@ -332,7 +312,7 @@
                        value="S'inscrire à la formation" />
             </div>
         </form>
-   </fieldset>
+   </div>
 </div>
 </body>
 </html>

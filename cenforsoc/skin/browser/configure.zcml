@@ -122,47 +122,6 @@
         class=".ManagePeriodique.ManagePeriodique"
         allowed_interface=".interfaces.IManagePeriodique"
         />
-    <browser:page
-        name="ajouter-un-periodique"
-        for="*"
-        template="templates/gestion_db/gestion_periodique/ajouter_periodique.pt"
-        permission="zope.Public"
-        class=".ManagePeriodique.ManagePeriodique"
-        allowed_interface=".interfaces.IManagePeriodique"
-        />
-    <browser:page
-        name="modifier-un-periodique"
-        for="*"
-        template="templates/gestion_db/gestion_periodique/modifier_periodique.pt"
-        permission="zope.Public"
-        class=".ManagePeriodique.ManagePeriodique"
-        allowed_interface=".interfaces.IManagePeriodique"
-        />
-    <browser:page
-        name="supprimer-un-periodique"
-        for="*"
-        template="templates/gestion_db/gestion_periodique/supprimer_periodique.pt"
-        permission="zope.Public"
-        class=".ManagePeriodique.ManagePeriodique"
-        allowed_interface=".interfaces.IManagePeriodique"
-        />
-    <browser:page
-        name="insertPeriodique"
-        for="*"
-        class=".ManagePeriodique.ManagePeriodique"
-        permission="zope.Public"
-        attribute="insertPeriodique"
-        allowed_interface=".interfaces.IManagePeriodique"
-        />
-    <browser:page
-        name="updatePeriodique"
-        for="*"
-        class=".ManagePeriodique.ManagePeriodique"
-        permission="zope.Public"
-        attribute="updatePeriodique"
-        allowed_interface=".interfaces.IManagePeriodique"
-        /> 
-
 
 
 <!-- LIVRE -->
@@ -221,6 +180,17 @@
         permission="zope.Public"
         class=".ManageLivre.ManageLivre"
         allowed_interface=".interfaces.IManageLivre"
+        />
+
+
+<!-- AUTEUR -->
+    <browser:page
+        name="auteur"
+        for="*"
+        template="templates/auteur/auteur.pt"
+        permission="zope.Public"
+        class=".ManageAuteur.ManageAuteur"
+        allowed_interface=".interfaces.IManageAuteur"
         />
 
 
@@ -327,7 +297,7 @@
     <browser:page
         name="chercher-une-formation"
         for="*"
-        template="templates/gestion_db/gestion_formation/chercher_formation.pt"
+        template="templates/formation/chercher_formation.pt"
         permission="zope.Public"
         class=".ManageFormation.ManageFormation"
           allowed_interface=".interfaces.IManageFormation"
@@ -382,7 +352,7 @@
     <browser:page
         name="lister-les-formations"
         for="*"
-        template="templates/gestion_db/gestion_formation/lister_formation.pt"
+        template="templates/gestion_db/gestion_formation/admin_lister_formation.pt"
         permission="zope.Public"
         class=".ManageFormation.ManageFormation"
         allowed_interface=".interfaces.IManageFormation"
@@ -390,26 +360,26 @@
     <browser:page
         name="ajouter-une-formation"
         for="*"
-        template="templates/gestion_db/gestion_formation/ajouter_formation.pt"
+        template="templates/gestion_db/gestion_formation/admin_ajouter_formation.pt"
+        permission="zope.Public"
+        class=".ManageFormation.ManageFormation"
+        allowed_interface=".interfaces.IManageFormation"
+        />
+   <browser:page
+        name="modifier-une-formation"
+        for="*"
+        template="templates/gestion_db/gestion_formation/admin_modifier_formation.pt"
         permission="zope.Public"
         class=".ManageFormation.ManageFormation"
         allowed_interface=".interfaces.IManageFormation"
         />
 
-   <browser:page
-        name="modifier-une-formation"
-        for="*"
-        template="templates/gestion_db/gestion_formation/modifier_formation.pt"
-        permission="zope.Public"
-        class=".ManageFormation.ManageFormation"
-        allowed_interface=".interfaces.IManageFormation"
-        />
 
 <!-- gestion db :: inscription -->
     <browser:page
         name="lister-les-inscriptions"
         for="*"
-        template="templates/gestion_db/gestion_formation/lister_inscription.pt"
+        template="templates/gestion_db/gestion_formation/admin_lister_inscription.pt"
         permission="zope.Public"
         class=".ManageFormation.ManageFormation"
         allowed_interface=".interfaces.IManageFormation"
@@ -417,7 +387,7 @@
     <browser:page
         name="chercher-une-inscription"
         for="*"
-        template="templates/gestion_db/gestion_formation/chercher_inscription.pt"
+        template="templates/gestion_db/gestion_formation/admin_chercher_inscription.pt"
         permission="zope.Public"
         class=".ManageFormation.ManageFormation"
         allowed_interface=".interfaces.IManageFormation"
@@ -425,7 +395,7 @@
     <browser:page
         name="decrire-une-inscription"
         for="*"
-        template="templates/gestion_db/gestion_formation/decrire_inscription.pt"
+        template="templates/gestion_db/gestion_formation/admin_decrire_inscription.pt"
         permission="zope.Public"
         class=".ManageFormation.ManageFormation"
         allowed_interface=".interfaces.IManageFormation"
@@ -443,7 +413,7 @@
     <browser:page
         name="les-auteurs"
         for="*"
-        template="templates/gestion_db/gestion_auteur/auteur.pt"
+        template="templates/gestion_db/gestion_auteur/admin_auteur.pt"
         permission="zope.Public"
         class=".ManageAuteur.ManageAuteur"
         allowed_interface=".interfaces.IManageAuteur"
@@ -451,7 +421,7 @@
     <browser:page
         name="lister-les-auteurs"
         for="*"
-        template="templates/gestion_db/gestion_auteur/lister_auteur.pt"
+        template="templates/gestion_db/gestion_auteur/admin_lister_auteur.pt"
         permission="zope.Public"
         class=".ManageAuteur.ManageAuteur"
         allowed_interface=".interfaces.IManageAuteur"
@@ -459,7 +429,7 @@
     <browser:page
         name="decrire-un-auteur"
         for="*"
-        template="templates/gestion_db/gestion_auteur/decrire_auteur.pt"
+        template="templates/gestion_db/gestion_auteur/admin_decrire_auteur.pt"
         permission="zope.Public"
         class=".ManageAuteur.ManageAuteur"
         allowed_interface=".interfaces.IManageAuteur"
@@ -467,7 +437,7 @@
     <browser:page
         name="chercher-un-auteur"
         for="*"
-        template="templates/gestion_db/gestion_auteur/chercher_auteur.pt"
+        template="templates/gestion_db/gestion_auteur/admin_chercher_auteur.pt"
         permission="zope.Public"
         class=".ManageAuteur.ManageAuteur"
         allowed_interface=".interfaces.IManageAuteur"
@@ -475,7 +445,7 @@
     <browser:page
         name="resultat-recherche-auteur"
         for="*"
-        template="templates/gestion_db/gestion_auteur/resultat_recherche_auteur.pt"
+        template="templates/gestion_db/gestion_auteur/admin_resultat_recherche_auteur.pt"
         permission="zope.Public"
         class=".ManageAuteur.ManageAuteur"
         allowed_interface=".interfaces.IManageAuteur"
@@ -483,7 +453,7 @@
     <browser:page
         name="ajouter-un-auteur"
         for="*"
-        template="templates/gestion_db/gestion_auteur/ajouter_auteur.pt"
+        template="templates/gestion_db/gestion_auteur/admin_ajouter_auteur.pt"
         permission="zope.Public"
         class=".ManageAuteur.ManageAuteur"
         allowed_interface=".interfaces.IManageAuteur"
@@ -491,7 +461,7 @@
     <browser:page
         name="modifier-un-auteur"
         for="*"
-        template="templates/gestion_db/gestion_auteur/modifier_auteur.pt"
+        template="templates/gestion_db/gestion_auteur/admin_modifier_auteur.pt"
         permission="zope.Public"
         class=".ManageAuteur.ManageAuteur"
         allowed_interface=".interfaces.IManageAuteur"
@@ -499,7 +469,7 @@
     <browser:page
         name="supprimer-un-auteur"
         for="*"
-        template="templates/gestion_db/gestion_auteur/supprimer_auteur.pt"
+        template="templates/gestion_db/gestion_auteur/admin_supprimer_auteur.pt"
         permission="zope.Public"
         class=".ManageAuteur.ManageAuteur"
         allowed_interface=".interfaces.IManageAuteur"
@@ -586,5 +556,48 @@
         attribute="updateLivre"
         allowed_interface=".interfaces.IManageLivre"
         />
+
+<!-- periodique -->
+    <browser:page
+        name="ajouter-un-periodique"
+        for="*"
+        template="templates/gestion_db/gestion_periodique/admin_ajouter_periodique.pt"
+        permission="zope.Public"
+        class=".ManagePeriodique.ManagePeriodique"
+        allowed_interface=".interfaces.IManagePeriodique"
+        />
+    <browser:page
+        name="modifier-un-periodique"
+        for="*"
+        template="templates/gestion_db/gestion_periodique/admin_modifier_periodique.pt"
+        permission="zope.Public"
+        class=".ManagePeriodique.ManagePeriodique"
+        allowed_interface=".interfaces.IManagePeriodique"
+        />
+    <browser:page
+        name="supprimer-un-periodique"
+        for="*"
+        template="templates/gestion_db/gestion_periodique/admin_supprimer_periodique.pt"
+        permission="zope.Public"
+        class=".ManagePeriodique.ManagePeriodique"
+        allowed_interface=".interfaces.IManagePeriodique"
+        />
+    <browser:page
+        name="insertPeriodique"
+        for="*"
+        class=".ManagePeriodique.ManagePeriodique"
+        permission="zope.Public"
+        attribute="insertPeriodique"
+        allowed_interface=".interfaces.IManagePeriodique"
+        />
+    <browser:page
+        name="updatePeriodique"
+        for="*"
+        class=".ManagePeriodique.ManagePeriodique"
+        permission="zope.Public"
+        attribute="updatePeriodique"
+        allowed_interface=".interfaces.IManagePeriodique"
+        /> 
+
 
 </configure>

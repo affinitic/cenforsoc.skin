@@ -53,7 +53,7 @@ class ManageCenforsoc(BrowserView):
         envoi de mail à la personne qui a fait une demande d'inscription
         """
         mailer = Mailer("localhost", emailInscrit)
-        #mailer = Mailer("relay.skynet.be", 'alain.meurant@skynet.be')
+        mailer = Mailer("relay.skynet.be", 'alain.meurant@skynet.be')
         mailer.setSubject(sujetInscrit)
         #recipients = "%s" % ('alain.meurant@affinitic.be')
         recipients = "%s, %s, %s" % ('alain.meurant@affinitic.be', 'cenforsoc@brutele.be', emailInscrit)
