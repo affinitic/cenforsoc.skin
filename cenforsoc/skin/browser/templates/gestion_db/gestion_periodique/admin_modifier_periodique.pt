@@ -1,0 +1,64 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plone">
+
+<head>
+    <metal:noborder fill-slot="top_slot"
+                    tal:define="dummy python:request.set('disable_border',1)" />
+</head>
+
+<body>
+<div metal:fill-slot="main"
+     tal:define="periodiqueTitre request/periodiqueTitre | nothing;
+                 periodiquePk request/periodiquePk | nothing;
+                 periodiques python:view.getSearchingPeriodique(periodiquePk)">">
+   <h1>
+       <img src="images/periodique.png" />
+       Gestion des périodiques
+   </h1>
+   <fieldset>
+      <legend class="legende">Modifier un p&eacute;riodique</legend>
+
+      <tal:requete tal:define="Periodiques python:view.getSearchingPeriodique(periodiquePk)">
+          <tal:boucle tal:repeat="periodique Periodiques">
+              <form action="inserer-un-periodique"
+                    methof="post">
+                  <div class="formInput">
+                      <label for="periodiqueTitre">Titre :</label>
+                      <br />
+                      <input type="text"
+                             name="periodiqueTitre"
+                             size="50"
+                             value=""
+                             tal:attributes="value periodique/per_titre" />
+                  </div>
+                  <div class="formInput">
+                      <label for="periodiqueDescription">Description :</label>
+                      <br />
+                      <textarea name="periodiqueDescription"
+                                rows="5"
+                                cols="80"
+                                value=""
+                                tal:attributes="value periodique/per_description"
+                                tal:content="periodique/per_description"></textarea>
+                  </div>
+                  <div class="formControls" align="center">
+                      <input type="hidden"
+                             name="periodiquePk"
+                             value=""
+                             tal:attributes="value periodique/per_pk" />
+                      <input type="hidden"
+                             name="operation"
+                             value="update" />
+                      <input class="context"
+                             type="submit"
+                             value="Mettre &agrave; jour le p&eacute;riodique" />
+                  </div>
+              </form>
+          </tal:boucle>
+      </tal:requete>
+</div><!-- div metal-->
+</body>
+</html>
+

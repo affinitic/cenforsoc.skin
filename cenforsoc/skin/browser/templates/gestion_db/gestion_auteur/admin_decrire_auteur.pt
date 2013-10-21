@@ -1,0 +1,42 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plone">
+
+<head>
+    <metal:noborder fill-slot="top_slot"
+                    tal:define="dummy python:request.set('disable_border',1)" />
+</head>
+
+<body>
+<div metal:fill-slot="main">
+    <h1>Gestion des auteurs</h1>
+    <div tal:define="auteurPk request/auteurPk | nothing;
+                     auteur python: view.getAuteurByPk(auteurPk);">
+        <div class="boite-resultat">
+            <span class="donnee-etiquette">Nom</span><br />
+            &nbsp;&nbsp;&nbsp;
+            <span tal:content="python: auteur.auteur_nom.upper()" 
+                  class="donnee-db" />
+            <br/><br />
+            <span class="donnee-etiquette">Prénom</span><br />
+            &nbsp;&nbsp;&nbsp;
+            <span tal:content="python: auteur.auteur_prenom" 
+                  class="donnee-db" />
+            <div class="plus-info">
+                <a href=""
+                   tal:attributes="href string:${context/portal_url}/documentation/modifier-un-auteur?auteurPk=${auteur/auteur_pk}">
+                Modifier</a>
+            </div>
+        </div>
+
+        <div id="retour">
+            <a href=""
+               tal:attributes="href string:${context/portal_url}/documentation/auteur">
+               retour à la recherche</a>
+        </div>
+    </div>  
+</div>
+</body>
+</html>
+
