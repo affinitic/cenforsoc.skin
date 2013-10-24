@@ -36,6 +36,13 @@
             </ul>
         </fieldset>
     </tal:boucle>
+
+    <div id="retour">
+        <a href=""
+           tal:attributes="href string:${context/portal_url}/documentation/bibliotheque">
+            retour à la recherche</a>
+    </div>
+
 </div><!-- div metal-->
 </body>
 </html>

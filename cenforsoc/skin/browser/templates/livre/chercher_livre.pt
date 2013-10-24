@@ -78,7 +78,7 @@
         </div>
         
         <div class="formCadre">
-          <form action="resultat-recherche-livre"
+          <form action="recherche-livre-selon-motcle"
                 method="post">
               <h2>
                   Recherche par mot-clé

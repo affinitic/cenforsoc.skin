@@ -140,6 +140,19 @@ class ManageLivre(BrowserView):
         allLivres = query.all()
         return allLivres
 
+    def getAllLivresByMotCle(self, motCle):
+        """
+        recuperation de tous les périodiques selon un motcle
+        """
+        wrapper = getSAWrapper('cenforsoc')
+        session = wrapper.session
+        LivreTable = wrapper.getMapper('livre')
+        query = session.query(LivreTable)
+        query = query.filter(LivreTable.liv_mots_cles.like("%s" % motCle))
+        query = query.order_by(LivreTable.liv_titre)
+        allLivres = query.all()
+        return allLivres
+
     def getLivresByAuteur(self):
         """
         recuperation de tous les livres d'un auteur
@@ -162,10 +175,10 @@ class ManageLivre(BrowserView):
         allLivresPk = query.all()
         return allLivresPk
 
-    def getLivreByLeffeSearch(self, searchString):
+    def getLivreTitreByLeffeSearch(self, searchString):
         """
         table pg Livre
-        recuperation d'un Livre via le livesearch
+        recuperation d'un Livre via son titre par le livesearch
         """
         wrapper = getSAWrapper('cenforsoc')
         session = wrapper.session
@@ -173,6 +186,19 @@ class ManageLivre(BrowserView):
         query = session.query(LivreTable)
         query = query.filter(LivreTable.liv_titre.ilike("%%%s%%" % searchString))
         livre = ["%s" % (elem.liv_titre) for elem in query.all()]
+        return livre
+
+    def getLivreMotCleByLeffeSearch(self, searchString):
+        """
+        table pg Livre
+        recuperation d'un Livre via ses motclé par le livesearch
+        """
+        wrapper = getSAWrapper('cenforsoc')
+        session = wrapper.session
+        LivreTable = wrapper.getMapper('livre')
+        query = session.query(LivreTable)
+        query = query.filter(LivreTable.liv_mots_cles.ilike("%%%s%%" % searchString))
+        livre = ["%s" % (elem.liv_mots_cles) for elem in query.all()]
         return livre
 
     def getSearchingLivre(self, livrePk=None):
@@ -217,7 +243,6 @@ class ManageLivre(BrowserView):
         livreIsbn = fields.get('livreIsbn', None)
         livreMotsCles = fields.get('livreMotsCles', None)
         livrePret = fields.get('livrePret', None)
-
 
         wrapper = getSAWrapper('cenforsoc')
         session = wrapper.session

@@ -35,14 +35,14 @@ $(document).ready(function(){
 });
 
 
-/*recherche sur la table livre*/
+/*recherche sur la table livre > titre livre*/
 $(document).ready(function(){
 
   $(function() {
     $("#livre-titre").autocomplete({
         source: function(request, response) {
             $.ajax({
-                url: "livre-searchJSON",
+                url: "livre-titre-searchJSON",
                 dataType: "json",
                 data: {
                     featureClass: "P",
@@ -70,6 +70,44 @@ $(document).ready(function(){
     });
 });
 });
+
+/*recherche sur la table livre > mots-cles livre*/
+$(document).ready(function(){
+
+  $(function() {
+    $("#mot-cle").autocomplete({
+        source: function(request, response) {
+            $.ajax({
+                url: "livre-motcle-searchJSON",
+                dataType: "json",
+                data: {
+                    featureClass: "P",
+                    style: "full",
+                    maxRows: 12,
+                    name_startsWith: request.term
+                },
+                success: function(data) {
+                    response($.map(data, function(item) {
+                        return {
+                            label: item,
+                            value: item
+                        }
+                    }));
+                }
+            });
+        },
+        minLength: 2,
+        open: function() {
+            $(this).removeClass("ui-corner-all").addClass("ui-corner-top");
+        },
+        close: function() {
+            $(this).removeClass("ui-corner-top").addClass("ui-corner-all");
+        }
+    });
+});
+});
+
+
 
 /*recherche sur la table affiche*/
 $(document).ready(function(){

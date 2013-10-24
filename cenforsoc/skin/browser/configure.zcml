@@ -38,10 +38,18 @@
 
     <browser:page
          for="*"
-         name="livre-searchJSON"
-         class=".SearchLivre.SearchLivreAutoCompleteJSON"
+         name="livre-titre-searchJSON"
+         class=".SearchLivre.SearchLivreTitreAutoCompleteJSON"
          permission="zope.Public"
          />
+
+    <browser:page
+         for="*"
+         name="livre-motcle-searchJSON"
+         class=".SearchLivre.SearchLivreMotCleAutoCompleteJSON"
+         permission="zope.Public"
+         />
+
 
     <browser:page
          for="*"
@@ -177,6 +185,15 @@
         name="recherche-livre-selon-auteur"
         for="*"
         template="templates/livre/lister_livre_par_auteur.pt"
+        permission="zope.Public"
+        class=".ManageLivre.ManageLivre"
+        allowed_interface=".interfaces.IManageLivre"
+        />
+
+    <browser:page
+        name="recherche-livre-selon-motcle"
+        for="*"
+        template="templates/livre/lister_livre_par_motcle.pt"
         permission="zope.Public"
         class=".ManageLivre.ManageLivre"
         allowed_interface=".interfaces.IManageLivre"

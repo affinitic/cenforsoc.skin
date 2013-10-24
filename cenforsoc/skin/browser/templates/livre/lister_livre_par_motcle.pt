@@ -10,12 +10,12 @@
 
 <body>
 <div metal:fill-slot="main"
-     tal:define="lettre request/lettre;
-                 livres python: view.getAlllivresByLettre(lettre);
+     tal:define="motCle request/motCle;
+                 livres python: view.getAllLivresByMotCle(motCle);
                  nombrelivres python:len(livres)">
     <h1>
-        Lister les livres débutant par la lettre :
-        <span tal:content="request/lettre" class="lettre" />
+        Lister les livres dont un mot-clé est :
+        <span tal:content="motCle" class="item-recherche" />
     </h1>
     <br />
     <p tal:condition="python: nombrelivres > 1">
@@ -30,21 +30,33 @@
       Il n'y a aucun livre qui correspond à votre recherche.
     </p>
     <tal:boucle tal:repeat="livre livres">
-        <fieldset class="donnee-cadre">
+        <div class="boite-resultat">
             <ul id="donnee-liste">
                 <li>
-                    <span class="donnee-etiquette">Titre</span> :
-                    <span tal:content="livre/per_titre"
+                    <span class="donnee-etiquette">Titre</span>
+                    <span tal:content="livre/liv_titre"
                           class="donnee-db" />
                 </li>
                 <li>
-                    <span class="donnee-etiquette">Description</span> :
-                    <span tal:content="livre/per_description"
+                    <span class="donnee-etiquette">Auteur</span>
+                    <span tal:content="livre/liv_auteur_1"
                           class="donnee-db" />
                 </li>
             </ul>
-        </fieldset>
+            <div class="voir-detail">
+                <a href=""
+                   tal:attributes="href string:${context/portal_url}/documentation/decrire-le-livre?livrePk=${livre/liv_pk}">
+                    Voir le détail...</a>
+            </div>
+        </div>
     </tal:boucle>
+
+    <div id="retour">
+        <a href=""
+           tal:attributes="href string:${context/portal_url}/documentation/bibliotheque">
+            retour à la recherche</a>
+    </div>
+
 </div><!-- div metal-->
 </body>
 </html>

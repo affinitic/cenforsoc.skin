@@ -20,17 +20,17 @@
                 class="donnee-db titre-affiche" />
             <ul id="donnee-liste">
                 <li>
-                    <span class="donnee-etiquette">N Inventaire : </span><br />
+                    <span class="donnee-etiquette">N Inventaire : </span>
                     <span tal:content="livre/liv_inventaire"
                           class="donnee-db" />
                 </li>
                 <li>
-                    <span class="donnee-etiquette">Cote de rangement : </span><br />
+                    <span class="donnee-etiquette">Cote de rangement : </span>
                     <span tal:content="livre/liv_cote_rang"
                           class="donnee-db" />
                 </li>
                 <li>
-                    <span class="donnee-etiquette">Auteur(s) : </span><br />
+                    <span class="donnee-etiquette">Auteur(s) : </span>
                     <tal:boucle tal:repeat="auteur auteurs">
                         <span class="donnee-db">
                             <span tal:content="python: auteur.auteurs.auteur_nom.upper()" />,
@@ -40,58 +40,65 @@
                     </tal:boucle>
                 </li>
                 <li>
-                    <span class="donnee-etiquette">Edition : </span><br />
+                    <span class="donnee-etiquette">Edition : </span>
                     <span tal:content="livre/liv_edition"
                           class="donnee-db" />
                 </li>
                 <li>
-                    <span class="donnee-etiquette">Lieu : </span><br />
+                    <span class="donnee-etiquette">Lieu : </span>
                     <span tal:content="livre/liv_lieu"
                           class="donnee-db" />
                 </li>
                 <li>
-                    <span class="donnee-etiquette">Editeur : </span><br />
+                    <span class="donnee-etiquette">Editeur : </span>
                     <span tal:content="livre/liv_editeur"
                           class="donnee-db" />
                 </li>
                 <li>
-                    <span class="donnee-etiquette">Date : </span><br />
+                    <span class="donnee-etiquette">Date : </span>
                     <span tal:content="livre/liv_date"
                           class="donnee-db" />
                 </li>
                 <li>
-                    <span class="donnee-etiquette">Pages : </span><br />
+                    <span class="donnee-etiquette">Pages : </span>
                     <span tal:content="livre/liv_pages"
                           class="donnee-db" />
                 </li>
                 <li>
-                    <span class="donnee-etiquette">Collection : </span><br />
+                    <span class="donnee-etiquette">Collection : </span>
                     <span tal:content="livre/liv_collection"
                           class="donnee-db" />
                 </li>
                 <li>
-                    <span class="donnee-etiquette">Notes : </span><br />
+                    <span class="donnee-etiquette">Notes : </span>
                     <span tal:content="livre/liv_notes"
                           class="donnee-db" />
                 </li>
                 <li>
-                    <span class="donnee-etiquette">ISBN : </span><br />
+                    <span class="donnee-etiquette">ISBN : </span>
                     <span tal:content="livre/liv_isbn"
                           class="donnee-db" />
                 </li>
                 <li>
-                    <span class="donnee-etiquette">Mots-cl&eacute;s : </span><br />
+                    <span class="donnee-etiquette">Mots-cl&eacute;s : </span>
                     <span tal:content="livre/liv_mots_cles"
                           class="donnee-db" />
                 </li>
                 <li>
-                    <span class="donnee-etiquette">Livre pr&ecirc;t&eacute; : </span><br />
+                    <span class="donnee-etiquette">Livre pr&ecirc;t&eacute; : </span>
                     <span tal:content="livre/liv_pret"
                           class="donnee-db" />
                 </li>
             </ul>
         </div>
     </tal:boucle>
+    
+    <div id="retour">
+        <a href=""
+           tal:attributes="href string:${context/portal_url}/documentation/bibliotheque">
+            retour à la recherche</a>
+    </div>
+
 </div><!-- div metal-->
 </body>
 </html>
