@@ -10,32 +10,42 @@
 
 <body>
 <div metal:fill-slot="main"
-     tal:define="livres python: view.getAllLivres()">
-    <h1>Lister les ouvrages</h1>
+     tal:define="auteurView context/@@manageAuteur;
+                 livres python: view.getAllLivres()">
+    <h1>Lister tous les ouvrages</h1>
+    <br />
     <p>
     Il y a actuellement
     <span tal:content="python: len(livres)"
           class="gras rouge" />
     livres enregistrés dans notre base.
     </p>
-    
-    <table class="table_livre">
+
+    <table class="table-listing-livre">
         <tal:boucle tal:repeat="livre livres">
-            <tal:block tal:define="odd repeat/livre/odd">
-    			<tr tal:attributes="class python:odd and 'listing_bg_odd' or 'listing_bg_even'">
-    				<td>
-    				    <span tal:content="repeat/livre/number"
-    				          class="discreet" />
-    				</td>
-    				<td>
-    					<a href="" 
-    					   tal:attributes="href string:decrire-le-livre?livrePk=${livre/liv_pk}"  
-    					   tal:content="python:livre.liv_titre"></a>
-    				</td>
-    			</tr>
-			</tal:block>
+            <tal:block tal:define="odd repeat/livre/odd;
+                                   livrePk livre/liv_pk">
+                <tr tal:attributes="class python:odd and 'listing_bg_odd' or 'listing_bg_even'">
+                    <td>
+                        <span tal:content="repeat/livre/number"
+                              class="discreet" />
+                    </td>
+                    <td>
+                        <a href=""
+                           tal:attributes="href string:decrire-le-livre?livrePk=${livre/liv_pk}">
+                           <span tal:content="livre/liv_titre" /></a>
+                        <br />
+                            <tal:block tal:define="auteurs python: auteurView.getAuteurByLivrePk(livrePk)">
+                                <span class="discreet">
+                                    <span tal:content="auteurs" />
+                                </span>
+                            </tal:block>
+                    </td>
+                </tr>
+            </tal:block>
         </tal:boucle>
     </table>
+
 </div><!-- div metal-->
 </body>
 </html>

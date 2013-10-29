@@ -65,6 +65,62 @@ class ManageAuteur(BrowserView):
         auteur = ["%s, %s - %s" % ((elem.auteur_nom).upper(), elem.auteur_prenom, (elem.auteur_pk)) for elem in query.all()]
         return auteur
 
+    def getAuteurPkByAuteurNom(self, livrePk, auteurNom=None):
+        """
+        table pg auteur
+        recuperation de la pk d'un auteur selon leur nom
+        à partir de la table livre
+        """
+        if not auteurNom:
+            return''
+        else:
+            nom = auteurNom.split(', ')
+            auteurNom = nom[0]
+            print auteurNom
+            if len(nom) > 1:
+                auteurPrenom = nom[1]
+            else:
+                auteurPrenom = None
+            wrapper = getSAWrapper('cenforsoc')
+            session = wrapper.session
+            AuteurTable = wrapper.getMapper('auteur')
+            query = session.query(AuteurTable)
+
+            if auteurNom:
+                query = query.filter(AuteurTable.auteur_nom == auteurNom)
+                if auteurPrenom:
+                    query = query.filter(AuteurTable.auteur_prenom == auteurPrenom)
+                auteur = query.one()
+                auteurPk = auteur.auteur_pk
+                return (livrePk, auteurPk)
+
+    def getAuteurByLivrePk(self, livrePk):
+        """
+        table pg link_livre_auteur
+        recuperation des auteur selon la pk d'un livre
+        """
+        wrapper = getSAWrapper('cenforsoc')
+        session = wrapper.session
+        LinkLivreAuteurTable = wrapper.getMapper('link_livre_auteur')
+        query = session.query(LinkLivreAuteurTable)
+        query = query.filter(LinkLivreAuteurTable.livre_fk == livrePk)
+        auteurs = query.all()
+
+        auteursLivre = ""
+        compteur = 0
+        nbrAuteurs = len(auteurs)
+        if nbrAuteurs > 0:
+            for auteur in auteurs:
+                compteur = compteur + 1
+                auteurNom = auteur.auteurs.auteur_nom
+                auteurPrenom = auteur.auteurs.auteur_prenom or ''
+                auteursLivre = auteursLivre + auteurNom.upper() + ', ' + auteurPrenom
+                if compteur < nbrAuteurs:
+                    auteursLivre = auteursLivre + (' - ')
+            return auteursLivre
+        else:
+            return''
+
     def getSearchingAuteur(self, auteurPk=None):
         """
         table pg auteur

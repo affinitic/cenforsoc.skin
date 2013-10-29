@@ -10,15 +10,23 @@
 
 <body>
 <div metal:fill-slot="main"
-     tal:define="livrePk request/livrePk | nothing;
-                 livres python: view.getSearchingLivre(livrePk);
-                 auteurs python: view.getAuteurByLivrePk(livrePk)">
+     tal:define="auteurView context/@@manageAuteur;
+                 livrePk request/livrePk | nothing;
+                 livres python: view.getSearchingLivre(livrePk)">
     <h1>Afficher un livre</h1>
     <tal:boucle tal:repeat="livre livres">
-        <div  class="boite-resultat">
+        <div  class="boite-resultat"
+              tal:define="livrePk livre/liv_pk">
             <h2 tal:content="livre/liv_titre"
                 class="donnee-db titre-affiche" />
             <ul id="donnee-liste">
+                <!--
+                <li>
+                    <span class="donnee-etiquette">Pk : </span>
+                    <span tal:content="livrePk"
+                          class="donnee-db" />
+                </li>
+                -->
                 <li>
                     <span class="donnee-etiquette">N Inventaire : </span>
                     <span tal:content="livre/liv_inventaire"
@@ -31,13 +39,11 @@
                 </li>
                 <li>
                     <span class="donnee-etiquette">Auteur(s) : </span>
-                    <tal:boucle tal:repeat="auteur auteurs">
+                    <tal:block tal:define="auteurs python: auteurView.getAuteurByLivrePk(livrePk)">
                         <span class="donnee-db">
-                            <span tal:content="python: auteur.auteurs.auteur_nom.upper()" />,
-                            <span tal:content="auteur/auteurs/auteur_prenom" />
+                            <span tal:content="auteurs" />
                         </span>
-                        <br />
-                    </tal:boucle>
+                    </tal:block>
                 </li>
                 <li>
                     <span class="donnee-etiquette">Edition : </span>
@@ -92,7 +98,7 @@
             </ul>
         </div>
     </tal:boucle>
-    
+
     <div id="retour">
         <a href=""
            tal:attributes="href string:${context/portal_url}/documentation/bibliotheque">

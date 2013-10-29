@@ -14,20 +14,29 @@
                  livres python: view.getAllLivresByMotCle(motCle);
                  nombrelivres python:len(livres)">
     <h1>
-        Lister les livres dont un mot-clé est :
-        <span tal:content="motCle" class="item-recherche" />
+        Liste des ouvrages par mot-clé
     </h1>
     <br />
     <p tal:condition="python: nombrelivres > 1">
-      Il y a <span tal:content="nombrelivres" class="lettre" />
-      livres qui correspondent à votre recherche.
+      Il y a
+      <span tal:content="nombrelivres"
+            class="item-recherche" />
+      livres qui correspondent à votre recherche sur le mot-clé
+      <span tal:content="motCle"
+            class="item-recherche" />.
     </p>
     <p tal:condition="python: nombrelivres == 1">
-      Il y a <span tal:content="nombrelivres" class="lettre" />
-      livre qui correspond à votre recherche.
+      Il y a
+      <span tal:content="nombrelivres"
+            class="item-recherche" />
+      livre qui correspond à votre recherche sur le mot-clé
+      <span tal:content="motCle"
+            class="item-recherche" />.
     </p>
      <p tal:condition="python: nombrelivres == 0">
-      Il n'y a aucun livre qui correspond à votre recherche.
+      Il n'y a aucun livre qui correspond à votre recherche sur le mot-clé
+      <span tal:content="motCle"
+            class="item-recherche" />.
     </p>
     <tal:boucle tal:repeat="livre livres">
         <div class="boite-resultat">

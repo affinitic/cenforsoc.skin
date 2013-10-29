@@ -615,27 +615,34 @@ font-weight:bold;
 margin:10px 0px 20px 0px;
 }
 
+#donnee-liste li{
+margin-bottom:15px;
+}
+
+.table-listing-livre {
+border:1px solid #2a2929;
+border-radius:30px;
+border-spacing:0;
+}
+
+.table-listing-livre td {
+padding:0.8em;
+}
+
+.table-listing-livre td a{
+border-bottom:none !important;
+font-size:1.1em;
+}
+
 .listing_bg_odd {
 background-color:#fff0f0;
 }
 
 .listing_bg_even {
-background-color: #fff;
+background-color:#fff;
 }
 
-#donnee-liste li{
-margin-bottom:15px;
-}
 
-.table_livre {
-border-left:1px solid #2a2929;
-border-right:1px solid #2a2929;
-border-spacing: 0;
-}
-
-.table_livre td {
-padding:0.8em;
-}
 
 .titre_table {
 background-color:#61313b;
@@ -791,7 +798,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d2dfed', end
 }
 
 
-
+#lisintg-livre-by-auteur{
+border-top:1px solid #bbb;
+margin-top:15px;
+padding:1em;
+}
 
 /*** PLONE ***/
 #content h1{

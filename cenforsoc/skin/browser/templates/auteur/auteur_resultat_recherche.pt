@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr-FR"
+      lang="en-US"
+      metal:use-macro="here/portal_skins/custom/main_template/macros/master"
+      i18n:domain="plone">
+
+  <metal:block fill-slot="base">
+    <tal:block tal:define="dummy python:request.set('disable_border', 1)"
+               tal:replace="nothing">
+          Disable the tabs
+    </tal:block>
+  </metal:block>
+  
+<div metal:fill-slot="main">
+    <h1>Gestion des auteurs</h1>
+    <fieldset class="formCadre">
+        <legend class="legende">Résultats de la recherche</legend>
+        <div tal:define="livreView context/@@manageLivre;
+                         auteurPk request/pk | nothing;
+                         auteurs python: view.getSearchingAuteur(auteurPk)">
+            <div tal:repeat="auteur auteurs">
+                <div tal:define="auteurPk auteur/auteur_pk;
+                                 allLivres python: livreView.getLivresByAuteurPk(auteurPk);
+                                 nombrelivres python:len(allLivres)"
+                     class="boite-resultat">
+                    <span class="donnee-etiquette">Nom</span>
+                    &nbsp;&nbsp;&nbsp;
+                    <span tal:content="python: auteur.auteur_nom.upper()" 
+                          class="donnee-db" />
+                    <br/><br />
+                    <span class="donnee-etiquette">Prénom</span>
+                    &nbsp;&nbsp;&nbsp;
+                    <span tal:content="python: auteur.auteur_prenom" 
+                          class="donnee-db" />
+                    <div id="lisintg-livre-by-auteur">
+                        <p tal:condition="python: nombrelivres > 1">
+                            Il y a
+                            <span tal:content="nombrelivres"
+                                class="item-recherche" />
+                            livres qui correspondent à votre recherche sur cet auteur
+                        </p>
+                        <p tal:condition="python: nombrelivres == 1">
+                            Il y a
+                            <span tal:content="nombrelivres"
+                                class="item-recherche" />
+                            livre qui correspond à votre recherche sur cet auteur
+                        </p>
+                        <tal:boucle tal:repeat="livre allLivres">
+                            <ul tal:define="livrePk python: livre[0];
+                                            livreTitre python: livre[1]">
+                                <li>
+                                    <a href=""
+                                       tal:attributes="href string:${context/portal_url}/documentation/decrire-le-livre?livrePk=${livrePk}">
+                                       <span tal:content="livreTitre" /></a>
+                            </ul>
+                        </tal:boucle>
+                    </div>
+                </div>
+            </div>
+
+            <div id="retour">
+                <a href=""
+                   tal:attributes="href string:${context/portal_url}/documentation/auteur">
+                   retour à la recherche</a>
+            </div>
+        </div>
+    </fieldset>
+</div>
+</html>

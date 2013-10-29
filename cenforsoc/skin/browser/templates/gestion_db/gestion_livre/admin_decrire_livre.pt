@@ -10,9 +10,10 @@
 
 <body>
 <div metal:fill-slot="main"
-     tal:define="livrePk request/livrePk | nothing;
+     tal:define="auteurView context/@@manageAuteur;
+                 livrePk request/livrePk | nothing;
                  livres python: view.getSearchingLivre(livrePk);
-                 auteurs python: view.getAuteurByLivrePk(livrePk)">
+                 auteurs python: auteurView.getAuteurByLivrePk(livrePk)">
     <h1>Afficher un livre</h1>
     <tal:boucle tal:repeat="livre livres">
         <div  class="boite-resultat">

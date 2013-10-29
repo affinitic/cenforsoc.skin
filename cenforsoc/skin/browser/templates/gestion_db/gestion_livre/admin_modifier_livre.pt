@@ -22,7 +22,8 @@
 
 <body>
 <div metal:fill-slot="main"
-     tal:define="livreTitre request/livreTitre | nothing;
+     tal:define="auteurView context/@@manageAuteur;
+                 livreTitre request/livreTitre | nothing;
                  livrePk request/livrePk | nothing;
                  livres python:view.getSearchingLivre(livrePk)">
 <h1>Gestion des livres</h1>
@@ -116,7 +117,7 @@
                     </table>
                 <div>
                     Nouvel auteur
-                    <tal:block tal:define="liv python: view.getAuteurByLivrePk(livrePk)">
+                    <tal:block tal:define="liv python: auteurView.getAuteurByLivrePk(livrePk)">
                         <tal:boucle tal:repeat="elem liv">
                             <span tal:content="python: elem.auteurs.auteur_nom.upper()" />, <span tal:content="elem/auteurs/auteur_prenom" />
                             <br />

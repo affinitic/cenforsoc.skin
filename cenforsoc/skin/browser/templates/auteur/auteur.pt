@@ -27,7 +27,7 @@
    <fieldset class="fieldset-border">
       <legend class="legende">Une recherche</legend>
       <div class="formCadre">
-          <form action="resultat-recherche-auteur"
+          <form action="auteur-resultat-recherche"
                 method="post">
               <div>
                   Entrez quelques lettres du nom de l'auteur que vous cherchez, 
@@ -50,7 +50,7 @@
 
    <fieldset class="fieldset-border">
       <legend class="legende"> La liste </legend>
-      Il vous est possible de voir une liste de tous nos périodiques en cliquant
+      Il vous est possible de voir une liste de tous nos auteurs en cliquant
       <a href="lister-les-auteurs">ici</a>
    </fieldset>
 

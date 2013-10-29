@@ -1,0 +1,54 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plone">
+
+<head>
+    <metal:noborder fill-slot="top_slot"
+                    tal:define="dummy python:request.set('disable_border',1)" />
+</head>
+
+<body>
+<div metal:fill-slot="main"
+     tal:define="auteurs python: view.getAllAuteurs()">
+    <h1>Liste de tous les auteurs</h1>
+    <table class="listing table-listing-livre">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th>IdDb</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                </tr>
+            </tfoot>
+            <tbody>
+                <tal:boucle tal:repeat="auteur auteurs">
+                    <span tal:define="odd repeat/auteur/odd">
+                        <tr tal:attributes="class python:odd and 'listing_bg_odd' or 'listing_bg_even'">
+                            <td>
+                                <span tal:content="auteur/auteur_pk"/>
+                            </td>
+                            <td>
+                                <a href=""
+                                   tal:attributes="href string:${context/portal_url}/documentation/auteur/livres-d-un-auteur?auteurPk=${auteur/auteur_pk}">
+                                <span tal:content="auteur/auteur_nom" />
+                                </a>
+                            </td>
+                            <td>
+                                <span tal:content="auteur/auteur_prenom" />
+                            </td>
+                        </tr>
+                    </span>
+                </tal:boucle>
+            </tbody>
+    </table>
+</div><!-- div metal-->
+</body>
+</html>
+

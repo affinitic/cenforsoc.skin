@@ -3,7 +3,7 @@
 #import datetime
 #import time
 #import random
-#from sqlalchemy import select, func, distinct
+#from sqlalchemy import and_
 #from mailer import Mailer
 #from LocalFS import LocalFS
 from Products.Five import BrowserView
@@ -23,85 +23,6 @@ from interfaces import IManageLivre
 
 class ManageLivre(BrowserView):
     implements(IManageLivre)
-
-    def getAllAuteurs(self):
-        """
-        recuperation de tous les auteurs
-        """
-        wrapper = getSAWrapper('cenforsoc')
-        session = wrapper.session
-        LivreTable = wrapper.getMapper('auteur')
-        query = session.query(LivreTable)
-        allAuteurs = query
-        return allAuteurs
-
-    def getAuteurByLivrePk(self, LivrePk):
-        """
-        table pg link_livre_auteur
-        recuperation des auteur selon la pk d'un livre
-        """
-        wrapper = getSAWrapper('cenforsoc')
-        session = wrapper.session
-        LinkLivreAuteurTable = wrapper.getMapper('link_livre_auteur')
-        query = session.query(LinkLivreAuteurTable)
-        query = query.filter(LinkLivreAuteurTable.livre_fk == LivrePk)
-        livre = query.all()
-        return livre
-
-    def insertAuteurLivre(self):
-        """
-        table pg link_livre_auteur
-        3 auteurs possible pour un livre
-        recuperer les auteurs depuis le livesearch,
-        check si plusieurs noms et separation des pk
-        insertion des nouvelles donnees
-        """
-        fields = self.request.form
-        livrePk = fields.get('livrePk', None)
-        auteurNom = fields.get('auteurNom', None)
-
-        auteurPk = []
-        for nom in auteurNom:
-            if len(nom) > 0:
-                b = nom.split('- ')
-                auteurPk.append(int(b[1]))
-
-        wrapper = getSAWrapper('cenforsoc')
-        session = wrapper.session
-        LinkLivreAuteurTable = wrapper.getMapper('link_livre_auteur')
-        for pk in auteurPk:
-            newEntry = LinkLivreAuteurTable(livre_fk=livrePk,
-                                            auteur_fk=pk)
-            session.add(newEntry)
-        session.flush()
-
-    def deleteAuteurLivre(self):
-        """
-        table pg link_livre_auteur
-        3 auteurs possible pour un livre
-        recuperer les auteurs depuis le livesearch,
-        check si plusieurs noms et separation des pk
-        suppression des donnees
-        """
-        fields = self.request.form
-        livrePk = fields.get('livrePk', None)
-        auteurNom = fields.get('auteurNom', None)
-
-        auteurPk = []
-        for nom in auteurNom:
-            if len(nom) > 0:
-                b = nom.split('- ')
-                auteurPk.append(int(b[1]))
-
-        wrapper = getSAWrapper('cenforsoc')
-        session = wrapper.session
-        LinkLivreAuteurTable = wrapper.getMapper('link_livre_auteur')
-        query = session.query(LinkLivreAuteurTable)
-        query = query.filter(LinkLivreAuteurTable.livre_fk == livrePk)
-        allLivres = query.all()
-        for livrePk in allLivres:
-            session.delete(livrePk)
-        session.flush()
 
     def getAllLivres(self):
         """
@@ -153,14 +74,32 @@ class ManageLivre(BrowserView):
         allLivres = query.all()
         return allLivres
 
-    def getLivresByAuteur(self):
+    def getLivresByAuteurPk(self, auteurPk):
         """
-        recuperation de tous les livres d'un auteur
+        recuperation de tous les livres d'un auteur via sa  pk
         """
-        fields = self.request.form
-        auteurNom = fields.get('auteurNom', None)
+        wrapper = getSAWrapper('cenforsoc')
+        session = wrapper.session
+        LinkLivreAuteurTable = wrapper.getMapper('link_livre_auteur')
+        query = session.query(LinkLivreAuteurTable)
+        query = query.filter(LinkLivreAuteurTable.auteur_fk == auteurPk)
+        allLivresPk = query.all()
+        allLivres = []
+        for livre in allLivresPk:
+            livrePk = livre.livres.liv_pk
+            livreTitre = livre.livres.liv_titre
+            allLivres.append((livrePk, livreTitre))
+        return allLivres
+
+    def getLivresByAuteurNom(self, auteurNom=None):
+        """
+        recuperation de tous les livres d'un auteur via son Nom
+        """
         auteurPk = []
-        if len(auteurNom) > 0:
+        if not auteurNom:
+            fields = self.request.form
+            auteurNom = fields.get('auteurNom', None)
+        else:
             b = auteurNom.split('- ')
             auteurPk.append(int(b[1]))
 
@@ -173,7 +112,14 @@ class ManageLivre(BrowserView):
             query = query.filter(LinkLivreAuteurTable.auteur_fk == pk)
 
         allLivresPk = query.all()
-        return allLivresPk
+
+        allLivres = []
+        for livre in allLivresPk:
+            livrePk = livre.livres.liv_pk
+            livreTitre = livre.livres.liv_titre
+            allLivres.append((livrePk, livreTitre))
+
+        return allLivres
 
     def getLivreTitreByLeffeSearch(self, searchString):
         """
@@ -342,6 +288,61 @@ class ManageLivre(BrowserView):
         allLivres = query.all()
         for LivrePk in allLivres:
             session.delete(LivrePk)
+        session.flush()
+
+    def insertAuteurLivre(self):
+        """
+        table pg link_livre_auteur
+        3 auteurs possible pour un livre
+        recuperer les auteurs depuis le lifesearch,
+        check si plusieurs noms et separation des pk
+        insertion des nouvelles donnees
+        """
+        fields = self.request.form
+        livrePk = fields.get('livrePk', None)
+        auteurNom = fields.get('auteurNom', None)
+
+        auteurPk = []
+        for nom in auteurNom:
+            if len(nom) > 0:
+                b = nom.split('- ')
+                auteurPk.append(int(b[1]))
+
+        wrapper = getSAWrapper('cenforsoc')
+        session = wrapper.session
+        LinkLivreAuteurTable = wrapper.getMapper('link_livre_auteur')
+        for pk in auteurPk:
+            newEntry = LinkLivreAuteurTable(livre_fk=livrePk,
+                                            auteur_fk=pk)
+            session.add(newEntry)
+        session.flush()
+
+    def deleteAuteurLivre(self):
+        """
+        table pg link_livre_auteur
+        3 auteurs possible pour un livre
+        recuperer les auteurs depuis le livesearch,
+        check si plusieurs noms et separation des pk
+        suppression des donnees
+        """
+        fields = self.request.form
+        livrePk = fields.get('livrePk', None)
+        auteurNom = fields.get('auteurNom', None)
+
+        auteurPk = []
+        for nom in auteurNom:
+            if len(nom) > 0:
+                b = nom.split('- ')
+                auteurPk.append(int(b[1]))
+
+        wrapper = getSAWrapper('cenforsoc')
+        session = wrapper.session
+        LinkLivreAuteurTable = wrapper.getMapper('link_livre_auteur')
+        query = session.query(LinkLivreAuteurTable)
+        query = query.filter(LinkLivreAuteurTable.livre_fk == livrePk)
+        allLivres = query.all()
+        for livrePk in allLivres:
+            session.delete(livrePk)
         session.flush()
 
     def gestionLivre(self):
