@@ -603,13 +603,30 @@
         allowed_interface=".interfaces.IManagePeriodique"
         />
     <browser:page
+        name="admin-decrire-un-periodique"
+        for="*"
+        template="templates/gestion_db/gestion_periodique/admin_dercire_periodique.pt"
+        permission="zope.Public"
+        class=".ManagePeriodique.ManagePeriodique"
+        allowed_interface=".interfaces.IManagePeriodique"
+        />
+
+    <browser:page
         name="admin-resultat-recherche-periodique"
         for="*"
         template="templates/gestion_db/gestion_periodique/admin_resultat_recherche_periodique.pt"
         permission="zope.Public"
         class=".ManagePeriodique.ManagePeriodique"
         allowed_interface=".interfaces.IManagePeriodique"
-        />    
+        />
+    <browser:page
+        name="admin-lister-les-periodiques"
+        for="*"
+        template="templates/gestion_db/gestion_periodique/admin_lister_periodique.pt"
+        permission="zope.Public"
+        class=".ManagePeriodique.ManagePeriodique"
+        allowed_interface=".interfaces.IManagePeriodique"
+        />
     <browser:page
         name="admin-ajouter-un-periodique"
         for="*"
@@ -650,6 +667,13 @@
         attribute="updatePeriodique"
         allowed_interface=".interfaces.IManagePeriodique"
         /> 
-
+    <browser:page
+        name="deletePeriodique"
+        for="*"
+        class=".ManagePeriodique.ManagePeriodique"
+        permission="zope.Public"
+        attribute="updatePeriodique"
+        allowed_interface=".interfaces.IManagePeriodique"
+        /> 
 
 </configure>

@@ -23,13 +23,14 @@
 <body>
 <div metal:fill-slot="main">
     <div id="zone-titre-moteur-recherche">
-        <h1>Rechercher un périodique</h1>
+        <h1>Gestion des périodiques</h1>
     </div>
 
     <div id="zone-moteur-recherche">
         <fieldset class="fieldset-border">
-            <legend class="legende"> A partir du nom d'un périodique</legend>
+            <legend class="legende">Chercher un périodique </legend>
             <div id="info-champs">
+                A partir du nom d'un périodique
             </div>
             <form action="admin-resultat-recherche-periodique"
                   method="post">

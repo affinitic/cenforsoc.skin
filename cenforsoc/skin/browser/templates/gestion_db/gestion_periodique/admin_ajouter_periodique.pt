@@ -10,33 +10,33 @@
 
 <body>
 <div metal:fill-slot="main">
-   <h1>Gestion des périodiques</h1>
-   <fieldset class="formCadre">
-       <legend class="legende">Ajouter un p&eacute;riodique</legend>
-       <form action="insertPeriodique"
-            method="post">
-          <div class="formInput">
-              <label for="periodiqueTitre">Titre :</label>
-              <br />
-              <input type="text"
-                     name="periodiqueTitre"
-                     id="periodiqueTitre"
-                     size="50"/>
-          </div>
-          <div class="formInput">
-              <label for="periodiqueDescription">Description :</label>
-              <textarea name="periodiqueDescription"
+    <h1>Gestion des périodiques</h1>
+    <fieldset class="fieldset-border">
+        <legend class="legende">Ajouter un périodique</legend>
+        <form action="insertPeriodique"
+              method="post">
+            <div class="formInput">
+                <label for="periodiqueTitre">Titre :</label>
+                <br />
+                <input type="text"
+                       name="periodiqueTitre"
+                       id="periodiqueTitre"
+                       size="50"/>
+            </div>
+            <div class="formInput">
+                <label for="periodiqueDescription">Description :</label>
+                <textarea name="periodiqueDescription"
                         rows="5"
                         cols="80"></textarea>
-          </div>
-          <div class="formControls">
-              <input type="hidden"
+            </div>
+            <div class="formControls">
+                <input type="hidden"
                      name="operation"
                      value="insert" />
-              <input class="context"
+                <input class="context"
                      type="submit"
                      value="Enregister le périodique" />
-          </div>
+            </div>
         </form>
     </fieldset>
 </div><!-- div metal-->

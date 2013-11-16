@@ -9,9 +9,9 @@
 from Products.Five import BrowserView
 from zope.interface import implements
 from z3c.sqlalchemy import getSAWrapper
-#from plone.app.form.widgets.wysiwygwidget import WYSIWYGWidget
+from Products.CMFCore.utils import getToolByName
+# #from plone.app.form.widgets.wysiwygwidget import WYSIWYGWidget
 #from Products.CMFPlone.utils import normalizeString
-#from Products.CMFCore.utils import getToolByName
 #from Products.CMFPlone import PloneMessageFactory as _
 #from Products.AddRemoveWidget.AddRemoveWidget import AddRemoveWidget
 #from Products.Archetypes.atapi import LinesField
@@ -159,8 +159,13 @@ class ManagePeriodique(BrowserView):
             periodique.per_description = unicode(periodiqueDescription, 'utf-8')
 
         session.flush()
-        #cible = "%s/gestion-de-la-base/les-periodiques" % (self.context.portal_url(), )
-        #self.context.REQUEST.RESPONSE.redirect(cible)
+        portalUrl = getToolByName(self.context, 'portal_url')()
+        ploneUtils = getToolByName(self.context, 'plone_utils')
+        message = u"Vos informations ont été modifiées !"
+        ploneUtils.addPortalMessage(message, 'info')
+        url = "%s/gestion-de-la-base/les-periodiques/admin-decrire-un-periodique?periodiquePk=%s" % (portalUrl, periodiquePk)
+        self.request.response.redirect(url)
+        return ''
 
     def deletePeriodique(self):
         """
@@ -179,8 +184,13 @@ class ManagePeriodique(BrowserView):
         for periodiquePk in allPeriodiques:
             session.delete(periodiquePk)
         session.flush()
-        #cible = "%s/gestion-de-la-base/les-periodiques" % (self.context.portal_url(), )
-        #self.context.REQUEST.RESPONSE.redirect(cible)
+
+        ploneUtils = getToolByName(self.context, 'plone_utils')
+        message = u"Le périodique a été supprimé !"
+        ploneUtils.addPortalMessage(message, 'info')
+        url = "%s/gestion-de-la-base/les-periodiques/"
+        self.request.response.redirect(url)
+        return ''
 
     def gestionPeriodique(self):
         """

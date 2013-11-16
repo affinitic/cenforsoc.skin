@@ -12,17 +12,14 @@
 <div metal:fill-slot="main"
      tal:define="periodiqueTitre request/periodiqueTitre | nothing;
                  periodiquePk request/periodiquePk | nothing;
-                 periodiques python:view.getSearchingPeriodique(periodiquePk)">">
-   <h1>
-       <img src="images/periodique.png" />
-       Gestion des périodiques
-   </h1>
-   <fieldset>
+                 periodiques python:view.getSearchingPeriodique(periodiquePk)">
+   <h1>Gestion des périodiques</h1>
+   <fieldset class="fieldset-border">
       <legend class="legende">Modifier un p&eacute;riodique</legend>
 
       <tal:requete tal:define="Periodiques python:view.getSearchingPeriodique(periodiquePk)">
           <tal:boucle tal:repeat="periodique Periodiques">
-              <form action="inserer-un-periodique"
+              <form action="updatePeriodique"
                     methof="post">
                   <div class="formInput">
                       <label for="periodiqueTitre">Titre :</label>
@@ -53,7 +50,7 @@
                              value="update" />
                       <input class="context"
                              type="submit"
-                             value="Mettre &agrave; jour le p&eacute;riodique" />
+                             value="Mettre à jour le périodique" />
                   </div>
               </form>
           </tal:boucle>

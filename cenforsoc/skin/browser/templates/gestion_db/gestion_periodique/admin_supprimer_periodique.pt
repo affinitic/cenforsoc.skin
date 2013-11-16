@@ -12,9 +12,10 @@
 <div metal:fill-slot="main"
      tal:define="periodiquePk request/periodiquePk;
                  periodique python: view.getPeriodiqueByPk(periodiquePk)">
-    <h1>Supprimer un périodique</h1>
-    <fieldset class="donnee-cadre">
-        <form action="inserer-un-periodique"
+    <h1>Gestion des périodique</h1>
+    <fieldset class="fieldset-border">
+        <legend class="legende">Supprimer ce périodique</legend>
+        <form action="deletePeriodique"
               method="post">
             <div class="formInput">
                 <label for="periodiqueTitre">Titre :</label>
