@@ -10,17 +10,19 @@
 
 <body>
 <div metal:fill-slot="main"
-     tal:define="auteurPk request/auteurPk;
+     tal:define="auteurView context/@@manageAuteur;
+                 auteurPk request/auteurPk;
+                 auteur python: auteurView.getAuteurByPk(auteurPk);
                  allLivres python: view.getLivresByAuteurPk(auteurPk);
                  nombrelivres python:len(allLivres)">
-    <h1>Liste des ouvrages par auteur</h1>
+    <h1>Liste des ouvrages par auteurrrrr</h1>
     <br />
     <p tal:condition="python: nombrelivres > 1">
       Il y a
       <span tal:content="nombrelivres"
             class="item-recherche" />
       livres qui correspondent à votre recherche sur l'auteur
-      <span tal:content="auteurPk"
+      <span tal:content="auteur/auteur_nom"
             class="item-recherche" />.
     </p>
     <p tal:condition="python: nombrelivres == 1">
@@ -28,12 +30,12 @@
       <span tal:content="nombrelivres"
             class="item-recherche" />
       livre qui correspond à votre recherche sur l'auteur
-      <span tal:content="auteurPk"
+      <span tal:content="auteur/auteur_nom"
             class="item-recherche" />.
     </p>
      <p tal:condition="python: nombrelivres == 0">
       Il n'y a aucun livre qui correspond à votre recherche sur l'auteur
-      <span tal:content="auteurPk"
+      <span tal:content="auteur/auteur_nom"
             class="item-recherche" />.
     </p>
     <tal:boucle tal:repeat="livre allLivres">
