@@ -133,14 +133,6 @@
         allowed_interface=".interfaces.IManagePeriodique"
         />
     <browser:page
-        name="chercher-un-periodique"
-        for="*"
-        template="templates/periodique/chercher_periodique.pt"
-        permission="zope.Public"
-        class=".ManagePeriodique.ManagePeriodique"
-        allowed_interface=".interfaces.IManagePeriodique"
-        />
-    <browser:page
         name="resultat-recherche-periodique"
         for="*"
         template="templates/periodique/resultat_recherche_periodique.pt"
@@ -603,7 +595,23 @@
 
 <!-- periodique -->
     <browser:page
-        name="ajouter-un-periodique"
+        name="admin-chercher-un-periodique"
+        for="*"
+        template="templates/gestion_db/gestion_periodique/admin_chercher_periodique.pt"
+        permission="zope.Public"
+        class=".ManagePeriodique.ManagePeriodique"
+        allowed_interface=".interfaces.IManagePeriodique"
+        />
+    <browser:page
+        name="admin-resultat-recherche-periodique"
+        for="*"
+        template="templates/gestion_db/gestion_periodique/admin_resultat_recherche_periodique.pt"
+        permission="zope.Public"
+        class=".ManagePeriodique.ManagePeriodique"
+        allowed_interface=".interfaces.IManagePeriodique"
+        />    
+    <browser:page
+        name="admin-ajouter-un-periodique"
         for="*"
         template="templates/gestion_db/gestion_periodique/admin_ajouter_periodique.pt"
         permission="zope.Public"
@@ -611,7 +619,7 @@
         allowed_interface=".interfaces.IManagePeriodique"
         />
     <browser:page
-        name="modifier-un-periodique"
+        name="admin-modifier-un-periodique"
         for="*"
         template="templates/gestion_db/gestion_periodique/admin_modifier_periodique.pt"
         permission="zope.Public"
@@ -619,7 +627,7 @@
         allowed_interface=".interfaces.IManagePeriodique"
         />
     <browser:page
-        name="supprimer-un-periodique"
+        name="admin-supprimer-un-periodique"
         for="*"
         template="templates/gestion_db/gestion_periodique/admin_supprimer_periodique.pt"
         permission="zope.Public"
