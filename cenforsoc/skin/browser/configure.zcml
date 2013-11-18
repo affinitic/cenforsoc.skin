@@ -672,7 +672,7 @@
         for="*"
         class=".ManagePeriodique.ManagePeriodique"
         permission="zope.Public"
-        attribute="updatePeriodique"
+        attribute="deletePeriodique"
         allowed_interface=".interfaces.IManagePeriodique"
         /> 
 

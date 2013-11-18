@@ -15,49 +15,48 @@
     <h1>Gestion des périodique</h1>
     <fieldset class="fieldset-border">
         <legend class="legende">Supprimer ce périodique</legend>
-        <form action="deletePeriodique"
-              method="post">
-            <div class="formInput">
-                <label for="periodiqueTitre">Titre :</label>
-                <br />
+        <div class="boite-resultat">
+            <form action="deletePeriodique"
+                  method="post">
+                <span class="donnee-etiquette">Titre</span>
+                &nbsp;&nbsp;&nbsp;
                 <span tal:content="periodique/per_titre"
                       class="donnee-db" />
-            </div>
-            <div class="formInput">
-                <label for="formInput">Description :</label>
-                <br />
+                <br /><br />
+                <span class="donnee-etiquette">Description</span>
+                &nbsp;&nbsp;&nbsp;
                 <span tal:content="periodique/per_description"
                       class="donnee-db" />
-            </div>
-            <div class="formControls" align="center">
-                <input type="hidden"
-                       name="periodiquePk"
-                       value=""
-                       tal:attributes="value periodique/per_pk" />
-                <input type="hidden"
-                       name="periodiqueTitre"
-                       tal:attributes="value periodique/per_titre" />
-                <input type="hidden"
-                       name="operation"
-                       value="delete" />
-                <img src="icon_alerte.png"
-                     width="24"
-                     height="24"
-                     alt="alerte"
-                     title="alerte" />
-                &nbsp;&nbsp;
-                <input class="context"
-                       type="submit"
-                       value="Effacer le p&eacute;riodique" />
-            </div>
-        </form>
-        <ul id="menu-gestion-donnee">
-            <li>
-                <a href=""
-                   tal:attributes="href string:chercher-un-periodique?per_pk=${periodique/per_pk}">
-                    Chercher ce périodique</a>
-            </li>
-        </ul>
+                <div class="formControls" align="center">
+                    <input type="hidden"
+                           name="periodiquePk"
+                           value=""
+                           tal:attributes="value periodique/per_pk" />
+                    <input type="hidden"
+                           name="periodiqueTitre"
+                           tal:attributes="value periodique/per_titre" />
+                    <input type="hidden"
+                           name="operation"
+                           value="delete" />
+                    <img src="icon_alerte.png"
+                         width="24"
+                         height="24"
+                         alt="alerte"
+                         title="alerte" />
+                    &nbsp;&nbsp;
+                    <input class="context"
+                           type="submit"
+                           value="Effacer le p&eacute;riodique" />
+                </div>
+            </form>
+            <ul id="menu-gestion-donnee">
+                <li>
+                    <a href=""
+                       tal:attributes="href string:chercher-un-periodique?per_pk=${periodique/per_pk}">
+                        Chercher ce périodique</a>
+                </li>
+            </ul>
+        </div>
     </fieldset>
 </div><!-- div metal-->
 </body>

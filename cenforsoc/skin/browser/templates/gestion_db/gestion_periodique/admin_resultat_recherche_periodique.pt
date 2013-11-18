@@ -27,6 +27,23 @@
                 &nbsp;&nbsp;&nbsp;
                 <span tal:content="python: periodique.per_description" 
                       class="donnee-db" />
+                <ul id="menu-gestion-donnee">
+                    <li>
+                        <a href=""
+                           tal:attributes="href string:admin-chercher-un-periodique">
+                            Chercher un périodique</a>
+                    </li>
+                    <li>
+                        <a href=""
+                           tal:attributes="href string:admin-modifier-un-periodique?periodiquePk=${periodique/per_pk}">
+                            Modifier ce périodique</a>
+                    </li>
+                    <li>
+                        <a href=""
+                           tal:attributes="href string:admin-supprimer-un-periodique?periodiquePk=${periodique/per_pk}">
+                           Effacer ce périodique</a>
+                    </li>
+                </ul>
             </div>
         </div>
 

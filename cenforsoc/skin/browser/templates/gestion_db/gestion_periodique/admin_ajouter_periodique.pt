@@ -17,7 +17,6 @@
               method="post">
             <div class="formInput">
                 <label for="periodiqueTitre">Titre :</label>
-                <br />
                 <input type="text"
                        name="periodiqueTitre"
                        id="periodiqueTitre"

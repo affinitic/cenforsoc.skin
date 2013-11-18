@@ -136,8 +136,17 @@ class ManagePeriodique(BrowserView):
                                     per_description=periodiqueDescription)
         session.add(newEntry)
         session.flush()
-        #cible = "%s/ajouter-un-periodique" % (self.context.portal_url(), )
-        #self.context.REQUEST.RESPONSE.redirect(cible)
+
+        session.refresh(newEntry)
+        periodiquePk = newEntry.per_pk
+
+        portalUrl = getToolByName(self.context, 'portal_url')()
+        ploneUtils = getToolByName(self.context, 'plone_utils')
+        message = u"Vos informations ont été enregistrées !"
+        ploneUtils.addPortalMessage(message, 'info')
+        url = "%s/gestion-de-la-base/les-periodiques/admin-decrire-un-periodique?periodiquePk=%s" % (portalUrl, periodiquePk)
+        self.request.response.redirect(url)
+        return ''
 
     def updatePeriodique(self):
         """
@@ -185,10 +194,11 @@ class ManagePeriodique(BrowserView):
             session.delete(periodiquePk)
         session.flush()
 
+        portalUrl = getToolByName(self.context, 'portal_url')()
         ploneUtils = getToolByName(self.context, 'plone_utils')
         message = u"Le périodique a été supprimé !"
         ploneUtils.addPortalMessage(message, 'info')
-        url = "%s/gestion-de-la-base/les-periodiques/"
+        url = "%s/gestion-de-la-base/les-periodiques/" % (portalUrl, )
         self.request.response.redirect(url)
         return ''
 
