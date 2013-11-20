@@ -17,14 +17,6 @@
         file="js/cenforsoc.js"
         />
 
-   <browser:page
-      for="*"
-      name="metro"
-      template="templates/metro.pt"
-      permission="zope.Public"
-      />
-
-
 <!-- manage cenforsoc -->
     <browser:page
         for="*"
