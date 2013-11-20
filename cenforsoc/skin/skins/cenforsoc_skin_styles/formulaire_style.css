@@ -15,8 +15,19 @@ background: -o-linear-gradient(top,  rgba(244,239,239,1) 0%,rgba(229,211,211,1) 
 background: -ms-linear-gradient(top,  rgba(244,239,239,1) 0%,rgba(229,211,211,1) 100%); /* IE10+ */
 background: linear-gradient(to bottom,  rgba(244,239,239,1) 0%,rgba(229,211,211,1) 100%); /* W3C */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f4efef', endColorstr='#e5d3d3',GradientType=0 ); /* IE6-9 */
-
 }
+
+.formulaire h2{
+border-bottom: 1px dotted #AF2320;
+color: #AF2320;
+font-family: "PT Sans Narrow";
+font-size: 1.2em;
+font-weight: normal;
+letter-spacing: 1px;
+margin-bottom: 5px;
+text-align: right;
+text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);}
+
 
 .formulaire label{
 display:block;

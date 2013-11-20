@@ -27,27 +27,27 @@
     </div>
 
     <div id="zone-moteur-recherche">
-        <fieldset class="fieldset-border">
-            <legend class="legende">Chercher un périodique </legend>
+        <div class="formulaire">
+            <h2>Chercher un périodique</h2>
             <div id="info-champs">
                 A partir du nom d'un périodique
             </div>
             <form action="admin-resultat-recherche-periodique"
                   method="post">
-                <div class="div_question">
+                <div class="formInput">
                     <input type="text"
                            id="periodique-titre"
                            name="periodiqueTitre"
                            value=""
                            size="50">
                 </div>
-                <div class="formControls" align="center">
+                <div class="formControls">
                     <input type="submit"
                            value="lancer la recherche"
                            class="search-button" />
                 </div>
             </form>
-        </fieldset>
+        </div>
     </div>
 </div><!-- div metal-->
 </body>

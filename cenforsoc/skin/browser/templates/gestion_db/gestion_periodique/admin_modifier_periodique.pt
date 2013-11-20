@@ -14,47 +14,45 @@
                  periodiquePk request/periodiquePk | nothing;
                  periodiques python:view.getSearchingPeriodique(periodiquePk)">
    <h1>Gestion des périodiques</h1>
-   <fieldset class="fieldset-border">
-      <legend class="legende">Modifier un p&eacute;riodique</legend>
-
-      <tal:requete tal:define="Periodiques python:view.getSearchingPeriodique(periodiquePk)">
-          <tal:boucle tal:repeat="periodique Periodiques">
-              <form action="updatePeriodique"
-                    methof="post">
-                  <div class="formInput">
-                      <label for="periodiqueTitre">Titre :</label>
-                      <br />
-                      <input type="text"
+   <div class="formulaire">
+        <h2>Modifier un p&eacute;riodique</h2>
+        <tal:requete tal:define="Periodiques python:view.getSearchingPeriodique(periodiquePk)">
+            <tal:boucle tal:repeat="periodique Periodiques">
+                <form action="updatePeriodique"
+                      methof="post">
+                    <div class="formInput">
+                        <label for="periodiqueTitre">Titre :</label>
+                        <input type="text"
                              name="periodiqueTitre"
-                             size="50"
+                             size="100"
                              value=""
                              tal:attributes="value periodique/per_titre" />
-                  </div>
-                  <div class="formInput">
-                      <label for="periodiqueDescription">Description :</label>
-                      <br />
-                      <textarea name="periodiqueDescription"
+                    </div>
+                    <div class="formInput">
+                        <label for="periodiqueDescription">Description :</label>
+                        <textarea name="periodiqueDescription"
                                 rows="5"
                                 cols="80"
                                 value=""
                                 tal:attributes="value periodique/per_description"
                                 tal:content="periodique/per_description"></textarea>
-                  </div>
-                  <div class="formControls" align="center">
-                      <input type="hidden"
+                    </div>
+                    <div class="formControls">
+                        <input type="hidden"
                              name="periodiquePk"
                              value=""
                              tal:attributes="value periodique/per_pk" />
-                      <input type="hidden"
+                        <input type="hidden"
                              name="operation"
                              value="update" />
-                      <input class="context"
+                        <input class="context"
                              type="submit"
                              value="Mettre à jour le périodique" />
-                  </div>
-              </form>
-          </tal:boucle>
-      </tal:requete>
+                    </div>
+                </form>
+            </tal:boucle>
+        </tal:requete>
+    </div>
 </div><!-- div metal-->
 </body>
 </html>
