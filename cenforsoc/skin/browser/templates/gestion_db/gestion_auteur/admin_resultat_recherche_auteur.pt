@@ -46,11 +46,6 @@
                                tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-auteurs/admin-modifier-un-auteur?auteurPk=${auteur/auteur_pk}">
                                 Modifier cet auteur</a>
                         </li>
-                        <li>
-                            <a href=""
-                               tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-auteurs/admin-supprimer-un-auteur?auteurPk=${auteur/auteur_pk}">
-                               Supprimer cet auteur</a>
-                        </li>
                     </ul>
                 </div>
             </div>

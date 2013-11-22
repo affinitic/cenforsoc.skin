@@ -16,10 +16,10 @@
     <h1>
        Gestion des auteurs
     </h1>
-    <fieldset class="formCadre">
-       <legend class="legende">Ajouter un auteur</legend>
-       <form action="insertAuteur"
-            methof="post">
+    <div class="formulaire">
+        <h2>Chercher un périodique</h2>
+        <form action="insertAuteur"
+              methof="post">
           <div class="formInput">
               <label for="auteurNom">Nom :</label>
               <input type="text"
@@ -43,7 +43,7 @@
                      value="Enregister cet auteur" />
           </div>
         </form>
-    </fieldset>
+    </div>
 </div><!-- div metal-->
 </body>
 </html>

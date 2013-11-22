@@ -177,7 +177,7 @@ class ManageAuteur(BrowserView):
         ploneUtils = getToolByName(self.context, 'plone_utils')
         message = u"Le nouvel auteur %s %s a bien été enregistré !" % (auteurNom, auteurPrenom)
         ploneUtils.addPortalMessage(message, 'info')
-        url = "%s/documentation/auteur/decrire-un-auteur?auteurPk=%s" % (portalUrl, auteurPk)
+        url = "%s/gestion-de-la-base/les-auteurs/admin-decrire-un-auteur?auteurPk=%s" % (portalUrl, auteurPk)
         self.request.response.redirect(url)
         return ''
 

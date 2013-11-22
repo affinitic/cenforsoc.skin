@@ -44,7 +44,7 @@
                     <li>
                         <a href=""
                            tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-periodiques/admin-supprimer-un-periodique?periodiquePk=${periodique/per_pk}">
-                           Effacer ce périodique</a>
+                           Supprimer ce périodique</a>
                     </li>
                 </ul>
             </div>
