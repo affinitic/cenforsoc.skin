@@ -28,15 +28,21 @@
                               class="donnee-db" />
                     </li>                  
                 </ul>
+                <hr class="ligne-top-menu-gestion-donnee" />
                 <ul id="menu-gestion-donnee">
                     <li>
                         <a href=""
-                           tal:attributes="href string:admin-modifier-un-periodique?periodiquePk=${periodique/per_pk}">
+                           tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-periodiques/admin-chercher-un-periodique">
+                            Chercher un périodique</a>
+                    </li>
+                    <li>
+                        <a href=""
+                           tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-periodiques/admin-modifier-un-periodique?periodiquePk=${periodique/per_pk}">
                             Modifier ce périodique</a>
                     </li>
                     <li>
                         <a href=""
-                           tal:attributes="href string:supprimer-un-periodique?periodiquePk=${periodique/per_pk}">
+                           tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-periodiques/supprimer-un-periodique?periodiquePk=${periodique/per_pk}">
                            Effacer ce périodique</a>
                     </li>
                 </ul>

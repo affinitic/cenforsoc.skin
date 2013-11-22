@@ -14,7 +14,7 @@
                  livrePk request/livrePk | nothing;
                  livres python: view.getSearchingLivre(livrePk);
                  auteurs python: auteurView.getAuteurByLivrePk(livrePk)">
-    <h1>Afficher un livre</h1>
+    <h1>Gestion des livres</h1>
     <tal:boucle tal:repeat="livre livres">
         <div  class="boite-resultat">
             <h2 tal:content="livre/liv_titre"
@@ -93,6 +93,7 @@
                           class="donnee-db" />
                 </li>
             </ul>
+            <hr class="ligne-top-menu-gestion-donnee" />
             <ul id="menu-gestion-donnee">
                 <li>
                     <a href=""
@@ -102,16 +103,17 @@
                 <li>
                     <a href=""
                        tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-livres/admin-lister-les-titres-des-livres">
-                       Listing des titres</a>
+                       Lister les livres</a>
                 </li>
+                <li>
+                    <a href=""
+                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-livres/admin-chercher-un-livre">
+                       Chercher un livres</a>
+                </li>
+
             </ul>
         </div>
     </tal:boucle>
-    <div id="retour">
-        <a href=""
-           tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-livres/admin-chercher-un-livre">
-           retour à la recherche</a>
-    </div>
 </div><!-- div metal-->
 </body>
 </html>

@@ -18,11 +18,11 @@
                 <li>
                     <span class="donnee-etiquette">Titre</span>
                     <span tal:content="formation/form_titre"
-                           class="donnee-formation" />
+                           class="donnee-db" />
                 </li>
                 <li>
                     <span class="donnee-etiquette">Dur&eacute;e</span>
-                    <span class="donnee-formation">
+                    <span class="donnee-db">
                         <span tal:content="formation/form_duree" />
                         heures
                     </span>
@@ -30,25 +30,25 @@
                 <li>
                     <span class="donnee-etiquette">Date de d&eacute;but</span>
                     <span tal:content="python: formation.form_date_deb.strftime('%d-%m-%Y')"
-                          class="donnee-formation" />
+                          class="donnee-db" />
                 </li>
                 <li>
                     <span class="donnee-etiquette">Description</span>
                     <span tal:content="formation/form_description"
-                          class="donnee-formation" />
+                          class="donnee-db" />
                 </li>
                 <li tal:condition="python: formation.form_niveau_requis">
                     <span class="donnee-etiquette">Niveau requis</span>
                     <span tal:content="formation/form_niveau_requis"
-                          class="donnee-formation" />
+                          class="donnee-db" />
                 </li>
                 <li>
                     <span class="donnee-etiquette">Etat</span>
                     <span tal:content="formation/form_etat"
-                          class="donnee-formation" />
+                          class="donnee-db" />
                 </li>
             </ul>
-            <hr />
+            <hr class="ligne-top-menu-gestion-donnee" />
             <div align="center">
                 <a href=""
                    tal:attributes="href string:${context/portal_url}/formations/s-inscrire-a-une-formation"> S'inscrire </a>

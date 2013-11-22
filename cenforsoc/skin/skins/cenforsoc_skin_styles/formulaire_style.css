@@ -44,6 +44,12 @@ background-repeat:no-repeat;
 background-position:left top;
 }
 
+.formControls{
+border-top:1px dotted #AF2320;
+padding-top:4px;
+text-align:center;
+}
+
 .formulaire input[type=checkbox] {
 cursor:pointer;
 font-size:0.85em;
@@ -191,15 +197,20 @@ padding:1em;
 margin:1em;
 }
 
-.etiquette-db{
-font-style:italic;
-color:#834e20;
-text-shadow:1px 1px 1px rgba(250,250,250,0.6);
+.donnee-etiquette{
+/*display:block;*/
+font-weight:bold;
+font-size:0,5em;
+color: #666;
+text-shadow:1px 1px 1px rgba(255, 255, 255, 1);
 }
 
 .donnee-db{
 font-weight:bold;
-color:#005fab;
+font-size:0,5em;
+color:#af2320;
+text-shadow:1px 1px 1px rgba(255, 255, 255, 1);
+text-align:left;
 }
 
 

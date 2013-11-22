@@ -12,8 +12,9 @@
 <div metal:fill-slot="main"
      tal:define="periodiquePk request/periodiquePk;
                  periodique python: view.getPeriodiqueByPk(periodiquePk)">
-    <h1>Supprimer un périodique</h1>
+    <h1>Gestion des auteurs</h1>
     <fieldset class="donnee-cadre">
+        <h2>Supprimer un auteur</h2>
         <form action="inserer-un-periodique"
               method="post">
             <div class="formInput">
@@ -50,11 +51,12 @@
                        value="Effacer le p&eacute;riodique" />
             </div>
         </form>
+        <hr class="ligne-top-menu-gestion-donnee" />
         <ul id="menu-gestion-donnee">
             <li>
                 <a href=""
-                   tal:attributes="href string:chercher-un-periodique?per_pk=${periodique/per_pk}">
-                    Chercher ce périodique</a>
+                   tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-auteurs/chercher-un-auteur?auteur_pk=${auteur/auteur_pk}">
+                    Chercher un auteur</a>
             </li>
         </ul>
     </fieldset>

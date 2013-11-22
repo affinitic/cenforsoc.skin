@@ -176,7 +176,7 @@ class ManageFormation(BrowserView):
         ploneUtils = getToolByName(self.context, 'plone_utils')
         message = u"La nouvelle formation %s  a bien été enregistrée !" % (formationTitre)
         ploneUtils.addPortalMessage(message, 'info')
-        url = "%s/formations/decrire-une-formation?formationPk=%s" % (portalUrl, formationPk)
+        url = "%s/gestion-de-la-base/les-formations/admin-decrire-une-formation?formationPk=%s" % (portalUrl, formationPk)
         self.request.response.redirect(url)
         return ''
 
@@ -215,7 +215,7 @@ class ManageFormation(BrowserView):
         ploneUtils = getToolByName(self.context, 'plone_utils')
         message = u"La formation %s a bien été modifiée !" % (formationTitre)
         ploneUtils.addPortalMessage(message, 'info')
-        url = "%s/formations/decrire-une-formation?formationPk=%s" % (portalUrl, formationPk)
+        url = "%s/gestion-de-la-base/les-formations/admin-decrire-une-formation?formationPk=%s" % (portalUrl, formationPk)
         self.request.response.redirect(url)
         return ''
 

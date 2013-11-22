@@ -11,9 +11,10 @@
 <body>
 <div metal:fill-slot="main"
      tal:define="periodiques python: view.getAllPeriodiques()">
-    <h1>Ajouter une affiche</h1>
+    <h1>Gestion des auteurs</h1>
     <tal:boucle tal:repeat="periodique periodiques">
         <fieldset class="donnee-cadre">
+            <h2>
             <ul id="donnee-liste">
                 <li>
                     <span class="donnee-etiquette">Titre</span> : 
@@ -26,15 +27,16 @@
                           class="donnee-db" />
                 </li>                  
             </ul>
+            <hr class="ligne-top-menu-gestion-donnee" />
             <ul id="menu-gestion-donnee">
                 <li>
                     <a href=""
-                       tal:attributes="href string:modifier-un-periodique?per_pk=${periodique/per_pk}">
+                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-periodiques/modifier-un-periodique?per_pk=${periodique/per_pk}">
                         Modifier ce périodique</a>
                 </li>
                 <li>
                     <a href=""
-                       tal:attributes="href string:supprimer-un-periodique?per_pk=${periodique/per_pk}">
+                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-periodiques/supprimer-un-periodique?per_pk=${periodique/per_pk}">
                        Effacer ce périodique</a>
                 </li>
             </ul>

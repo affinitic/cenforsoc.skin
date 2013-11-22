@@ -39,15 +39,15 @@
                     </div>
                     <div class="formControls">
                         <input type="hidden"
-                             name="periodiquePk"
-                             value=""
-                             tal:attributes="value periodique/per_pk" />
+                               name="periodiquePk"
+                               value=""
+                               tal:attributes="value periodique/per_pk" />
                         <input type="hidden"
-                             name="operation"
-                             value="update" />
+                               name="operation"
+                               value="update" />
                         <input class="context"
-                             type="submit"
-                             value="Mettre à jour le périodique" />
+                               type="submit"
+                               value="Mettre à jour le périodique" />
                     </div>
                 </form>
             </tal:boucle>

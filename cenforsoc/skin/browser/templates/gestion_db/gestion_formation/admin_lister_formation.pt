@@ -20,53 +20,50 @@
             <div class="boite-resultat">
                <ul>
                   <li>
-                     <span class="etiquette_formation">Titre</span> :
+                     <span class="donnee-etiquette">Titre</span> :
                      <span tal:content="formation/form_titre"
-                           class="donnee-formation" />
+                           class="donnee-db" />
                   </li>
                   <li>
-                     <span class="etiquette_formation">Durée</span> :
+                     <span class="donnee-etiquette">Durée</span> :
                      <span tal:content="formation/form_duree"
-                           class="donnee-formation" />
+                           class="donnee-db" />
                   </li>
                   <li>
-                     <span class="etiquette_formation">Date de début</span> :
+                     <span class="donnee-etiquette">Date de début</span> :
                      <span tal:content="python:formation.form_date_deb.strftime('%d-%m-%Y')"
-                           class="donnee-formation" />
+                           class="donnee-db" />
                   </li>
                   <li>
-                     <span class="etiquette_formation">Description</span> :
+                     <span class="donnee-etiquette">Description</span> :
                      <span tal:content="formation/form_description"
-                           class="donnee-formation" />
+                           class="donnee-db" />
                   </li>
                   <li>
-                     <span class="etiquette_formation">Niveau requis</span> :
+                     <span class="donnee-etiquette">Niveau requis</span> :
                      <span tal:content="formation/form_niveau_requis"
-                           class="donnee-formation" />
+                           class="donnee-db" />
                   </li>
                   <li>
-                     <span class="etiquette_formation">Etat</span> :
+                     <span class="donnee-etiquette">Etat</span> :
                      <span tal:content="formation/form_etat"
-                           class="donnee-formation" />
+                           class="donnee-db" />
                   </li>
                </ul>
-               <hr />
+               <hr class="ligne-top-menu-gestion-donnee" />
                <div>
-                  <table align="center"
-                         width="100%">
-                     <tr>
-                        <td align="left">
+                   <ul id="menu-gestion-donnee">
+                       <li>
                            <a href=""
-                              tal:attributes="href string:modifier-une-formation?formationPk=${formation/form_pk}">
+                              tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-formations/admin-chercher-une-formation">
+                              Chercher une formation</a>
+                       </li>
+                       <li>
+                           <a href=""
+                              tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-formations/admin-modifier-une-formation?formationPk=${formation/form_pk}">
                               Modifier cette formation</a>
-                        </td>
-                        <td align="right">
-                           <a href=""
-                              tal:attributes="href string:supprimer_formation?formationPk=${formation/form_pk}">
-                              Effacer cette formation</a>
-                        </td>
-                     </tr>
-                  </table>
+                       </li>
+                   </ul>
             </div>
          </tal:boucle>
       </tal:requete>

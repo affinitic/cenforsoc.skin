@@ -12,8 +12,9 @@
 <div metal:fill-slot="main"
      tal:define="livrePk request/livrePk;
                  livre python: view.getlivreByPk(livrePk)">
-    <h1>Supprimer un livre</h1>
+    <h1>Gestion des livres</h1>
     <fieldset class="donnee-cadre">
+        <h2>Supprimer un livre</h2>
         <form action="inserer-un-livre"
               method="post">
             <div class="formInput">
@@ -53,7 +54,7 @@
         <ul id="menu-gestion-donnee">
             <li>
                 <a href=""
-                   tal:attributes="href string:chercher-un-livre?per_pk=${livre/per_pk}">
+                   tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-periodiques/chercher-un-livre?per_pk=${livre/per_pk}">
                     Chercher ce livre</a>
             </li>
         </ul>
