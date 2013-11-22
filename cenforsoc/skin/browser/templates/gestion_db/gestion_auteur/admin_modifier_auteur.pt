@@ -14,9 +14,8 @@
                  auteurPk request/auteurPk | nothing;
                  auteurs python:view.getSearchingAuteur(auteurPk)">
    <h1>Gestion des auteurs</h1>
-   
-   <fieldset class="formCadre">
-      <legend class="legende">Modifier un auteur</legend>
+   <div class="formulaire">
+       <h2>Modifier un auteur</h2>
           <tal:boucle tal:repeat="auteur auteurs">
               <form action="updateAuteur"
                     methof="post">
@@ -52,7 +51,7 @@
                   </div>
               </form>
           </tal:boucle>
-   </fieldset>
+   </div>
 </div><!-- div metal-->
 </body>
 </html>

@@ -471,14 +471,6 @@
         attribute="gestionAuteur"
         />
     <browser:page
-        name="les-auteurs"
-        for="*"
-        template="templates/gestion_db/gestion_auteur/admin_auteur.pt"
-        permission="zope.Public"
-        class=".ManageAuteur.ManageAuteur"
-        allowed_interface=".interfaces.IManageAuteur"
-        />
-    <browser:page
         name="admin-lister-les-auteurs"
         for="*"
         template="templates/gestion_db/gestion_auteur/admin_lister_auteur.pt"

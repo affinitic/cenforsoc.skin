@@ -25,10 +25,10 @@
     <h1>Gestion des auteurs</h1>    
     
     <div id="zone-moteur-recherche">
-        <fieldset class="formCadre">
-            <legend class="legende"> Chercher un auteur</legend>
+        <div class="formulaire">
+            <h2>Chercher un auteur</h2>
             <div id="info-champs"></div>
-            <form action="resultat-recherche-auteur"
+            <form action="admin-resultat-recherche-auteur"
                   method="post">
                 <div>
                     Entrez quelques lettres du nom de l'auteur que vous cherchez, 
@@ -46,7 +46,7 @@
                            value="Effectuer ma recherche">
                 </div>
             </form>
-        </fieldset>
+        </div>
     </div>
 </div><!-- div metal-->
 </body>

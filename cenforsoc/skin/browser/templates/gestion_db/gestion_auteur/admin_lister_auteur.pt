@@ -47,16 +47,16 @@
                             <td>
                                 &nbsp;
                                 <a href=""
-                                   tal:attributes="href string:modifier-un-auteur?auteurPk=${auteur/auteur_pk}"
+                                   tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-auteurs/admin-modifier-un-auteur?auteurPk=${auteur/auteur_pk}"
                                    alt="Modifier l'auteur"
-            					   class="btn-modifier"></a>
+                                   class="btn-modifier"></a>
                             </td>
-        			    </tr>
-        			</span>
-        		</tal:boucle>
-    		</tbody>
-    	</table>
-	</fieldset>
+                        </tr>
+                    </span>
+                </tal:boucle>
+            </tbody>
+        </table>
+    </fieldset>
 </div><!-- div metal-->
 </body>
 </html>
