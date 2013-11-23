@@ -16,13 +16,13 @@
     <h1>Gestion des auteurs</h1>
     <fieldset class="formCadre">
         <legend class="legende">Résultats de la recherche</legend>
-        <div tal:define="auteur python: view.getSearchingAuteur();
-                         auteurPk 
-                         livreView context/@@manageLivre;
-                         allLivres python: livreView.getLivresByAuteurPk(auteurPk);
-                         nombrelivres python:len(allLivres)">
+        <div tal:define="auteurs python: view.getSearchingAuteur()">
             <div tal:repeat="auteur auteurs">
-                <div class="boite-resultat">
+                <div tal:define="auteurPk auteur/auteur_pk;
+                                 livreView context/@@manageLivre;
+                                 allLivres python: livreView.getLivresByAuteurPk(auteurPk);
+                                 nombrelivres python:len(allLivres)"
+                     class="boite-resultat">
                     <ul id="donnee-liste">
                         <li>
                             <span class="donnee-etiquette">Nom :</span><br />
@@ -55,7 +55,7 @@
                                             livreTitre python: livre[1]">
                                 <li>
                                     <a href=""
-                                       tal:attributes="href string:${context/portal_url}/documentation/decrire-le-livre?livrePk=${livrePk}">
+                                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-livres/admin-decrire-le-livre?livrePk=${livrePk}">
                                        <span tal:content="livreTitre" /></a>
                             </ul>
                         </tal:boucle>
