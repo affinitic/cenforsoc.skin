@@ -16,8 +16,11 @@
     <h1>Gestion des auteurs</h1>
     <fieldset class="formCadre">
         <legend class="legende">Résultats de la recherche</legend>
-        <div tal:define="auteurPk request/pk | nothing;
-                         auteurs python: view.getSearchingAuteur(auteurPk);">
+        <div tal:define="auteur python: view.getSearchingAuteur();
+                         auteurPk 
+                         livreView context/@@manageLivre;
+                         allLivres python: livreView.getLivresByAuteurPk(auteurPk);
+                         nombrelivres python:len(allLivres)">
             <div tal:repeat="auteur auteurs">
                 <div class="boite-resultat">
                     <ul id="donnee-liste">
@@ -34,6 +37,29 @@
                                   class="donnee-db" />
                         </li>
                     </ul>
+                    <div id="lisintg-livre-by-auteur">
+                        <p tal:condition="python: nombrelivres > 1">
+                            Il y a
+                            <span tal:content="nombrelivres"
+                                class="item-recherche" />
+                            livres qui correspondent à votre recherche sur cet auteur
+                        </p>
+                        <p tal:condition="python: nombrelivres == 1">
+                            Il y a
+                            <span tal:content="nombrelivres"
+                                class="item-recherche" />
+                            livre qui correspond à votre recherche sur cet auteur
+                        </p>
+                        <tal:boucle tal:repeat="livre allLivres">
+                            <ul tal:define="livrePk python: livre[0];
+                                            livreTitre python: livre[1]">
+                                <li>
+                                    <a href=""
+                                       tal:attributes="href string:${context/portal_url}/documentation/decrire-le-livre?livrePk=${livrePk}">
+                                       <span tal:content="livreTitre" /></a>
+                            </ul>
+                        </tal:boucle>
+                    </div>
                     <hr class="ligne-top-menu-gestion-donnee" />
                     <ul id="menu-gestion-donnee">
                         <li>

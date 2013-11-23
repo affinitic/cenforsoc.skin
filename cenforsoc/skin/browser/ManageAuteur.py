@@ -147,8 +147,8 @@ class ManageAuteur(BrowserView):
             query = query.filter(AuteurTable.auteur_nom == auteurNom)
         if auteurPk:
             query = query.filter(AuteurTable.auteur_pk == auteurPk)
-        allAuteurs = query.all()
-        return allAuteurs
+        allAuteurs = query.one()
+        return zeAuteur
 
     def insertAuteur(self):
         """

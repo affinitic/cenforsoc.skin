@@ -18,8 +18,8 @@
         <legend class="legende">Résultats de la recherche</legend>
         <div tal:define="livreView context/@@manageLivre;
                          auteurPk request/pk | nothing;
-                         auteurs python: view.getSearchingAuteur(auteurPk)">
-            <div tal:repeat="auteur auteurs">
+                         auteur python: view.getSearchingAuteur(auteurPk)">
+            <!--div tal:repeat="auteur auteurs"-->
                 <div tal:define="auteurPk auteur/auteur_pk;
                                  allLivres python: livreView.getLivresByAuteurPk(auteurPk);
                                  nombrelivres python:len(allLivres)"
@@ -57,7 +57,7 @@
                         </tal:boucle>
                     </div>
                 </div>
-            </div>
+            <!--/div-->
 
             <div id="retour">
                 <a href=""
