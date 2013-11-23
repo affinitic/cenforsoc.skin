@@ -12,14 +12,21 @@
 <div metal:fill-slot="main"
      tal:define="auteurView context/@@manageAuteur;
                  livrePk request/livrePk | nothing;
-                 livres python: view.getSearchingLivre(livrePk);
-                 auteurs python: auteurView.getAuteurByLivrePk(livrePk)">
+                 livres python: view.getSearchingLivre(livrePk)">
     <h1>Gestion des livres</h1>
     <tal:boucle tal:repeat="livre livres">
-        <div  class="boite-resultat">
+        <div  class="boite-resultat"
+              tal:define="livrePk livre/liv_pk">
             <h2 tal:content="livre/liv_titre"
                 class="donnee-db titre-affiche" />
             <ul id="donnee-liste">
+                <!--
+                <li>
+                    <span class="donnee-etiquette">Pk : </span>
+                    <span tal:content="livrePk"
+                          class="donnee-db" />
+                </li>
+                -->
                 <li>
                     <span class="donnee-etiquette">N Inventaire : </span>
                     <span tal:content="livre/liv_inventaire"
@@ -32,15 +39,11 @@
                 </li>
                 <li>
                     <span class="donnee-etiquette">Auteur(s) : </span>
-                    <tal:boucle tal:repeat="auteur auteurs">
+                    <tal:block tal:define="auteurs python: auteurView.getAuteurByLivrePk(livrePk)">
                         <span class="donnee-db">
-                            <a href=""
-                               tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-auteurs/resultat-recherche-auteur/">
-                            <span tal:content="python: auteur.auteurs.auteur_nom.upper()" />,
-                            <span tal:content="auteur/auteurs/auteur_prenom" /></a>
+                            <span tal:content="auteurs" />
                         </span>
-                        <br />
-                    </tal:boucle>
+                    </tal:block>
                 </li>
                 <li>
                     <span class="donnee-etiquette">Edition : </span>
@@ -97,20 +100,19 @@
             <ul id="menu-gestion-donnee">
                 <li>
                     <a href=""
-                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-livres/admin-modifier-un-livre?livrePk=${livre/liv_pk}">
+                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-livres/admin-chercher-un-livre">
+                        Chercher un livre</a>
+                </li>
+                <li>
+                    <a href=""
+                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-livres/admin-modifier-un-livre?livrePk=${livrePk}">
                         Modifier ce livre</a>
                 </li>
                 <li>
                     <a href=""
-                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-livres/admin-lister-les-titres-des-livres">
-                       Lister les livres</a>
+                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-livres/admin-modifier-un-livre?livrePk=${livrePk}">
+                        Supprimer ce livre</a>
                 </li>
-                <li>
-                    <a href=""
-                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-livres/admin-chercher-un-livre">
-                       Chercher un livres</a>
-                </li>
-
             </ul>
         </div>
     </tal:boucle>
