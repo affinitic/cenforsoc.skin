@@ -18,21 +18,26 @@
         <legend class="legende">Résultats de la recherche</legend>
         <div tal:define="livreView context/@@manageLivre;
                          auteurPk request/pk | nothing;
-                         auteur python: view.getSearchingAuteur(auteurPk)">
-            <!--div tal:repeat="auteur auteurs"-->
+                         auteurs python: view.getSearchingAuteur(auteurPk)">
+            <div tal:repeat="auteur auteurs">
                 <div tal:define="auteurPk auteur/auteur_pk;
                                  allLivres python: livreView.getLivresByAuteurPk(auteurPk);
                                  nombrelivres python:len(allLivres)"
                      class="boite-resultat">
-                    <span class="donnee-etiquette">Nom</span>
-                    &nbsp;&nbsp;&nbsp;
-                    <span tal:content="python: auteur.auteur_nom.upper()" 
-                          class="donnee-db" />
-                    <br/><br />
-                    <span class="donnee-etiquette">Prénom</span>
-                    &nbsp;&nbsp;&nbsp;
-                    <span tal:content="python: auteur.auteur_prenom" 
-                          class="donnee-db" />
+                    <ul id="donnee-liste">
+                        <li>
+                            <span class="donnee-etiquette">Nom :</span>
+                            <br />&nbsp;&nbsp;&nbsp;
+                            <span tal:content="python: auteur.auteur_nom.upper()" 
+                                  class="donnee-db" />
+                        </li>
+                        <li>
+                            <span class="donnee-etiquette">Prénom</span>
+                            <br />&nbsp;&nbsp;&nbsp;
+                            <span tal:content="python: auteur.auteur_prenom" 
+                                  class="donnee-db" />
+                        </li>
+                    </ul>
                     <div id="lisintg-livre-by-auteur">
                         <p tal:condition="python: nombrelivres > 1">
                             Il y a
@@ -57,7 +62,7 @@
                         </tal:boucle>
                     </div>
                 </div>
-            <!--/div-->
+            </div>
 
             <div id="retour">
                 <a href=""
