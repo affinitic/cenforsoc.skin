@@ -30,9 +30,9 @@ class ManagePeriodique(BrowserView):
         """
         wrapper = getSAWrapper('cenforsoc')
         session = wrapper.session
-        periodiqueTable = wrapper.getMapper('periodique')
-        query = session.query(periodiqueTable)
-        query = query.order_by(periodiqueTable.per_titre)
+        PeriodiqueTable = wrapper.getMapper('periodique')
+        query = session.query(PeriodiqueTable)
+        query = query.order_by(PeriodiqueTable.per_titre)
         allPeriodiques = query.all()
         return allPeriodiques
 
@@ -42,9 +42,9 @@ class ManagePeriodique(BrowserView):
         """
         wrapper = getSAWrapper('cenforsoc')
         session = wrapper.session
-        periodiqueTable = wrapper.getMapper('periodique')
-        query = session.query(periodiqueTable)
-        query = query.filter(periodiqueTable.per_pk == periodiquePk)
+        PeriodiqueTable = wrapper.getMapper('periodique')
+        query = session.query(PeriodiqueTable)
+        query = query.filter(PeriodiqueTable.per_pk == periodiquePk)
         periodique = query.one()
         return periodique
 
@@ -54,10 +54,10 @@ class ManagePeriodique(BrowserView):
         """
         wrapper = getSAWrapper('cenforsoc')
         session = wrapper.session
-        periodiqueTable = wrapper.getMapper('periodique')
-        query = session.query(periodiqueTable)
-        query = query.filter(periodiqueTable.per_titre.like("%%%s%%" % lettre))
-        query = query.order_by(periodiqueTable.per_titre)
+        PeriodiqueTable = wrapper.getMapper('periodique')
+        query = session.query(PeriodiqueTable)
+        query = query.filter(PeriodiqueTable.per_titre.like("%%%s%%" % lettre))
+        query = query.order_by(PeriodiqueTable.per_titre)
         allPeriodiques = query.all()
         return allPeriodiques
 
@@ -68,9 +68,10 @@ class ManagePeriodique(BrowserView):
         """
         wrapper = getSAWrapper('cenforsoc')
         session = wrapper.session
-        periodiqueTable = wrapper.getMapper('periodique')
-        query = session.query(periodiqueTable)
-        query = query.filter(periodiqueTable.per_titre.ilike("%%%s%%" % searchString))
+        PeriodiqueTable = wrapper.getMapper('periodique')
+        query = session.query(PeriodiqueTable)
+        query = query.filter(PeriodiqueTable.per_titre.ilike("%%%s%%" % searchString))
+        query = query.order_by(PeriodiqueTable.per_titre)
         periodique = ["%s" % (elem.per_titre) for elem in query.all()]
         return periodique
 
@@ -89,14 +90,14 @@ class ManagePeriodique(BrowserView):
 
         wrapper = getSAWrapper('cenforsoc')
         session = wrapper.session
-        periodiqueTable = wrapper.getMapper('periodique')
-        query = session.query(periodiqueTable)
+        PeriodiqueTable = wrapper.getMapper('periodique')
+        query = session.query(PeriodiqueTable)
         if periodiqueTitre:
-            query = query.filter(periodiqueTable.per_titre == periodiqueTitre)
+            query = query.filter(PeriodiqueTable.per_titre == periodiqueTitre)
         if periodiquePk:
-            query = query.filter(periodiqueTable.per_pk == periodiquePk)
+            query = query.filter(PeriodiqueTable.per_pk == periodiquePk)
         if searchingLetter:
-            query = query.filter(periodiqueTable.per_titre.ilike("%%%s" % searchingLetter))
+            query = query.filter(PeriodiqueTable.per_titre.ilike("%%%s" % searchingLetter))
         allPeriodiques = query.all()
         return allPeriodiques
 
@@ -111,9 +112,9 @@ class ManagePeriodique(BrowserView):
                 # Leffe searched cahier de charge
                 wrapper = getSAWrapper('cenforsoc')
                 session = wrapper.session
-                periodiqueTable = wrapper.getMapper('periodique')
-                query = session.query(periodiqueTable)
-                query = query.filter(periodiqueTable.per_titre == periodiqueTitre)
+                PeriodiqueTable = wrapper.getMapper('periodique')
+                query = session.query(PeriodiqueTable)
+                query = query.filter(PeriodiqueTable.per_titre == periodiqueTitre)
                 periodique = query.one()
                 return periodique
             else:

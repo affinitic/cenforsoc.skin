@@ -62,6 +62,7 @@ class ManageAuteur(BrowserView):
         query = session.query(AuteurTable)
         query = query.filter(or_(AuteurTable.auteur_nom.ilike("%%%s%%" % searchString),
                                  or_(AuteurTable.auteur_prenom.ilike("%%%s%%" % searchString))))
+        query = query.order_by(AuteurTable.auteur_nom)
         auteur = ["%s, %s - %s" % ((elem.auteur_nom).upper(), elem.auteur_prenom, (elem.auteur_pk)) for elem in query.all()]
         return auteur
 
@@ -147,8 +148,8 @@ class ManageAuteur(BrowserView):
             query = query.filter(AuteurTable.auteur_nom == auteurNom)
         if auteurPk:
             query = query.filter(AuteurTable.auteur_pk == auteurPk)
-        allAuteurs = query.one()
-        return zeAuteur
+        allAuteurs = query.all()
+        return allAuteurs
 
     def insertAuteur(self):
         """

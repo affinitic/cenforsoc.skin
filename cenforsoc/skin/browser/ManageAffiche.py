@@ -32,9 +32,9 @@ class ManageAffiche(BrowserView):
         """
         wrapper = getSAWrapper('cenforsoc')
         session = wrapper.session
-        afficheTable = wrapper.getMapper('affiche')
-        query = session.query(afficheTable)
-        query = query.order_by(afficheTable.affiche_inventaire)
+        AfficheTable = wrapper.getMapper('affiche')
+        query = session.query(AfficheTable)
+        query = query.order_by(AfficheTable.affiche_inventaire)
         allAffiches = query.all()
         return allAffiches
 
@@ -45,9 +45,9 @@ class ManageAffiche(BrowserView):
         """
         wrapper = getSAWrapper('cenforsoc')
         session = wrapper.session
-        afficheTable = wrapper.getMapper('affiche')
-        query = session.query(afficheTable)
-        query = query.filter(afficheTable.affiche_pk == affichePk)
+        AfficheTable = wrapper.getMapper('affiche')
+        query = session.query(AfficheTable)
+        query = query.filter(AfficheTable.affiche_pk == affichePk)
         affiche = query.one()
         return affiche
 
@@ -58,12 +58,13 @@ class ManageAffiche(BrowserView):
         """
         wrapper = getSAWrapper('cenforsoc')
         session = wrapper.session
-        afficheTable = wrapper.getMapper('affiche')
-        query = session.query(afficheTable)
-        query = query.filter(or_(afficheTable.affiche_titre.ilike("%%%s%%" % searchString),
-                                 or_(afficheTable.affiche_auteur.ilike("%%%s%%" % searchString),
-                                     afficheTable.affiche_descriptif.ilike("%%%s%%" % searchString),
-                                     afficheTable.affiche_mot_cle.ilike("%%%s%%" % searchString))))
+        AfficheTable = wrapper.getMapper('affiche')
+        query = session.query(AfficheTable)
+        query = query.filter(or_(AfficheTable.affiche_titre.ilike("%%%s%%" % searchString),
+                                 or_(AfficheTable.affiche_auteur.ilike("%%%s%%" % searchString),
+                                     AfficheTable.affiche_descriptif.ilike("%%%s%%" % searchString),
+                                     AfficheTable.affiche_mot_cle.ilike("%%%s%%" % searchString))))
+        query = query.order_by(AfficheTable.affiche_titre)
         affiche = ["%s" % (elem.affiche_titre) for elem in query.all()]
         return affiche
 
@@ -73,10 +74,10 @@ class ManageAffiche(BrowserView):
         """
         wrapper = getSAWrapper('cenforsoc')
         session = wrapper.session
-        afficheTable = wrapper.getMapper('affiche')
-        query = session.query(afficheTable)
-        query = query.filter(afficheTable.affiche_titre.like("%%%s%%" % lettre))
-        query = query.order_by(afficheTable.affiche_titre)
+        AfficheTable = wrapper.getMapper('affiche')
+        query = session.query(AfficheTable)
+        query = query.filter(AfficheTable.affiche_titre.like("%%%s%%" % lettre))
+        query = query.order_by(AfficheTable.affiche_titre)
         allAffiches = query.all()
         return allAffiches
 
@@ -95,14 +96,14 @@ class ManageAffiche(BrowserView):
 
         wrapper = getSAWrapper('cenforsoc')
         session = wrapper.session
-        afficheTable = wrapper.getMapper('affiche')
-        query = session.query(afficheTable)
+        AfficheTable = wrapper.getMapper('affiche')
+        query = session.query(AfficheTable)
         if afficheTitre:
-            query = query.filter(afficheTable.affiche_titre == afficheTitre)
+            query = query.filter(AfficheTable.affiche_titre == afficheTitre)
         if affichePk:
-            query = query.filter(afficheTable.affiche_pk == affichePk)
+            query = query.filter(AfficheTable.affiche_pk == affichePk)
         if searchingLetter:
-            query = query.filter(afficheTable.affiche_titre.ilike("%%%s" % searchingLetter))
+            query = query.filter(AfficheTable.affiche_titre.ilike("%%%s" % searchingLetter))
         allAffiches = query.all()
         return allAffiches
 

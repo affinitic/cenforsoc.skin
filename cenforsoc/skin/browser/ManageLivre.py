@@ -131,6 +131,7 @@ class ManageLivre(BrowserView):
         LivreTable = wrapper.getMapper('livre')
         query = session.query(LivreTable)
         query = query.filter(LivreTable.liv_titre.ilike("%%%s%%" % searchString))
+        query = query.order_by(LivreTable.liv_titre)
         livre = ["%s" % (elem.liv_titre) for elem in query.all()]
         return livre
 

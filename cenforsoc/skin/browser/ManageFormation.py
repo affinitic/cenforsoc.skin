@@ -112,6 +112,7 @@ class ManageFormation(BrowserView):
         FormationTable = wrapper.getMapper('formation')
         query = session.query(FormationTable)
         query = query.filter(FormationTable.form_titre.ilike("%%%s%%" % searchString))
+        query = query.order_by(FormationTable.form_titre)
         formation = ["%s" % (elem.form_titre) for elem in query.all()]
         return formation
 
@@ -409,9 +410,9 @@ class ManageFormation(BrowserView):
         recuperation de toutes les inscriptionss
         """
         wrapper = getSAWrapper('cenforsoc')
-        session = wrapper.session
+        #session = wrapper.session
         InscriptionFormationTable = wrapper.getMapper('formation_inscription')
-        query = session.query(InscriptionFormationTable)
+        #query = session.query(InscriptionFormationTable)
         allInscriptions = select([distinct(InscriptionFormationTable.form_ins_nom)], order_by=InscriptionFormationTable.form_ins_nom).execute().fetchall()
         #query = query.order_by(InscriptionFormationTable.form_ins_nom)
         #allInscriptions = query.all()
