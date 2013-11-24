@@ -18,12 +18,14 @@
             <div class="boite-resultat">
                 <ul id="donnee-liste">
                     <li>
-                        <span class="donnee-etiquette">Titre :</span> 
+                        <span class="donnee-etiquette">Titre :</span>
+                        <br />&nbsp;&nbsp;&nbsp; 
                         <span tal:content="periodique/per_titre" 
                               class="donnee-db" />
                     </li>
                     <li>
-                        <span class="donnee-etiquette">Description :</span>  
+                        <span class="donnee-etiquette">Description :</span>
+                        <br />&nbsp;&nbsp;&nbsp; 
                         <span tal:content="periodique/per_description" 
                               class="donnee-db" />
                     </li>                  
