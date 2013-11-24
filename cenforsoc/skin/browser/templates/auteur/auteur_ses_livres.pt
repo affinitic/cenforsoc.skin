@@ -49,10 +49,11 @@
                           class="donnee-db" />
                 </li>
             </ul>
-             <div class="voir-detail">
+            <hr class="ligne-top-menu-gestion-donnee" />
+            <div class="voir-detail">
                 <a href=""
-                   tal:attributes="href
-                   string:${context/portal_url}/documentation/decrire-le-livre?livrePk=${livrePk}">
+                   tal:attributes="href string:${context/portal_url}/documentation/decrire-le-livre?livrePk=${livrePk}"
+                   class="bouton">
                     Voir le détail...</a>
             </div>
         </div>
