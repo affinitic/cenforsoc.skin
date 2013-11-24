@@ -34,9 +34,11 @@
                          tal:attributes="src string:${context/portal_url}/affiche_cenforsoc/vignettes/${affiche/affiche_inventaire}.jpg" />
                 </div>
                 <div class="visualClear"></div>
+                <hr class="ligne-top-menu-gestion-donnee" />
                 <div class="voir-detail">
                     <a href=""
-                       tal:attributes="href string:${context/portal_url}/documentation/decrire-une-affiche?affichePk=${affiche/affiche_pk}">
+                       tal:attributes="href string:${context/portal_url}/documentation/decrire-une-affiche?affichePk=${affiche/affiche_pk}"
+                       class="bouton">
                     Voir le détail...</a>
                 </div>
             </div>
