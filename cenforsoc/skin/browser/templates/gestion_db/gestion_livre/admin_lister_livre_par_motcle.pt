@@ -1,0 +1,86 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plone">
+
+<head>
+    <metal:noborder fill-slot="top_slot"
+                    tal:define="dummy python:request.set('disable_border',1)" />
+</head>
+
+<body>
+<div metal:fill-slot="main"
+     tal:define="auteurView context/@@manageAuteur;
+                 motCle request/motCle;
+                 livres python: view.getAllLivresByMotCle(motCle);
+                 nombrelivres python:len(livres)">
+    <h1>
+        Liste des ouvrages par mot-clé
+    </h1>
+    <br />
+    <p tal:condition="python: nombrelivres > 1">
+      Il y a
+      <span tal:content="nombrelivres"
+            class="item-recherche" />
+      livres qui correspondent à votre recherche sur le mot-clé
+      <span tal:content="motCle"
+            class="item-recherche" />.
+    </p>
+    <p tal:condition="python: nombrelivres == 1">
+      Il y a
+      <span tal:content="nombrelivres"
+            class="item-recherche" />
+      livre qui correspond à votre recherche sur le mot-clé
+      <span tal:content="motCle"
+            class="item-recherche" />.
+    </p>
+     <p tal:condition="python: nombrelivres == 0">
+      Il n'y a aucun livre qui correspond à votre recherche sur le mot-clé
+      <span tal:content="motCle"
+            class="item-recherche" />.
+    </p>
+    <tal:boucle tal:repeat="livre livres">
+        <div tal:define="livrePk livre/liv_pk"
+             class="boite-resultat">
+            <ul id="donnee-liste">
+                <li>
+                    <span class="donnee-etiquette">Titre</span>
+                    <br />&nbsp;&nbsp;&nbsp;
+                    <span tal:content="livre/liv_titre"
+                          class="donnee-db" />
+                </li>
+                <li>
+                    <span class="donnee-etiquette">Auteur</span>
+                    <br />&nbsp;&nbsp;&nbsp;
+                    <tal:block tal:define="auteurs python: auteurView.getAuteurByLivrePk(livrePk)">
+                        <span class="donnee-db">
+                            <span tal:content="auteurs" />
+                        </span>
+                    </tal:block>
+                </li>
+            </ul>
+            <hr class="ligne-top-menu-gestion-donnee" />
+            <ul id="menu-gestion-donnee">
+                <li>
+                    <a href=""
+                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-livres/admin-decrire-le-livre?livrePk=${livrePk}"
+                       class="bouton">
+                        Voir le détail...</a>
+                </li>
+                <li>
+                    <a href=""
+                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-livres/admin-chercher-un-livre">
+                        Chercher un livre</a>
+                </li>
+                <li>
+                    <a href=""
+                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-livres/admin-modifier-un-livre?livrePk=${livrePk}">
+                        Modifier ce livre</a>
+                </li>
+            </ul>
+        </div>
+    </tal:boucle>
+</div><!-- div metal-->
+</body>
+</html>
+
