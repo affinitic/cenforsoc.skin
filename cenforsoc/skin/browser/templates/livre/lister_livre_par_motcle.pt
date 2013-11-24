@@ -10,7 +10,8 @@
 
 <body>
 <div metal:fill-slot="main"
-     tal:define="motCle request/motCle;
+     tal:define="auteurView context/@@manageAuteur;
+                 motCle request/motCle;
                  livres python: view.getAllLivresByMotCle(motCle);
                  nombrelivres python:len(livres)">
     <h1>
@@ -39,7 +40,8 @@
             class="item-recherche" />.
     </p>
     <tal:boucle tal:repeat="livre livres">
-        <div class="boite-resultat">
+        <div tal:define="livrePk livre/liv_pk"
+             class="boite-resultat">
             <ul id="donnee-liste">
                 <li>
                     <span class="donnee-etiquette">Titre</span>
@@ -48,13 +50,18 @@
                 </li>
                 <li>
                     <span class="donnee-etiquette">Auteur</span>
-                    <span tal:content="livre/liv_auteur_1"
-                          class="donnee-db" />
+                    <tal:block tal:define="auteurs python: auteurView.getAuteurByLivrePk(livrePk)">
+                        <span class="donnee-db">
+                            <span tal:content="auteurs" />
+                        </span>
+                    </tal:block>
                 </li>
             </ul>
+            <hr class="ligne-top-menu-gestion-donnee" />
             <div class="voir-detail">
                 <a href=""
-                   tal:attributes="href string:${context/portal_url}/documentation/decrire-le-livre?livrePk=${livre/liv_pk}">
+                   tal:attributes="href string:${context/portal_url}/documentation/decrire-le-livre?livrePk=${livre/liv_pk}"
+                   class="bouton">
                     Voir le détail...</a>
             </div>
         </div>
