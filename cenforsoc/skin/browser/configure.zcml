@@ -561,6 +561,22 @@
         allowed_interface=".interfaces.IManageLivre"
         />
     <browser:page
+        name="admin-lister-livre-selon-auteur"
+        for="*"
+        template="templates/gestion_db/gestion_livre/admin_lister_livre_par_auteur.pt"
+        permission="zope.Public"
+        class=".ManageLivre.ManageLivre"
+        allowed_interface=".interfaces.IManageLivre"
+        />
+    <browser:page
+        name="admin-lister-livre-selon-motcle"
+        for="*"
+        template="templates/gestion_db/gestion_livre/admin_lister_livre_par_motcle.pt"
+        permission="zope.Public"
+        class=".ManageLivre.ManageLivre"
+        allowed_interface=".interfaces.IManageLivre"
+        />
+    <browser:page
         name="admin-decrire-le-livre"
         for="*"
         template="templates/gestion_db/gestion_livre/admin_decrire_livre.pt"
@@ -609,7 +625,7 @@
         allowed_interface=".interfaces.IManageLivre"
         />
 
-<!-- periodique -->
+<!-- gestion_db :: periodique -->
     <browser:page
         name="admin-chercher-un-periodique"
         for="*"
