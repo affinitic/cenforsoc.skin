@@ -66,14 +66,16 @@
                     <div>
                         <label for="livreAuteur">Auteur :</label>
                         name="auteurNom:list"
+                        <!--
                         <tal:addremove define="errors python:{};">
                             <span metal:use-macro="python: cenforsocView.getAddRemoveField(
-                                                                'auteur_pk',
+                                                                'auteurNom',
                                                                 ' ',
                                                                 auteurView.getAllAuteurs(),
                                                                 nameKey='auteur_nom',
                                                                 pkKey='auteur_pk')" />
                         </tal:addremove>
+                        -->
                     </div>
                     <!--
                     <div>

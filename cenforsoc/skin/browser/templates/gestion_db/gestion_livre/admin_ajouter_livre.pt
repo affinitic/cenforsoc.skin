@@ -41,6 +41,7 @@
                 </div>
                 <div class="formInput">
                     <label for="livreAuteur">Auteur(s) :</label>
+                    <!--
                     <tal:addremove define="errors python:{};">
                     <span metal:use-macro="python: cenforsocView.getAddRemoveField(
                                                                 'auteurNom',
@@ -49,6 +50,7 @@
                                                                 nameKey='auteur_nom',
                                                                 pkKey='auteur_pk')" />
                    </tal:addremove>
+                   -->
                 </div>
                 <div class="formInput">
                     <label for="livreIsbn">ISBN :</label>
@@ -117,7 +119,8 @@
                     <label for="livrePret">Prêt :</label>
                     <select name="livrePret"
                             id="livrePret">
-                        <option value='False'> Non </option>
+                        <option value='False'
+                                selected="selected"> Non </option>
                         <option value='True'> Oui </option>
                     </select>
                 </div>

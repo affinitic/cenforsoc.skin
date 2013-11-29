@@ -107,7 +107,7 @@ class ManageAffiche(BrowserView):
         allAffiches = query.all()
         return allAffiches
 
-    def addAffiche(self):
+    def insertAffiche(self):
         """
         table
         ajout d'un item affiche
@@ -161,7 +161,7 @@ class ManageAffiche(BrowserView):
             affiches.append(listeAffiches[i].id)
         return affiches
 
-    def addAfficheToLo(self, for_id, fileUpload):
+    def addAfficheToLocalFs(self, for_id, fileUpload):
         """
         ajout d'un fichier dans le localfs
         comme  catalogue pdf de l'operateur
@@ -190,7 +190,7 @@ class ManageAffiche(BrowserView):
         return ''
 
 
-    def delOperateurCataloguePDF(self, \
+    def deleteAfficheFromLocalFS(self, \
                                  fileName, \
                                  for_id=None):
         """

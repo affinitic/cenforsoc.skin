@@ -279,30 +279,6 @@
         class=".ManageAffiche.ManageAffiche"
         allowed_interface=".interfaces.IManageAffiche"
         />
-    <browser:page
-        name="ajouter-un-affiche"
-        for="*"
-        template="templates/affiche/ajouter_affiche.pt"
-        permission="zope.Public"
-        class=".ManageAffiche.ManageAffiche"
-        allowed_interface=".interfaces.IManageAffiche"
-        />
-    <browser:page
-        name="modifier-une-affiche"
-        for="*"
-        template="templates/affiche/modifier_affiche.pt"
-        permission="zope.Public"
-        class=".ManageAffiche.ManageAffiche"
-        allowed_interface=".interfaces.IManageAffiche"
-        />
-    <browser:page
-        name="supprimer-une-affiche"
-        for="*"
-        template="templates/affiche/supprimer_affiche.pt"
-        permission="zope.Public"
-        class=".ManageAffiche.ManageAffiche"
-        allowed_interface=".interfaces.IManageAffiche"
-        />
 
 
 <!-- FORMATION -->
@@ -642,7 +618,6 @@
         class=".ManagePeriodique.ManagePeriodique"
         allowed_interface=".interfaces.IManagePeriodique"
         />
-
     <browser:page
         name="admin-resultat-recherche-periodique"
         for="*"
@@ -706,6 +681,81 @@
         permission="zope.Public"
         attribute="deletePeriodique"
         allowed_interface=".interfaces.IManagePeriodique"
+        /> 
+
+
+<!-- gestion_db :: affiche -->
+    <browser:page
+        name="admin-chercher-une-affiche"
+        for="*"
+        template="templates/gestion_db/gestion_affiche/admin_chercher_affiche.pt"
+        permission="zope.Public"
+        class=".ManageAffiche.ManageAffiche"
+        allowed_interface=".interfaces.IManageAffiche"
+        />
+    <browser:page
+        name="admin-decrire-une-affiche"
+        for="*"
+        template="templates/gestion_db/gestion_affiche/admin_decrire_affiche.pt"
+        permission="zope.Public"
+        class=".ManageAffiche.ManageAffiche"
+        allowed_interface=".interfaces.IManageAffiche"
+        />
+    <browser:page
+        name="admin-resultat-recherche-affiche"
+        for="*"
+        template="templates/gestion_db/gestion_affiche/admin_resultat_recherche_affiche.pt"
+        permission="zope.Public"
+        class=".ManageAffiche.ManageAffiche"
+        allowed_interface=".interfaces.IManageAffiche"
+        />
+    <browser:page
+        name="admin-lister-les-affiches"
+        for="*"
+        template="templates/gestion_db/gestion_affiche/admin_lister_affiche.pt"
+        permission="zope.Public"
+        class=".ManageAffiche.ManageAffiche"
+        allowed_interface=".interfaces.IManageAffiche"
+        />
+    <browser:page
+        name="admin-ajouter-une-affiche"
+        for="*"
+        template="templates/gestion_db/gestion_affiche/admin_ajouter_affiche.pt"
+        permission="zope.Public"
+        class=".ManageAffiche.ManageAffiche"
+        allowed_interface=".interfaces.IManageAffiche"
+        />
+    <browser:page
+        name="admin-modifier-une-affiche"
+        for="*"
+        template="templates/gestion_db/gestion_affiche/admin_modifier_affiche.pt"
+        permission="zope.Public"
+        class=".ManageAffiche.ManageAffiche"
+        allowed_interface=".interfaces.IManageAffiche"
+        />
+    <browser:page
+        name="admin-supprimer-une-affiche"
+        for="*"
+        template="templates/gestion_db/gestion_affiche/admin_supprimer_affiche.pt"
+        permission="zope.Public"
+        class=".ManageAffiche.ManageAffiche"
+        allowed_interface=".interfaces.IManageAffiche"
+        />
+    <browser:page
+        name="insertAffiche"
+        for="*"
+        permission="zope.Public"
+        attribute="insertAffiche"
+        class=".ManageAffiche.ManageAffiche"
+        allowed_interface=".interfaces.IManageAffiche"
+        />
+    <browser:page
+        name="updateAffiche"
+        for="*"
+        permission="zope.Public"
+        attribute="updateAffiche"
+        class=".ManageAffiche.ManageAffiche"
+        allowed_interface=".interfaces.IManageAffiche"
         /> 
 
 </configure>
