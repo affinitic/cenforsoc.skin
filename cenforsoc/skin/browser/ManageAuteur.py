@@ -36,7 +36,6 @@ class ManageAuteur(BrowserView):
         query = session.query(AuteurTable)
         query = query.order_by(AuteurTable.auteur_nom)
         allAuteurs = query.all()
-        import pdb; pdb.set_trace()
         return allAuteurs
 
     def getAuteurByPk(self, auteurPk):
