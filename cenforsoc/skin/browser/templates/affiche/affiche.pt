@@ -22,18 +22,6 @@
 <body>
 <div metal:fill-slot="main">
 	<h1> Consultation de nos affiches</h1>
-    <!--
-	<fieldset>
-		<legend class="legende">Recherches</legend>
-		<p>Il vous est possible de consulter notre base de donn&eacute;es au travers d'internet.</p>
-		<p>Vous avez trois possibilit&eacute;s pour effectuer une recherche</p>
-		<ul>
-			<li><a href="rechercher_par_auteur">Recherche par auteur</a></li>
-			<li><a href="rechercher_par_titre">Recherche par titre</a></li>
-			<li><a href="rechercher_par_mots_cles">Recherche par most-cl&eacute;s</a></li>			
-		</ul>
-	</fieldset>
-    -->
     <fieldset class="fieldset-border">
         <legend class="legende">Une recherche</legend>
         <div class="fieldset-border">

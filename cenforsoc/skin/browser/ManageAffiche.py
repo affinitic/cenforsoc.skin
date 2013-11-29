@@ -171,7 +171,7 @@ class ManageAffiche(BrowserView):
         fileName = normalizeString(fileUpload.filename, encoding='utf-8')
         lfs.manage_upload(fileUpload, id=fileName)
 
-        wrapper = getSAWrapper('apef')
+        wrapper = getSAWrapper('cenforsoc')
         session = wrapper.session
         insertCatalogue = wrapper.getMapper('link_organisme_catalogue')
         newEntry = insertCatalogue(for_id=for_id, \

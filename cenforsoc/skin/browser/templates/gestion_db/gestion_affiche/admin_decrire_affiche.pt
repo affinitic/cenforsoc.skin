@@ -12,7 +12,9 @@
 <div metal:fill-slot="main"
      tal:define="affichePk request/affichePk;
                  affiche python: view.getAfficheByPk(affichePk)">
-    <h1>Lister les affiches</h1>
+    <h1>Gestion des affiches</h1>
+    <fieldset class="fieldset-border">
+    
     <div  class="boite-resultat">
         <h2 tal:content="affiche/affiche_titre"
             class="donnee-db titre-affiche" />
@@ -96,10 +98,10 @@
     </div>
     <div id="retour">
         <a href=""
-           tal:attributes="href string:${context/portal_url}/documentation/affiche">
+           tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-affiches/admin-chercher-une-affiche">
            retour à la recherche</a>
     </div>
-
+    </fieldset>
 </div><!-- div metal-->
 </body>
 </html>

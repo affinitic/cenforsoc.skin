@@ -4,44 +4,57 @@
       i18n:domain="plone">
 
 <head>
+    <metal:js fill-slot="javascript_head_slot">
+        <script src="++resource++collective.javascript.jqueryui/js/jquery-1.4.2.min.js"
+                type="text/javascript"></script>
+        <script src="++resource++collective.javascript.jqueryui/js/jquery-ui.min.js"
+                type="text/javascript"></script>
+    </metal:js>
+    <metal:css fill-slot="style_slot">
+        <link href="++resource++collective.javascript.jqueryui/css/ui-lightness/jquery-ui.css"
+              type="text/css"
+              rel="stylesheet" />
+    </metal:css>
     <metal:noborder fill-slot="top_slot"
                     tal:define="dummy python:request.set('disable_border',1)" />
 </head>
 
 <body>
-<div metal:fill-slot="main"
-     tal:define="periodiques python: view.getAllPeriodiques()">
-    <h1>Chercher une affiche</h1>
-    <tal:boucle tal:repeat="periodique periodiques">
-        <fieldset class="donnee-cadre">
-            <ul id="donnee-liste">
-                <li>
-                    <span class="donnee-etiquette">Titre</span> : 
-                    <span tal:content="periodique/per_titre" 
-                          class="donnee-db" />
-                </li>
-                <li>
-                    <span class="donnee-etiquette">Description</span> : 
-                    <span tal:content="periodique/per_description" 
-                          class="donnee-db" />
-                </li>                  
-            </ul>
-            <hr class="ligne-top-menu-gestion-donnee" />
-            <ul id="menu-gestion-donnee">
-                <li>
-                    <a href=""
-                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-periodiques/modifier-un-periodique?per_pk=${periodique/per_pk}">
-                        Modifier ce périodique</a>
-                </li>
-                <li>
-                    <a href=""
-                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-periodiques/supprimer-un-periodique?per_pk=${periodique/per_pk}">
-                       Effacer ce périodique</a>
-                </li>
-            </ul>
-        </fieldset>
-    </tal:boucle>
-</div><!-- div metal-->
+<div metal:fill-slot="main">
+	<h1> Gestion des affiches </h1>
+    <fieldset class="fieldset-border">
+        <div class="formulaire">
+            <h2>Chercher une affiche</h2>
+            <form action="admin-resultat-recherche-affiche"
+                  method="post">
+                <div>
+                    Entrez quelques lettres du titre de l'affiche, 
+                    du nom de l'auteur ou d'un mot en rapport avec
+                    l'affiche que vous recherchez, 
+                    ensuite cliquez sur le bouton.
+                </div>
+                <div class="formInput">
+                    <input type="text"
+                           name="afficheTitre"
+                           id="affiche-titre"
+                           value=""
+                           size="50" />
+                </div>
+                <div class="formControls">
+                    <input type="submit"
+                           value="Effectuer ma recherche">
+                </div>
+            </form>
+        </div>
+    </fieldset>  
+
+    <fieldset class="fieldset-border">
+        <legend class="legende"> La liste </legend>
+        Il vous est possible de voir une liste de tous nos affiches en cliquant 
+        <a href=""
+           tal:attributes="href string:${context/portal_url}/documentation/lister-les-affiches">
+           ici</a>
+    </fieldset>
+</div>
 </body>
 </html>
-
