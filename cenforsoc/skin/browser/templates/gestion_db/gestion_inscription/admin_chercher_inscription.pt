@@ -23,7 +23,7 @@
 <body>
 <div metal:fill-slot="main">
     <h1>Gestion des formations</h1>
-    <fieldset class="formCadre">
+    <fieldset class="fieldset-border">
         <legend class="legende">Rechercher une inscription</legend>
         <div class="search-text-intro">Plusieurs types de recherche sont possibles.</div>
 

@@ -36,6 +36,7 @@ class ManageAuteur(BrowserView):
         query = session.query(AuteurTable)
         query = query.order_by(AuteurTable.auteur_nom)
         allAuteurs = query.all()
+        import pdb; pdb.set_trace()
         return allAuteurs
 
     def getAuteurByPk(self, auteurPk):
@@ -95,7 +96,7 @@ class ManageAuteur(BrowserView):
                 auteurPk = auteur.auteur_pk
                 return (livrePk, auteurPk)
 
-    def getAuteurByLivrePk(self, livrePk):
+    def getAuteurByLivrePk(self, livrePk, sortieListe=None):
         """
         table pg link_livre_auteur
         recuperation des auteur selon la pk d'un livre
@@ -106,21 +107,24 @@ class ManageAuteur(BrowserView):
         query = session.query(LinkLivreAuteurTable)
         query = query.filter(LinkLivreAuteurTable.livre_fk == livrePk)
         auteurs = query.all()
-
-        auteursLivre = ""
-        compteur = 0
-        nbrAuteurs = len(auteurs)
-        if nbrAuteurs > 0:
-            for auteur in auteurs:
-                compteur = compteur + 1
-                auteurNom = auteur.auteurs.auteur_nom
-                auteurPrenom = auteur.auteurs.auteur_prenom or ''
-                auteursLivre = auteursLivre + auteurNom.upper() + ', ' + auteurPrenom
-                if compteur < nbrAuteurs:
-                    auteursLivre = auteursLivre + (' - ')
-            return auteursLivre
+        
+        if sortieListe:
+            auteursLivre = ""
+            compteur = 0
+            nbrAuteurs = len(auteurs)
+            if nbrAuteurs > 0:
+                for auteur in auteurs:
+                    compteur = compteur + 1
+                    auteurNom = auteur.auteurs.auteur_nom
+                    auteurPrenom = auteur.auteurs.auteur_prenom or ''
+                    auteursLivre = auteursLivre + auteurNom.upper() + ', ' + auteurPrenom
+                    if compteur < nbrAuteurs:
+                        auteursLivre = auteursLivre + (' - ')
+                return auteursLivre
+            else:
+                return''
         else:
-            return''
+            return auteurs
 
     def getSearchingAuteur(self, auteurPk=None):
         """

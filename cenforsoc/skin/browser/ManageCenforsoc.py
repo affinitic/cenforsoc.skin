@@ -9,20 +9,78 @@ from mailer import Mailer
 from Products.Five import BrowserView
 from zope.interface import implements
 #from z3c.sqlalchemy import getSAWrapper
-#from plone.app.form.widgets.wysiwygwidget import WYSIWYGWidget
 #from Products.CMFPlone.utils import normalizeString
 from Products.CMFCore.utils import getToolByName
 #from Products.CMFPlone import PloneMessageFactory as _
-#from Products.AddRemoveWidget.AddRemoveWidget import AddRemoveWidget
-#from Products.Archetypes.atapi import LinesField
-#from Products.Archetypes.Renderer import renderer
-#from Products.Archetypes.atapi import BaseContent
+from plone.app.form.widgets.wysiwygwidget import WYSIWYGWidget
+from Products.AddRemoveWidget.AddRemoveWidget import AddRemoveWidget
+from Products.Archetypes.atapi import LinesField
+from Products.Archetypes.Renderer import renderer
+from Products.Archetypes.atapi import BaseContent
 from interfaces import IManageCenforsoc
 #from collective.captcha.browser.captcha import Captcha
 
 
 class ManageCenforsoc(BrowserView):
     implements(IManageCenforsoc)
+
+
+# ### gestion des widgets kupu addRemoveList ###
+    def getWysiwygField(self, name, value):
+        """
+        generates a WYSIWYG field containing value
+        """
+
+        class MyField:
+            __name__ = name
+            required = False
+            default = value
+            missing_value = None
+
+        request = self.request
+        request.form = {}
+        field = WYSIWYGWidget(MyField(), request)
+        return field()
+
+    def getAddRemoveField(self, name, title, values, nameKey='name',
+                          pkKey='pk', selectedPks=[], canAddValues=False,
+                          liveSearch=True):
+        """
+        generates an Add / Remove from list field with already selected pks
+        nameKey and pkKey are used for the display value and the record pk to
+        save
+        """
+
+        class MyContext(BaseContent):
+
+            def getSelectedValues(self):
+                return selectedPks
+        if not isinstance(nameKey, list):
+            nameKey = [nameKey]
+        items = []
+        for value in values:
+            if isinstance(value, dict):
+                display = ' '.join([value.get(n) for n in nameKey])
+                term = (value.get(pkKey), display)
+            else:
+                display = ' '.join([getattr(value, n) for n in nameKey])
+                term = (getattr(value, pkKey), display)
+            items.append(term)
+
+        field = LinesField(name,
+                           vocabulary=items,
+                           edit_accessor='getSelectedValues',
+                           enforceVocabulary=not canAddValues,
+                           write_permission='View',
+                           widget=AddRemoveWidget(size=10,
+                                                  description='',
+                                                  label=title,
+                                                  liveSearch=liveSearch))
+
+        wrappedContext = MyContext('dummycontext').__of__(self)
+        widget = field.widget
+        res = renderer.render(name, 'edit', widget, wrappedContext, field=field)
+        return res
 
     def sendMail(self, sujet, message):
         """

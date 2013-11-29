@@ -9,136 +9,128 @@
 </head>
 
 <body>
-<div metal:fill-slot="main">
-   <h1>
-       <img src="images/livre.png" />
-       Gestion des livres
-   </h1>
-   <fieldset class="formCadre">
-       <legend class="legende">Ajouter un livre</legend>
-       <form action="insertLivre"
-             method="post">
-          <div class="formInput">
-              <label for="livreInventaire">Inventaire :</label>
-              <input type="text"
-                     name="livreInventaire"
-                     id="livreInventaire"
-                     size="50"/>
-          </div>
-          <div class="formInput">
-              <label for="livreCoteRang">Cote :</label>
-              <input type="text"
-                     name="livreCoteRang"
-                     id="livreCoteRang"
-                     size="50"/>
-          </div>
-          <div class="formInput">
-              <label for="livreTitre">Titre :</label>
-              <input type="text"
-                     name="livreTitre"
-                     id="livreTitre"
-                     size="50"/>
-          </div>
-          <div class="formInput">
-              <label for="livreAuteur1">Auteur 1 :</label>
-              <input type="text"
-                     name="livreAuteur1"
-                     id="livreAuteur1"
-                     size="50"/>
-          </div>
-          <div class="formInput">
-              <label for="livreAuteur2">Auteur 2 :</label>
-              <input type="text"
-                     name="livreAuteur2"
-                     id="livreAuteur2"
-                     size="50"/>
-          </div>
-          <div class="formInput">
-              <label for="livreAuteur3">Auteur 3 :</label>
-              <input type="text"
-                     name="livreAuteur3"
-                     id="livreAuteur3"
-                     size="50"/>
-          </div>
-          <div class="formInput">
-              <label for="livreIsbn">ISBN :</label>
-              <input type="text"
-                     name="livreIsbn"
-                     id="livreIsbn"
-                     size="50"/>
-          </div>
-          <div class="formInput">
-              <label for="livreEdition">Edition :</label>
-              <input type="text"
-                     name="livreEdition"
-                     id="livreEdition"
-                     size="50"/>
-          </div>
-          <div class="formInput">
-              <label for="livreEditeur">Editeur :</label>
-              <input type="text"
-                     name="livreEditeur"
-                     id="livreEditeur"
-                     size="50"/>
-          </div>
-          <div class="formInput">
-              <label for="livreDateEdition">Date d'édition :</label>
-              <input type="text"
-                     name="livreDateEdition"
-                     id="livreDateEdition"
-                     size="50"/>
-          </div>
-          <div class="formInput">
-              <label for="livreLieuEdition">Lieu d'édition :</label>
-              <input type="text"
-                     name="livreLieuEdition"
-                     id="livreLieuEdition"
-                     size="50"/>
-          </div>
-          <div class="formInput">
-              <label for="livreNbrePages">Nombre de pages :</label>
-              <input type="text"
-                     name="livreNbrePages"
-                     id="livreNbrePages"
-                     size="50"/>
-          </div>
-          <div class="formInput">
-              <label for="livreCollection">Collection :</label>
-              <input type="text"
-                     name="livreCollection"
-                     id="livreCollection"
-                     size="50"/>
-          </div>
-          <div class="formInput">
-              <label for="livreNotes">Notes :</label>
-              <input type="text"
-                     name="livreNotes"
-                     id="livreNotes"
-                     size="50"/>
-          </div>
-          <div class="formInput">
-              <label for="livreMotsCles">Mots-Clés :</label>
-              <input type="text"
-                     name="livreMotsCles"
-                     id="livreMotsCles"
-                     size="50"/>
-          </div>
-          <div class="formInput">
-              <label for="livrePret">Prêt :</label>
-              <input type="text"
-                     name="livrePret"
-                     id="livrePret"
-                     size="50"/>
-          </div>
-          <div class="formControls">
-              <input type="hidden"
-                     name="operation"
-                     value="insert" />
-              <input class="context"
-                     type="submit"
-                     value="Enregister le livre" />
-          </div>
-        </form>
+<div metal:fill-slot="main"
+     tal:define="cenforsocView context/@@manageCenforsoc;
+                 auteurView context/@@manageAuteur">
+    <h1>Gestion des livres</h1>
+    <fieldset class="fieldset-border">
+        <div class="formulaire">
+            <h2>Ajouter un livre</h2>
+            <form action="insertLivre"
+                  method="post">
+                <div class="formInput">
+                    <label for="livreInventaire">Inventaire :</label>
+                    <input type="text"
+                           name="livreInventaire"
+                           id="livreInventaire"
+                           size="80"/>
+                </div>
+                <div class="formInput">
+                    <label for="livreCoteRang">Cote :</label>
+                    <input type="text"
+                           name="livreCoteRang"
+                           id="livreCoteRang"
+                           size="80"/>
+                </div>
+                <div class="formInput">
+                    <label for="livreTitre">Titre :</label>
+                    <input type="text"
+                           name="livreTitre"
+                           id="livreTitre"
+                           size="80"/>
+                </div>
+                <div class="formInput">
+                    <label for="livreAuteur">Auteur(s) :</label>
+                    <tal:addremove define="errors python:{};">
+                    <span metal:use-macro="python: cenforsocView.getAddRemoveField(
+                                                                'auteurNom',
+                                                                ' ',
+                                                                auteurView.getAllAuteurs(),
+                                                                nameKey='auteur_nom',
+                                                                pkKey='auteur_pk')" />
+                   </tal:addremove>
+                </div>
+                <div class="formInput">
+                    <label for="livreIsbn">ISBN :</label>
+                    <input type="text"
+                           name="livreIsbn"
+                           id="livreIsbn"
+                           size="80"/>
+                </div>
+                <div class="formInput">
+                    <label for="livreEdition">Edition :</label>
+                    <input type="text"
+                           name="livreEdition"
+                           id="livreEdition"
+                           size="80"/>
+                </div>
+                <div class="formInput">
+                    <label for="livreEditeur">Editeur :</label>
+                    <input type="text"
+                           name="livreEditeur"
+                           id="livreEditeur"
+                           size="80"/>
+                </div>
+                <div class="formInput">
+                    <label for="livreDateEdition">Date d'édition :</label>
+                    <input type="text"
+                           name="livreDateEdition"
+                           id="livreDateEdition"
+                           size="80"/>
+                </div>
+                <div class="formInput">
+                    <label for="livreLieuEdition">Lieu d'édition :</label>
+                    <input type="text"
+                           name="livreLieuEdition"
+                           id="livreLieuEdition"
+                           size="80"/>
+                </div>
+                <div class="formInput">
+                    <label for="livreNbrePages">Nombre de pages :</label>
+                    <input type="text"
+                           name="livreNbrePages"
+                           id="livreNbrePages"
+                           size="80"/>
+                </div>
+                <div class="formInput">
+                    <label for="livreCollection">Collection :</label>
+                    <input type="text"
+                           name="livreCollection"
+                           id="livreCollection"
+                           size="80"/>
+                </div>
+                <div class="formInput">
+                    <label for="livreNotes">Notes :</label>
+                    <input type="text"
+                           name="livreNotes"
+                           id="livreNotes"
+                           size="80"/>
+                </div>
+                <div class="formInput">
+                    <label for="livreMotsCles">Mots-Clés :</label>
+                    <input type="text"
+                           name="livreMotsCles"
+                           id="livreMotsCles"
+                           size="80"/>
+                </div>
+                <div class="formInput">
+                    <label for="livrePret">Prêt :</label>
+                    <select name="livrePret"
+                            id="livrePret">
+                        <option value='False'> Non </option>
+                        <option value='True'> Oui </option>
+                    </select>
+                </div>
+                <div class="formControls">
+                    <input type="hidden"
+                           name="operation"
+                           value="insert" />
+                    <input class="context"
+                           type="submit"
+                           value="Enregister le livre" />
+                </div>
+           </form>
+        </div>
     </fieldset>
 </div><!-- div metal-->
 </body>

@@ -12,7 +12,7 @@
 <div metal:fill-slot="main"
      tal:define="auteurs python: view.getAllAuteurs()">
     <h1>Gestion des auteurs</h1>
-    <fieldset class="formCadre">
+    <fieldset class="fieldset-border">
         <legend class="legende">Lister les auteur</legend>
         <table class="listing table_livre">
             <thead>

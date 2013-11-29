@@ -255,3 +255,56 @@ $(document).ready(function(){
     });
 });
 });
+
+
+/* LiveSearch filtre sur les addRemoveWidget */
+$(document).ready(function(){
+
+$('[name="add_remove_widget_input_livesearch"]').each(function() {
+    var elem = $(this);
+
+    // Save current value of element
+    elem.data('oldVal', elem.val());
+
+    // Look for changes in the value
+    elem.bind("propertychange keyup input paste", function(event){
+        // If value has changed...
+        if (elem.data('oldVal') != elem.val()) {
+
+            // Updated stored value
+            elem.data('oldVal', elem.val());
+
+            // Filter in the fromBox
+            var originalListName = elem.attr('id') + '_original_list:list';
+            var originalList = $('[name="' + originalListName + '"]');
+
+            // Clear fromBox
+            var fromBoxId = elem.attr('from_box');
+            var fromBox = $('#'+fromBoxId);
+            fromBox.empty();
+
+            // Compare search filter string to each value of original list
+            originalList.each(function() {
+                var fromBoxId = elem.attr('from_box');
+                var toBoxId = elem.attr('to_box');
+                var filteredFromList = [];
+
+                var item = $(this);
+                // Check to compare the search filter to the original list
+                if (item.val().toUpperCase().indexOf(elem.val().toUpperCase()) > -1
+                        || elem.val() === '')
+                {
+                    // Check if option is not in toBox
+                    if ($('#' + toBoxId + ' option[value="' + item.attr('key') +'"]').length <= 0)
+                    {
+                        // Add the option in fromBox
+                        optionHtml = '<option value="' + item.attr('key') +'">' + item.val() + '</option>';
+                        $('#'+fromBoxId).append($(optionHtml));
+                    }
+                }
+            });
+
+        }
+    });
+});
+});

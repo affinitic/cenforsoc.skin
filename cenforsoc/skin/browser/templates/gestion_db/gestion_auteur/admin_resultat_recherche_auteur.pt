@@ -14,7 +14,7 @@
   
 <div metal:fill-slot="main">
     <h1>Gestion des auteurs</h1>
-    <fieldset class="formCadre">
+    <fieldset class="fieldset-border">
         <legend class="legende">Résultats de la recherche</legend>
         <div tal:define="auteurs python: view.getSearchingAuteur()">
             <div tal:repeat="auteur auteurs">

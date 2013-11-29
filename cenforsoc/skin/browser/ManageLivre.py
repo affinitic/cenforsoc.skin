@@ -131,7 +131,7 @@ class ManageLivre(BrowserView):
         LivreTable = wrapper.getMapper('livre')
         query = session.query(LivreTable)
         query = query.filter(LivreTable.liv_titre.ilike("%%%s%%" % searchString))
-        query = query.order_by(LivreTable.liv_titre)
+        query = query.order_by(LivreTable.liv_titre )
         livre = ["%s" % (elem.liv_titre) for elem in query.all()]
         return livre
 
@@ -262,12 +262,12 @@ class ManageLivre(BrowserView):
 
         session.flush()
 
-        self.deleteAuteurLivre()
-        self.insertAuteurLivre()
+        #self.deleteAuteurLivre()
+        #self.insertAuteurLivre()
 
         portalUrl = getToolByName(self.context, 'portal_url')()
         ploneUtils = getToolByName(self.context, 'plone_utils')
-        message = u"Les données du livre '%s' ont bien été modifiées !" % (unicode(livreTitre, 'utf-8'), )
+        message = u"L'ouvrage  '%s' est ajouté !" % (unicode(livreTitre, 'utf-8'), )
         ploneUtils.addPortalMessage(message, 'info')
         url = "%s/gestion-de-la-base/les-livres/admin-decrire-le-livre?livrePk=%s" % (portalUrl, livrePk)
         self.request.response.redirect(url)

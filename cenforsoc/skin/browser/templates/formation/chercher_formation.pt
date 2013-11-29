@@ -23,7 +23,7 @@
 <body>
 <div metal:fill-slot="main">
     <h1>Gestion des formations</h1>
-    <fieldset class="formCadre">
+    <fieldset class="fieldset-border">
         <legend class="legende">Chercher une formation</legend>
         <div id="info-champs">A partir de quelques lettres</div>
         <form action="modifier-une-formation"

@@ -12,7 +12,19 @@ class ICenforsocTheme(IDefaultPloneLayer):
 
 class IManageCenforsoc(Interface):
     """
+    outils communs
     """
+    def getWysiwygField(name, value):
+        """
+        generates a WYSIWYG field containing value
+        """
+
+    def getAddRemoveField(name, title, values, nameKey='name', pkKey='pk', selectedPks=[]):
+        """
+        generates an Add / Remove from list field with already selected pks
+        nameKey and pkKey are used for the display value and the record pk to
+        save
+        """
 
 
 class IManagePeriodique(Interface):

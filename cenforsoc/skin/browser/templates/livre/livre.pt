@@ -29,7 +29,7 @@
 		<p>Il vous est possible de consulter notre base de donn&eacute;es au travers d'internet.</p>
 		<p>Vous avez  possibilit&eacute;s pour effectuer une recherche</p>
 		
-		<div class="formCadre">
+		<div class="fieldset-border">
           <form action="decrire-le-livre"
                 method="post">
               <h2>
@@ -53,7 +53,7 @@
           </form>
         </div>
         
-        <div class="formCadre">
+        <div class="fieldset-border">
           <form action="recherche-livre-selon-auteur"
                 method="post">
               <h2>
@@ -77,7 +77,7 @@
           </form>
         </div>
         
-        <div class="formCadre">
+        <div class="fieldset-border">
           <form action="recherche-livre-selon-motcle"
                 method="post">
               <h2>

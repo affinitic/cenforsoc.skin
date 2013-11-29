@@ -52,7 +52,7 @@
                 <li>
                     <span class="donnee-etiquette">Auteur</span>
                     <br />&nbsp;&nbsp;&nbsp;
-                    <tal:block tal:define="auteurs python: auteurView.getAuteurByLivrePk(livrePk)">
+                    <tal:block tal:define="auteurs python: auteurView.getAuteurByLivrePk(livrePk, sortieListe=True)">
                         <span class="donnee-db">
                             <span tal:content="auteurs" />
                         </span>

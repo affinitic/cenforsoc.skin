@@ -24,13 +24,13 @@
 <body>
 <div metal:fill-slot="main">
     <h1>Formations interprofessionelles</h1>
-    <fieldset class="formCadre">
+    <fieldset class="fieldset-border">
         <legend class="legende">Nombres d'heures</legend>
         Nos formations générales sont agréées par le Ministère de l’Emploi et du Travail et
         ouvrent le droit au Congé Éducation Payé dans la limite de 80H00 par année académique.<br />
         De ce fait vous pouvez opter soit pour un module de 80H00 soit pour 2 de 40H00.
     </fieldset>
-    <fieldset class="formCadre">
+    <fieldset class="fieldset-border">
         <legend class="legende">Formations propos&eacute;es</legend>
         <ul>
             <tal:requete tal:define="Formations python: view.getFormationOpen()">

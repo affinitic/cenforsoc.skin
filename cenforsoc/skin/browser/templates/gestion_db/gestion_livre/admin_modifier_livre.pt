@@ -22,213 +22,179 @@
 
 <body>
 <div metal:fill-slot="main"
-     tal:define="auteurView context/@@manageAuteur;
+     tal:define="cenforsocView context/@@manageCenforsoc;
+                 auteurView context/@@manageAuteur;
                  livreTitre request/livreTitre | nothing;
                  livrePk request/livrePk | nothing;
                  livres python:view.getSearchingLivre(livrePk)">
 <h1>Gestion des livres</h1>
 <fieldset class="fieldset-border">
-    <legend class="legende">Modifier les données d'un livre</legend>
-
-    <tal:requete tal:define="livres python:view.getSearchingLivre(livrePk)">
-        <tal:boucle tal:repeat="livre livres">
-            <form action="updateLivre"
-                  methof="post">
-                <div class="formInput">
-                    <label for="livreTitre">Titre</label>
-                    <input type="text"
-                           name="livreTitre"
-                           id="livreTitre"
-                           size="50"
-                           value=""
-                           tal:attributes="value livre/liv_titre" />
-                </div>
-                <div class="formInput">
-                    <label for="livreInventaire">Inventaire</label>
-                    <input type="text"
-                           name="livreInventaire"
-                           id="livreInventaire"
-                           size="50"
-                           value=""
-                           tal:attributes="value livre/liv_inventaire" /><b tal:content="python: livre.liv_pk" />
-                </div>
-                <div class="formInput">
-                    <label for="livreCoteRang">Cote</label>
-                    <input type="text"
-                           name="livreCoteRang"
-                           id="livreCoteRang"
-                           size="50"
-                           value=""
-                           tal:attributes="value livre/liv_cote_rang" />
-                </div>
-                <div class="formInput">
-                    <label for="livreAuteur01">Auteur 1</label>
-                    <input type="text"
-                           name="livreAuteur01"
-                           id="livreAuteur01"
-                           size="50"
-                           value=""
-                           tal:attributes="value livre/liv_auteur_1" />
-                </div>
-                <div class="formInput">
-                    <label for="livreAuteur02">Auteur 2</label>
-                    <input type="text"
-                           name="livreAuteur02"
-                           name="livreAuteur02"
-                           size="50"
-                           value=""
-                           tal:attributes="value livre/liv_auteur_2" />
-                </div>
-                <div class="formInput">
-                    <label for="livreAuteur03">Auteur 3</label>
-                    <input type="text"
-                           name="livreAuteur03"
-                           id="livreAuteur03"
-                           size="50"
-                           value=""
-                           tal:attributes="value livre/liv_auteur_3" />
-                </div>
-                <div>
-                    Ajouter nouvel auteur
-                    <table>
-                        <tr>
-                            <td>
-                                <input type="text"
-                                       name="auteurNom:list"
-                                       class="auteur-nom"
-                                       value=""
-                                       size="30" />
-                            </td>
-                            <td>
-                                <input type="text"
-                                       name="auteurNom:list"
-                                       class="auteur-nom"
-                                       value=""
-                                       size="30" />
-                            </td>
-                            <td>
-                                <input type="text"
-                                       name="auteurNom:list"
-                                       class="auteur-nom"
-                                       value=""
-                                       size="30" />
-                            </td>
-                        </tr>
-                    </table>
-                <div>
-                    Nouvel auteur
-                    <tal:block tal:define="liv python: auteurView.getAuteurByLivrePk(livrePk)">
-                        <tal:boucle tal:repeat="elem liv">
-                            <span tal:content="python: elem.auteurs.auteur_nom.upper()" />, <span tal:content="elem/auteurs/auteur_prenom" />
-                            <br />
-                        </tal:boucle>
-                    </tal:block>
-                </div>
-                <div class="formInput">
-                    <label for="livreIsbn">ISBN</label>
-                    <input type="text"
-                           name="livreIsbn"
-                           id="livreIsbn"
-                           size="50"
-                           value=""
-                           tal:attributes="value livre/liv_isbn" />
-                </div>
-                <div class="formInput">
-                    <label for="livreEdition">Edition</label>
-                    <input type="text"
-                           name="livreEdition"
-                           id="livreEdition"
-                           size="50"
-                           value=""
-                           tal:attributes="value livre/liv_edition" />
-                </div>
-                <div class="formInput">
-                    <label for="livreEditeur">Editeur</label>
-                    <input type="text"
-                           name="livreEditeur"
-                           id="livreEditeur"
-                           size="50"
-                           value=""
-                           tal:attributes="value livre/liv_editeur" />
-                </div>
-                <div class="formInput">
-                    <label for="livreLieuEdition">Lieu</label>
-                    <input type="text"
-                           name="livreLieuEdition"
-                           id="livreLieuEdition"
-                           size="50"
-                           value=""
-                           tal:attributes="value livre/liv_lieu" />
-                </div>
-                <div class="formInput">
-                    <label for="livreDateEdition">Ann&eacute;e</label>
-                    <input type="text"
-                           name="livreDateEdition"
-                           id="livreDateEdition"
-                           size="50"
-                           value=""
-                           tal:attributes="value livre/liv_date" />
-                </div>
-                <div class="formInput">
-                    <label for="livreNbrePages">Pages</label>
-                    <input type="text"
-                           name="livreNbrePages"
-                           id="livreNbrePages"
-                           size="50"
-                           value=""
-                           tal:attributes="value livre/liv_pages" />
-                </div>
-                <div class="formInput">
-                    <label for="livreCollection">Collection</label>
-                    <input type="text"
-                           name="livreCollection"
-                           id="livreCollection"
-                           size="50"
-                           value=""
-                           tal:attributes="value livre/liv_collection" />
-                </div>
-                <div class="formInput">
-                    <label for="livreNotes">Notes</label>
-                    <input type="text"
-                           name="livreNotes"
-                           id="livreNotes"
-                           size="50"
-                           value=""
-                           tal:attributes="value livre/liv_notes" />
-                </div>
-                <div class="formInput">
-                    <label for="livreMotsCles">Mots-cl&eacute;s</label>
-                    <input type="text"
-                           name="livreMotsCles"
-                           id="livreMotsCles"
-                           size="50"
-                           value=""
-                           tal:attributes="value livre/liv_mots_cles" />
-                </div>
-                <div class="formInput">
-                    <label for="livrePret">Pr&ecirc;t</label>
-                    <input type="text"
-                           name="livrePret"
-                           id="livrePret"
-                           size="50"
-                           value=""
-                           tal:attributes="value livre/liv_pret" />
-                </div>
-                <div class="formControls" align="center">
-                    <input type="hidden"
-                           name="livrePk"
-                           value=""
-                           tal:attributes="value livre/liv_pk" />
-                    <input type="hidden"
-                           name="operation"
-                           value="update" />
-                    <input class="context"
-                           type="submit"
-                           value="Mettre à jour le livre" />
-                </div>
-            </form>
-        </tal:boucle>
-    </tal:requete>
+    <div class="formulaire">
+        <h2>Modifier les données d'un livre</h2>
+        <tal:requete tal:define="livres python:view.getSearchingLivre(livrePk)">
+            <tal:boucle tal:repeat="livre livres">
+                <form action="updateLivre"
+                      methof="post">
+                    <div class="formInput">
+                        <label for="livreTitre">Titre :</label>
+                        <input type="text"
+                               name="livreTitre"
+                               id="livreTitre"
+                               size="80"
+                               value=""
+                               tal:attributes="value livre/liv_titre" />
+                    </div>
+                    <div class="formInput">
+                        <label for="livreInventaire">Inventaire :</label>
+                        <input type="text"
+                               name="livreInventaire"
+                               id="livreInventaire"
+                               size="80"
+                               value=""
+                               tal:attributes="value livre/liv_inventaire" />
+                               <b tal:content="python: livre.liv_pk" />
+                    </div>
+                    <div class="formInput">
+                        <label for="livreCoteRang">Cote :</label>
+                        <input type="text"
+                               name="livreCoteRang"
+                               id="livreCoteRang"
+                               size="80"
+                               value=""
+                               tal:attributes="value livre/liv_cote_rang" />
+                    </div>
+                    <div>
+                        <label for="livreAuteur">Auteur :</label>
+                        name="auteurNom:list"
+                        <tal:addremove define="errors python:{};">
+                            <span metal:use-macro="python: cenforsocView.getAddRemoveField(
+                                                                'auteur_pk',
+                                                                ' ',
+                                                                auteurView.getAllAuteurs(),
+                                                                nameKey='auteur_nom',
+                                                                pkKey='auteur_pk')" />
+                        </tal:addremove>
+                    </div>
+                    <!--
+                    <div>
+                        <tal:block tal:define="auteurs python: auteurView.getAuteurByLivrePk(livrePk)">
+                            <tal:boucle tal:repeat="auteur auteurs">
+                                <span tal:content="auteur/auteur_nom" />, <span tal:content="auteur/auteur_prenom" />
+                                x
+                                <br />
+                            </tal:boucle>
+                        </tal:block>
+                    </div>
+                    -->
+                    <div class="formInput">
+                        <label for="livreIsbn">ISBN :</label>
+                        <input type="text"
+                               name="livreIsbn"
+                               id="livreIsbn"
+                               size="80"
+                               value=""
+                               tal:attributes="value livre/liv_isbn" />
+                    </div>
+                    <div class="formInput">
+                        <label for="livreEdition">Edition :</label>
+                        <input type="text"
+                               name="livreEdition"
+                               id="livreEdition"
+                               size="80"
+                               value=""
+                               tal:attributes="value livre/liv_edition" />
+                    </div>
+                    <div class="formInput">
+                        <label for="livreEditeur">Editeur :</label>
+                        <input type="text"
+                               name="livreEditeur"
+                               id="livreEditeur"
+                               size="80"
+                               value=""
+                               tal:attributes="value livre/liv_editeur" />
+                    </div>
+                    <div class="formInput">
+                        <label for="livreLieuEdition">Lieu :</label>
+                        <input type="text"
+                               name="livreLieuEdition"
+                               id="livreLieuEdition"
+                               size="80"
+                               value=""
+                               tal:attributes="value livre/liv_lieu" />
+                    </div>
+                    <div class="formInput">
+                        <label for="livreDateEdition">Ann&eacute;e :</label>
+                        <input type="text"
+                               name="livreDateEdition"
+                               id="livreDateEdition"
+                               size="80"
+                               value=""
+                               tal:attributes="value livre/liv_date" />
+                    </div>
+                    <div class="formInput">
+                        <label for="livreNbrePages">Pages :</label>
+                        <input type="text"
+                               name="livreNbrePages"
+                               id="livreNbrePages"
+                               size="80"
+                               value=""
+                               tal:attributes="value livre/liv_pages" />
+                    </div>
+                    <div class="formInput">
+                        <label for="livreCollection">Collection :</label>
+                        <input type="text"
+                               name="livreCollection"
+                               id="livreCollection"
+                               size="80"
+                               value=""
+                               tal:attributes="value livre/liv_collection" />
+                    </div>
+                    <div class="formInput">
+                        <label for="livreNotes">Notes :</label>
+                        <input type="text"
+                               name="livreNotes"
+                               id="livreNotes"
+                               size="80"
+                               value=""
+                               tal:attributes="value livre/liv_notes" />
+                    </div>
+                    <div class="formInput">
+                        <label for="livreMotsCles">Mots-cl&eacute;s :</label>
+                        <input type="text"
+                               name="livreMotsCles"
+                               id="livreMotsCles"
+                               size="80"
+                               value=""
+                               tal:attributes="value livre/liv_mots_cles" />
+                    </div>
+                    <div class="formInput">
+                        <label for="livrePret">Pr&ecirc;t :</label>
+                        <select name="livrePret"
+                                id="livrePret">
+                            <option value="True" 
+                                    selected=""
+                                    tal:attributes="selected python:livre.liv_pret is True or None"> Oui </option>
+                            <option value="False" 
+                                    selected=""
+                                    tal:attributes="selected python:livre.liv_pret is False or None"> Non </option>
+                        </select>
+                    </div>
+                    <div class="formControls" align="center">
+                        <input type="hidden"
+                               name="livrePk"
+                               value=""
+                               tal:attributes="value livre/liv_pk" />
+                        <input type="hidden"
+                               name="operation"
+                               value="update" />
+                        <input class="context"
+                               type="submit"
+                               value="Mettre à jour le livre" />
+                    </div>
+                </form>
+            </tal:boucle>
+        </tal:requete>
+    </div>
 </fieldset>
 </div><!-- div metal-->
 </body>

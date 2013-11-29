@@ -36,7 +36,7 @@
     -->
     <fieldset class="fieldset-border">
         <legend class="legende">Une recherche</legend>
-        <div class="formCadre">
+        <div class="fieldset-border">
             <form action="resultat-recherche-affiche"
                   method="post">
                 <div>

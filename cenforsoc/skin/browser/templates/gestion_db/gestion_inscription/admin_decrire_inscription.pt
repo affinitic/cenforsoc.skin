@@ -12,7 +12,7 @@
 <div metal:fill-slot="main"
      tal:define="inscriptions python: view.getSearchingInscriptionFormation()">
     <h1>Gestion des formations</h1>
-    <fieldset class="formCadre">
+    <fieldset class="fieldset-border">
         <legend class="legende">Afficher une inscription</legend>
         <tal:boucle tal:repeat="inscription inscriptions">
             <div class="boite-resultat">
