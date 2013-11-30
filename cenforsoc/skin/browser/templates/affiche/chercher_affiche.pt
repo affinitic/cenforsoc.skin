@@ -1,0 +1,58 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plone">
+
+<head>
+    <metal:js fill-slot="javascript_head_slot">
+        <script src="++resource++collective.javascript.jqueryui/js/jquery-1.4.2.min.js"
+                type="text/javascript"></script>
+        <script src="++resource++collective.javascript.jqueryui/js/jquery-ui.min.js"
+                type="text/javascript"></script>
+    </metal:js>
+    <metal:css fill-slot="style_slot">
+        <link href="++resource++collective.javascript.jqueryui/css/ui-lightness/jquery-ui.css"
+              type="text/css"
+              rel="stylesheet" />
+    </metal:css>
+    <metal:noborder fill-slot="top_slot"
+                    tal:define="dummy python:request.set('disable_border',1)" />
+</head>
+
+<body>
+<div metal:fill-slot="main">
+	<h1> Gestion des affiches </h1>
+    <fieldset class="fieldset-border">
+        <h2>Chercher une affiche</h2>
+        <form action="admin-resultat-recherche-affiche"
+              method="post">
+            <div>
+                Entrez quelques lettres du titre de l'affiche, 
+                du nom de l'auteur ou d'un mot en rapport avec
+                l'affiche que vous recherchez, 
+                ensuite cliquez sur le bouton.
+            </div>
+            <div class="formInput">
+                <input type="text"
+                       name="afficheTitre"
+                       id="affiche-titre"
+                       value=""
+                       size="50" />
+            </div>
+            <div class="formControls">
+                <input type="submit"
+                       value="Effectuer ma recherche">
+            </div>
+        </form>
+    </fieldset>  
+
+    <fieldset class="fieldset-border">
+        <legend class="legende"> La liste </legend>
+        Il vous est possible de voir une liste de tous nos affiches en cliquant 
+        <a href=""
+           tal:attributes="href string:${context/portal_url}/documentation/lister-les-affiches">
+           ici</a>
+    </fieldset>
+</div>
+</body>
+</html>

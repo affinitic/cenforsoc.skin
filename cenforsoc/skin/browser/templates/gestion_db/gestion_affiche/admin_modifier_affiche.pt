@@ -10,37 +10,171 @@
 
 <body>
 <div metal:fill-slot="main"
-     tal:define="periodiques python: view.getAllPeriodiques()">
-    <h1>Modifier une affiche</h1>
-    <tal:boucle tal:repeat="periodique periodiques">
-        <fieldset class="donnee-cadre">
-            <ul id="donnee-liste">
-                <li>
-                    <span class="donnee-etiquette">Titre</span> : 
-                    <span tal:content="periodique/per_titre" 
-                          class="donnee-db" />
-                </li>
-                <li>
-                    <span class="donnee-etiquette">Description</span> : 
-                    <span tal:content="periodique/per_description" 
-                          class="donnee-db" />
-                </li>                  
-            </ul>
-            <hr class="ligne-top-menu-gestion-donnee" />
-            <ul id="menu-gestion-donnee">
-                <li>
-                    <a href=""
-                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-periodiques/modifier-un-periodique?per_pk=${periodique/per_pk}">
-                        Modifier ce périodique</a>
-                </li>
-                <li>
-                    <a href=""
-                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-periodiques/supprimer-un-periodique?per_pk=${periodique/per_pk}">
-                       Effacer ce périodique</a>
-                </li>
-            </ul>
-        </fieldset>
-    </tal:boucle>
+     tal:define="affichePk request/affichePk;
+                 affiche python: view.getAfficheByPk(affichePk)">
+    <h1>Gestion des affiches</h1>
+    <fieldset class="fieldset-border">
+        <div class="formulaire">    
+            <h2>Modifier une affiche </h2>
+            <form action="updateAffiche"
+                  methof="post">
+                <div class="formInput">
+                    <label for="afficheTitre">Titre :</label>
+                    <input type="text"
+                           name="afficheTitre"
+                           size="100"
+                           value=""
+                           tal:attributes="value affiche/affiche_titre" />
+                </div>
+                <div class="formInput">
+                    <label for="afficheNumInventaire">Numéro inventaire :</label>
+                    <input type="text"
+                           name="afficheNumInventaire"
+                           size="100"
+                           value=""
+                           tal:attributes="value affiche/affiche_inventaire" />
+                </div>
+                <div class="formInput">
+                    <label for="afficheAuteur">Auteur :</label>
+                    <input type="text"
+                           name="afficheAuteur"
+                           size="100"
+                           value=""
+                           tal:attributes="value affiche/affiche_auteur" />
+                </div>
+                <div class="formInput">
+                    <label for="afficheIllustrateur">Illustrateur :</label>
+                    <input type="text"
+                           name="afficheIllustrateur"
+                           size="100"
+                           value=""
+                           tal:attributes="value affiche/affiche_illustrateur" />
+                </div>
+                <div class="formInput">
+                    <label for="afficheLieuEdition">Lieu d'édition :</label>
+                    <input type="text"
+                           name="afficheLieuEdition"
+                           size="100"
+                           value=""
+                           tal:attributes="value affiche/affiche_lieu_edition" />
+                </div>
+                <div class="formInput">
+                    <label for="afficheEditeur">Editeur :</label>
+                    <input type="text"
+                           name="afficheEditeur"
+                           size="100"
+                           value=""
+                           tal:attributes="value affiche/affiche_editeur" />
+                </div>
+                <div class="formInput">
+                    <label for="afficheDateEdition">Date d'édition :</label>
+                    <input type="text"
+                           name="afficheDateEdition"
+                           size="100"
+                           value=""
+                           tal:attributes="value affiche/affiche_date_edition" />
+                </div>
+                <div class="formInput">
+                    <label for="afficheColoration">Coloration :</label>
+                    <input type="text"
+                           name="afficheColoration"
+                           size="100"
+                           value=""
+                           tal:attributes="value affiche/affiche_coloration" />
+                </div>
+                <div class="formInput">
+                    <label for="afficheFormat">Format :</label>
+                    <input type="text"
+                           name="afficheFormat"
+                           size="100"
+                           value=""
+                           tal:attributes="value affiche/affiche_format" />
+                </div>
+                <div class="formInput">
+                    <label for="afficheNbreExemplaire">Nombre d'exemplaire :</label>
+                    <input type="text"
+                           name="afficheNbreExemplaire"
+                           size="100"
+                           value=""
+                           tal:attributes="value affiche/affiche_nbre_exemplaire" />
+                </div>
+                <div class="formInput">
+                    <label for="afficheMotCle">Mot-clés :</label>
+                    <input type="text"
+                           name="afficheMotCle"
+                           size="100"
+                           value=""
+                           tal:attributes="value affiche/affiche_mot_cle" />
+                </div>
+                <div class="formInput">
+                    <label for="afficheDescriptif">Descriptif :</label>
+                    <textarea name="afficheDescriptif"
+                              cols="100"
+                              rows="6"
+                              tal:content="affiche/affiche_descriptif"></textarea>
+                </div>
+                <div class="formInput">
+                    <label for="afficheHistorique">Historique :</label>
+                    <input type="text"
+                           name="afficheHistorique"
+                           size="100"
+                           value=""
+                           tal:attributes="value affiche/affiche_historique" />
+                </div>
+                <div class="formInput">
+                    <label for="afficheCommanditaire">Commanditaire :</label>
+                    <input type="text"
+                           name="afficheCommanditaire"
+                           size="100"
+                           value=""
+                           tal:attributes="value affiche/affiche_commanditaire" />
+                </div>
+                <div class="formInput">
+                    <label for="afficheSerie">Série :</label>
+                    <input type="text"
+                           name="afficheSerie"
+                           size="100"
+                           value=""
+                           tal:attributes="value affiche/affiche_serie" />
+                </div>
+                <div id="affiche-image">
+                    <img src=""
+                         tal:attributes="src string:affiche_cenforsoc/${affiche/affiche_inventaire}.jpg" />
+                </div>
+                <div class="formControls">
+                    <input type="hidden"
+                           name="affichePk"
+                           value=""
+                           tal:attributes="value affiche/affiche_pk" />
+                    <input type="hidden"
+                           name="operation"
+                           value="update" />
+                    <input class="context"
+                           type="submit"
+                           value="Mettre à jour cette affiche" />
+                </div>
+                <hr class="ligne-top-menu-gestion-donnee" />
+                <ul id="menu-gestion-donnee">
+                    <li>
+                        <a href=""
+                           tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-affiches/admin-chercher-une-affiche">
+                           Chercher une affiche</a>
+                    </li>
+                    <li>
+                        <a href=""
+                           tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-affiches/admin-modifier-une-affiche?affichePk=${affiche/affiche_pk}">
+                           Modifier cette affiche</a>
+                    </li>
+                    <li>
+                        <a href=""
+                           tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-affiches/admin-supprimer-une-affiche?affichePk=${affiche/affiche_pk}">
+                           Supprimer cette affiche</a>
+                    </li>
+
+                </ul>
+            </form>
+        </div>
+    </fieldset>
 </div><!-- div metal-->
 </body>
 </html>

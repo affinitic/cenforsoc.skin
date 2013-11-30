@@ -9,10 +9,10 @@ from sqlalchemy import or_
 from Products.Five import BrowserView
 from zope.interface import implements
 from z3c.sqlalchemy import getSAWrapper
-from Products.CMFPlone.utils import normalizeString
+#from Products.CMFPlone.utils import normalizeString
 #from plone.app.form.widgets.wysiwygwidget import WYSIWYGWidget
 #from Products.CMFPlone.utils import normalizeString
-#from Products.CMFCore.utils import getToolByName
+from Products.CMFCore.utils import getToolByName
 #from Products.CMFPlone import PloneMessageFactory as _
 #from Products.AddRemoveWidget.AddRemoveWidget import AddRemoveWidget
 #from Products.Archetypes.atapi import LinesField
@@ -132,9 +132,23 @@ class ManageAffiche(BrowserView):
         mise a jour d'un item affiche
         """
         fields = self.context.REQUEST
+
         affichePk = getattr(fields, 'affichePk')
         afficheTitre = getattr(fields, 'afficheTitre', None)
-        afficheDescription = getattr(fields, 'afficheDescription', None)
+        afficheNumInventaire = getattr(fields, 'afficheNumInventaire', None)
+        afficheAuteur = getattr(fields, 'afficheAuteur')
+        afficheIllustrateur = getattr(fields, 'afficheIllustrateur', None)
+        afficheLieuEdition = getattr(fields, 'afficheLieuEdition', None)
+        afficheEditeur = getattr(fields, 'afficheEditeur')
+        afficheDateEdition = getattr(fields, 'afficheDateEdition', None)
+        afficheColoration = getattr(fields, 'afficheColoration', None)
+        afficheFormat = getattr(fields, 'afficheFormat')
+        afficheNbreExemplaire = getattr(fields, 'afficheNbreExemplaire')
+        afficheMotCle = getattr(fields, 'afficheMotCle')
+        afficheDescriptif = getattr(fields, 'afficheDescriptif')
+        afficheHistorique = getattr(fields, 'afficheHistorique')
+        afficheCommanditaire = getattr(fields, 'afficheCommanditaire')
+        afficheSerie = getattr(fields, 'afficheSerie')
 
         wrapper = getSAWrapper('cenforsoc')
         session = wrapper.session
@@ -144,11 +158,30 @@ class ManageAffiche(BrowserView):
         affiches = query.all()
         for affiche in affiches:
             affiche.affiche_titre = unicode(afficheTitre, 'utf-8')
-            affiche.affiche_description = unicode(afficheDescription, 'utf-8')
+            affiche.afficheNumInventaire = unicode(afficheNumInventaire, 'utf-8')
+            affiche.afficheAuteur = unicode(afficheAuteur, 'utf-8')
+            affiche.afficheIllustrateur = unicode(afficheIllustrateur, 'utf-8')
+            affiche.afficheLieuEdition = unicode(afficheLieuEdition, 'utf-8')
+            affiche.afficheEditeur = unicode(afficheEditeur, 'utf-8')
+            affiche.afficheDateEdition = unicode(afficheDateEdition, 'utf-8')
+            affiche.afficheColoration = unicode(afficheColoration, 'utf-8')
+            affiche.afficheFormat = unicode(afficheFormat, 'utf-8')
+            affiche.afficheNbreExemplaire = unicode(afficheNbreExemplaire, 'utf-8')
+            affiche.afficheMotCle = unicode(afficheMotCle, 'utf-8')
+            affiche.afficheDescriptif = unicode(afficheDescriptif, 'utf-8')
+            affiche.afficheHistorique = unicode(afficheHistorique, 'utf-8')
+            affiche.afficheCommanditaire = unicode(afficheCommanditaire, 'utf-8')
+            affiche.afficheSerie = unicode(afficheSerie, 'utf-8')
 
         session.flush()
-        cible = "%s/creation-d-une-affiche" % (self.context.portal_url(), )
-        self.context.REQUEST.RESPONSE.redirect(cible)
+
+        portalUrl = getToolByName(self.context, 'portal_url')()
+        ploneUtils = getToolByName(self.context, 'plone_utils')
+        message = u"L'affiche a bien été modifié !"
+        ploneUtils.addPortalMessage(message, 'info')
+        url = "%s/gestion-de-la-base/les-affiches/admin-decrire-une-affiche?affichePk=%s" % (portalUrl, affichePk)
+        self.request.response.redirect(url)
+        return ''
 
     def listAfficheInLocalFs(self):
         """
@@ -161,16 +194,11 @@ class ManageAffiche(BrowserView):
             affiches.append(listeAffiches[i].id)
         return affiches
 
-    def addAfficheToLocalFs(self, for_id, fileUpload):
+    def insertAfficheToLocalFs(self, for_id, fileUpload):
         """
         ajout d'un fichier dans le localfs
         comme  catalogue pdf de l'operateur
         """
-        rof = getattr(self.context, 'rof-questionnaire')
-        lfs = getattr(rof, 'rof_pdf')
-        fileName = normalizeString(fileUpload.filename, encoding='utf-8')
-        lfs.manage_upload(fileUpload, id=fileName)
-
         wrapper = getSAWrapper('cenforsoc')
         session = wrapper.session
         insertCatalogue = wrapper.getMapper('link_organisme_catalogue')
@@ -188,7 +216,6 @@ class ManageAffiche(BrowserView):
         url = "%s/auteur/inserer-un-auteur" % (portalUrl)
         self.request.response.redirect(url)
         return ''
-
 
     def deleteAfficheFromLocalFS(self, \
                                  fileName, \

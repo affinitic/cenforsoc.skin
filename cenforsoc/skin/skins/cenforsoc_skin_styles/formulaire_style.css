@@ -55,6 +55,7 @@ cursor:pointer;
 font-size:0.85em;
 }
 
+.formulaire textarea,
 .formulaire input:not([type=submit]) {
 border:1px solid #aaa;
 border-radius:3px;
