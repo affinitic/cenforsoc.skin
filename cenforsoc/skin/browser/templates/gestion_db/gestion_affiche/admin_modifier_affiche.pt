@@ -115,11 +115,10 @@
                 </div>
                 <div class="formInput">
                     <label for="afficheHistorique">Historique :</label>
-                    <input type="text"
-                           name="afficheHistorique"
-                           size="100"
-                           value=""
-                           tal:attributes="value affiche/affiche_historique" />
+                    <textarea name="afficheHistorique"
+                              cols="100"
+                              rows="6"
+                              tal:content="affiche/affiche_historique"></textarea>
                 </div>
                 <div class="formInput">
                     <label for="afficheCommanditaire">Commanditaire :</label>
