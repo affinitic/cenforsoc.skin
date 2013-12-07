@@ -9,40 +9,142 @@
 </head>
 
 <body>
-<div metal:fill-slot="main"
-     tal:define="periodiques python: view.getAllPeriodiques()">
-    <h1>Gestion des auteurs</h1>
-    <tal:boucle tal:repeat="periodique periodiques">
-        <fieldset class="donnee-cadre">
-            <h2>
-            <ul id="donnee-liste">
-                <li>
-                    <span class="donnee-etiquette">Titre</span> : 
-                    <span tal:content="periodique/per_titre" 
-                          class="donnee-db" />
-                </li>
-                <li>
-                    <span class="donnee-etiquette">Description</span> : 
-                    <span tal:content="periodique/per_description" 
-                          class="donnee-db" />
-                </li>                  
-            </ul>
-            <hr class="ligne-top-menu-gestion-donnee" />
-            <ul id="menu-gestion-donnee">
-                <li>
-                    <a href=""
-                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-periodiques/modifier-un-periodique?per_pk=${periodique/per_pk}">
-                        Modifier ce périodique</a>
-                </li>
-                <li>
-                    <a href=""
-                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-periodiques/supprimer-un-periodique?per_pk=${periodique/per_pk}">
-                       Effacer ce périodique</a>
-                </li>
-            </ul>
-        </fieldset>
-    </tal:boucle>
+<div metal:fill-slot="main">
+    <h1>Gestion des affiches</h1>
+    <fieldset class="fieldset-border">
+        <div class="formulaire">    
+            <h2>Ajouter une affiche </h2>
+            <form action="insertAffiche"
+                  enctype="multipart/form-data"
+                  methof="post">
+                <div class="formInput">
+                    <label for="afficheTitre">Titre :</label>
+                    <input type="text"
+                           name="afficheTitre"
+                           size="80"
+                           value="" />
+                </div>
+                <div class="formInput">
+                    <label for="afficheNumInventaire">Numéro inventaire :</label>
+                    <input type="text"
+                           name="afficheNumInventaire"
+                           size="80"
+                           value="" />
+                </div>
+                <div class="formInput">
+                    <label for="afficheAuteur">Auteur :</label>
+                    <input type="text"
+                           name="afficheAuteur"
+                           size="80"
+                           value="" />
+                </div>
+                <div class="formInput">
+                    <label for="afficheIllustrateur">Illustrateur :</label>
+                    <input type="text"
+                           name="afficheIllustrateur"
+                           size="80"
+                           value="" />
+                </div>
+                <div class="formInput">
+                    <label for="afficheLieuEdition">Lieu d'édition :</label>
+                    <input type="text"
+                           name="afficheLieuEdition"
+                           size="80"
+                           value="" />
+                </div>
+                <div class="formInput">
+                    <label for="afficheEditeur">Editeur :</label>
+                    <input type="text"
+                           name="afficheEditeur"
+                           size="80"
+                           value="" />
+                </div>
+                <div class="formInput">
+                    <label for="afficheDateEdition">Date d'édition :</label>
+                    <input type="text"
+                           name="afficheDateEdition"
+                           size="80"
+                           value="" />
+                </div>
+                <div class="formInput">
+                    <label for="afficheColoration">Coloration :</label>
+                    <input type="text"
+                           name="afficheColoration"
+                           size="80"
+                           value="" />
+                </div>
+                <div class="formInput">
+                    <label for="afficheFormat">Format :</label>
+                    <input type="text"
+                           name="afficheFormat"
+                           size="80"
+                           value="" />
+                </div>
+                <div class="formInput">
+                    <label for="afficheNbreExemplaire">Nombre d'exemplaire :</label>
+                    <input type="text"
+                           name="afficheNbreExemplaire"
+                           size="80"
+                           value="" />
+                </div>
+                <div class="formInput">
+                    <label for="afficheMotCle">Mot-clés :</label>
+                    <input type="text"
+                           name="afficheMotCle"
+                           size="80"
+                           value="" />
+                </div>
+                <div class="formInput">
+                    <label for="afficheDescriptif">Descriptif :</label>
+                    <textarea name="afficheDescriptif"
+                              cols="90"
+                              rows="6"></textarea>
+                </div>
+                <div class="formInput">
+                    <label for="afficheHistorique">Historique :</label>
+                    <textarea name="afficheHistorique"
+                              cols="90"
+                              rows="6"></textarea>
+                </div>
+                <div class="formInput">
+                    <label for="afficheCommanditaire">Commanditaire :</label>
+                    <input type="text"
+                           name="afficheCommanditaire"
+                           size="80"
+                           value="" />
+                </div>
+                <div class="formInput">
+                    <label for="afficheSerie">Série :</label>
+                    <input type="text"
+                           name="afficheSerie"
+                           size="80"
+                           value="" />
+                </div>
+                <div class="formInput">
+                    <input type="file"
+                           id="afficheImage"
+                           name="fileUpload"
+                           size="60" />
+                </div>
+                <div class="formControls">
+                    <input type="hidden"
+                           name="operation"
+                           value="insert" />
+                    <input class="context"
+                           type="submit"
+                           value="Ajoutercette affiche" />
+                </div>
+                <hr class="ligne-top-menu-gestion-donnee" />
+                <ul id="menu-gestion-donnee">
+                    <li>
+                        <a href=""
+                           tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-affiches/admin-chercher-une-affiche">
+                           Chercher une affiche</a>
+                    </li>
+                </ul>
+            </form>
+        </div>
+    </fieldset>
 </div><!-- div metal-->
 </body>
 </html>
-

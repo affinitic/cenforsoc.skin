@@ -109,22 +109,56 @@ class ManageAffiche(BrowserView):
 
     def insertAffiche(self):
         """
-        table
-        ajout d'un item affiche
+        table pg affiche
+        ajout d'un item affiche sans image
         """
         fields = self.context.REQUEST
-        afficheTitre = getattr(fields, 'afficheTitre')
-        afficheDescription = getattr(fields, 'afficheDescription', None)
-
+        afficheTitre = getattr(fields, 'afficheTitre', None)
+        afficheNumInventaire = getattr(fields, 'afficheNumInventaire', None)
+        afficheAuteur = getattr(fields, 'afficheAuteur')
+        afficheIllustrateur = getattr(fields, 'afficheIllustrateur', None)
+        afficheLieuEdition = getattr(fields, 'afficheLieuEdition', None)
+        afficheEditeur = getattr(fields, 'afficheEditeur')
+        afficheDateEdition = getattr(fields, 'afficheDateEdition', None)
+        afficheColoration = getattr(fields, 'afficheColoration', None)
+        afficheFormat = getattr(fields, 'afficheFormat')
+        afficheNbreExemplaire = getattr(fields, 'afficheNbreExemplaire')
+        afficheMotCle = getattr(fields, 'afficheMotCle')
+        afficheDescriptif = getattr(fields, 'afficheDescriptif')
+        afficheHistorique = getattr(fields, 'afficheHistorique')
+        afficheCommanditaire = getattr(fields, 'afficheCommanditaire')
+        afficheSerie = getattr(fields, 'afficheSerie')
+        
         wrapper = getSAWrapper('cenforsoc')
         session = wrapper.session
         insertAffiche = wrapper.getMapper('affiche')
-        newEntry = insertAffiche(affiche_titre=afficheTitre, \
-                                 affiche_description=afficheDescription)
-        session.save(newEntry)
+        newEntry = insertAffiche(affiche_titre = afficheTitre, \
+                                 affiche_inventaire = afficheNumInventaire, \
+                                 affiche_auteur = afficheAuteur, \
+                                 affiche_illustrateur = afficheIllustrateur, \
+                                 affiche_lieu_edition = afficheLieuEdition, \
+                                 affiche_editeur = afficheEditeur, \
+                                 affiche_date_edition = afficheDateEdition, \
+                                 affiche_coloration = afficheColoration, \
+                                 affiche_format = afficheFormat, \
+                                 affiche_nbre_exemplaire = afficheNbreExemplaire, \
+                                 affiche_mot_cle = afficheMotCle, \
+                                 affiche_descriptif = afficheDescriptif, \
+                                 affiche_historique = afficheHistorique, \
+                                 affiche_commanditaire = afficheCommanditaire, \
+                                 affiche_serie = afficheSerie)
+        session.add(newEntry)
         session.flush()
-        cible = "%s/creation-d-une-affiche" % (self.context.portal_url(), )
-        self.context.REQUEST.RESPONSE.redirect(cible)
+        session.refresh(newEntry)
+        affichePk = newEntry.affiche_pk
+
+        portalUrl = getToolByName(self.context, 'portal_url')()
+        ploneUtils = getToolByName(self.context, 'plone_utils')
+        message = u"L'affiche a été correctement enregistrée !"
+        ploneUtils.addPortalMessage(message, 'info')
+        url = "%s/gestion-de-la-base/les-affiches/admin-decrire-une-affiche?affichePk=%s" % (portalUrl, affichePk)
+        self.request.response.redirect(url)
+        return ''
 
     def updateAffiche(self):
         """
@@ -199,22 +233,13 @@ class ManageAffiche(BrowserView):
         ajout d'un fichier dans le localfs
         comme  catalogue pdf de l'operateur
         """
-        wrapper = getSAWrapper('cenforsoc')
-        session = wrapper.session
-        insertCatalogue = wrapper.getMapper('link_organisme_catalogue')
-        newEntry = insertCatalogue(for_id=for_id, \
-                                   for_catalogue=fileName)
-        session.add(newEntry)
-        session.flush()
-        session.refresh(newEntry)
-        auteurPk = newEntry.auteur_pk
+        afficheFolderXXXXXXXXXXXXXXXXXXXXXXXXXXXXX = getattr(self.context, 'rof-questionnaire')
+        lfs = getattr(rof, 'rof_pdf')
+        filename, ext = os.path.splitext(fileUpload.filename)
+        normalized_filename = normalizeString(filename, encoding='utf-8')
+        filepath = '%s%s' % (normalized_filename, ext)
+        lfs.manage_upload(fileUpload, id=filepath)
 
-        portalUrl = getToolByName(self.context, 'portal_url')()
-        ploneUtils = getToolByName(self.context, 'plone_utils')
-        message = u"Le nouvel auteur a bien été enregistré !"
-        ploneUtils.addPortalMessage(message, 'info')
-        url = "%s/auteur/inserer-un-auteur" % (portalUrl)
-        self.request.response.redirect(url)
         return ''
 
     def deleteAfficheFromLocalFS(self, \

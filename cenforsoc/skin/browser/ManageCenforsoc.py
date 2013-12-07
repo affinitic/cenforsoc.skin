@@ -43,8 +43,8 @@ class ManageCenforsoc(BrowserView):
         return field()
 
     def getAddRemoveField(self, name, title, values, nameKey='name',
-                          pkKey='pk', selectedPks=[], canAddValues=False,
-                          liveSearch=True):
+                          pkKey='pk', selectedPks=[], selectedNames=[],
+                          canAddValues=False, liveSearch=True):
         """
         generates an Add / Remove from list field with already selected pks
         nameKey and pkKey are used for the display value and the record pk to
@@ -52,19 +52,22 @@ class ManageCenforsoc(BrowserView):
         """
 
         class MyContext(BaseContent):
-
             def getSelectedValues(self):
-                return selectedPks
+                if selectedPks:
+                    return [str(pk) for pk in selectedPks]
+                if selectedNames:
+                    return selectedNames
+        import pdb ; pdb.set_trace()
         if not isinstance(nameKey, list):
             nameKey = [nameKey]
         items = []
         for value in values:
             if isinstance(value, dict):
                 display = ' '.join([value.get(n) for n in nameKey])
-                term = (value.get(pkKey), display)
+                term = (str(value.get(pkKey)), display)
             else:
                 display = ' '.join([getattr(value, n) for n in nameKey])
-                term = (getattr(value, pkKey), display)
+                term = (str(getattr(value, pkKey)), display)
             items.append(term)
 
         field = LinesField(name,
@@ -77,7 +80,7 @@ class ManageCenforsoc(BrowserView):
                                                   label=title,
                                                   liveSearch=liveSearch))
 
-        wrappedContext = MyContext('dummycontext').__of__(self)
+        wrappedContext = MyContext('dummycontext').__of__(self.context)
         widget = field.widget
         res = renderer.render(name, 'edit', widget, wrappedContext, field=field)
         return res

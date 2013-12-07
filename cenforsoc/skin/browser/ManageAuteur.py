@@ -106,7 +106,7 @@ class ManageAuteur(BrowserView):
         query = session.query(LinkLivreAuteurTable)
         query = query.filter(LinkLivreAuteurTable.livre_fk == livrePk)
         auteurs = query.all()
-        
+
         if sortieListe:
             auteursLivre = ""
             compteur = 0

@@ -190,6 +190,7 @@ class ManageLivre(BrowserView):
         livreIsbn = fields.get('livreIsbn', None)
         livreMotsCles = fields.get('livreMotsCles', None)
         livrePret = fields.get('livrePret', None)
+        auteurPk = fields.get('auteurPk', None)
 
         wrapper = getSAWrapper('cenforsoc')
         session = wrapper.session
@@ -211,6 +212,8 @@ class ManageLivre(BrowserView):
         session.flush()
         session.refresh(newEntry)
         livrePk = newEntry.liv_pk
+
+        self.insertAuteurLivre(livrePk, auteurPk)
 
         portalUrl = getToolByName(self.context, 'portal_url')()
         ploneUtils = getToolByName(self.context, 'plone_utils')
@@ -291,24 +294,11 @@ class ManageLivre(BrowserView):
             session.delete(LivrePk)
         session.flush()
 
-    def insertAuteurLivre(self):
+    def insertAuteurLivre(self, livrePk, auteurPk):
         """
         table pg link_livre_auteur
-        3 auteurs possible pour un livre
-        recuperer les auteurs depuis le lifesearch,
-        check si plusieurs noms et separation des pk
-        insertion des nouvelles donnees
+        plusieurs auteurs possible pour un livre
         """
-        fields = self.request.form
-        livrePk = fields.get('livrePk', None)
-        auteurNom = fields.get('auteurNom', None)
-
-        auteurPk = []
-        for nom in auteurNom:
-            if len(nom) > 0:
-                b = nom.split('- ')
-                auteurPk.append(int(b[1]))
-
         wrapper = getSAWrapper('cenforsoc')
         session = wrapper.session
         LinkLivreAuteurTable = wrapper.getMapper('link_livre_auteur')

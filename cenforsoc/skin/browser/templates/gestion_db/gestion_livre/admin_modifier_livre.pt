@@ -65,17 +65,15 @@
                     </div>
                     <div>
                         <label for="livreAuteur">Auteur :</label>
-                        name="auteurNom:list"
-                        <!--
                         <tal:addremove define="errors python:{};">
                             <span metal:use-macro="python: cenforsocView.getAddRemoveField(
                                                                 'auteurNom',
                                                                 ' ',
                                                                 auteurView.getAllAuteurs(),
                                                                 nameKey='auteur_nom',
-                                                                pkKey='auteur_pk')" />
+                                                                pkKey='auteur_pk',
+                                                                selectedNames=auteurView.getAuteurByLivrePk(livrePk, True))" />
                         </tal:addremove>
-                        -->
                     </div>
                     <!--
                     <div>
@@ -173,10 +171,10 @@
                         <label for="livrePret">Pr&ecirc;t :</label>
                         <select name="livrePret"
                                 id="livrePret">
-                            <option value="True" 
+                            <option value="True"
                                     selected=""
                                     tal:attributes="selected python:livre.liv_pret is True or None"> Oui </option>
-                            <option value="False" 
+                            <option value="False"
                                     selected=""
                                     tal:attributes="selected python:livre.liv_pret is False or None"> Non </option>
                         </select>
