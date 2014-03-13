@@ -41,13 +41,16 @@
                 </div>
                 <div class="formInput">
                     <label for="livreAuteur">Auteur(s) :</label>
+                    <!--<span tal:content="python: cenforsocView.getRoleUserAuthenticated()"></span>-->
+                    
                     <tal:addremove define="errors python:{};">
-                        <span metal:use-macro="python: cenforsocView.getAddRemoveField('auteurPk',
+                        <span metal:use-macro="python: cenforsocView.getAddRemoveField('auteurNom',
                                                                                        ' ',
                                                                                        auteurView.getAllAuteurs(),
-                                                                                       nameKey=['auteur_nom', 'auteur_nom'],
+                                                                                       nameKey='auteur_nom',
                                                                                        pkKey='auteur_pk')" />
-                    </tal:addremove>
+                   </tal:addremove>
+                   
                 </div>
                 <div class="formInput">
                     <label for="livreIsbn">ISBN :</label>

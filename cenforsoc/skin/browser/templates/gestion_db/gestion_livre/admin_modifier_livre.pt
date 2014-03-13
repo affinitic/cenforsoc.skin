@@ -64,16 +64,18 @@
                                tal:attributes="value livre/liv_cote_rang" />
                     </div>
                     <div>
-                        <label for="livreAuteur">Auteur :</label>
+                        <label for="livreAuteur">Auteurs :</label>
+                        <div tal:define="selectedNames python:auteurView.getAuteurByLivrePk(livrePk, 'listeAuteurFormatee')">
+                            Auteurs : <span tal:content="selectedNames" />
+                        </div>
                         <tal:addremove define="errors python:{};">
-                            <span metal:use-macro="python: cenforsocView.getAddRemoveField(
-                                                                'auteurNom',
-                                                                ' ',
-                                                                auteurView.getAllAuteurs(),
-                                                                nameKey='auteur_nom',
-                                                                pkKey='auteur_pk',
-                                                                selectedNames=auteurView.getAuteurByLivrePk(livrePk, True))" />
+                            <span metal:use-macro="python:cenforsocView.getAddRemoveField('auteurNom', ' ',
+                                                                                           auteurView.getAllAuteurs(),
+                                                                                           nameKey='auteur_nom',
+                                                                                           pkKey='auteur_pk',
+                                                                                           selectedPks=auteurView.getAuteurByLivrePk(livrePk, 'cle'))" />
                         </tal:addremove>
+                        
                     </div>
                     <!--
                     <div>

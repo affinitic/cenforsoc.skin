@@ -190,7 +190,7 @@ class ManageLivre(BrowserView):
         livreIsbn = fields.get('livreIsbn', None)
         livreMotsCles = fields.get('livreMotsCles', None)
         livrePret = fields.get('livrePret', None)
-        auteurPk = fields.get('auteurPk', None)
+        auteurPk = fields.get('auteurNom', None)
 
         wrapper = getSAWrapper('cenforsoc')
         session = wrapper.session
@@ -212,7 +212,6 @@ class ManageLivre(BrowserView):
         session.flush()
         session.refresh(newEntry)
         livrePk = newEntry.liv_pk
-
         self.insertAuteurLivre(livrePk, auteurPk)
 
         portalUrl = getToolByName(self.context, 'portal_url')()

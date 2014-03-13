@@ -53,20 +53,20 @@ class ManageCenforsoc(BrowserView):
 
         class MyContext(BaseContent):
             def getSelectedValues(self):
-                if selectedPks:
-                    return [str(pk) for pk in selectedPks]
-                if selectedNames:
-                    return selectedNames
-        import pdb ; pdb.set_trace()
+                return [str(pk) for pk in selectedPks]
+                #if selectedNames:
+                #    return selectedNames
         if not isinstance(nameKey, list):
             nameKey = [nameKey]
         items = []
         for value in values:
             if isinstance(value, dict):
                 display = ' '.join([value.get(n) for n in nameKey])
+                #display = ' '.join([n and getattr(value, n) or '-' for n in nameKey])
                 term = (str(value.get(pkKey)), display)
             else:
                 display = ' '.join([getattr(value, n) for n in nameKey])
+                #display = ' '.join([n and getattr(value, n) or '-' for n in nameKey])
                 term = (str(getattr(value, pkKey)), display)
             items.append(term)
 

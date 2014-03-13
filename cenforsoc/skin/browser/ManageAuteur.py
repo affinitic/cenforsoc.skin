@@ -99,6 +99,11 @@ class ManageAuteur(BrowserView):
         """
         table pg link_livre_auteur
         recuperation des auteur selon la pk d'un livre
+        permet de retourner : 
+            toutes les infos auteur
+            selon sortieListe :
+                une chaine formatée des auteurNom (nom, prenom - nom, prenom)
+                une liste des pk des auteur d'un livre
         """
         wrapper = getSAWrapper('cenforsoc')
         session = wrapper.session
@@ -107,7 +112,7 @@ class ManageAuteur(BrowserView):
         query = query.filter(LinkLivreAuteurTable.livre_fk == livrePk)
         auteurs = query.all()
 
-        if sortieListe:
+        if sortieListe == 'listeAuteurFormatee':
             auteursLivre = ""
             compteur = 0
             nbrAuteurs = len(auteurs)
@@ -120,8 +125,16 @@ class ManageAuteur(BrowserView):
                     if compteur < nbrAuteurs:
                         auteursLivre = auteursLivre + (' - ')
                 return auteursLivre
-            else:
-                return''
+        if sortieListe == 'cle':
+            auteursPk = []
+            compteur = 0
+            nbrAuteurs = len(auteurs)
+            if nbrAuteurs > 0:
+                for auteur in auteurs:
+                    compteur = compteur + 1
+                    auteursPk.append(auteur.auteurs.auteur_pk)
+                return auteursPk
+        
         else:
             return auteurs
 
