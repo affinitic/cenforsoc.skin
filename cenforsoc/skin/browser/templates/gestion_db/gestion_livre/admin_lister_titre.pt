@@ -10,7 +10,8 @@
 
 <body>
 <div metal:fill-slot="main"
-     tal:define="livres python: view.getAllLivres()">
+     tal:define="auteurView context/@@manageAuteur;
+                 livres python: view.getAllLivres()">
     <h1>Lister les ouvrages</h1>
     <p>
     Il y a actuellement
@@ -31,10 +32,11 @@
         </thead>
         <tbody>
             <tal:boucle tal:repeat="livre livres">
-                <tal:block tal:define="odd repeat/livre/odd">
+                <tal:block tal:define="odd repeat/livre/odd;
+                                       livrePk livre/liv_pk">
         			<tr tal:attributes="class python:odd and 'listing_bg_odd' or 'listing_bg_even'">
         				<td>
-        				    <span tal:content="livre/liv_pk"
+        				    <span tal:content="livrePk"
         				          class="discreet" />
         				</td>
         				<td>
@@ -47,13 +49,12 @@
         					   tal:content="python:livre.liv_titre"></a>
         				</td>
         				<td>
-        				    <span tal:content="livre/liv_auteur_1" /><br />
-        				    <span tal:content="livre/liv_auteur_2" /><br />
-        				    <span tal:content="livre/liv_auteur_3" />
+                            <span tal:content="python: auteurView.getAuteurByLivrePk(livrePk, sortieListe='listeAuteurFormatee')"
+                                  class="discreet" />
         				</td>
         				<td>
         				    <a href="" 
-        					   tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-livres/admin-modifier-un-livre?livrePk=${livre/liv_pk}"
+        					   tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-livres/admin-modifier-un-livre?livrePk=${livrePk}"
         					   alt="Modifier le livre"
         					   class="btn-modifier"></a>
         				</td>

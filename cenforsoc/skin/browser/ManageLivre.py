@@ -242,6 +242,8 @@ class ManageLivre(BrowserView):
         livreMotsCles = fields.get('livreMotsCles', None)
         livrePret = fields.get('livrePret', None)
 
+        auteurPk = fields.get('auteurPk', None)
+
         wrapper = getSAWrapper('cenforsoc')
         session = wrapper.session
         updateLivreTable = wrapper.getMapper('livre')
@@ -264,8 +266,8 @@ class ManageLivre(BrowserView):
 
         session.flush()
 
-        #self.deleteAuteurLivre()
-        #self.insertAuteurLivre()
+        self.deleteAuteurLivre(livrePk)
+        self.insertAuteurLivre(livrePk, auteurPk)
 
         portalUrl = getToolByName(self.context, 'portal_url')()
         ploneUtils = getToolByName(self.context, 'plone_utils')
@@ -275,14 +277,11 @@ class ManageLivre(BrowserView):
         self.request.response.redirect(url)
         return ''
 
-    def deleteLivre(self):
+    def deleteLivre(self, livrePk):
         """
         table pg Livre
         suppression des Livres
         """
-        fields = self.context.REQUEST
-        LivrePk = getattr(fields, 'LivrePk')
-
         wrapper = getSAWrapper('cenforsoc')
         session = wrapper.session
         deleteLivreTable = wrapper.getMapper('livre')
@@ -307,7 +306,7 @@ class ManageLivre(BrowserView):
             session.add(newEntry)
         session.flush()
 
-    def deleteAuteurLivre(self):
+    def deleteAuteurLivre(self, livrePk):
         """
         table pg link_livre_auteur
         3 auteurs possible pour un livre
@@ -315,15 +314,11 @@ class ManageLivre(BrowserView):
         check si plusieurs noms et separation des pk
         suppression des donnees
         """
-        fields = self.request.form
-        livrePk = fields.get('livrePk', None)
-        auteurNom = fields.get('auteurNom', None)
-
-        auteurPk = []
-        for nom in auteurNom:
-            if len(nom) > 0:
-                b = nom.split('- ')
-                auteurPk.append(int(b[1]))
+        #auteurPk = []
+        #for nom in auteurNom:
+        #    if len(nom) > 0:
+        #        b = nom.split('- ')
+        #        auteurPk.append(int(b[1]))
 
         wrapper = getSAWrapper('cenforsoc')
         session = wrapper.session

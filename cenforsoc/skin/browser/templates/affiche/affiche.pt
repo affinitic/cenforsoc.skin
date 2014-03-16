@@ -38,7 +38,7 @@
                            name="afficheTitre"
                            id="affiche-titre"
                            value=""
-                           size="50" />
+                           size="100" />
                 </div>
                 <div class="formControls">
                     <input type="submit"

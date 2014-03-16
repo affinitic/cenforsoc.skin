@@ -35,7 +35,7 @@
                            tal:attributes="href string:decrire-le-livre?livrePk=${livre/liv_pk}">
                            <span tal:content="livre/liv_titre" /></a>
                         <br />
-                            <tal:block tal:define="auteurs python: auteurView.getAuteurByLivrePk(livrePk, sortieListe=True)">
+                            <tal:block tal:define="auteurs python: auteurView.getAuteurByLivrePk(livrePk, sortieListe='listeAuteurFormatee')">
                                 <span class="discreet">
                                     <span tal:content="auteurs" />
                                 </span>

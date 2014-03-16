@@ -44,7 +44,7 @@
                          name="livreTitre"
                          id="livre-titre"
                          value=""
-                         size="50" />
+                         size="100" />
               </div>
               <div class="formControls">
                   <input type="submit"
@@ -68,7 +68,7 @@
                          name="auteurNom"
                          class="auteur-nom"
                          value=""
-                         size="50" />
+                         size="100" />
               </div>
               <div class="formControls">
                   <input type="submit"
@@ -92,7 +92,7 @@
                          name="motCle"
                          id="mot-cle"
                          value=""
-                         size="50" />
+                         size="100" />
               </div>
               <div class="formControls">
                   <input type="submit"

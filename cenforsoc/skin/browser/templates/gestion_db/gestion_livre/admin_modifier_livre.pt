@@ -69,7 +69,7 @@
                             Auteurs : <span tal:content="selectedNames" />
                         </div>
                         <tal:addremove define="errors python:{};">
-                            <span metal:use-macro="python:cenforsocView.getAddRemoveField('auteurNom', ' ',
+                            <span metal:use-macro="python:cenforsocView.getAddRemoveField('auteurPk', ' ',
                                                                                            auteurView.getAllAuteurs(),
                                                                                            nameKey='auteur_nom',
                                                                                            pkKey='auteur_pk',
