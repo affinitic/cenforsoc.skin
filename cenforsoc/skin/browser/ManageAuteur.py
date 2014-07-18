@@ -99,7 +99,7 @@ class ManageAuteur(BrowserView):
         """
         table pg link_livre_auteur
         recuperation des auteur selon la pk d'un livre
-        permet de retourner : 
+        permet de retourner :
             toutes les infos auteur
             selon sortieListe :
                 une chaine formatée des auteurNom (nom, prenom - nom, prenom)
@@ -134,7 +134,7 @@ class ManageAuteur(BrowserView):
                     compteur = compteur + 1
                     auteursPk.append(auteur.auteurs.auteur_pk)
                 return auteursPk
-        
+
         else:
             return auteurs
 
@@ -183,7 +183,7 @@ class ManageAuteur(BrowserView):
         wrapper = getSAWrapper('cenforsoc')
         session = wrapper.session
         insertAuteur = wrapper.getMapper('auteur')
-        newEntry = insertAuteur(auteur_nom=auteurNom, \
+        newEntry = insertAuteur(auteur_nom=auteurNom,
                                 auteur_prenom=auteurPrenom)
         session.add(newEntry)
         session.flush()

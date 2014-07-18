@@ -4,8 +4,8 @@ from zope.component import getUtility
 from zope.component import getMultiAdapter
 #from zope.interface import alsoProvides
 from plone.portlets.constants import CONTEXT_CATEGORY
-from plone.portlets.interfaces import IPortletManager, \
-                                      IPortletAssignmentMapping, \
+from plone.portlets.interfaces import IPortletManager,
+                                      IPortletAssignmentMapping,
                                       ILocalPortletAssignmentManager
 from plone.app.portlets.portlets import navigation
 from Products.CMFCore.utils import getToolByName
@@ -22,7 +22,6 @@ def setupCenforsoc(context):
     newFolder = setupNewFolder(portal, existFolder, 'periodique', 'Périodiques', 'Gestion des périodiques', 'les-periodiques')
     newFolder = setupNewFolder(portal, existFolder, 'affiche', 'Affiches', 'Gestion des affiches', 'les-affiches')
     newFolder = setupNewFolder(portal, existFolder, 'auteur', 'Auteurs', 'Gestion des auteurs', 'auteur')
-    #clearPortlets(newFolder)
     setupNavigationPortlet(portal)
     updateSecurity(portal)
 

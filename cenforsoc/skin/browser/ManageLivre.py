@@ -131,7 +131,7 @@ class ManageLivre(BrowserView):
         LivreTable = wrapper.getMapper('livre')
         query = session.query(LivreTable)
         query = query.filter(LivreTable.liv_titre.ilike("%%%s%%" % searchString))
-        query = query.order_by(LivreTable.liv_titre )
+        query = query.order_by(LivreTable.liv_titre)
         livre = ["%s" % (elem.liv_titre) for elem in query.all()]
         return livre
 
@@ -195,18 +195,18 @@ class ManageLivre(BrowserView):
         wrapper = getSAWrapper('cenforsoc')
         session = wrapper.session
         insertLivre = wrapper.getMapper('livre')
-        newEntry = insertLivre(liv_titre=livreTitre, \
-                               liv_inventaire=livreInventaire, \
-                               liv_cote_rang=livreCoteRang, \
-                               liv_edition=livreEdition, \
-                               liv_lieu=livreLieuEdition, \
-                               liv_editeur=livreEditeur, \
-                               liv_date=livreDateEdition, \
-                               liv_pages=livreNbrePages, \
-                               liv_collection=livreCollection, \
-                               liv_notes=livreNotes, \
-                               liv_isbn=livreIsbn, \
-                               liv_mots_cles=livreMotsCles, \
+        newEntry = insertLivre(liv_titre=livreTitre,
+                               liv_inventaire=livreInventaire,
+                               liv_cote_rang=livreCoteRang,
+                               liv_edition=livreEdition,
+                               liv_lieu=livreLieuEdition,
+                               liv_editeur=livreEditeur,
+                               liv_date=livreDateEdition,
+                               liv_pages=livreNbrePages,
+                               liv_collection=livreCollection,
+                               liv_notes=livreNotes,
+                               liv_isbn=livreIsbn,
+                               liv_mots_cles=livreMotsCles,
                                liv_pret=livrePret)
         session.add(newEntry)
         session.flush()
@@ -286,7 +286,7 @@ class ManageLivre(BrowserView):
         session = wrapper.session
         deleteLivreTable = wrapper.getMapper('livre')
         query = session.query(deleteLivreTable)
-        query = query.filter(deleteLivreTable.per_pk == LivrePk)
+        query = query.filter(deleteLivreTable.per_pk == livrePk)
         allLivres = query.all()
         for LivrePk in allLivres:
             session.delete(LivrePk)

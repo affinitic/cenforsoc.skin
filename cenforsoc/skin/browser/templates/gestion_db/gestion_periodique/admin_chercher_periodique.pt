@@ -39,7 +39,7 @@
                            id="periodique-titre"
                            name="periodiqueTitre"
                            value=""
-                           size="50">
+                           size="100">
                 </div>
                 <div class="formControls">
                     <input type="submit"

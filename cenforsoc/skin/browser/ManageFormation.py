@@ -344,7 +344,7 @@ class ManageFormation(BrowserView):
                          inscriptionFormationDelegationSyndicale, inscriptionFormationDelegationCE,\
                          inscriptionFormationDelegationCPPT, inscriptionFormationFormationSuivie)
 
-            sujetInscrit = "CENFOSOC : confirmation de votre demande d'inscription"
+            sujetInscrit = "CENFORSOC : confirmation de votre demande d'inscription"
             messageInscrit = """
                          Bonjour %s %s,
                          <br /><br />

@@ -24,7 +24,6 @@ from interfaces import IManageCenforsoc
 class ManageCenforsoc(BrowserView):
     implements(IManageCenforsoc)
 
-
 # ### gestion des widgets kupu addRemoveList ###
     def getWysiwygField(self, name, value):
         """

@@ -133,7 +133,7 @@ class ManagePeriodique(BrowserView):
         wrapper = getSAWrapper('cenforsoc')
         session = wrapper.session
         insertPeriodique = wrapper.getMapper('periodique')
-        newEntry = insertPeriodique(per_titre=periodiqueTitre, \
+        newEntry = insertPeriodique(per_titre=periodiqueTitre,
                                     per_description=periodiqueDescription)
         session.add(newEntry)
         session.flush()

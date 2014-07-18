@@ -517,7 +517,7 @@
         permission="zope.Public"
         attribute="updateAuteur"
         allowed_interface=".interfaces.IManageAuteur"
-        /> 
+        />
 
 <!-- gestion_db :: livres -->
     <browser:page
@@ -673,7 +673,7 @@
         permission="zope.Public"
         attribute="updatePeriodique"
         allowed_interface=".interfaces.IManagePeriodique"
-        /> 
+        />
     <browser:page
         name="deletePeriodique"
         for="*"
@@ -681,7 +681,7 @@
         permission="zope.Public"
         attribute="deletePeriodique"
         allowed_interface=".interfaces.IManagePeriodique"
-        /> 
+        />
 
 
 <!-- gestion_db :: affiche -->
@@ -756,6 +756,6 @@
         attribute="updateAffiche"
         class=".ManageAffiche.ManageAffiche"
         allowed_interface=".interfaces.IManageAffiche"
-        /> 
+        />
 
 </configure>
