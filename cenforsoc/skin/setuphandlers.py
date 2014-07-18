@@ -4,9 +4,7 @@ from zope.component import getUtility
 from zope.component import getMultiAdapter
 #from zope.interface import alsoProvides
 from plone.portlets.constants import CONTEXT_CATEGORY
-from plone.portlets.interfaces import IPortletManager,
-                                      IPortletAssignmentMapping,
-                                      ILocalPortletAssignmentManager
+from plone.portlets.interfaces import IPortletManager, IPortletAssignmentMapping, ILocalPortletAssignmentManager
 from plone.app.portlets.portlets import navigation
 from Products.CMFCore.utils import getToolByName
 
