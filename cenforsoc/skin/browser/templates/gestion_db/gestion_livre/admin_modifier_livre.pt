@@ -75,7 +75,7 @@
                                                                                            pkKey='auteur_pk',
                                                                                            selectedPks=auteurView.getAuteurByLivrePk(livrePk, 'cle'))" />
                         </tal:addremove>
-                        
+
                     </div>
                     <!--
                     <div>

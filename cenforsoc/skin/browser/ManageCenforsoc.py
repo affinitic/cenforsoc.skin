@@ -41,9 +41,16 @@ class ManageCenforsoc(BrowserView):
         field = WYSIWYGWidget(MyField(), request)
         return field()
 
-    def getAddRemoveField(self, name, title, values, nameKey='name',
-                          pkKey='pk', selectedPks=[], selectedNames=[],
-                          canAddValues=False, liveSearch=True):
+    def getAddRemoveField(self,
+                          name,
+                          title,
+                          values,
+                          nameKey='name',
+                          pkKey='pk',
+                          selectedPks=[],
+                          selectedNames=[],
+                          canAddValues=False,
+                          liveSearch=True):
         """
         generates an Add / Remove from list field with already selected pks
         nameKey and pkKey are used for the display value and the record pk to

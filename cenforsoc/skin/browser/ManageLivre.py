@@ -271,7 +271,7 @@ class ManageLivre(BrowserView):
 
         portalUrl = getToolByName(self.context, 'portal_url')()
         ploneUtils = getToolByName(self.context, 'plone_utils')
-        message = u"L'ouvrage  '%s' est ajouté !" % (unicode(livreTitre, 'utf-8'), )
+        message = u"L'ouvrage  '%s' est modifié !" % (unicode(livreTitre, 'utf-8'), )
         ploneUtils.addPortalMessage(message, 'info')
         url = "%s/gestion-de-la-base/les-livres/admin-decrire-le-livre?livrePk=%s" % (portalUrl, livrePk)
         self.request.response.redirect(url)

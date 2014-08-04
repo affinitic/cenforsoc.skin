@@ -116,25 +116,19 @@ class ManageAuteur(BrowserView):
             auteursLivre = ""
             compteur = 0
             nbrAuteurs = len(auteurs)
-            if nbrAuteurs > 0:
-                for auteur in auteurs:
-                    compteur = compteur + 1
-                    auteurNom = auteur.auteurs.auteur_nom
-                    auteurPrenom = auteur.auteurs.auteur_prenom or ''
-                    auteursLivre = auteursLivre + auteurNom.upper() + ', ' + auteurPrenom
-                    if compteur < nbrAuteurs:
-                        auteursLivre = auteursLivre + (' - ')
-                return auteursLivre
+            for auteur in auteurs:
+                compteur = compteur + 1
+                auteurNom = auteur.auteurs.auteur_nom
+                auteurPrenom = auteur.auteurs.auteur_prenom or ''
+                auteursLivre = auteursLivre + auteurNom.upper() + ', ' + auteurPrenom
+                if compteur < nbrAuteurs:
+                    auteursLivre = auteursLivre + (' - ')
+            return auteursLivre
         if sortieListe == 'cle':
             auteursPk = []
-            compteur = 0
-            nbrAuteurs = len(auteurs)
-            if nbrAuteurs > 0:
-                for auteur in auteurs:
-                    compteur = compteur + 1
-                    auteursPk.append(auteur.auteurs.auteur_pk)
-                return auteursPk
-
+            for auteur in auteurs:
+                auteursPk.append(auteur.auteurs.auteur_pk)
+            return auteursPk
         else:
             return auteurs
 
