@@ -16,7 +16,7 @@
    <h1>Gestion des périodiques</h1>
    <div class="formulaire">
         <h2>Modifier un p&eacute;riodique</h2>
-        <tal:boucle tal:repeat="periodique Periodiques">
+        <tal:boucle tal:repeat="periodique periodiques">
             <form action="updatePeriodique"
                   methof="post">
                 <div class="formInput">
