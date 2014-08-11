@@ -413,7 +413,7 @@
 
 <!-- gestion db :: inscription -->
     <browser:page
-        name="lister-les-inscriptions"
+        name="admin-lister-les-inscriptions"
         for="*"
         template="templates/gestion_db/gestion_inscription/admin_lister_inscription.pt"
         permission="zope.Public"
@@ -421,7 +421,7 @@
         allowed_interface=".interfaces.IManageFormation"
         />
     <browser:page
-        name="chercher-une-inscription"
+        name="admin-chercher-une-inscription"
         for="*"
         template="templates/gestion_db/gestion_inscription/admin_chercher_inscription.pt"
         permission="zope.Public"
@@ -429,7 +429,7 @@
         allowed_interface=".interfaces.IManageFormation"
         />
     <browser:page
-        name="decrire-une-inscription"
+        name="admin-decrire-une-inscription"
         for="*"
         template="templates/gestion_db/gestion_inscription/admin_decrire_inscription.pt"
         permission="zope.Public"
