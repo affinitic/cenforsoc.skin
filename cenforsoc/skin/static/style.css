@@ -436,7 +436,7 @@ color:#8e211c;
 /*** PORLET GESTION DB ***/
 #portlet-gestion-db{
 background-color:rgba(239,197,202,0.3);  /*rgba(232,231,230,1);*/
-border:1px solid #222;
+border:1px solid #800;
 border-radius:12px;
 margin-bottom:10px;
 }
@@ -479,7 +479,7 @@ line-height:23px;
 }
 
 .portletFooterDB{
-border-radius:0px 0px 0px 10px;
+border-radius:0px 0px 10px 10px;
 border-left:1px solid #ccc;
 border-right:1px solid #ccc;
 border-bottom:1px solid #ccc;
