@@ -22,8 +22,8 @@
 
 <body>
 <div metal:fill-slot="main">
-    <h1>Gestion des auteurs</h1>    
-    
+    <h1>Gestion des auteurs</h1>
+
     <div id="zone-moteur-recherche">
         <div class="formulaire">
             <h2>Chercher un auteur</h2>
@@ -31,7 +31,7 @@
             <form action="admin-resultat-recherche-auteur"
                   method="post">
                 <div>
-                    Entrez quelques lettres du nom de l'auteur que vous cherchez, 
+                    Entrez quelques lettres du nom de l'auteur que vous cherchez,
                     ensuite cliquez sur le bouton.
                 </div>
                 <div class="formInput">
@@ -39,7 +39,7 @@
                            name="auteurNom"
                            class="auteur-nom"
                            value=""
-                           size="50" />
+                           size="80" />
                 </div>
                 <div class="formControls">
                     <input type="submit"
