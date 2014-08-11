@@ -487,13 +487,14 @@ border-bottom:1px solid #ccc;
 height:15px;
 }
 
-.portletItemDB a{
+.portletItemDB a.lien-menu-gestiondb{
 padding-left:20px;
 font-size:0.8em;
+color:#7a2600;
 }
 
-.portletItemDB a:hover{
-color:#ff8c00;
+.portletItemDB a.lien-menu-gestiondb:hover{
+color:#ff6f00;
 }
 
 .menu-titre{
