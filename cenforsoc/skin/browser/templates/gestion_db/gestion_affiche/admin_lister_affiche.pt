@@ -20,12 +20,12 @@
             <div class="info-affiche">
                 <span class="donnee-etiquette">Titre</span><br />
                 &nbsp;&nbsp;&nbsp;
-                <span tal:content="python: affiche.affiche_titre.upper()" 
+                <span tal:content="python: affiche.affiche_titre.upper()"
                       class="donnee-db" />
                 <br/><br />
                 <span class="donnee-etiquette">Numéro d'inventaire'</span><br />
                 &nbsp;&nbsp;&nbsp;
-                <span tal:content="affiche/affiche_inventaire" 
+                <span tal:content="affiche/affiche_inventaire"
                       class="donnee-db" />
             </div>
             <div class="vignette-affiche">
@@ -34,12 +34,19 @@
             </div>
             <div class="visualClear"></div>
             <hr class="ligne-top-menu-gestion-donnee" />
-            <div class="voir-detail">
-                <a href=""
-                   tal:attributes="href string:${context/portal_url}/documentation/decrire-une-affiche?affichePk=${affiche/affiche_pk}"
-                   class="bouton">
-                Voir le détail...</a>
-            </div>
+            <ul id="menu-gestion-donnee">
+                <li>
+                    <a href=""
+                       tal:attributes="href string:${context/portal_url}/documentation/admin-decrire-une-affiche?affichePk=${affiche/affiche_pk}"
+                       class="bouton">
+                    Voir le détail...</a>
+                </li>
+                <li>
+                    <a href=""
+                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-affiches/admin-modifier-une-affiche?affichePk=${affiche/affiche_pk}">
+                       Modifier cette affiche</a>
+                </li>
+            </ul>
         </div>
     </div>
     <div id="retour">
