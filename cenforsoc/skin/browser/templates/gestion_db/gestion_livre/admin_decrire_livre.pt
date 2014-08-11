@@ -92,8 +92,12 @@
                 </li>
                 <li>
                     <span class="donnee-etiquette">Livre pr&ecirc;t&eacute; : </span>
-                    <span tal:content="livre/liv_pret"
-                          class="donnee-db" />
+                    <tal:if tal:condition="python: livre.liv_pret==False">
+                        <span class="donnee-db">Non</span>
+                    </tal:if>
+                    <tal:if tal:condition="python: livre.liv_pret==True">
+                        <span class="donnee-db">Oui</span>
+                    </tal:if>
                 </li>
             </ul>
             <hr class="ligne-top-menu-gestion-donnee" />

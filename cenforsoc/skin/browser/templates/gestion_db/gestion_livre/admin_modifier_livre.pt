@@ -52,7 +52,6 @@
                                size="80"
                                value=""
                                tal:attributes="value livre/liv_inventaire" />
-                               <b tal:content="python: livre.liv_pk" />
                     </div>
                     <div class="formInput">
                         <label for="livreCoteRang">Cote :</label>

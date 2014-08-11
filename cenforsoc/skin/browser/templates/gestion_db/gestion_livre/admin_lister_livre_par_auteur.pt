@@ -72,7 +72,7 @@
 
     <div id="retour">
         <a href=""
-           tal:attributes="href string:${context/portal_url}/documentation/bibliotheque">
+           tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-livres/admin-chercher-un-livre">
             retour à la recherche</a>
     </div>
 
