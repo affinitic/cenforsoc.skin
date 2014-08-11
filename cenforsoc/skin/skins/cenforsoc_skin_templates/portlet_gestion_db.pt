@@ -13,50 +13,46 @@
         </dt>
         <div class="portletItemDB">
             <dt class="menu-titre">
-                <a href=""
-                   tal:attributes="href string:${context/portal_url}/formations/les-formations">
-                &#10023; Les formations</a>
+                &#10023; Les formations
             </dt>
                 <dd>
                     <a href=""
-                       tal:attributes="href string:${context/portal_url}/formations/chercher-une-formation">
+                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/formations/admin-chercher-une-formation">
                        &#10147; Chercher les formations
                     </a>
                 </dd>
                 <dd>
                     <a href=""
-                       tal:attributes="href string:${context/portal_url}/formations/ajouter-une-formation">
+                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/formations/admin-ajouter-une-formation">
                        &#10147; Ajouter une formation
                     </a>
                 </dd>
                 <dd>
                     <a href=""
-                       tal:attributes="href string:${context/portal_url}/formations/chercher-une-formation">
+                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/formations/admin-chercher-une-formation">
                        &#10147; Modifier une formation
                     </a>
                 </dd>
                 <dd>
                     <a href=""
-                       tal:attributes="href string:${context/portal_url}/formations/lister-les-formations">
+                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/formations/admin-lister-les-formations">
                        &#10147; Lister les formations
                     </a>
                 </dd>
             <div class="separation"></div>
 
             <dt class="menu-titre">
-                <a href=""
-                   tal:attributes="href string:${context/portal_url}/formations/les-inscriptions">
-                &#10023; Les inscriptions</a>
+                &#10023; Les inscriptions
             </dt>
                 <dd>
                     <a href=""
-                       tal:attributes="href string:${context/portal_url}/formations/chercher-une-inscription">
+                       tal:attributes="href string:${context/portal_url}/formations/admin-chercher-une-inscription">
                        &#10147; Chercher une inscription
                     </a>
                 </dd>
                 <dd>
                     <a href=""
-                       tal:attributes="href string:${context/portal_url}/formations/lister-les-inscriptions">
+                       tal:attributes="href string:${context/portal_url}/formations/admin-lister-les-inscriptions">
                        &#10147; Lister les inscriptions
                     </a>
                 </dd>
@@ -65,9 +61,7 @@
             <div class="separation"></div>
 
             <dt class="menu-titre">
-                <a href=""
-                   tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-livres">
-                &#10023; Les ouvrages</a>
+                &#10023; Les ouvrages
             </dt>
                 <dd>
                     <a href="" tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-livres/admin-chercher-un-livre">
@@ -93,29 +87,27 @@
             <div class="separation"></div>
 
             <dt class="menu-titre">
-                <a href=""
-                   tal:attributes="href string:${context/portal_url}/documentation/les-periodiques">
-                &#10023; Les périodiques</a>
+                &#10023; Les périodiquess
             </dt>
                 <dd>
-                    <a href="" tal:attributes="href string:${context/portal_url}/documentation/periodique/les-periodiques">
+                    <a href="" tal:attributes="href string:${context/portal_url}/documentation/periodique/admin-chercher-un-periodique">
                         &#10147; Chercher un périodique
                     </a>
                 </dd>
                 <dd>
-                    <a href="" tal:attributes="href string:${context/portal_url}/documentation/periodique/ajouter-un-periodique">
+                    <a href="" tal:attributes="href string:${context/portal_url}/documentation/periodique/admin-ajouter-un-periodique">
                         &#10147; Ajouter un périodique
                     </a>
                 </dd>
                 <dd>
                     <a href=""
-                       tal:attributes="href string:${context/portal_url}/documentation/periodique/modifier-un-periodique">
+                       tal:attributes="href string:${context/portal_url}/documentation/periodique/admin-modifier-un-periodique">
                         &#10147; Modifier un périodique
                     </a>
                 </dd>
                 <dd>
                     <a href=""
-                       tal:attributes="href string:${context/portal_url}/documentation/periodique/lister-les-periodiques">
+                       tal:attributes="href string:${context/portal_url}/documentation/periodique/admin-lister-les-periodiques">
                         &#10147; Lister les périodiques
                     </a>
                 </dd>
@@ -123,27 +115,25 @@
             <div class="separation"></div>
 
                 <dt class="menu-titre">
-                    <a href=""
-                       tal:attributes="href string:${context/portal_url}/documentation/affiche/">
-                       &#10023; Les affiches</a>
+                    &#10023; Les affiches
                 </dt>
                 <dd>
-                    <a href="" tal:attributes="href string:${context/portal_url}/documentation/affiche/chercher-une-affiche">
+                    <a href="" tal:attributes="href string:${context/portal_url}/documentation/affiche/admin-chercher-une-affiche">
                         &#10147; Chercher une affiche
                     </a>
                 </dd>
                 <dd>
-                    <a href="" tal:attributes="href string:${context/portal_url}/documentation/affiche/">
+                    <a href="" tal:attributes="href string:${context/portal_url}/documentation/affiche/admin-ajouter-une-affiche">
                         &#10147; Ajouter une affiche
                     </a>
                 </dd>
                 <dd>
-                    <a href="" tal:attributes="href string:${context/portal_url}/documentation/affiche/">
+                    <a href="" tal:attributes="href string:${context/portal_url}/documentation/affiche/admin-chercher-une-affiche">
                         &#10147; Modifier une affiche
                     </a>
                 </dd>
                 <dd>
-                    <a href="" tal:attributes="href string:${context/portal_url}/documentation/affiche/">
+                    <a href="" tal:attributes="href string:${context/portal_url}/documentation/affiche/admin-lister-les-affiches">
                         &#10147; Lister une affiche
                     </a>
                 </dd>
@@ -151,31 +141,29 @@
             <div class="separation"></div>
 
                 <dt class="menu-titre">
-                    <a href=""
-                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-auteurs/">
-                       &#10023; Les auteurs</a>
+                    &#10023; Les auteurs
                 </dt>
                 <dd>
                     <a href=""
-                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-auteurs/chercher-un-auteur">
+                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-auteurs/admin-chercher-un-auteur">
                         &#10147; Chercher un auteur
                     </a>
                 </dd>
                 <dd>
                     <a href=""
-                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-auteurs/ajouter-un-auteur">
+                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-auteurs/admin-ajouter-un-auteur">
                         &#10147; Ajouter un auteur
                     </a>
                 </dd>
                 <dd>
                     <a href=""
-                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-auteurs/chercher-un-auteur">
+                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-auteurs/admin-chercher-un-auteur">
                         &#10147; Modifier un auteur
                     </a>
                 </dd>
                 <dd>
                     <a href=""
-                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-auteurs/lister-les-auteurs">
+                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-auteurs/admin-lister-les-auteurs">
                         &#10147; Lister les auteurs
                     </a>
                     <span class="portlet-gestion-db-separation"></span>
