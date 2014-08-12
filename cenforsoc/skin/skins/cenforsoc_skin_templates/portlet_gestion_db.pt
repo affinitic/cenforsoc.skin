@@ -17,28 +17,28 @@
             </dt>
                 <dd>
                     <a href=""
-                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/formations/admin-chercher-une-formation"
+                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-formations/admin-chercher-une-formation"
                        class="lien-menu-gestiondb">
                        &#10147; Chercher les formations
                     </a>
                 </dd>
                 <dd>
                     <a href=""
-                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/formations/admin-ajouter-une-formation"
+                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-formations/admin-ajouter-une-formation"
                        class="lien-menu-gestiondb">
                        &#10147; Ajouter une formation
                     </a>
                 </dd>
                 <dd>
                     <a href=""
-                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/formations/admin-chercher-une-formation"
+                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-formations/admin-chercher-une-formation"
                        class="lien-menu-gestiondb">
                        &#10147; Modifier une formation
                     </a>
                 </dd>
                 <dd>
                     <a href=""
-                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/formations/admin-lister-les-formations"
+                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-formations/admin-lister-les-formations"
                        class="lien-menu-gestiondb">
                        &#10147; Lister les formations
                     </a>
@@ -50,14 +50,14 @@
             </dt>
                 <dd>
                     <a href=""
-                       tal:attributes="href string:${context/portal_url}/formations/admin-chercher-une-inscription"
+                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-formations/admin-chercher-une-inscription"
                        class="lien-menu-gestiondb">
                        &#10147; Chercher une inscription
                     </a>
                 </dd>
                 <dd>
                     <a href=""
-                       tal:attributes="href string:${context/portal_url}/formations/admin-lister-les-inscriptions"
+                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-formations/admin-lister-les-inscriptions"
                        class="lien-menu-gestiondb">
                        &#10147; Lister les inscriptions
                     </a>
@@ -105,28 +105,28 @@
             </dt>
                 <dd>
                     <a href=""
-                       tal:attributes="href string:${context/portal_url}/documentation/periodique/admin-chercher-un-periodique"
+                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-periodiques/admin-chercher-un-periodique"
                        class="lien-menu-gestiondb">
                         &#10147; Chercher un périodique
                     </a>
                 </dd>
                 <dd>
                     <a href=""
-                       tal:attributes="href string:${context/portal_url}/documentation/periodique/admin-ajouter-un-periodique"
+                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-periodiques/admin-ajouter-un-periodique"
                        class="lien-menu-gestiondb">
                         &#10147; Ajouter un périodique
                     </a>
                 </dd>
                 <dd>
                     <a href=""
-                       tal:attributes="href string:${context/portal_url}/documentation/periodique/admin-modifier-un-periodique"
+                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-periodiques/admin-modifier-un-periodique"
                        class="lien-menu-gestiondb">
                         &#10147; Modifier un périodique
                     </a>
                 </dd>
                 <dd>
                     <a href=""
-                       tal:attributes="href string:${context/portal_url}/documentation/periodique/admin-lister-les-periodiques"
+                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-periodiques/admin-lister-les-periodiques"
                        class="lien-menu-gestiondb">
                         &#10147; Lister les périodiques
                     </a>
@@ -139,28 +139,28 @@
                 </dt>
                 <dd>
                     <a href=""
-                       tal:attributes="href string:${context/portal_url}/documentation/affiche/admin-chercher-une-affiche"
+                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-affiches/admin-chercher-une-affiche"
                        class="lien-menu-gestiondb">
                         &#10147; Chercher une affiche
                     </a>
                 </dd>
                 <dd>
                     <a href=""
-                       tal:attributes="href string:${context/portal_url}/documentation/affiche/admin-ajouter-une-affiche"
+                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-affiches/admin-ajouter-une-affiche"
                        class="lien-menu-gestiondb">
                         &#10147; Ajouter une affiche
                     </a>
                 </dd>
                 <dd>
                     <a href=""
-                       tal:attributes="href string:${context/portal_url}/documentation/affiche/admin-chercher-une-affiche"
+                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-affiches/admin-chercher-une-affiche"
                        class="lien-menu-gestiondb">
                         &#10147; Modifier une affiche
                     </a>
                 </dd>
                 <dd>
                     <a href=""
-                       tal:attributes="href string:${context/portal_url}/documentation/affiche/admin-lister-les-affiches"
+                       tal:attributes="href string:${context/portal_url}/gestion-de-la-base/les-affiches/admin-lister-les-affiches"
                        class="lien-menu-gestiondb">
                         &#10147; Lister une affiche
                     </a>
