@@ -230,11 +230,16 @@ class ManageFormation(BrowserView):
         inscriptionFormationFk = fields.get('inscriptionFormationFk', None)
         nbrHeureFormationSelected = self.getTotalHeuresFormationSelected(inscriptionFormationFk)
 
+
         if nbrHeureFormationSelected <= 40:
+            jourNaisssance = fields.get('jour', None)
+            moisNaisssance = fields.get('mois', None)
+            anneeNaisssance = fields.get('annee', None)
+            inscriptionFormationDateNaissance = "%s/%s/%s" % (jourNaisssance, moisNaisssance, anneeNaisssance)
+
             inscriptionFormationInscriptionDate = datetime.datetime.now()
             inscriptionFormationNom = fields.get('inscriptionFormationNom', None)
             inscriptionFormationPrenom = fields.get('inscriptionFormationPrenom', None)
-            inscriptionFormationDateNaissance = fields.get('inscriptionFormationDateNaissance', None)
             inscriptionFormationAdresse = fields.get('inscriptionFormationAdresse', None)
             inscriptionFormationCP = fields.get('inscriptionFormationCP', None)
             inscriptionFormationLocalite = fields.get('inscriptionFormationLocalite', None)
@@ -300,6 +305,8 @@ class ManageFormation(BrowserView):
                                     form_ins_formation_suivie=inscriptionFormationFormationSuivie)
             session.add(newEntry)
             session.flush()
+
+            import pdb; pdb.set_trace()
 
             sujet = "CENFORSOC : demande d'inscription via le site"
             message = """
