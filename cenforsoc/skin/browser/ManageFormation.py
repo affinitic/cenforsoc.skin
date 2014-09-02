@@ -306,8 +306,6 @@ class ManageFormation(BrowserView):
             session.add(newEntry)
             session.flush()
 
-            import pdb; pdb.set_trace()
-
             sujet = "CENFORSOC : demande d'inscription via le site"
             message = """
                   <font color='#FF0000'><b>:: INSCRIPTION FORMATION CENFORSOC ::</b></font><br /><br />
