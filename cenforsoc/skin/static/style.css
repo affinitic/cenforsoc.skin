@@ -833,8 +833,8 @@ height:150px;
 border:1px solid #aaa;
 border-radius:20px;
 text-align:center;
-font-family:'PT Sans Narrow';
-font-size:30px;
+/*font-family:'PT Sans Narrow';*/
+font-size:18px;
 font-weight:normal;
 line-height:50px;
 color:#500 !important;
