@@ -12,7 +12,7 @@
 <div metal:fill-slot="main">
     <h1>Gestion des affiches</h1>
     <fieldset class="fieldset-border">
-        <div class="formulaire">    
+        <div class="formulaire">
             <h2>Ajouter une affiche </h2>
             <form action="insertAffiche"
                   enctype="multipart/form-data"
@@ -121,6 +121,7 @@
                            value="" />
                 </div>
                 <div class="formInput">
+                    <label for="afficheImage">Image :</label>
                     <input type="file"
                            id="afficheImage"
                            name="fileUpload"
