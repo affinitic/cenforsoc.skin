@@ -52,6 +52,19 @@ class ManageFormation(BrowserView):
         formation = query.one()
         return formation
 
+    def getFormationsByListPk(self, formationPk):
+        """
+        table pg formation
+        recuperation d'une formation selon sa pk
+        """
+        wrapper = getSAWrapper('cenforsoc')
+        session = wrapper.session
+        FormationTable = wrapper.getMapper('formation')
+        query = session.query(FormationTable)
+        query = query.filter(FormationTable.form_pk.in_(formationPk))
+        formations = query.all()
+        return formations
+
     def getFormationForInscription(self, inscriptionPk):
         """
         table pg formation, link_formation_inscription
