@@ -25,8 +25,7 @@
             </div>
             <div class="visualClear"></div>
             <div class="plus-info">
-                <a href=""
-                   tal:attributes="href string: ${context/portal_url}/formations/s-inscrire-a-une-formation">Retour</a>
+                <a href="javascript:history.back();">Retour</a>
             </div>
         </fieldset>
     </div>
