@@ -87,7 +87,7 @@ class ManageFormation(BrowserView):
     def getTotalHeuresFormationSelected(self, formationPk):
         """
         table pg formation
-        recuperation des forma  tions selectionneせs par la personne qui s'inscrit
+        recuperation des formations selectionneés par la personne qui s'inscrit
         totalisation des heures de formation selectionnee
         si plus de 80, refus
         """
@@ -162,11 +162,11 @@ class ManageFormation(BrowserView):
         wrapper = getSAWrapper('cenforsoc')
         session = wrapper.session
         insertAuteur = wrapper.getMapper('formation')
-        newEntry = insertAuteur(form_titre=formationTitre, \
-                                form_duree=formationDuree, \
-                                form_date_deb=formationDateDebut, \
-                                form_description=formationDescription, \
-                                form_niveau_requis=formationNiveauRequis, \
+        newEntry = insertAuteur(form_titre=formationTitre,
+                                form_duree=formationDuree,
+                                form_date_deb=formationDateDebut,
+                                form_description=formationDescription,
+                                form_niveau_requis=formationNiveauRequis,
                                 form_etat=formationEtat)
         session.add(newEntry)
         session.flush()
@@ -228,14 +228,28 @@ class ManageFormation(BrowserView):
         fields = self.request.form
 
         inscriptionFormationFk = fields.get('inscriptionFormationFk', None)
+        inscriptionFormationCongeEducation = fields.get('inscriptionFormationCongeEducation', None)
         nbrHeureFormationSelected = self.getTotalHeuresFormationSelected(inscriptionFormationFk)
 
+        #si on coche OUI au CONGE EDUCATION PAYE
+        #et
+        #si le total des heures est supérieur à 80h
+        #alors bloquer inscription et envoyer message alerte
 
-        if nbrHeureFormationSelected <= 40:
+        if nbrHeureFormationSelected > 80 and inscriptionFormationCongeEducation == 'oui':
+            portalUrl = getToolByName(self.context, 'portal_url')()
+            ploneUtils = getToolByName(self.context, 'plone_utils')
+            message = u"""
+                        Votre demande d'inscription a échoué, vous avez sélectionné %s heures
+                        alors que 40 heuressont permises !""" % (nbrHeureFormationSelected, )
+            ploneUtils.addPortalMessage(message, 'info')
+            url = "%s/formations/probleme-lors-de-l-inscription" % (portalUrl)
+            self.request.response.redirect(url)
+        else:
             jourNaisssance = fields.get('jour', None)
             moisNaisssance = fields.get('mois', None)
             anneeNaisssance = fields.get('annee', None)
-            inscriptionFormationDateNaissance = "%s/%s/%s" % (jourNaisssance, moisNaisssance, anneeNaisssance)
+            inscriptionFormationDateNaissance = "%s-%s-%s" % (jourNaisssance, moisNaisssance, anneeNaisssance)
 
             inscriptionFormationInscriptionDate = datetime.datetime.now()
             inscriptionFormationNom = fields.get('inscriptionFormationNom', None)
@@ -252,7 +266,6 @@ class ManageFormation(BrowserView):
             inscriptionFormationEntreprise = fields.get('inscriptionFormationEntreprise', None)
             inscriptionFormationPhoneEntreprise = fields.get('inscriptionFormationPhoneEntreprise', None)
             inscriptionFormationHoraireTravail = fields.get('inscriptionFormationHoraireTravail', None)
-            inscriptionFormationCongeEducation = fields.get('inscriptionFormationCongeEducation', None)
             inscriptionFormationCongeSyndical = fields.get('inscriptionFormationCongeSyndical', None)
             inscriptionFormationDelegationSyndicale = fields.get('inscriptionFormationDelegationSyndicale', None)
             inscriptionFormationDelegationCE = fields.get('inscriptionFormationDelegationCE', None)
@@ -260,23 +273,15 @@ class ManageFormation(BrowserView):
             inscriptionFormationFormationSuivie = fields.get('inscriptionFormationFormationSuivie', None)
 
             inscriptionFormationInscriptionDate = datetime.datetime.now()
+            listeFormations = ""
+            formationsSelected = self.getFormationsByListPk(inscriptionFormationFk)
+            #listeFormations = ["%s - " % (formation.form_titre) for formation in formationsSelected]
 
-            # # SI la durée des formations sélectionnes dépassent 80 heures,
-            # ALORS la demande n'est pas valide
-            # SINON
-            #    insertion dans la DB
-            #    envoi des mails.
-            #duree=0
-            #for elem in form_ins_formation_fk:
-            #   data=context.admin_base.formation.zsql_formation_select_by_pk(form_pk=elem)
-            #   for elem in data:
-            #      duree=duree+int(elem.form_duree)
-            #if duree>80:
-            #   return context.REQUEST.RESPONSE.redirect('probleme')
-            #else:
-            #            self.insertFormation()
+            for formation in formationsSelected:
+                formationTitre = formation.form_titre
+                listeFormations = listeFormations + formationTitre + ' - '
+            lf = listeFormations.encode('ascii', 'ignore')
 
-            formation = 'TEST BY ALAIN'
 
             wrapper = getSAWrapper('cenforsoc')
             session = wrapper.session
@@ -337,16 +342,16 @@ class ManageFormation(BrowserView):
                   &nbsp;&nbsp;. <font color='#ff9c1b'><b>%s</b></font><br />
                   <br />
                   Formations déjà suivies : <font color='#ff9c1b'><b>%s</b></font><br />
-                  """ % (formation, nbrHeureFormationSelected, inscriptionFormationNom.upper(), \
-                         inscriptionFormationPrenom.capitalize(), inscriptionFormationDateNaissance, \
-                         inscriptionFormationAdresse, inscriptionFormationCP, \
-                         inscriptionFormationLocalite, inscriptionFormationEmail, inscriptionFormationPhone, \
-                         inscriptionFormationGsm, inscriptionFormationCentralProFgtb, \
-                         inscriptionFormationRegional, inscriptionFormationProfession, \
-                         inscriptionFormationEntreprise, inscriptionFormationPhoneEntreprise, \
-                         inscriptionFormationHoraireTravail, \
-                         inscriptionFormationCongeEducation, inscriptionFormationCongeSyndical, \
-                         inscriptionFormationDelegationSyndicale, inscriptionFormationDelegationCE,\
+                  """ % (lf, nbrHeureFormationSelected, inscriptionFormationNom.upper(),
+                         inscriptionFormationPrenom.capitalize(), inscriptionFormationDateNaissance,
+                         inscriptionFormationAdresse, inscriptionFormationCP,
+                         inscriptionFormationLocalite, inscriptionFormationEmail, inscriptionFormationPhone,
+                         inscriptionFormationGsm, inscriptionFormationCentralProFgtb,
+                         inscriptionFormationRegional, inscriptionFormationProfession,
+                         inscriptionFormationEntreprise, inscriptionFormationPhoneEntreprise,
+                         inscriptionFormationHoraireTravail,
+                         inscriptionFormationCongeEducation, inscriptionFormationCongeSyndical,
+                         inscriptionFormationDelegationSyndicale, inscriptionFormationDelegationCE,
                          inscriptionFormationDelegationCPPT, inscriptionFormationFormationSuivie)
 
             sujetInscrit = "CENFORSOC : confirmation de votre demande d'inscription"
@@ -359,7 +364,7 @@ class ManageFormation(BrowserView):
                          Bien à vous,
                          <br /><br />
                          L'équipe Cenforsoc.
-                         """ % (inscriptionFormationPrenom, inscriptionFormationNom, formation)
+                         """ % (inscriptionFormationPrenom, inscriptionFormationNom, lf)
 
             cenforsocTools = getMultiAdapter((self.context, self.request), name="manageCenforsoc")
             cenforsocTools.sendMailToCenforsoc(sujet, message)
@@ -370,16 +375,7 @@ class ManageFormation(BrowserView):
             message = u"Votre demande d'inscription a bien été enregistrée !"
             ploneUtils.addPortalMessage(message, 'info')
             url = "%s/formations/merci-inscription" % (portalUrl)
-        else:
-            portalUrl = getToolByName(self.context, 'portal_url')()
-            ploneUtils = getToolByName(self.context, 'plone_utils')
-            message = u"""
-                        Votre demande d'inscription a échoué, vous avez sélectionné %s heures
-                        alors que 40 heuressont permises !""" % (nbrHeureFormationSelected, )
-            ploneUtils.addPortalMessage(message, 'info')
-            url = "%s/formations/probleme-lors-de-l-inscription" % (portalUrl)
-
-        self.request.response.redirect(url)
+            self.request.response.redirect(url)
         return ''
 
     def gestionFormation(self):
