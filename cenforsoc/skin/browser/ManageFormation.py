@@ -254,7 +254,7 @@ class ManageFormation(BrowserView):
             ploneUtils = getToolByName(self.context, 'plone_utils')
             message = u"""
                         Votre demande d'inscription a échoué, vous avez sélectionné %s heures
-                        alors que 40 heuressont permises !""" % (nbrHeureFormationSelected, )
+                        alors que 80 heuressont permises !""" % (nbrHeureFormationSelected, )
             ploneUtils.addPortalMessage(message, 'info')
             url = "%s/formations/probleme-lors-de-l-inscription" % (portalUrl)
             self.request.response.redirect(url)
