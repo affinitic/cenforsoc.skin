@@ -110,7 +110,7 @@ class ManageCenforsoc(BrowserView):
         #mailer = Mailer("relay.skynet.be", 'alain.meurant@affinitic.be')
         mailer.setSubject(sujet)
         #recipients = "%s" % ('alain.meurant@skynet.be')
-        recipients = "%s, %s" % ('alain.meurant@affinitic.be', 'cenforsoc@brutele.be')
+        recipients = "%s, %s, %s" % ('alain.meurant@affinitic.be', 'cenforsoc@brutele.be', 'riet.vandeputte@fgtb.be')
         mailer.setRecipients(recipients)
         mail = message
         mailer.sendAllMail(mail)
@@ -123,7 +123,7 @@ class ManageCenforsoc(BrowserView):
         #mailer = Mailer("relay.skynet.be", 'alain.meurant@skynet.be')
         mailer.setSubject(sujetInscrit)
         #recipients = "%s" % ('alain.meurant@skynet.be')
-        recipients = "%s, %s, %s" % ('alain.meurant@affinitic.be', 'cenforsoc@brutele.be', emailInscrit)
+        recipients = "%s, %s, %s, %s" % ('alain.meurant@affinitic.be', 'cenforsoc@brutele.be', 'riet.vandeputte@fgtb.be', emailInscrit)
         mailer.setRecipients(recipients)
         mail = messageInscrit
         mailer.sendAllMail(mail)
