@@ -52,6 +52,11 @@
                                 class="donnee_formation" />
                       </li>
                       -->
+                      <li>
+                        <span class="donnee-etiquette">Organisme :</span>
+                        <span tal:content="inscription/form_ins_organisme"
+                              class="donnee-db" />
+                    </li>
                   </ul>
                   <hr class="ligne-top-menu-gestion-donnee" />
                   <a href=""
