@@ -54,7 +54,7 @@
                       -->
                       <li>
                         <span class="donnee-etiquette">Organisme :</span>
-                        <span tal:content="inscription/form_ins_organisme"
+                        <span tal:content="formation/form_ins_organisme"
                               class="donnee-db" />
                     </li>
                   </ul>
