@@ -40,6 +40,11 @@
                           <span tal:content="formation/form_ins_email"
                                class="donnee-db" />
                       </li>
+                      <li>
+                          <span  class="donnee-etiquette">Organisme</span>
+                          <span tal:content="formation/form_ins_organisme"
+                                class="donnee-db" />
+                      </li>
                       <!--
                       <li>
                           <span class="donnee-etiquette">Formation</span> :
