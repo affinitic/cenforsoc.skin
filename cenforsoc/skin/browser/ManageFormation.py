@@ -39,6 +39,20 @@ class ManageFormation(BrowserView):
         allFormations = query.all()
         return allFormations
 
+    def getAllFormationsByOrganisme(self, organisme):
+        """
+        table pg formation
+        recuperation de toutes les formations selon un organimse cenforsoc ou vie-esem
+        """
+        wrapper = getSAWrapper('cenforsoc')
+        session = wrapper.session
+        FormationTable = wrapper.getMapper('formation')
+        query = session.query(FormationTable)
+        query = query.filter(FormationTable.form_organisme == organisme)
+        query = query.order_by(FormationTable.form_titre)
+        allFormations = query.all()
+        return allFormations
+
     def getFormationByPk(self, formationPk):
         """
         table pg formation
@@ -207,6 +221,7 @@ class ManageFormation(BrowserView):
         formationDateDebut = fields.get('formationDateDebut', None)
         formationDescription = fields.get('formationDescription', None)
         formationNiveauRequis = fields.get('formationNiveauRequis', None)
+        formationOrganisme = fields.get('formationOrganisme', None)
         formationEtat = fields.get('formationEtat', None)
 
         wrapper = getSAWrapper('cenforsoc')
@@ -221,6 +236,7 @@ class ManageFormation(BrowserView):
             formation.form_date_deb = unicode(formationDateDebut, 'utf-8')
             formation.form_description = unicode(formationDescription, 'utf-8')
             formation.form_niveau_requis = unicode(formationNiveauRequis, 'utf-8')
+            formation.form_organisme = unicode(formationOrganisme, 'utf-8')
             formation.form_etat = unicode(formationEtat, 'utf-8')
 
         session.flush()
@@ -284,6 +300,7 @@ class ManageFormation(BrowserView):
             inscriptionFormationDelegationCE = fields.get('inscriptionFormationDelegationCE', None)
             inscriptionFormationDelegationCPPT = fields.get('inscriptionFormationDelegationCPPT', None)
             inscriptionFormationFormationSuivie = fields.get('inscriptionFormationFormationSuivie', None)
+            inscriptionFormationOrganisme = fields.get('inscriptionFormationOrganisme', None)
 
             inscriptionFormationInscriptionDate = datetime.datetime.now()
             listeFormations = ""
@@ -320,7 +337,8 @@ class ManageFormation(BrowserView):
                                     form_ins_del_synd=inscriptionFormationDelegationSyndicale,
                                     form_ins_del_ce=inscriptionFormationDelegationCE,
                                     form_ins_del_cppt=inscriptionFormationDelegationCPPT,
-                                    form_ins_formation_suivie=inscriptionFormationFormationSuivie)
+                                    form_ins_formation_suivie=inscriptionFormationFormationSuivie,
+                                    form_ins_organisme=inscriptionFormationOrganisme)
             session.add(newEntry)
             session.flush()
 

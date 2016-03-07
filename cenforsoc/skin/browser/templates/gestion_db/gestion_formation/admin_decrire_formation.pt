@@ -49,6 +49,11 @@
                         <span tal:content="formation/form_etat"
                               class="donnee-db" />
                     </li>
+                    <li>
+                        <span class="donnee-etiquette">Organisme</span>
+                        <span tal:content="formation/form_organisme"
+                              class="donnee-db" />
+                    </li>
                 </ul>
                 <hr class="ligne-top-menu-gestion-donnee" />
                 <div>
