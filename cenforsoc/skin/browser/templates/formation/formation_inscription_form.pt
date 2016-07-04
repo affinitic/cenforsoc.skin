@@ -164,41 +164,6 @@
             </div>
 
             <div class="formInput">
-                <label for="inscriptionFormationCentralProFgtb">Centrale professionnelle FGTB :</label>
-                <select name="inscriptionFormationCentralProFgtb"
-                        id="inscriptionFormationCentralProFgtb">
-                      <option> ... </option>
-                      <option value="Métal"> Métal </option>
-                      <option value="CGSP"> CGSP </option>
-                      <option value="SETCA"> SETCa </option>
-                      <option value="Centrale générale"> Centrale générale </option>
-                      <option value="Mineurs"> Mineurs </option>
-                      <option value="Alimentation"> Alimentation </option>
-                      <option value="Vêtement"> Vêtement </option>
-                      <option value="UBOT"> UBOT </option>
-                </select>
-            </div>
-
-            <div class="formInput">
-                <label for="inscriptionFormationRegional">Régionale de :</label>
-                <select name="inscriptionFormationRegional"
-                        id="inscriptionFormationRegional">
-                      <option> ... </option>
-                      <option value="Bruxelles"> Bruxelles </option>
-                      <option value="Centre"> Centre </option>
-                      <option value="Charleroi et Sud Hainaut"> Charleroi et Sud Hainaut </option>
-                      <option value="Liège - Huy - Waremme"> Liège - Huy - Waremme </option>
-                      <option value="Luxembourg"> Luxembourg </option>
-                      <option value="Mons - Borinage"> Mons - Borinage </option>
-                      <option value="Mouscron - Commines - Estaimpuis"> Mouscron - Commines - Estaimpuis </option>
-                      <option value="Namur"> Namur </option>
-                      <option value="Nivelles"> Nivelles </option>
-                      <option value="Tournai"> Tournai - Ath - Lessines </option>
-                      <option value="Verviers"> Verviers </option>
-                </select>
-            </div>
-
-            <div class="formInput">
                 <label for="inscriptionFormationProfession">Profession :</label>
                 <input type="text"
                        name="inscriptionFormationProfession"
@@ -250,51 +215,8 @@
             </div>
 
             <div class="formInput">
-                <label for="inscriptionFormationCongeSyndical">Souhaite bénéficier du congé syndical :</label>
-                OUI <input type="radio"
-                           name="inscriptionFormationCongeSyndical"
-                           id="inscriptionFormationCongeSyndical"
-                           value="oui">
-                &nbsp;&nbsp; - &nbsp;&nbsp;
-                NON <input type="radio"
-                           name="inscriptionFormationCongeSyndical"
-                           id="inscriptionFormationCongeSyndical"
-                           value="non"
-                           checked="checked">
-            </div>
-
-            <div class="formInput">
-                <label for="inscriptionFormationDelegationSyndicale">Mandat syndicale FGTB :</label>
-                <input type="radio"
-                       name="inscriptionFormationDelegationSyndicale"
-                       id="inscriptionFormationDelegationSyndicale"
-                       value="Délégué(e) syndicale effectif"> Délégué(e) syndicale effectif<br />
-                <input type="radio"
-                       name="inscriptionFormationDelegationSyndicale"
-                       id="inscriptionFormationDelegationSyndicale"
-                       value="Délégué(e) syndicale suppléant(e)"> Délégué(e) syndicale suppléant(e)<br />
-                <br />
-                <input type="radio"
-                       name="inscriptionFormationDelegationCE"
-                       id="inscriptionFormationDelegationCE"
-                       value="Délégué(e) CE effectif"> Délégué(e) CE effectif<br />
-                <input type="radio"
-                       name="inscriptionFormationDelegationCE"
-                       value="Délégué(e) CE suppléant(e)"> Délégué(e) CE suppléant(e)<br />
-                <br />
-                <input type="radio"
-                       name="inscriptionFormationDelegationCPPT"
-                       id="inscriptionFormationDelegationCPPT"
-                       value="Délégué(e) CPPT effectif"> Délégué(e) CPPT effectif<br />
-                <input type="radio"
-                       name="inscriptionFormationDelegationCPPT"
-                       id="inscriptionFormationDelegationCPPT"
-                       value="Délégué(e) CPPT suppléant(e)"> Délégué(e) CPPT suppléant(e)<br />
-            </div>
-
-            <div class="formInput">
                 <label for="inscriptionFormationFormationSuivie">
-                    Formations déjà suivies à CENFORSOC et dans vos centrales professionnelles :
+                    Formations déjà suivies à CENFORSOC :
                 </label>
                 <br />
                 <textarea rows="5"
