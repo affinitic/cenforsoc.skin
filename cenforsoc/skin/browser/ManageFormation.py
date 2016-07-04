@@ -358,32 +358,31 @@ class ManageFormation(BrowserView):
                   Téléphone : <font color='#ff9c1b'><b>%s</b></font><br />
                   GSM : <font color='#ff9c1b'><b>%s</b></font><br />
                   <br />
-                  Centrale professionnelle FGTB : <font color='#ff9c1b'><b>%s</b></font><br />
-                  Régionale de : <font color='#ff9c1b'><b>%s</b></font><br />
                   Profession : <font color='#ff9c1b'><b>%s</b></font><br />
                   Entreprise : <font color='#ff9c1b'><b>%s</b></font><br />
                   Téléphone de l'entreprise : <font color='#ff9c1b'><b>%s</b></font><br />
                   <br />
                   Horaire de travail : <font color='#ff9c1b'><b>%s</b></font><br />
                   Congé éducation : <font color='#ff9c1b'><b>%s</b></font><br />
-                  Congé syndical : <font color='#ff9c1b'><b>%s</b></font><br />
-                  Mandat FGTB :<br />
-                  &nbsp;&nbsp;. <font color='#ff9c1b'><b>%s</b></font><br />
-                  &nbsp;&nbsp;. <font color='#ff9c1b'><b>%s</b></font><br />
-                  &nbsp;&nbsp;. <font color='#ff9c1b'><b>%s</b></font><br />
                   <br />
                   Formations déjà suivies : <font color='#ff9c1b'><b>%s</b></font><br />
-                  """ % (lf, nbrHeureFormationSelected, inscriptionFormationNom.upper(),
-                         inscriptionFormationPrenom.capitalize(), inscriptionFormationDateNaissance,
-                         inscriptionFormationAdresse, inscriptionFormationCP,
-                         inscriptionFormationLocalite, inscriptionFormationEmail, inscriptionFormationPhone,
-                         inscriptionFormationGsm, inscriptionFormationCentralProFgtb,
-                         inscriptionFormationRegional, inscriptionFormationProfession,
-                         inscriptionFormationEntreprise, inscriptionFormationPhoneEntreprise,
+                  """ % (lf,
+                         nbrHeureFormationSelected,
+                         inscriptionFormationNom.upper(),
+                         inscriptionFormationPrenom.capitalize(),
+                         inscriptionFormationDateNaissance,
+                         inscriptionFormationAdresse,
+                         inscriptionFormationCP,
+                         inscriptionFormationLocalite,
+                         inscriptionFormationEmail,
+                         inscriptionFormationPhone,
+                         inscriptionFormationGsm,
+                         inscriptionFormationProfession,
+                         inscriptionFormationEntreprise,
+                         inscriptionFormationPhoneEntreprise,
                          inscriptionFormationHoraireTravail,
-                         inscriptionFormationCongeEducation, inscriptionFormationCongeSyndical,
-                         inscriptionFormationDelegationSyndicale, inscriptionFormationDelegationCE,
-                         inscriptionFormationDelegationCPPT, inscriptionFormationFormationSuivie)
+                         inscriptionFormationCongeEducation,
+                         inscriptionFormationFormationSuivie)
 
             sujetInscrit = "CENFORSOC : confirmation de votre demande d'inscription"
             messageInscrit = """
