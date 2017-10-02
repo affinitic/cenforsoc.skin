@@ -22,21 +22,21 @@
 
 <body>
 <div metal:fill-slot="main">
-	<h1>Consultation de nos ouvrages</h1>
+    <h1>Consultation de nos ouvrages</h1>
 
-	<fieldset>
-		<legend class="legende">Recherches</legend>
-		<p>Il vous est possible de consulter notre base de donn&eacute;es au travers d'internet.</p>
-		<p>Vous avez  possibilit&eacute;s pour effectuer une recherche</p>
-		
-		<div class="fieldset-border">
+    <fieldset>
+        <legend class="legende">Recherches</legend>
+        <p>Il vous est possible de consulter notre base de donn&eacute;es au travers d'internet.</p>
+        <p>Vous avez  possibilit&eacute;s pour effectuer une recherche</p>
+
+        <div class="fieldset-border">
           <form action="decrire-le-livre"
                 method="post">
               <h2>
                   Recherche par titre
               </h2>
               <p>
-                  Entrez quelques lettres du nom de l'ouvrage que vous cherchez, 
+                  Entrez quelques lettres du nom de l'ouvrage que vous cherchez,
                   ensuite cliquez sur le bouton.
               </p>
               <div class="formInput">
@@ -52,7 +52,7 @@
                </div>
           </form>
         </div>
-        
+
         <div class="fieldset-border">
           <form action="recherche-livre-selon-auteur"
                 method="post">
@@ -60,7 +60,7 @@
                   Recherche par auteur
               </h2>
               <p>
-                  Entrez quelques lettres du nom de l'auteur que vous cherchez, 
+                  Entrez quelques lettres du nom de l'auteur que vous cherchez,
                   ensuite cliquez sur le bouton.
               </p>
               <div class="formInput">
@@ -76,7 +76,7 @@
                </div>
           </form>
         </div>
-        
+
         <div class="fieldset-border">
           <form action="recherche-livre-selon-motcle"
                 method="post">
@@ -84,7 +84,7 @@
                   Recherche par mot-clé
               </h2>
               <p>
-                  Entrez quelques lettres d'un mot-clé, 
+                  Entrez quelques lettres d'un mot-clé,
                   ensuite cliquez sur le bouton.
               </p>
               <div class="formInput">
@@ -109,7 +109,7 @@
 			<li>
 			    <a href=""
 			       tal:attributes="href string:${context/portal_url}/documentation/bibliotheque/lister-les-titres-des-livres">
-			        Lister tous les titres</a>
+			        Lister tous les titres des ouvrages</a>
 			</li>
 			<li>
 			    <a href=""
@@ -117,7 +117,7 @@
 			       Lister tous les auteurs</a>
 			</li>
 		</ul>
-	</fieldset>  
+	</fieldset>
 </div>
 </body>
 </html>
